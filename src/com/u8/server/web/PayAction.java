@@ -29,6 +29,7 @@ import java.net.URLEncoder;
 public class PayAction extends UActionSupport{
 
     private int userID;
+    private String productID;  //当前商品ID
     private String productName;
     private String productDesc;
     private int money;          //单位 分
@@ -50,6 +51,7 @@ public class PayAction extends UActionSupport{
 
         StringBuilder sb = new StringBuilder();
         sb.append("userID=").append(this.userID).append("&")
+                .append("productID=").append(this.productID).append("&")
                 .append("productName=").append(this.productName).append("&")
                 .append("productDesc=").append(this.productDesc).append("&")
                 .append("money=").append(this.money).append("&")
@@ -142,6 +144,14 @@ public class PayAction extends UActionSupport{
         json.put("data", data);
 
         super.renderJson(json.toString());
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
 
     public int getUserID() {

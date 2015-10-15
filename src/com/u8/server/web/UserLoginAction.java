@@ -34,7 +34,7 @@ import java.util.Map;
 @Namespace("/user")
 public class UserLoginAction extends UActionSupport{
 
-    private static final String AUTH_URL = "http://192.168.3.32:8080/verifyAccount";
+    private static final String AUTH_URL = "http://localhost:8080/user/verifyAccount";
 
     private int userID;
     private String token;

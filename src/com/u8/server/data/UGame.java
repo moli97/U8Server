@@ -20,6 +20,7 @@ public class UGame implements Serializable{
     private String name;            //游戏名称
     private long createTime;        //创建时间
     private String payCallback;     //支付回调地址
+    private String msdkPayCallback; //应用宝回调地址
     private String payCallbackDebug;//支付回调地址，调试
 
     public JSONObject toJSON(){
@@ -30,6 +31,7 @@ public class UGame implements Serializable{
         json.put("appRSAPriKey", appRSAPriKey);
         json.put("name", name);
         json.put("payCallback", payCallback);
+        json.put("msdkPayCallback", msdkPayCallback);
         json.put("payCallbackDebug", payCallbackDebug);
 
         return json;
@@ -97,5 +99,13 @@ public class UGame implements Serializable{
 
     public void setAppRSAPriKey(String appRSAPriKey) {
         this.appRSAPriKey = appRSAPriKey;
+    }
+
+    public String getMsdkPayCallback() {
+        return msdkPayCallback;
+    }
+
+    public void setMsdkPayCallback(String msdkPayCallback) {
+        this.msdkPayCallback = msdkPayCallback;
     }
 }

@@ -57,6 +57,8 @@ public class UserAction extends UActionSupport{
     @Action("getToken")
     public void getLoginToken(){
 
+        Log.d("getToken...");
+
         try{
 
             final UGame game = gameManager.queryGame(this.appID);

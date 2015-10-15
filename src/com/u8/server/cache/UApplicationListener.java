@@ -7,6 +7,7 @@ import com.u8.server.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,12 +27,14 @@ public class UApplicationListener implements ApplicationListener<ApplicationEven
 
     private boolean loaded = false;
 
-    @Override
-    public void onApplicationEvent(ApplicationEvent applicationEvent) {
 
+    @Override
+    public void onApplicationEvent(ApplicationEvent contextStartedEvent) {
         try{
 
             if(!loaded){
+
+                Log.e("Spring now to load...");
 
                 CacheManager.getInstance().loadGameData(gameDao.findAll());
                 CacheManager.getInstance().loadMasterData(channelMasterDao.findAll());
@@ -43,8 +46,5 @@ public class UApplicationListener implements ApplicationListener<ApplicationEven
         }catch (Exception e){
             Log.e("Load Data on server inited error.", e);
         }
-
-
-
     }
 }

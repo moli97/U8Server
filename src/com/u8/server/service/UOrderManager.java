@@ -6,6 +6,7 @@ import com.u8.server.common.Page;
 import com.u8.server.common.PageParameter;
 import com.u8.server.constants.PayState;
 import com.u8.server.dao.UOrderDao;
+import com.u8.server.data.UMsdkOrder;
 import com.u8.server.data.UOrder;
 import com.u8.server.data.UUser;
 import com.u8.server.utils.IDGenerator;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service("orderManager")
 public class UOrderManager {
@@ -27,6 +29,10 @@ public class UOrderManager {
 
     public void saveOrder(UOrder order){
         orderDao.save(order);
+    }
+
+    public void saveUMsdkOrder(UMsdkOrder order){
+        orderDao.getSession().saveOrUpdate(order);
     }
 
     public void deleteOrder(UOrder order){
@@ -55,6 +61,24 @@ public class UOrderManager {
         order.setCreatedTime(new Date());
 
         orderDao.save(order);
+
+        return order;
+    }
+
+    public UMsdkOrder generateMsdkOrder(UUser user, String channelOrderID, int coinNum, boolean firstPay, int allMoney){
+
+        UMsdkOrder order = new UMsdkOrder();
+        order.setAppID(user.getAppID());
+        order.setChannelID(user.getChannelID());
+        order.setUserID(user.getId());
+        order.setUsername(user.getName());
+        order.setCoinNum(coinNum);
+        order.setFirstPay(firstPay ? 1:0);
+        order.setAllMoney(allMoney);
+        order.setChannelOrderID(channelOrderID);
+        order.setCreatedTime(new Date());
+
+        orderDao.getSession().saveOrUpdate(order);
 
         return order;
     }

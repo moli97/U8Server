@@ -7,6 +7,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.config.RequestConfig;
@@ -21,10 +22,12 @@ import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.entity.ByteArrayEntity;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HttpContext;
@@ -36,6 +39,7 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.CookiePolicy;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.security.cert.CertificateException;
@@ -148,6 +152,7 @@ public class UHttpAgent {
         }
     }
 
+
     /***
      * http get 请求
      * @param url       请求地址
@@ -156,7 +161,7 @@ public class UHttpAgent {
      * @param encoding  编码 UTF-8等
      * @return
      */
-    public String get(String url, Map<String, String> headers, Map<String,String> params, String encoding){
+    public String get(String url , Map<String, String> headers, Map<String,String> params, String encoding){
 
         if(this.httpClient == null){
             init();
@@ -372,6 +377,11 @@ public class UHttpAgent {
             e.printStackTrace();
         }
 
+    }
+
+    public HttpClient getHttpClient(){
+
+        return this.httpClient;
     }
 
     //销毁

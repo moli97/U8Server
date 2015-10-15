@@ -29,15 +29,14 @@ public class LoginInterceptor extends MethodFilterInterceptor {
             return actionInvocation.invoke();
         }
 
-//        UActionSupport action = (UActionSupport)actionInvocation.getAction();
-//        Map session = action.getSession();
-//
-//        if(session.containsKey("adminName")){
-//            return actionInvocation.invoke();
-//        }else{
-//            return Action.LOGIN;
-//        }
-        return actionInvocation.invoke();
+        UActionSupport action = (UActionSupport)actionInvocation.getAction();
+        Map session = action.getSession();
+
+        if(session.containsKey("adminName")){
+            return actionInvocation.invoke();
+        }else{
+            return Action.LOGIN;
+        }
 
     }
 }
