@@ -17,14 +17,14 @@
 <head>
   <title>U8Server后台管理系统|U8SDK</title>
 
-  <link rel="stylesheet" type="text/css" href="/js/plugins/easyui/themes/default/easyui.css">
-  <link rel="stylesheet" type="text/css" href="/js/plugins/easyui/themes/icon.css">
-  <link rel="stylesheet" type="text/css" href="/js/plugins/easyui/themes/color.css">
-  <link rel="stylesheet" type="text/css" href="/css/u8server.css">
+  <link rel="stylesheet" type="text/css" href="<%=basePath%>/js/plugins/easyui/themes/default/easyui.css">
+  <link rel="stylesheet" type="text/css" href="<%=basePath%>/js/plugins/easyui/themes/icon.css">
+  <link rel="stylesheet" type="text/css" href="<%=basePath%>/js/plugins/easyui/themes/color.css">
+  <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/u8server.css">
 
-  <script type="text/javascript" src="/js/plugins/easyui/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/plugins/easyui/jquery.easyui.min.js"></script>
-  <script type="text/javascript" src="/js/plugins/easyui/locale/easyui-lang-zh_CN.js"></script>
+  <script type="text/javascript" src="<%=basePath%>/js/plugins/easyui/jquery.min.js"></script>
+  <script type="text/javascript" src="<%=basePath%>/js/plugins/easyui/jquery.easyui.min.js"></script>
+  <script type="text/javascript" src="<%=basePath%>/js/plugins/easyui/locale/easyui-lang-zh_CN.js"></script>
 
   <script type="text/javascript">
 

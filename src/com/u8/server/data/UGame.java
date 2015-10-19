@@ -27,7 +27,7 @@ public class UGame implements Serializable{
         JSONObject json = new JSONObject();
         json.put("appID", appID);
         json.put("appkey", appkey);
-        json.put("appRSAUPubKey", appRSAPubKey);
+        json.put("appRSAPubKey", appRSAPubKey);
         json.put("appRSAPriKey", appRSAPriKey);
         json.put("name", name);
         json.put("payCallback", payCallback);
