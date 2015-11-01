@@ -79,7 +79,7 @@ public class SendAgent {
             return false;
         }
 
-        if(StringUtils.isEmpty(game.getPayCallback())){
+        if(StringUtils.isEmpty(game.getMsdkPayCallback())){
             Log.e("send msdk order to game server failed. msdk pay callback url is not configed.");
             return false;
         }
@@ -100,7 +100,7 @@ public class SendAgent {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "text/html");
 
-        String serverRes = UHttpAgent.getInstance().post(game.getPayCallback(), headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
+        String serverRes = UHttpAgent.getInstance().post(game.getMsdkPayCallback(), headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
 
         if(serverRes.equals("SUCCESS")){
             order.setState(PayState.STATE_COMPLETE);
