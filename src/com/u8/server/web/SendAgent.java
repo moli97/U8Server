@@ -82,7 +82,7 @@ public class SendAgent {
             return false;
         }
 
-        if(StringUtils.isEmpty(game.getPayCallback())){
+        if(StringUtils.isEmpty(game.getMsdkPayCallback())){
             Log.e("send msdk order to game server failed. msdk pay callback url is not configed.");
             return false;
         }
