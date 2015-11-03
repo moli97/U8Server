@@ -7,7 +7,9 @@ import com.u8.server.data.UMsdkOrder;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.UHttpAgent;
+import com.u8.server.sdk.kuaiyong.kuaiyong.RSAEncrypt;
 import com.u8.server.service.UOrderManager;
+import com.u8.server.utils.RSAUtils;
 import com.u8.server.utils.UGenerator;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
@@ -41,15 +43,16 @@ public class SendAgent {
         data.put("userID", order.getUserID());
         data.put("channelID", order.getChannelID());
         data.put("gameID", order.getAppID());
+        data.put("serverID", order.getServerID());
         data.put("money", order.getMoney());
         data.put("currency", order.getCurrency());
         data.put("extension", order.getExtension());
 
+
         JSONObject response = new JSONObject();
         response.put("state", StateCode.CODE_AUTH_SUCCESS);
         response.put("data", data);
-        response.put("sign", UGenerator.generateSign(order));
-
+        response.put("sign", RSAUtils.sign(data.toString(),game.getAppRSAPriKey(), "UTF-8"));
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "text/html");
 
@@ -100,7 +103,7 @@ public class SendAgent {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "text/html");
 
-        String serverRes = UHttpAgent.getInstance().post(game.getPayCallback(), headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
+        String serverRes = UHttpAgent.getInstance().post(game.getMsdkPayCallback(), headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
 
         if(serverRes.equals("SUCCESS")){
             order.setState(PayState.STATE_COMPLETE);
