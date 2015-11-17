@@ -26,7 +26,7 @@ public class UGenerator {
      * @return
      */
     public static String generateToken(UUser user, String appKey){
-        String txt = user.getId() + "-" + user.getChannelUserID() + "-" + appKey;
+        String txt = user.getId() + "-" + user.getChannelUserID() + "-" + appKey + "-" + user.getLastLoginTime().getTime();
 
         Log.d("The txt to generate token is " + txt);
         return EncryptUtils.md5(txt);

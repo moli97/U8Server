@@ -1,5 +1,7 @@
 package com.u8.server.data;
 
+import net.sf.json.JSONObject;
+
 import javax.persistence.*;
 
 /**
@@ -15,6 +17,17 @@ public class UAdmin {
     private String username;
     private String password;
     private int permission;
+
+    public JSONObject toJSON(){
+
+        JSONObject json = new JSONObject();
+        json.put("id", id);
+        json.put("username", username);
+        json.put("password", password);
+        json.put("permission", permission);
+
+        return json;
+    }
 
     public Integer getId() {
         return id;

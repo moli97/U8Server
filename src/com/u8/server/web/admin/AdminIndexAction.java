@@ -1,10 +1,14 @@
 package com.u8.server.web.admin;
 
+import com.opensymphony.xwork2.ModelDriven;
 import com.u8.server.common.UActionSupport;
 import com.u8.server.data.UAdmin;
+import com.u8.server.data.UChannel;
+import com.u8.server.data.UUser;
 import com.u8.server.log.Log;
 import com.u8.server.service.UAdminManager;
 import com.u8.server.utils.EncryptUtils;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -12,16 +16,18 @@ import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 后台管理主页
  * Created by ant on 2015/8/22.
  */
 @Controller
 @Namespace("/admin")
-public class AdminIndexAction extends UActionSupport{
+public class AdminIndexAction extends UActionSupport implements ModelDriven<UAdmin>{
 
-    private String username;
-    private String password;
+    private UAdmin admin;
 
     @Autowired
     private UAdminManager adminManager;
@@ -36,21 +42,21 @@ public class AdminIndexAction extends UActionSupport{
     public void login(){
         try{
 
-            Log.d("The username is "+username+";password:"+password);
+            Log.d("The username is "+admin.getUsername()+";password:"+admin.getPassword());
 
-            UAdmin admin = adminManager.getAdminByUsername(this.username);
+            UAdmin exists = adminManager.getAdminByUsername(admin.getUsername());
 
-            if(admin == null){
+            if(exists == null){
                 renderState(false, "用户名错误");
                 return;
             }
 
-            if(!admin.getPassword().equals(this.password)){
+            if(!exists.getPassword().equals(admin.getPassword())){
                 renderState(false, "用户密码错误");
                 return;
             }
 
-            this.session.put("adminName", admin.getUsername());
+            this.session.put("adminName", exists.getUsername());
             renderState(true, "登录成功");
 
         }catch (Exception e){
@@ -58,9 +64,94 @@ public class AdminIndexAction extends UActionSupport{
         }
     }
 
+    @Action("exit")
+    public void exit(){
+        this.session.remove("adminName");
+
+        renderState(true, "exit success");
+    }
+
     @Action(value = "index", results = {@Result(name = "success", location = "/WEB-INF/admin/index.jsp")})
     public String index(){
 
+
+        return "success";
+    }
+
+    @Action(value = "adminRoleManage", results = {@Result(name = "success", location = "/WEB-INF/admin/adminRoles.jsp")})
+    public String showAdminRoleManage(){
+
+
+        return "success";
+    }
+
+
+    @Action("getAllAdmins")
+    public void getAllAdmins(){
+        try{
+
+            List<UAdmin> lst = adminManager.getAllAdmins();
+            JSONObject json = new JSONObject();
+            json.put("total", lst.size());
+            JSONArray masterArray = new JSONArray();
+            for(UAdmin m : lst){
+                masterArray.add(m.toJSON());
+            }
+            json.put("rows", masterArray);
+
+
+            renderJson(json.toString());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //添加或者编辑
+    @Action("saveAdmin")
+    public void saveAdmin(){
+
+        try{
+
+            adminManager.saveAdmin(this.admin);
+            renderState(true, "保存成功");
+
+            return;
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        renderState(false, "保存失败");
+    }
+
+    @Action("removeAdmin")
+    public void removeAdmin(){
+        try{
+            Log.d("Curr userID is " + this.admin.getId());
+
+            UAdmin user = adminManager.getAdmin(this.admin.getId());
+
+            if(user == null){
+                renderState(false, "角色不存在");
+                return;
+            }
+
+            adminManager.deleteAdmin(user);
+
+            renderState(true, "删除成功");
+
+            return;
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        renderState(false, "删除失败");
+    }
+
+    @Action(value = "adminPermissionManage", results = {@Result(name = "success", location = "/WEB-INF/admin/adminPermissions.jsp")})
+    public String showPermissionManage(){
 
         return "success";
     }
@@ -72,19 +163,11 @@ public class AdminIndexAction extends UActionSupport{
         renderText(json.toString());
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public UAdmin getModel() {
+        if(this.admin == null){
+            this.admin = new UAdmin();
+        }
+        return this.admin;
     }
 }

@@ -60,7 +60,14 @@
     <div class="easyui-accordion" fit="true" border="false">
       <!-- selected -->
 
-      <div title="渠道管理" selected="true">
+      <div title="权限管理" selected="true">
+        <ul>
+          <li><a href="javascript:addTab('tabId_roles','角色管理','/admin/adminRoleManage');">角色管理</a></li>
+          <li><a href="javascript:addTab('tabId_permissions','权限管理','/admin/adminPermissionManage');">权限管理</a></li>
+        </ul>
+      </div>
+
+      <div title="渠道管理">
         <ul>
           <li><a href="javascript:addTab('tabId_channels','渠道管理','/admin/channels/channelManage');">渠道管理</a></li>
           <li><a href="javascript:addTab('tabId_channelMasters','渠道商管理','/admin/channelMaster/showChannelMasters');">渠道商管理</a></li>
