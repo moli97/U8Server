@@ -10,6 +10,7 @@ import com.u8.server.service.UAdminManager;
 import com.u8.server.utils.EncryptUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.http.util.TextUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
@@ -112,6 +113,27 @@ public class AdminIndexAction extends UActionSupport implements ModelDriven<UAdm
     public void saveAdmin(){
 
         try{
+
+            if(TextUtils.isEmpty(this.admin.getUsername()) || TextUtils.isEmpty(this.admin.getPassword())){
+                renderState(false, "用户名和密码不能为空");
+                return;
+            }
+
+            if(this.admin.getId() != null){
+                UAdmin exist = adminManager.getAdmin(this.admin.getId());
+                if(exist != null ){
+
+                    if(!exist.getPassword().equals(this.admin.getPassword())){
+                        //说明修改了密码，重新md5
+                        exist.setPassword(EncryptUtils.md5(this.admin.getPassword()).toLowerCase());
+                    }
+
+                    this.admin = exist;
+                }
+            }else{
+                this.admin.setPassword(EncryptUtils.md5(this.admin.getPassword()).toLowerCase());
+            }
+
 
             adminManager.saveAdmin(this.admin);
             renderState(true, "保存成功");
