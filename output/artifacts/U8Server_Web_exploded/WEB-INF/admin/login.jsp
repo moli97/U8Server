@@ -28,12 +28,12 @@
 
 </head>
 <body>
-<div style="height: 400px;display: block;">
+<div style="height: 220px;display: block;">
 
 </div>
 
 <div id="dialog_add" class="easyui-dialog" title="用户登录"
-     closed="false" buttons="#dlg-buttons" style="height: 180px;margin: 0 auto;">
+     closed="false" buttons="#dlg-buttons" style="height: 180px;width:340px;margin: 0 auto;">
   <form id="fm" method="post" novalidate>
     <div class="u8_form_row" style="margin-top: 15px">
       <label style="width: 50px">用户名：</label>
