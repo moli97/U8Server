@@ -103,7 +103,7 @@ public class UserAction extends UActionSupport{
 
                     try{
                         Log.e("The user verify success. result:"+sdkResult.getUserID());
-                        if(sdkResult.isSuccess()){
+                        if(sdkResult.isSuccess() && !StringUtils.isEmpty(sdkResult.getUserID())){
 
                             UUser user = userManager.getUserByCpID(appID, channelID, sdkResult.getUserID());
 

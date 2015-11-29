@@ -116,7 +116,7 @@
 
       <div class="u8_form_row">
         <label >PublicKey：</label>
-        <input type="text" class="easyui-textbox" name="appRSAUPubKey" readonly="readonly" novalidate/>
+        <input type="text" class="easyui-textbox" name="appRSAPubKey" readonly="readonly" novalidate/>
       </div>
 
       <div class="u8_form_row">
