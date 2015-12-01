@@ -27,6 +27,7 @@ public class UGameManager {
         long currTime = System.currentTimeMillis();
         game.setAppID(appID);
         game.setAppkey(UGenerator.generateAppKey(appID, currTime));
+        game.setAppSecret(UGenerator.generateAppSecret());
         game.setName(name);
         game.setPayCallbackDebug(payCallback);
         game.setPayCallback(payCallbackDebug);

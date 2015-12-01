@@ -115,6 +115,11 @@
       </div>
 
       <div class="u8_form_row">
+        <label >AppSecret：</label>
+        <input type="text" class="easyui-textbox" name="appSecret" readonly="readonly" novalidate/>
+      </div>
+
+      <div class="u8_form_row">
         <label >PublicKey：</label>
         <input type="text" class="easyui-textbox" name="appRSAPubKey" readonly="readonly" novalidate/>
       </div>
@@ -283,6 +288,7 @@
         {field:'appID', title:'AppID', width:40, sortable:true},
         {field:'name', title:'游戏名称', width:40, sortable:true},
         {field:'appkey', title:'AppKey', width:60, sortable:true},
+        {field:'appSecret', title:'AppSecret', width:60, sortable:true},
         {field:'appRSAPubKey', title:'PayPublicKey', width:100, sortable:true},
         {field:'appRSAPriKey', title:'PayPrivateKey', width:100, sortable:true},
         {field:'payCallback', title:'支付回调地址', width:80, sortable:true},

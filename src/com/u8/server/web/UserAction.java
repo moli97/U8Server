@@ -113,7 +113,7 @@ public class UserAction extends UActionSupport{
                                 user.setLastLoginTime(new Date());
                             }
 
-                            user.setToken(UGenerator.generateToken(user, game.getAppkey()));
+                            user.setToken(UGenerator.generateToken(user, game.getAppSecret()));
                             userManager.saveUser(user);
 
                             JSONObject data = new JSONObject();
@@ -123,6 +123,7 @@ public class UserAction extends UActionSupport{
                             data.put("sdkUserName", user.getChannelUserName());
                             data.put("token", user.getToken());
                             data.put("extension", sdkResult.getExtension());
+                            data.put("timestamp", user.getLastLoginTime().getTime());
                             renderState(StateCode.CODE_AUTH_SUCCESS, data);
 
                         }else{
@@ -169,6 +170,15 @@ public class UserAction extends UActionSupport{
     }
 
 
+    /***
+     * 上面协议返回客户端之后，开始连接登录游戏服。游戏服可以调用该协议进行再次登录认证。
+     * 但是，该步骤是可选的。游戏服务器也可以自己验证token以及token的时效性，这样就不用来
+     * U8Server进行再次登录认证了。
+     *
+     * 服务器自己验证token，根据U8Server分配给每个游戏参数中的AppSecret，按照生成token的
+     * 规则，进行验证。同时，需要验证timestamp的时效性
+     *
+     */
     @Action("verifyAccount")
     public void loginVerify(){
 

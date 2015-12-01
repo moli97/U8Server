@@ -13,8 +13,9 @@ import java.io.Serializable;
 public class UGame implements Serializable{
 
     @Id
-    private Integer appID;              //每款游戏唯一ID
+    private Integer appID;          //每款游戏唯一ID
     private String appkey;          //根据appID等信息md5生成的游戏唯一标识
+    private String appSecret;       //游戏服务器端和U8Server生成token使用。不要将该参数放在客户端
     private String appRSAPubKey;    //RSA公钥 在登录认证和支付回调的时候使用RSA签名
     private String appRSAPriKey;    //RSA密钥
     private String name;            //游戏名称
@@ -27,6 +28,7 @@ public class UGame implements Serializable{
         JSONObject json = new JSONObject();
         json.put("appID", appID);
         json.put("appkey", appkey);
+        json.put("appSecret", appSecret);
         json.put("appRSAPubKey", appRSAPubKey);
         json.put("appRSAPriKey", appRSAPriKey);
         json.put("name", name);
@@ -35,6 +37,14 @@ public class UGame implements Serializable{
         json.put("payCallbackDebug", payCallbackDebug);
 
         return json;
+    }
+
+    public String getAppSecret() {
+        return appSecret;
+    }
+
+    public void setAppSecret(String appSecret) {
+        this.appSecret = appSecret;
     }
 
     public Integer getAppID() {
