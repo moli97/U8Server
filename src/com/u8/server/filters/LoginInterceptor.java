@@ -24,7 +24,7 @@ public class LoginInterceptor extends MethodFilterInterceptor {
 
         Log.d("The path is" + path);
 
-        if(!path.startsWith("/admin")){
+        if(!path.contains("/admin")){
 
             return actionInvocation.invoke();
         }
