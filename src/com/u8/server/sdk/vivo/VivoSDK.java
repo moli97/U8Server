@@ -85,6 +85,11 @@ public class VivoSDK implements ISDKScript{
 
                 String orderUrl = channel.getMaster().getOrderUrl();
 
+                Log.d("the order url is "+orderUrl);
+                Log.d("CPID:"+order.getChannel().getCpID());
+                Log.d("appID:"+order.getChannel().getCpAppID());
+                Log.d("appKey:"+order.getChannel().getCpAppKey());
+
                 String version = "1.0.0";
                 String signMethod = "MD5";
                 String signature = "";
@@ -96,13 +101,13 @@ public class VivoSDK implements ISDKScript{
                 String orderAmount = order.getMoney() + "";
                 String orderTitle = order.getProductName();
                 String orderDesc = order.getProductDesc();
-                String extInfo = "";        //空字符串不参与签名
+                String extInfo = order.getOrderID()+"";        //空字符串不参与签名
 
                 StringBuilder sb = new StringBuilder();
                 sb.append("appId=").append(appId).append("&")
                 .append("cpId=").append(cpId).append("&")
                 .append("cpOrderNumber=").append(cpOrderNumber).append("&")
-//                .append("extInfo=").append(extInfo).append("&")
+                .append("extInfo=").append(extInfo).append("&")
                 .append("notifyUrl=").append(notifyUrl).append("&")
                 .append("orderAmount=").append(orderAmount).append("&")
                 .append("orderDesc=").append(orderDesc).append("&")
@@ -124,7 +129,7 @@ public class VivoSDK implements ISDKScript{
                 params.put("orderTime", orderTime);
                 params.put("orderAmount", orderAmount);
                 params.put("orderTitle", orderTitle);
-                params.put("orderDesc", orderTitle);
+                params.put("orderDesc", orderDesc);
                 params.put("extInfo", extInfo);
 
                 String result = UHttpAgent.getInstance().post(orderUrl, params);
