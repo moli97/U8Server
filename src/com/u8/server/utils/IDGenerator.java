@@ -77,6 +77,12 @@ public class IDGenerator {
         return this.currMasterID.incrementAndGet();
     }
 
+    /**
+     * 当前将渠道号，改为后台可以手动设置和修改的方式了
+     * 不再自动生成。因为很多业务中，创建渠道或者后面修改渠道的时候，都有可能需要指定渠道号或者变更渠道号
+     * @return
+     */
+    @Deprecated
     public int nextChannelID(){
 
         return this.currChannelID.incrementAndGet();

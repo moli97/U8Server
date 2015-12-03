@@ -10,6 +10,7 @@ import com.u8.server.log.Log;
 import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UGameManager;
 import com.u8.server.service.UUserManager;
+import com.u8.server.utils.IDGenerator;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.convention.annotation.Action;
@@ -75,12 +76,53 @@ public class ChannelAction extends UActionSupport implements ModelDriven<UChanne
         }
     }
 
+    @Action("recommendChannelID")
+    public void recommendChannelID(){
+        try{
+
+            int channelID = channelManager.getValidChannelID();
+
+            JSONObject json = new JSONObject();
+            json.put("state", 1);
+            json.put("data", channelID);
+            renderJson(json.toString());
+
+        }catch (Exception e){
+            renderState(false);
+            e.printStackTrace();
+        }
+    }
+
+    //添加或者编辑
+    @Action("addChannel")
+    public void addChannel(){
+
+        try{
+            Log.d("add.channel.info." + this.channel.toJSON().toString());
+
+            UChannel exists = channelManager.queryChannel(this.channel.getChannelID());
+            if(exists != null){
+                renderState(false, "操作失败,当前渠道号已经存在");
+                return;
+            }
+
+            channelManager.saveChannel(this.channel);
+            renderState(true);
+
+            return;
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        renderState(false);
+    }
+
     //添加或者编辑
     @Action("saveChannel")
     public void saveChannel(){
 
         try{
-
             Log.d("save.channel.info." + this.channel.toJSON().toString());
             channelManager.saveChannel(this.channel);
             renderState(true);

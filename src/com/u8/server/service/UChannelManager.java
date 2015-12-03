@@ -50,6 +50,22 @@ public class UChannelManager {
         return CacheManager.getInstance().getChannelList().size();
     }
 
+    //获取当前一个可用的渠道号，默认算法是获取一个当前最大渠道号+1
+    public int getValidChannelID(){
+
+        List<UChannel> lst = CacheManager.getInstance().getChannelList();
+
+        int max = 0;
+
+        for(UChannel c : lst){
+            if(c.getChannelID() > max){
+                max = c.getChannelID();
+            }
+        }
+
+        return max+1;
+    }
+
     //分页查找
     public List<UChannel> queryPage(int currPage, int num){
 
@@ -78,7 +94,7 @@ public class UChannelManager {
     public void saveChannel(UChannel channel){
 
         if(channel.getChannelID() == null || channel.getChannelID() <= 0){
-            channel.setChannelID(IDGenerator.getInstance().nextChannelID());
+            channel.setChannelID(getValidChannelID());
         }
 
         CacheManager.getInstance().saveChannel(channel);

@@ -61,22 +61,26 @@
 </div>
 
 <div id="dialog_add" class="easyui-dialog u8_form"
-     closed="true" buttons="#dlg-buttons" style="height: 420px;">
+     closed="true" buttons="#dlg-buttons" style="height: 420px;width: 500px;">
   <div class="ftitle">渠道信息</div>
   <form id="fm" method="post" novalidate>
-    <input type="hidden" name="channelID" />
+
     <input id="appID" type="hidden" name="appID" />
     <input id="masterID" type="hidden" name="masterID" />
     <div class="u8_form_row">
       <label >所属游戏：</label>
-      <input id="games" type="text" class="easyui-combobox" name="allgames" maxlength="255" required="false"/>
+      <input id="games" type="text" class="easyui-combobox" name="allgames" maxlength="255" required="true"/>
     </div>
 
     <div class="u8_form_row">
       <label >渠道商：</label>
-      <input id="masters" type="text" class="easyui-combobox" name="allmasters" maxlength="255" required="false"/>
+      <input id="masters" type="text" class="easyui-combobox" name="allmasters" maxlength="255" required="true"/>
     </div>
-
+    <div class="u8_form_row">
+      <label >渠道号：</label>
+      <input id="channel" type="text" value="111" class="easyui-textbox" name="channelID" maxlength="255" required="true" />
+      <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="recommendChannelID()" style="width:70px">推荐</a>
+    </div>
     <div class="u8_form_row">
       <label >CPID：</label>
       <input type="text" class="easyui-textbox" name="cpID" maxlength="255" novalidate />
@@ -137,7 +141,7 @@
 
     $('#fm').form('clear');
 
-    url = '/admin/channels/saveChannel';
+    url = '/admin/channels/addChannel';
 
   }
 
@@ -222,6 +226,17 @@
   }
 
 
+  function recommendChannelID(){
+
+    $.post('/admin/channels/recommendChannelID', {}, function(result){
+      if (result.state == 1) {
+        $("#channel").textbox('setValue', result.data);
+      }else{
+        alert(result.msg);
+      }
+    });
+
+  }
 
   function doSearch(value, name){
     alert("value:"+value+";name:"+name);
