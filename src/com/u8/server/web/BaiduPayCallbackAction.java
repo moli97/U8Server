@@ -10,6 +10,7 @@ import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.Base64;
 import com.u8.server.utils.EncryptUtils;
 import com.u8.server.utils.JsonUtils;
+import com.u8.server.utils.TimeFormater;
 import net.sf.json.JSONObject;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 百度SDK充值回调接口
@@ -92,7 +94,9 @@ public class BaiduPayCallbackAction extends UActionSupport{
                 BaiduPayResult payResult = (BaiduPayResult) JsonUtils.decodeJson(jsonStr, BaiduPayResult.class);
 
                 if(payResult != null && payResult.getOrderStatus() == 1){
-                    order.setMoney((int)(payResult.getOrderMoney() * 100));
+                    order.setRealMoney((int)(payResult.getOrderMoney() * 100));
+                    order.setSdkOrderTime(TimeFormater.format_default(payResult.getBankDateTime()));
+                    order.setCompleteTime(new Date());
                     order.setChannelOrderID(OrderSerial);
                     order.setState(PayState.STATE_SUC);
                     orderManager.saveOrder(order);

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 360支付回调
@@ -64,7 +65,9 @@ public class QihooPayCallbackAction extends UActionSupport{
 
 
             if(isValid(order.getChannel())){
-                order.setMoney(this.amount);
+                order.setRealMoney(this.amount);
+                order.setSdkOrderTime("");
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(this.order_id + "");
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);

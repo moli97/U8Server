@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 小米SDK充值回调接口
@@ -78,7 +79,9 @@ public class XiaoMiPayCallbackAction extends UActionSupport{
             }
 
             if(isValid(order.getChannel())){
-                order.setMoney(Float.valueOf(payFee).intValue());
+                order.setRealMoney(Float.valueOf(payFee).intValue());
+                order.setSdkOrderTime(payTime);
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(this.orderId);
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 友游支付回调通知接口
@@ -60,6 +61,9 @@ public class CloudPointPayCallbackAction extends UActionSupport{
             }
 
             if(isValid(order.getChannel())){
+                order.setRealMoney((int)(Float.valueOf(amount) * 100));
+                order.setSdkOrderTime(time);
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(order_sn);
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 木蚂蚁支付回调
@@ -81,7 +82,9 @@ public class MuMaYiPayCallbackAction extends UActionSupport{
             float money = Float.parseFloat(result.getProductPrice());
             int moneyInt = (int)(money * 100);  //以分为单位
 
-            order.setMoney(moneyInt);
+            order.setRealMoney(moneyInt);
+            order.setSdkOrderTime(result.getOrderTime());
+            order.setCompleteTime(new Date());
             order.setChannelOrderID("");        //渠道orderID貌似没有值
             order.setState(PayState.STATE_SUC);
 

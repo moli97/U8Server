@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Created by ant on 2015/4/22.
@@ -58,7 +59,9 @@ public class M4399PayCallbackAction extends UActionSupport{
             }
 
             if(isValid(order.getChannel())){
-                order.setMoney(Float.valueOf(money).intValue());
+                order.setRealMoney(Float.valueOf(money).intValue());
+                order.setSdkOrderTime(time);
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(orderid);
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);

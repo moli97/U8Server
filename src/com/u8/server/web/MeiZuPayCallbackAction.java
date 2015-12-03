@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 魅族
@@ -84,7 +85,9 @@ public class MeiZuPayCallbackAction extends UActionSupport{
                 float money = Float.parseFloat(this.total_price);
                 int moneyInt = (int)(money * 100);  //以分为单位
 
-                order.setMoney(moneyInt);
+                order.setRealMoney(moneyInt);
+                order.setSdkOrderTime(pay_time);
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(this.order_id);
                 order.setState(PayState.STATE_SUC);
 

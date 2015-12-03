@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 联想支付回调
@@ -64,8 +65,6 @@ public class LenovoPayCallbackAction extends UActionSupport{
 
             if(order.getMoney() != orderMoney){
                 Log.e("订单金额不一致! local orderID:"+localOrderID+"; money returned:"+data.getMoney()+"; order money:"+order.getMoney());
-                this.renderState(false, "订单金额不一致");
-                return;
             }
 
             if(!"0".equals(data.getResult())){
@@ -76,6 +75,9 @@ public class LenovoPayCallbackAction extends UActionSupport{
 
             if(isValid(order.getChannel())){
                 order.setChannelOrderID(data.getTransid());
+                order.setRealMoney(orderMoney);
+                order.setSdkOrderTime(data.getTranstime());
+                order.setCompleteTime(new Date());
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);
                 SendAgent.sendCallbackToServer(this.orderManager, order);

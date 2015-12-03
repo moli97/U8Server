@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 机锋渠道SDK支付回调,成功才会回调；回调参数中没有机锋的订单号
@@ -96,9 +97,14 @@ public class GFanPayCallbackAction extends UActionSupport{
             }
 
             order.setChannelOrderID("");
+            order.setRealMoney((res.getCost() / 10) * 100);     //cost是机锋券，1元=10机锋券。这里转为分
+            order.setSdkOrderTime(res.getCreate_time());
+            order.setCompleteTime(new Date());
             order.setState(PayState.STATE_SUC);
 
             orderManager.saveOrder(order);
+
+            this.renderState(true);
 
             SendAgent.sendCallbackToServer(this.orderManager, order);
 

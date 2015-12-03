@@ -8,7 +8,7 @@ public class GFanPayResponse {
 
     private String order_id;
     private String appkey;
-    private String cost;
+    private int cost;
     private String create_time;
 
     public String getOrder_id() {
@@ -27,11 +27,11 @@ public class GFanPayResponse {
         this.appkey = appkey;
     }
 
-    public String getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 

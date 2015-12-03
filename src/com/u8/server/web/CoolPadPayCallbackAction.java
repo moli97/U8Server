@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 酷派支付回调
@@ -87,7 +88,9 @@ public class CoolPadPayCallbackAction extends UActionSupport{
                 float money = Float.parseFloat(result.getMoney());
                 int moneyInt = (int)(money * 100);  //以分为单位
 
-                order.setMoney(moneyInt);
+                order.setRealMoney(moneyInt);
+                order.setSdkOrderTime(result.getTranstime());
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(result.getTransid());
                 order.setState(PayState.STATE_SUC);
 

@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * ITools支付回调
@@ -81,7 +82,9 @@ public class ItoolsPayCallbackAction extends UActionSupport{
             }
 
             order.setChannelOrderID(data.getOrder_id());
-            order.setMoney((int)(Float.valueOf(data.getAccount()) * 100));
+            order.setRealMoney((int) (Float.valueOf(data.getAccount()) * 100));
+            order.setSdkOrderTime("");
+            order.setCompleteTime(new Date());
             order.setState(PayState.STATE_SUC);
             orderManager.saveOrder(order);
             SendAgent.sendCallbackToServer(this.orderManager, order);

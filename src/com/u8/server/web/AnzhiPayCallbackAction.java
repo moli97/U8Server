@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 安智支付回调
@@ -80,7 +81,9 @@ public class AnzhiPayCallbackAction extends UActionSupport{
             }
 
             order.setChannelOrderID(data.getOrderId());
-            order.setMoney(Integer.valueOf(data.getOrderAccount()));
+            order.setRealMoney(Integer.valueOf(data.getOrderAccount()));
+            order.setSdkOrderTime(data.getOrderTime());
+            order.setCompleteTime(new Date());
             order.setState(PayState.STATE_SUC);
             orderManager.saveOrder(order);
             SendAgent.sendCallbackToServer(this.orderManager, order);

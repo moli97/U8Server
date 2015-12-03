@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 应用汇支付回调通知接口
@@ -65,6 +66,9 @@ public class AppChinaPayCallbackAction extends UActionSupport{
 
             if(isValid(order.getChannel())){
                 order.setChannelOrderID(data.getTransid());
+                order.setRealMoney(data.getMoney());
+                order.setSdkOrderTime(data.getTranstime());
+                order.setCompleteTime(new Date());
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);
                 SendAgent.sendCallbackToServer(this.orderManager, order);
@@ -109,7 +113,7 @@ public class AppChinaPayCallbackAction extends UActionSupport{
         private String appid;
         private String waresid;
         private String feetype;
-        private String money;
+        private int money;
         private String count;
         private String result;
         private String transtype;
@@ -156,11 +160,11 @@ public class AppChinaPayCallbackAction extends UActionSupport{
             this.feetype = feetype;
         }
 
-        public String getMoney() {
+        public int getMoney() {
             return money;
         }
 
-        public void setMoney(String money) {
+        public void setMoney(int money) {
             this.money = money;
         }
 

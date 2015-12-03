@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  *  当乐渠道的支付回调请求处理
@@ -62,7 +63,9 @@ public class DownjoyPayCallbackAction extends UActionSupport{
             }
 
             if(isValid(order.getChannel())){
-                order.setMoney((int)(Float.valueOf(money) * 100));
+                order.setRealMoney((int)(Float.valueOf(money) * 100));
+                order.setSdkOrderTime(time);
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(this.order);
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);

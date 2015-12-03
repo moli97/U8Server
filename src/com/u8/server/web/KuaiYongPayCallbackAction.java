@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -99,6 +100,9 @@ public class KuaiYongPayCallbackAction extends UActionSupport{
             }
 
             order.setChannelOrderID(orderid);
+            order.setRealMoney(fee);
+            order.setSdkOrderTime("");
+            order.setCompleteTime(new Date());
             order.setState(PayState.STATE_SUC);
             orderManager.saveOrder(order);
             SendAgent.sendCallbackToServer(this.orderManager, order);

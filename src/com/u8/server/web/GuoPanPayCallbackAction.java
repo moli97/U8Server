@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * 叉叉助手 支付回调
@@ -75,7 +76,9 @@ public class GuoPanPayCallbackAction extends UActionSupport{
                 float money = Float.parseFloat(this.money);
                 int moneyInt = (int)(money * 100);  //以分为单位
 
-                order.setMoney(moneyInt);
+                order.setRealMoney(moneyInt);
+                order.setSdkOrderTime(t);
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(this.trade_no);
                 order.setState(PayState.STATE_SUC);
 

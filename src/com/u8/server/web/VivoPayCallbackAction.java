@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * VIVO支付回调地址
@@ -64,7 +65,9 @@ public class VivoPayCallbackAction extends UActionSupport{
 
             if(this.respCode.equals("200") && this.tradeStatus.equals("0000")){
                 if(isValid(order.getChannel())){
-                    order.setMoney(Integer.valueOf(orderAmount));
+                    order.setRealMoney(Integer.valueOf(orderAmount));
+                    order.setSdkOrderTime(payTime);
+                    order.setCompleteTime(new Date());
                     order.setChannelOrderID(orderNumber);
                     order.setState(PayState.STATE_SUC);
                     orderManager.saveOrder(order);

@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Date;
 
 
 /***
@@ -84,7 +85,9 @@ public class UCPayCallbackAction extends UActionSupport{
                 float money = Float.parseFloat(rsp.getData().getAmount());
                 int moneyInt = (int)(money * 100);  //以分为单位
 
-                order.setMoney(moneyInt);
+                order.setRealMoney(moneyInt);
+                order.setSdkOrderTime("");
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(rsp.getData().getOrderId());
                 order.setState(PayState.STATE_SUC);
 

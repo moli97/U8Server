@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * Oppo支付回调通知接口
@@ -55,7 +56,9 @@ public class OppoPayCallbackAction extends UActionSupport{
             }
 
             if(isValid(order.getChannel())){
-                order.setMoney(Integer.valueOf(price));
+                order.setRealMoney(Integer.valueOf(price));
+                order.setSdkOrderTime("");
+                order.setCompleteTime(new Date());
                 order.setChannelOrderID(notifyId);
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);

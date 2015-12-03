@@ -16,23 +16,26 @@ import java.util.Date;
 public class UOrder {
 
     @Id
-    private long orderID;
-    private int appID;
-    private int channelID;
-    private int userID;
-    private String username;
-    private String productName;
-    private String productDesc;
-    private int money;  //单位 分
+    private long orderID;       //订单号
+    private int appID;          //当前所属游戏ID
+    private int channelID;      //当前所属渠道ID
+    private int userID;         //U8Server这边对应的用户ID
+    private String username;    //U8Server这边生成的用户名
+    private String productName; //游戏中商品名称
+    private String productDesc; //游戏中商品描述
+    private int money;  //单位 分, 下单时收到的金额，实际充值的金额以这个为准
+    private int realMoney;  //单位 分，渠道SDK支付回调通知返回的金额，记录，留作查账
     private String currency; //币种
-    private String roleID;
-    private String roleName;
-    private String serverID;
-    private String serverName;
-    private int state;
-    private String channelOrderID;
-    private String extension;
-    private Date createdTime;
+    private String roleID;      //游戏中角色ID
+    private String roleName;    //游戏中角色名称
+    private String serverID;    //服务器ID
+    private String serverName;  //服务器名称
+    private int state;          //订单状态
+    private String channelOrderID;  //渠道SDK对应的订单号
+    private String extension;       //扩展数据
+    private Date createdTime;       //订单创建时间
+    private String sdkOrderTime;          //渠道SDK那边订单交易时间
+    private Date completeTime;          //订单完成时间
 
     public JSONObject toJSON(){
         JSONObject json = new JSONObject();
@@ -51,6 +54,7 @@ public class UOrder {
         json.put("productName", productName);
         json.put("productDesc", productDesc);
         json.put("money", money);
+        json.put("realMoney", money);
         json.put("currency", currency);
         json.put("roleID", roleID);
         json.put("roleName", roleName);
@@ -60,6 +64,8 @@ public class UOrder {
         json.put("channelOrderID", channelOrderID);
         json.put("extension", extension);
         json.put("createdTime", TimeFormater.format_default(createdTime));
+        json.put("sdkOrderTime", sdkOrderTime);
+        json.put("completeTime", completeTime);
 
         return json;
     }
@@ -112,6 +118,14 @@ public class UOrder {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public int getRealMoney() {
+        return realMoney;
+    }
+
+    public void setRealMoney(int realMoney) {
+        this.realMoney = realMoney;
     }
 
     public String getCurrency() {
@@ -208,5 +222,21 @@ public class UOrder {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getSdkOrderTime() {
+        return sdkOrderTime;
+    }
+
+    public void setSdkOrderTime(String sdkOrderTime) {
+        this.sdkOrderTime = sdkOrderTime;
+    }
+
+    public Date getCompleteTime() {
+        return completeTime;
+    }
+
+    public void setCompleteTime(Date completeTime) {
+        this.completeTime = completeTime;
     }
 }
