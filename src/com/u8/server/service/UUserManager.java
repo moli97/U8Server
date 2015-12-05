@@ -87,7 +87,7 @@ public class UUserManager {
             return false;
         }
 
-        String tokenRight = UGenerator.generateToken(user, user.getGame().getAppkey());
+        String tokenRight = UGenerator.generateToken(user, user.getGame().getAppSecret());
 
         Log.d("The token is "+token +"; the right token is "+tokenRight);
 
