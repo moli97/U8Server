@@ -43,7 +43,7 @@ public class UGenerator {
         StringBuilder sb = new StringBuilder();
         sb.append(user.getId()).append("-")
                 .append(user.getChannelUserID()).append("-")
-                .append(user.getLastLoginTime().getTime())
+                .append(user.getLastLoginTime())
                 .append(appSecret);
 
         String txt = sb.toString();

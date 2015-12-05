@@ -57,7 +57,6 @@ public class UserAction extends UActionSupport{
     @Action("getToken")
     public void getLoginToken(){
 
-        Log.d("getToken...");
 
         try{
 
@@ -110,7 +109,7 @@ public class UserAction extends UActionSupport{
                             if(user == null){
                                 user = userManager.generateUser(channel, sdkResult);
                             }else{
-                                user.setLastLoginTime(new Date());
+                                user.setLastLoginTime("" + new Date().getTime());
                             }
 
                             user.setToken(UGenerator.generateToken(user, game.getAppSecret()));
@@ -123,7 +122,7 @@ public class UserAction extends UActionSupport{
                             data.put("sdkUserName", user.getChannelUserName());
                             data.put("token", user.getToken());
                             data.put("extension", sdkResult.getExtension());
-                            data.put("timestamp", user.getLastLoginTime().getTime());
+                            data.put("timestamp", user.getLastLoginTime());
                             renderState(StateCode.CODE_AUTH_SUCCESS, data);
 
                         }else{
