@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -121,7 +122,9 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
 
     private void renderState(int code, String msg) throws IOException {
 
-        this.response.getWriter().write(code);
+        PrintWriter out = this.response.getWriter();
+        out.write(code);
+        out.flush();
 
     }
 

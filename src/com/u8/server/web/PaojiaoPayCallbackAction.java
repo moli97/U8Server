@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -127,7 +128,9 @@ public class PaojiaoPayCallbackAction extends UActionSupport{
             res = "fail";
         }
 
-        this.response.getWriter().write(res);
+        PrintWriter out = this.response.getWriter();
+        out.write(res);
+        out.flush();
     }
 
     public String getUid() {

@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 
@@ -125,7 +126,9 @@ public class UCPayCallbackAction extends UActionSupport{
             res = "FAILURE";
         }
 
-        this.response.getWriter().write(res);
+        PrintWriter out = this.response.getWriter();
+        out.write(res);
+        out.flush();
     }
 
     public int getU8ChannelID() {

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -100,12 +101,13 @@ public class WanDouJiaPayCallbackAction extends UActionSupport{
 
     private void renderState(boolean suc, String msg) throws IOException {
 
+        PrintWriter out = this.response.getWriter();
         if(suc){
-            this.response.getWriter().write("success");
+            out.write("success");
         }else{
-            this.response.getWriter().write("fail");
+            out.write("fail");
         }
-
+        out.flush();
     }
 
     public String getContent() {

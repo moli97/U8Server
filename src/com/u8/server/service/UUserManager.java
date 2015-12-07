@@ -83,11 +83,11 @@ public class UUserManager {
     public boolean checkUser(UUser user, String token){
 
         long now = System.currentTimeMillis();
-        if(!token.equals(user.getToken()) || (now - user.getLastLoginTime().getTime()) > 3600 * 1000){
+        if(!token.equals(user.getToken()) || (now - Long.valueOf(user.getLastLoginTime())) > 3600 * 1000){
             return false;
         }
 
-        String tokenRight = UGenerator.generateToken(user, user.getGame().getAppkey());
+        String tokenRight = UGenerator.generateToken(user, user.getGame().getAppSecret());
 
         Log.d("The token is "+token +"; the right token is "+tokenRight);
 
@@ -106,7 +106,7 @@ public class UUserManager {
         user.setChannelUserNick(cpUserInfo.getNickName());
         Date now = new Date();
         user.setCreateTime(now);
-        user.setLastLoginTime(now);
+        user.setLastLoginTime(now.getTime() + "");
 
         userDao.save(user);
 

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -148,7 +149,9 @@ public class MeiZuPayCallbackAction extends UActionSupport{
             json.put("message", "发货失败");
         }
 
-        this.response.getWriter().write(json.toString());
+        PrintWriter out = this.response.getWriter();
+        out.write(json.toString());
+        out.flush();
     }
 
     public String getNotify_time() {

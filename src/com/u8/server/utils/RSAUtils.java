@@ -66,7 +66,7 @@ public class RSAUtils {
                     .getInstance(SIGNATURE_ALGORITHM);
 
             signature.initVerify(pubKey);
-            signature.update( content.getBytes(input_charset) );
+            signature.update( content.getBytes(input_charset));
 
             return signature.verify( Base64.decode2Bytes(sign) );
 

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -110,7 +111,9 @@ public class MuMaYiPayCallbackAction extends UActionSupport{
             res = "fail";
         }
 
-        this.response.getWriter().write(res);
+        PrintWriter out = this.response.getWriter();
+        out.write(res);
+        out.flush();
     }
 
 }

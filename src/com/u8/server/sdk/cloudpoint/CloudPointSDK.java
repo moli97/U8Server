@@ -81,7 +81,7 @@ public class CloudPointSDK implements ISDKScript{
     public void onGetOrderID(UUser user, UOrder order, ISDKOrderListener callback) {
 
         if(callback != null){
-            callback.onSuccess(order.getChannel().getMaster().getPayCallbackUrl());
+            callback.onSuccess(order.getChannel().getPayCallbackUrl());
         }
 
     }

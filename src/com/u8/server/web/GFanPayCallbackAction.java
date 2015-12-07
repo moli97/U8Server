@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -123,11 +124,13 @@ public class GFanPayCallbackAction extends UActionSupport{
 
         String resp = "<response><ErrorCode>%s</ErrorCode><ErrorDesc>%s</ErrorDesc></response>";
 
+        PrintWriter out = this.response.getWriter();
         if(suc){
-            this.response.getWriter().write(String.format(resp, "1", "Success"));
+            out.write(String.format(resp, "1", "Success"));
         }else{
-            this.response.getWriter().write(String.format(resp, "0", "Failed"));
+            out.write(String.format(resp, "0", "Failed"));
         }
+        out.flush();
     }
 
     public int getU8ChannelID() {

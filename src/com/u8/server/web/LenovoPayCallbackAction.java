@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -108,11 +109,13 @@ public class LenovoPayCallbackAction extends UActionSupport{
 
     private void renderState(boolean suc, String msg) throws IOException {
 
+        PrintWriter out = this.response.getWriter();
         if(suc){
-            this.response.getWriter().write("SUCCESS");
+            out.write("SUCCESS");
         }else{
-            this.response.getWriter().write("FAILURE");
+            out.write("FAILURE");
         }
+        out.flush();
 
     }
 

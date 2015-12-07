@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -141,7 +142,10 @@ public class VivoPayCallbackAction extends UActionSupport{
         }else{
             this.response.setStatus(403);
         }
-        this.response.getWriter().write(sb.toString());
+
+        PrintWriter out = this.response.getWriter();
+        out.write(sb.toString());
+        out.flush();
 
 
     }

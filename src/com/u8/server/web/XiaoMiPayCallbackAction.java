@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -148,9 +149,10 @@ public class XiaoMiPayCallbackAction extends UActionSupport{
         json.put("errcode", resultCode);
         json.put("errMsg", resultMsg);
 
-        Log.d("The result to sdk is "+json.toString());
+        PrintWriter out = this.response.getWriter();
 
-        this.response.getWriter().write(json.toString());
+        out.write(json.toString());
+        out.flush();
 
 
     }

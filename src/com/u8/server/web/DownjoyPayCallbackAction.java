@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -112,12 +113,14 @@ public class DownjoyPayCallbackAction extends UActionSupport{
 
     private void renderState(boolean suc) throws IOException {
 
-        if(suc){
-            this.response.getWriter().write("success");
-        }else{
-            this.response.getWriter().write("failure");
-        }
+        PrintWriter out = this.response.getWriter();
 
+        if(suc){
+            out.write("success");
+        }else{
+            out.write("failure");
+        }
+        out.flush();
 
     }
 

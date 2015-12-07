@@ -25,7 +25,7 @@ public class UUser {
     private String channelUserName;
     private String channelUserNick;
     private Date createTime;
-    private Date lastLoginTime;
+    private String lastLoginTime;
     private String token;
 
     public JSONObject toJSON(){
@@ -42,7 +42,7 @@ public class UUser {
         json.put("channelUserName", channelUserName);
         json.put("channelUserNick", channelUserNick);
         json.put("createTime", TimeFormater.format_default(createTime));
-        json.put("lastLoginTime", TimeFormater.format_default(lastLoginTime));
+        json.put("lastLoginTime", TimeFormater.format_default(new Date(Long.valueOf(lastLoginTime))));
         return json;
     }
 
@@ -118,11 +118,11 @@ public class UUser {
         this.createTime = createTime;
     }
 
-    public Date getLastLoginTime() {
+    public String getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(Date lastLoginTime) {
+    public void setLastLoginTime(String lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 

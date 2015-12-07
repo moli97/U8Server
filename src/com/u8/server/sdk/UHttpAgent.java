@@ -386,6 +386,7 @@ public class UHttpAgent {
 
     //销毁
     public void destroy(){
+        Log.d("destroy.....");
         if(this.httpClient != null){
             try{
                 this.httpClient.close();
