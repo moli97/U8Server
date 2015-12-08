@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50511
 File Encoding         : 65001
 
-Date: 2015-12-07 19:49:21
+Date: 2015-12-08 20:09:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,7 +51,7 @@ CREATE TABLE `uchannel` (
   `cpConfig` varchar(1024) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uni_channelID` (`channelID`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uchannel
@@ -82,8 +82,10 @@ INSERT INTO `uchannel` VALUES ('23', '35', '1', '', '', '', '', '', '', '', '1',
 INSERT INTO `uchannel` VALUES ('24', '36', '1', '', '643501227', '', '643501227', '', '', '', '24', '');
 INSERT INTO `uchannel` VALUES ('25', '37', '1', '415', '75db13707d7a2a05904959d0b8f7efbb', '', '', '', '', '', '25', '');
 INSERT INTO `uchannel` VALUES ('26', '1000', '1', '1', '58C6A68DDDEE471AA43266E427F38D92', '', '', '', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2kcrRvxURhFijDoPpqZ/IgPlAgppkKrek6wSrua1zBiGTwHI2f+YCa5vC1JEiIi9uw4srS0OSCB6kY3bP2DGJagBoEgj/rYAGjtYJxJrEiTxVs5/GfPuQBYmU0XAtPXFzciZy446VPJLHMPnmTALmIOR5Dddd1Zklod9IQBMjjwIDAQAB', '', '23', null);
-INSERT INTO `uchannel` VALUES ('27', '10099', '1', '', '643501227', '', '643501227', '', '', '', '24', '');
-INSERT INTO `uchannel` VALUES ('28', '1020', '1', '', '643501227', '', '643501227', '', '', '', '24', '');
+INSERT INTO `uchannel` VALUES ('29', '38', '1', '1941', '201befdbdd428f50', 'c5b6e9d97ca4e5cfd7bf66f34cf9c2c2', '', 'cfb56ead9fd3b1fc30c0c18bad4a1a84', '', '', '26', '');
+INSERT INTO `uchannel` VALUES ('30', '39', '1', '1138', 'KU5DJ8fDjeHGRYui0G2khkIUrcJJ2Ii2', '', '10396', '', '', '', '27', '');
+INSERT INTO `uchannel` VALUES ('31', '40', '1', '10104', '', '', '', '', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+GY2/8wJuINxzJo9uWoMRUDcxONuK/48Fikze8EFpKWLLr6mBpqeoDVvZQoqGhGKn5wdtHujiCUYSn6pcWKY2Fz2Rxw6/1uA1gzKcLE36KLUkqvFbA3gItSiO3ADNCwJ1ochhdfcEnH2dtbiv5+f7m+xv5B1aEP142v2CtYKFFQIDAQAB', 'MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMcigZ7OFyX4vVlNNHBJyTDQ3dDGWGOhRwiL4NmN/oE7q69lUMdiD2orwiMjYVDK78pkxMakZ+/8B0uQ4ZfJJK5Zp+tLvwVmkqC9rkL671I7NLJ1IB+agx12CtOzXrt684bLnFgkH47+cU/wNr3/VC+h2UGb/hF0itBfj/jNUMw1AgMBAAECgYBPMVLZI96i1DQBIqn7Ce0AA+Bi2a5nGMlWBcLK4iRXorJZU3J3iHDW6UYQkU5vQfVwyPhUgydukg0YqSp+IZj7JONs09g9JgZaw9EFpwQvDbjilOWVwrRFdj3RgpoZgTay4E2eYV1BzrdROzO/qHk6JOS59sx9xJDGj5hFB+NQVQJBAPmBxQ3jr6zwHF8FCDtPS3RMB9P5yywzLRPKriklazRpbxfyWo2E/qk3dhjDD/vEBkjOenD4XBjyO82mpfglcwsCQQDMUSeJGGkLCZ1TofTSpI3LxYJjsw7bOOJhxDry03Hk9lB8HR8aMoiX2YsUtErk9TKwDL5uSocxMojgsrwO2kW/AkB3ut8tyBnwOhTTQB3wICAMQcPr482sey5hdfxXQF6Oex3VdvYfPTfbSgMA5PIRlcKSQ4scFQJU8kDicdrpFkd7AkEAsEY8E93JkspCwAr0zF9ILsxCiH3NjXlwZuUD7shadS3Flq8RTGrYyhnYEo7SJuMdTiJQkZsfNGTjDullsnLCxQJBANZaAm3jqcy5DduwFbGRybHnauMSeaFA4jNwho5Wu/9loQvYbr2zHvAwDWnn/rlvDCPmuPmL8xBsFzp9L2CazmY=', '28', '');
+INSERT INTO `uchannel` VALUES ('32', '41', '1', '880000130', '', '4e2c266a499807b8083edfc7ff04a5f3', '', '', '', '', '29', '');
 
 -- ----------------------------
 -- Table structure for `uchannelmaster`
@@ -129,6 +131,10 @@ INSERT INTO `uchannelmaster` VALUES ('22', 'https://id.gionee.com/account/verify
 INSERT INTO `uchannelmaster` VALUES ('23', 'https://pay.slooti.com/?r=auth/verify', 'Itools', 'itools', '.itools', 'http://localhost:8080/itools/payCallback', 'com.u8.server.sdk.itools.ItoolsSDK', '');
 INSERT INTO `uchannelmaster` VALUES ('24', 'http://api.gfan.com/uc1/common/verify_token', '机锋', 'gfan', '.gfan', 'http://localhost:8080/pay/gfan/payCallback/36', 'com.u8.server.sdk.gfan.GFanSDK', '');
 INSERT INTO `uchannelmaster` VALUES ('25', 'http://api.qcwan.com/info/uc', '安峰(56Game)', 'anfeng', '.anfeng', 'http://localhost:8080/pay/anfeng/payCallback/37', 'com.u8.server.sdk.anfeng.AnFengSDK', '');
+INSERT INTO `uchannelmaster` VALUES ('26', 'http://sdk.api.gamex.mobile.youku.com/game/user/infomation', '优酷', 'youku', '.youku', 'localhost:8080/pay/youku/payCallback', 'com.u8.server.sdk.youku.YouKuSDK', '');
+INSERT INTO `uchannelmaster` VALUES ('27', 'http://sdk.game.kugou.com/index.php?r=ValidateIsLogined/CheckToken', '酷狗', 'kugou', '.kugou', 'http://localhost:8080/pay/kugou/payCallback', 'com.u8.server.sdk.kugou.KuGouSDK', '');
+INSERT INTO `uchannelmaster` VALUES ('28', 'http://lewanduo.com/mobile/user/verifyToken.html', '乐玩', 'lewan', '.lewan', 'localhost:8080/pay/lewan/payCallback', 'com.u8.server.sdk.lewan.LewanSDK', '');
+INSERT INTO `uchannelmaster` VALUES ('29', 'http://fh.sdo.com/fh/open/ticket', '逗逗(洪金宝)', 'doudou', '.doudou', 'localhost:8080/pay/doudou/payCallback', 'com.u8.server.sdk.doudou.DouDouSDK', '');
 
 -- ----------------------------
 -- Table structure for `ugame`
@@ -313,6 +319,9 @@ INSERT INTO `uorder` VALUES ('794015895411228674', '1', '20', '', 'RMB', '144903
 INSERT INTO `uorder` VALUES ('794015942655868931', '1', '20', '', 'RMB', '1449038283594', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:37:11', null, null, '元宝', '购买100元宝');
 INSERT INTO `uorder` VALUES ('794019301320294401', '1', '20', '', 'RMB', '1449039016968', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:49:25', null, null, '元宝', '购买100元宝');
 INSERT INTO `uorder` VALUES ('794019945565388801', '1', '20', '', 'RMB', '1449039159606', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:51:47', null, null, '元宝', '购买100元宝');
+INSERT INTO `uorder` VALUES ('797316491878858753', '1', '20', '', 'RMB', '1449540823193', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:12:32', null, null, '元宝', '购买100元宝');
+INSERT INTO `uorder` VALUES ('797316556303368194', '1', '20', '', 'RMB', '1449540837083', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:12:47', null, null, '元宝', '购买100元宝');
+INSERT INTO `uorder` VALUES ('797317011569901571', '1', '20', '', 'RMB', '1449540937055', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:14:25', null, null, '元宝', '购买100元宝');
 
 -- ----------------------------
 -- Table structure for `uuser`
@@ -330,7 +339,7 @@ CREATE TABLE `uuser` (
   `name` varchar(255) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uuser
@@ -372,4 +381,7 @@ INSERT INTO `uuser` VALUES ('34', '1', '24', '900086000023101422', '182****6067'
 INSERT INTO `uuser` VALUES ('35', '1', '30', '3168457', 'jieziqqqq', 'jieziqqqq', '2015-12-02 11:19:39', '1425093830573', '1449026379630.paojiao', '6b5a7d86dd24ee04a84c0162e5e192ee');
 INSERT INTO `uuser` VALUES ('36', '1', '36', '28847428', 'jL6gffgQfbgUY_', '', '2015-12-03 19:04:52', '1425093830573', '1449140692768.gfan', '9f18b682f87a889d085c2b444ec084f1');
 INSERT INTO `uuser` VALUES ('37', '1', '37', '928707', '2848004717@qq.com', '', '2015-12-03 19:27:42', '1425093830573', '1449142062491.anfeng', '6467bb15f5ddc98fffdc45a8ef0064b4');
-INSERT INTO `uuser` VALUES ('38', '1', '20', 'e05d4b83e044f8ff', '18202116067', '', '2015-12-04 16:22:01', '1449487609746', '1449217321152.vivo', '36c8e3e62a3d1e2fe2a1020aeac7b89a');
+INSERT INTO `uuser` VALUES ('38', '1', '20', 'e05d4b83e044f8ff', '18202116067', '', '2015-12-04 16:22:01', '1449556043466', '1449217321152.vivo', '5be28e0755ffc02e16b8e857c73ee1fd');
+INSERT INTO `uuser` VALUES ('39', '1', '38', '5463551', '', '', '2015-12-08 16:29:38', '1449563536179', '1449563378170.youku', 'a1fdc0543bbb3ec7d260c54b9ebac309');
+INSERT INTO `uuser` VALUES ('40', '1', '40', '4713462', 'lewan5785793', '', '2015-12-08 19:23:13', '1449573829375', '1449573793250.lewan', '1538c3e1d0d3ec8bf663464544e7eb9a');
+INSERT INTO `uuser` VALUES ('41', '1', '41', '61669', '+86-1820****067', '', '2015-12-08 20:08:07', '1449576511076', '1449576487770.doudou', '01cc436eabb0ffca63ff4a5e7f88ea77');

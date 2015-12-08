@@ -16,7 +16,7 @@ import java.util.Date;
 public class UOrder {
 
     @Id
-    private long orderID;       //订单号
+    private Long orderID;       //订单号
     private int appID;          //当前所属游戏ID
     private int channelID;      //当前所属渠道ID
     private int userID;         //U8Server这边对应的用户ID
@@ -80,11 +80,11 @@ public class UOrder {
         return CacheManager.getInstance().getGame(this.appID);
     }
 
-    public long getOrderID() {
+    public Long getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(long orderID) {
+    public void setOrderID(Long orderID) {
         this.orderID = orderID;
     }
 

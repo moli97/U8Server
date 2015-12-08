@@ -68,7 +68,12 @@ public class CacheManager{
         return null;
     }
 
-    public UChannel getChannelByID(int id){
+    public UChannel getChannelByID(Integer id){
+
+        if(id == null){
+            return null;
+        }
+
         for(UChannel c : this.channels.values()){
             if(c.getId() == id){
                 return c;
@@ -130,6 +135,7 @@ public class CacheManager{
             channels.remove(channel.getChannelID());
         }
 
+        Log.d("the channel is "+channel);
         UChannel c = getChannelByID(channel.getId());
         if(c != null){
             channels.remove(c.getChannelID());

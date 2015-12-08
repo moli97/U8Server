@@ -112,6 +112,7 @@ public class UChannelManager {
         }
 
         CacheManager.getInstance().removeChannel(channel.getChannelID());
+        channelDao.delete(channel);
     }
 
 
