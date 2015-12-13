@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -105,7 +106,9 @@ public class MuZhiWanPayCallbackAction extends UActionSupport{
     private void renderState(boolean suc, String msg) throws IOException {
 
         if(suc){
-            this.response.getWriter().write("SUCCESS");
+            PrintWriter out = this.response.getWriter();
+            out.write("SUCCESS");
+            out.flush();
         }
 
     }

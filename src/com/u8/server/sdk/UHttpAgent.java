@@ -200,6 +200,8 @@ public class UHttpAgent {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            getReq.releaseConnection();
         }
 
         return null;
@@ -259,8 +261,9 @@ public class UHttpAgent {
             return body;
 
         } catch (IOException e) {
-            destroy();
             e.printStackTrace();
+        }finally {
+            httpPost.releaseConnection();
         }
 
         return null;
@@ -363,7 +366,6 @@ public class UHttpAgent {
                     .build();
 
             PoolingHttpClientConnectionManager connMgr = new PoolingHttpClientConnectionManager( socketFactoryRegistry);
-
             HttpClientBuilder builder = HttpClients.custom()
                     .setDefaultRequestConfig(requestConfig)
                     .setSslcontext(sslContext)
@@ -386,6 +388,7 @@ public class UHttpAgent {
 
     //销毁
     public void destroy(){
+        Log.d("destroy.....");
         if(this.httpClient != null){
             try{
                 this.httpClient.close();

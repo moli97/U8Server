@@ -57,6 +57,7 @@ public class UserAction extends UActionSupport{
     @Action("getToken")
     public void getLoginToken(){
 
+        Log.d("getToken...");
 
         try{
 
@@ -109,10 +110,11 @@ public class UserAction extends UActionSupport{
                             if(user == null){
                                 user = userManager.generateUser(channel, sdkResult);
                             }else{
-                                user.setLastLoginTime("" + new Date().getTime());
+                                user.setLastLoginTime(new Date().getTime() + "");
                             }
 
                             user.setToken(UGenerator.generateToken(user, game.getAppSecret()));
+
                             userManager.saveUser(user);
 
                             JSONObject data = new JSONObject();

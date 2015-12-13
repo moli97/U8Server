@@ -93,7 +93,7 @@ public class UChannelManager {
     //添加或者修改channel
     public void saveChannel(UChannel channel){
 
-        if(channel.getChannelID() == null || channel.getChannelID() <= 0){
+        if(channel.getChannelID() <= 0){
             channel.setChannelID(getValidChannelID());
         }
 
@@ -112,6 +112,7 @@ public class UChannelManager {
         }
 
         CacheManager.getInstance().removeChannel(channel.getChannelID());
+        channelDao.delete(channel);
     }
 
 

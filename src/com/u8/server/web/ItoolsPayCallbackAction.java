@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -102,12 +103,14 @@ public class ItoolsPayCallbackAction extends UActionSupport{
 
     private void renderState(boolean suc, String msg) throws IOException {
 
-        if(suc){
-            this.response.getWriter().write("success");
-        }else{
-            this.response.getWriter().write("fail");
-        }
+        PrintWriter out = this.response.getWriter();
 
+        if(suc){
+            out.write("success");
+        }else{
+            out.write("fail");
+        }
+        out.flush();
     }
 
 

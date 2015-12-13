@@ -14,7 +14,10 @@ import javax.persistence.*;
 public class UChannel {
 
     @Id
-    private Integer channelID;              //渠道ID 和客户端一致
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;                 //数据表中ID
+
+    private int channelID;              //渠道ID 和客户端一致
     private int appID;                  //游戏ID
     private int masterID;               //渠道商ID
 
@@ -39,8 +42,19 @@ public class UChannel {
         return CacheManager.getInstance().getGame(appID);
     }
 
+    //获取当前渠道的支付回调地址
+    public String getPayCallbackUrl(){
+
+        String baseUrl = getMaster().getPayCallbackUrl();
+        if (!baseUrl.endsWith("/")){
+            baseUrl += "/";
+        }
+        return baseUrl + channelID;
+    }
+
     public JSONObject toJSON(){
         JSONObject json = new JSONObject();
+        json.put("id", id);
         json.put("channelID", channelID);
         json.put("appID", appID);
 
@@ -63,11 +77,19 @@ public class UChannel {
         return json;
     }
 
-    public Integer getChannelID() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public int getChannelID() {
         return channelID;
     }
 
-    public void setChannelID(Integer channelID) {
+    public void setChannelID(int channelID) {
         this.channelID = channelID;
     }
 

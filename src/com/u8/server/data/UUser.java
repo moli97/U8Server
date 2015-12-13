@@ -17,7 +17,7 @@ public class UUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private int appID;
     private int channelID;
     private String name;
@@ -25,7 +25,7 @@ public class UUser {
     private String channelUserName;
     private String channelUserNick;
     private Date createTime;
-    private String lastLoginTime;       //自1970年1月1日00:00:00 GMT开始所表示的该日期的毫秒数 Date.getTime值
+    private String lastLoginTime;
     private String token;
 
     public JSONObject toJSON(){
@@ -54,11 +54,11 @@ public class UUser {
         return CacheManager.getInstance().getGame(this.appID);
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

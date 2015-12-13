@@ -26,8 +26,6 @@ public class VivoSDK implements ISDKScript{
 
         try{
 
-
-
             JSONObject json = JSONObject.fromObject(extension);
             final String openid = json.getString("openid");
             final String name = json.getString("name");
@@ -96,7 +94,7 @@ public class VivoSDK implements ISDKScript{
                 String cpId = order.getChannel().getCpID();
                 String appId = order.getChannel().getCpAppID();
                 String cpOrderNumber = ""+order.getOrderID();
-                String notifyUrl = channel.getMaster().getPayCallbackUrl();
+                String notifyUrl = channel.getPayCallbackUrl();
                 String orderTime = TimeFormater.format_yyyyMMddHHmmss(order.getCreatedTime());
                 String orderAmount = order.getMoney() + "";
                 String orderTitle = order.getProductName();

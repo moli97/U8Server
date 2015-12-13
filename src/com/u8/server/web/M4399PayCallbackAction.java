@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -122,7 +123,9 @@ public class M4399PayCallbackAction extends UActionSupport{
 
         Log.d("The result to sdk is "+json.toString());
 
-        this.response.getWriter().write(json.toString());
+        PrintWriter out = this.response.getWriter();
+        out.write(json.toString());
+        out.flush();
 
 
     }

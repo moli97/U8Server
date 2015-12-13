@@ -64,7 +64,7 @@
      closed="true" buttons="#dlg-buttons" style="height: 420px;width: 500px;">
   <div class="ftitle">渠道信息</div>
   <form id="fm" method="post" novalidate>
-
+    <input id="id" type="hidden" name="id" />
     <input id="appID" type="hidden" name="appID" />
     <input id="masterID" type="hidden" name="masterID" />
     <div class="u8_form_row">

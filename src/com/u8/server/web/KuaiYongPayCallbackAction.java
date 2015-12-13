@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Map;
 
@@ -135,11 +136,13 @@ public class KuaiYongPayCallbackAction extends UActionSupport{
 
     private void renderState(boolean suc, String msg) throws IOException {
 
+        PrintWriter out = this.response.getWriter();
         if(suc){
-            this.response.getWriter().write("success");
+            out.write("success");
         }else{
-            this.response.getWriter().write("failed");
+            out.write("failed");
         }
+        out.flush();
 
     }
 

@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -127,7 +128,9 @@ public class CoolPadPayCallbackAction extends UActionSupport{
             r = "FAILURE";
         }
 
-        this.response.getWriter().write(r);
+        PrintWriter out = this.response.getWriter();
+        out.write(r);
+        out.flush();
     }
 
     public String getTransdata() {

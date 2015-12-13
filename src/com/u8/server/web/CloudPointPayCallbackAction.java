@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -104,12 +105,14 @@ public class CloudPointPayCallbackAction extends UActionSupport{
 
     private void renderState(boolean suc, String msg) throws IOException {
 
-        if(suc){
-            this.response.getWriter().write("SUCCESS");
-        }else{
-            this.response.getWriter().write("FAILURE");
-        }
+        PrintWriter out = this.response.getWriter();
 
+        if(suc){
+            out.write("SUCCESS");
+        }else{
+            out.write("FAILURE");
+        }
+        out.flush();
     }
 
     public String getUid() {

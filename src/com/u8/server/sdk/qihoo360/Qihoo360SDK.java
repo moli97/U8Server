@@ -3,7 +3,6 @@ package com.u8.server.sdk.qihoo360;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.data.UUser;
-import com.u8.server.log.Log;
 import com.u8.server.sdk.*;
 import com.u8.server.utils.JsonUtils;
 import net.sf.json.JSONObject;
@@ -82,7 +81,7 @@ public class Qihoo360SDK implements ISDKScript {
 
         try{
 
-            String notifyUrl = order.getChannel().getMaster().getPayCallbackUrl();
+            String notifyUrl = order.getChannel().getPayCallbackUrl();
             json.put("notifyUrl", notifyUrl);
 
         }catch (Exception e){

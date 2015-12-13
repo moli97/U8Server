@@ -74,7 +74,7 @@ public class AnFengSDK implements ISDKScript{
     @Override
     public void onGetOrderID(UUser user, UOrder order, ISDKOrderListener callback) {
         if(callback != null){
-            callback.onSuccess(user.getChannel().getMaster().getPayCallbackUrl());
+            callback.onSuccess(user.getChannel().getPayCallbackUrl());
         }
     }
 

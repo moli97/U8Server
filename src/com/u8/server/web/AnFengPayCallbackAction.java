@@ -12,6 +12,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -116,11 +117,14 @@ public class AnFengPayCallbackAction extends UActionSupport{
 
     private void renderState(boolean suc) throws IOException {
 
+        PrintWriter out = this.response.getWriter();
+
         if(suc){
-            this.response.getWriter().write("SUCCESS");
+            out.write("SUCCESS");
         }else{
-            this.response.getWriter().write("FAILED");
+            out.write("FAILED");
         }
+        out.flush();
     }
 
     public String getUid() {

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 /**
@@ -112,7 +113,9 @@ public class OppoPayCallbackAction extends UActionSupport{
 
         Log.d("The result to sdk is "+sb.toString());
 
-        this.response.getWriter().write(sb.toString());
+        PrintWriter out = this.response.getWriter();
+        out.write(sb.toString());
+        out.flush();
 
 
     }
