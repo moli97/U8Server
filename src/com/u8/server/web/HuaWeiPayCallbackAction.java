@@ -5,6 +5,7 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
+import com.u8.server.sdk.appchina.RSAUtil;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.RSAUtils;
 import org.apache.struts2.convention.annotation.Action;
@@ -116,7 +117,7 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
                 .append("userName=").append(userName);
 
 
-        return RSAUtils.verify(sb.toString(), this.sign, channel.getCpPayKey(), "UTF-8");
+        return RSAUtils.verify(sb.toString(), this.sign, channel.getCpPayKey(), "UTF-8", RSAUtils.SIGNATURE_ALGORITHM_SHA);
 
     }
 

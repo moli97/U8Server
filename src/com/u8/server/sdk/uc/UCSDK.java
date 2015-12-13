@@ -165,7 +165,7 @@ public class UCSDK implements ISDKScript {
         String signSource= "accountId="+rsp.getData().getAccountId()+"amount="+rsp.getData().getAmount()+"callbackInfo="+rsp.getData().getCallbackInfo()
                 +"cpOrderId="+rsp.getData().getCpOrderId()+"creator="+rsp.getData().getCreator()+"failedDesc="+rsp.getData().getFailedDesc()+"gameId="+rsp.getData().getGameId()
                 +"orderId="+rsp.getData().getOrderId()+"orderStatus="+rsp.getData().getOrderStatus()
-                +"payWay="+rsp.getData().getPayWay()+"serverId="+rsp.getData().getServerId()
+                +"payWay="+rsp.getData().getPayWay()
                 +channel.getCpAppKey();
 
         String sign = getMD5Str(signSource);
