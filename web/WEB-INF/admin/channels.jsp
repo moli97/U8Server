@@ -258,7 +258,8 @@
     pageList:[10,20,50,100],
     showFooter:true,
     columns:[[
-      {field:'channelID', title:'ID', width:40, sortable:true},
+      {field:'id', title:'ID', width:40, sortable:true},
+      {field:'channelID', title:'渠道号', width:40, sortable:true},
       {field:'masterName', title:'渠道名称', width:40, sortable:true},
       {field:'cpID', title:'CPID', width:40, sortable:true},
       {field:'cpAppID', title:'AppID', width:40, sortable:true},
