@@ -3,3 +3,6 @@
 **/out/
 **/.idea
 PackServer.iml
+*.iml
+target/
+output/
