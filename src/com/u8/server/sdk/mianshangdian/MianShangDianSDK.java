@@ -1,33 +1,43 @@
-package com.u8.server.sdk.letv;
+package com.u8.server.sdk.mianshangdian;
 
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.data.UUser;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.*;
+import com.u8.server.utils.EncryptUtils;
 import net.sf.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 乐视SDK
- * Created by xiaohei on 15/12/21.
+ * 免商店（蜗牛）
+ * Created by xiaohei on 15/12/22.
  */
-public class LetvSDK implements ISDKScript{
+public class MianShangDianSDK implements ISDKScript{
     @Override
     public void verify(final UChannel channel, String extension, final ISDKVerifyListener callback) {
         try{
 
             JSONObject json = JSONObject.fromObject(extension);
 
-            final String uid = json.getString("uid");
-            String token = json.getString("token");
+            final String uin = json.getString("uin");
+            String sessionId = json.getString("sessionId");
+            String act = "4";
+
+            StringBuilder sb = new StringBuilder();
+            sb.append(channel.getCpAppID()).append(act).append(uin).append(sessionId).append(channel.getCpAppKey());
+
+
+            String sign = EncryptUtils.md5(sb.toString());
 
             Map<String,String> params = new HashMap<String, String>();
-            params.put("client_id", channel.getCpAppID());
-            params.put("uid", uid);
-            params.put("access_token", token);
+            params.put("AppId", channel.getCpAppID());
+            params.put("Act", act);
+            params.put("Uin", uin);
+            params.put("SessionId", sessionId);
+            params.put("Sign", sign);
 
             String url = channel.getMaster().getAuthUrl();
 
@@ -39,15 +49,12 @@ public class LetvSDK implements ISDKScript{
                         Log.e("The auth result is " + result);
 
                         JSONObject json = JSONObject.fromObject(result);
-                        int code = json.getInt("status");
+                        int code = json.getInt("ErrorCode");
 
 
                         if (code == 1) {
 
-                            JSONObject rt = json.getJSONObject("result");
-
-
-                            callback.onSuccess(new SDKVerifyResult(true, uid, rt.getString("nickname"), ""));
+                            callback.onSuccess(new SDKVerifyResult(true, uin, "", ""));
                             return;
 
                         }
@@ -56,7 +63,7 @@ public class LetvSDK implements ISDKScript{
                         e.printStackTrace();
                     }
 
-                    callback.onFailed(channel.getMaster().getSdkName() + " verify failed. the get result is " + result);
+                    callback.onFailed(channel.getMaster().getSdkName() + " verify failed. the result is " + result);
                 }
 
                 @Override
@@ -77,7 +84,7 @@ public class LetvSDK implements ISDKScript{
     @Override
     public void onGetOrderID(UUser user, UOrder order, ISDKOrderListener callback) {
         if(callback != null){
-            callback.onSuccess(user.getChannel().getPayCallbackUrl());
+            callback.onSuccess("");
         }
     }
 }
