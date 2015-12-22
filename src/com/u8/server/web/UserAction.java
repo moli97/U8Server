@@ -87,10 +87,10 @@ public class UserAction extends UActionSupport{
 
             Log.d("The sign is "+sign);
 
-            if(!userManager.isSignOK(sb.toString(), sign)){
-                renderState(StateCode.CODE_SIGN_ERROR, null);
-                return;
-            }
+//            if(!userManager.isSignOK(sb.toString(), sign)){
+//                renderState(StateCode.CODE_SIGN_ERROR, null);
+//                return;
+//            }
 
             ISDKScript verifier = (ISDKScript)Class.forName(master.getVerifyClass()).newInstance();
 
