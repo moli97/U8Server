@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 魅族SDK
  * Created by ant on 2015/4/30.
  */
 public class MeizuSDK implements ISDKScript{
