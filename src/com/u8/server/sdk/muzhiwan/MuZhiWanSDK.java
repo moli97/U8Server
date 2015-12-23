@@ -26,7 +26,7 @@ public class MuZhiWanSDK implements ISDKScript{
             params.put("token", token);
             params.put("appkey", channel.getCpAppKey());
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

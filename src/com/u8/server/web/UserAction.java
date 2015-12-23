@@ -86,7 +86,6 @@ public class UserAction extends UActionSupport{
                     .append("channelID=").append(this.channelID)
                     .append("extension=").append(this.extension).append(game.getAppkey());
 
-            Log.d("The sign is "+sign);
 
             if(!userManager.isSignOK(sb.toString(), sign)){
                 Log.e("the sign is invalid. sign:"+sign);
@@ -94,7 +93,6 @@ public class UserAction extends UActionSupport{
                 return;
             }
 
-            Log.d("now to find verifier ...");
             ISDKScript verifier = SDKCacheManager.getInstance().getSDKScript(channel);
 
             if(verifier == null){
@@ -103,7 +101,7 @@ public class UserAction extends UActionSupport{
                 return;
             }
 
-            Log.d("The url is "+channel.getMaster().getAuthUrl());
+            Log.d("The auth url is "+channel.getChannelAuthUrl());
             Log.d("channel is "+channel.getChannelID()+";extension is "+extension);
 
             verifier.verify(channel, extension, new ISDKVerifyListener() {
@@ -111,7 +109,7 @@ public class UserAction extends UActionSupport{
                 public void onSuccess(SDKVerifyResult sdkResult) {
 
                     try{
-                        Log.e("The user verify success. result:"+sdkResult.getUserID());
+                        Log.d("user verify success. result:"+sdkResult.getUserID());
                         if(sdkResult.isSuccess() && !StringUtils.isEmpty(sdkResult.getUserID())){
 
                             UUser user = userManager.getUserByCpID(appID, channelID, sdkResult.getUserID());

@@ -48,8 +48,7 @@ public class SDKCacheManager {
         }
 
         try {
-            Log.d("now to init a new intance of channel:"+channel.getChannelID());
-            ISDKScript script = (ISDKScript)Class.forName(channel.getMaster().getVerifyClass()).newInstance();
+            ISDKScript script = (ISDKScript)Class.forName(channel.getChannelVerifyClass()).newInstance();
             sdkCaches.put(channel.getChannelID(), script);
             return script;
         } catch (InstantiationException e) {

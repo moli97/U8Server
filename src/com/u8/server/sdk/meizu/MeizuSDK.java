@@ -45,7 +45,7 @@ public class MeizuSDK implements ISDKScript{
             params.put("sign_type",sign_type);
             params.put("sign", sign);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().post(url, params, new UHttpFutureCallback() {
                 @Override

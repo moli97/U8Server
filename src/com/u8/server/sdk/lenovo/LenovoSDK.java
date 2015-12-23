@@ -26,7 +26,7 @@ public class LenovoSDK implements ISDKScript{
             params.put("lpsust", lpsust);
             params.put("realm", channel.getCpAppID());
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

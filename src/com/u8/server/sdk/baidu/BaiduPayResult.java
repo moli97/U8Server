@@ -1,5 +1,7 @@
 package com.u8.server.sdk.baidu;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import java.util.Date;
 
 /**
@@ -7,13 +9,28 @@ import java.util.Date;
  */
 public class BaiduPayResult {
 
+    @JsonProperty("UID")
     private long UID;
+
+    @JsonProperty("MerchandiseName")
     private String MerchandiseName;
+
+    @JsonProperty("OrderMoney")
     private double OrderMoney;
+
+    @JsonProperty("StartDateTime")
     private Date StartDateTime;
+
+    @JsonProperty("BankDateTime")
     private Date BankDateTime;
+
+    @JsonProperty("OrderStatus")
     private int OrderStatus;
+
+    @JsonProperty("StatusMsg")
     private String StatusMsg;
+
+    @JsonProperty("ExtInfo")
     private String ExtInfo;
 
     public long getUID() {

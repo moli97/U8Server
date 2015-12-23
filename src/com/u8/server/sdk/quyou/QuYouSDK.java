@@ -52,7 +52,7 @@ public class QuYouSDK implements ISDKScript {
             params.put("signtype", sign_type);
             params.put("sign", sign);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

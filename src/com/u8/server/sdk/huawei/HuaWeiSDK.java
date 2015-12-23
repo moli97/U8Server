@@ -26,7 +26,7 @@ public class HuaWeiSDK implements ISDKScript{
             params.put("nsp_ts", ""+(System.currentTimeMillis() / 1000));
             params.put("access_token", token);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

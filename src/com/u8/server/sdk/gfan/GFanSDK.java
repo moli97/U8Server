@@ -28,7 +28,7 @@ public class GFanSDK implements ISDKScript{
             params.put("token", token);
 
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             Map<String, String> headers = new HashMap<String, String>();
             headers.put("User-Agent", "packageName=,appName=,channelID="+channel.getCpAppKey());

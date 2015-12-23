@@ -31,7 +31,7 @@ public class MuMaYiSDK implements ISDKScript{
             params.put("uid", sid);
             params.put("token", token);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().post(url, params, new UHttpFutureCallback() {
                 @Override

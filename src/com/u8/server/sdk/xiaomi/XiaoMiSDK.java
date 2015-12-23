@@ -39,7 +39,7 @@ public class XiaoMiSDK implements ISDKScript{
 
 
             params.put("signature", signature);
-            UHttpAgent.getInstance().get(channel.getMaster().getAuthUrl(), params, new UHttpFutureCallback() {
+            UHttpAgent.getInstance().get(channel.getChannelAuthUrl(), params, new UHttpFutureCallback() {
                 @Override
                 public void completed(String content) {
 

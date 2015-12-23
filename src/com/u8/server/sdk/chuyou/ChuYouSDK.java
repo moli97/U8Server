@@ -41,7 +41,7 @@ public class ChuYouSDK implements ISDKScript{
             params.put("pid", channel.getCpID());
             params.put("sign", sign);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().post(url, params, new UHttpFutureCallback() {
                 @Override

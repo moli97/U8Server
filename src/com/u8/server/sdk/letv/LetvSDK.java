@@ -29,7 +29,7 @@ public class LetvSDK implements ISDKScript{
             params.put("uid", uid);
             params.put("access_token", token);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

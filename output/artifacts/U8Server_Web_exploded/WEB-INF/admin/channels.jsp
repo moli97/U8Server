@@ -61,7 +61,7 @@
 </div>
 
 <div id="dialog_add" class="easyui-dialog u8_form"
-     closed="true" buttons="#dlg-buttons" style="height: 420px;width: 500px;">
+     closed="true" buttons="#dlg-buttons" style="height: 500px;width: 500px;">
   <div class="ftitle">渠道信息</div>
   <form id="fm" method="post" novalidate>
     <input id="id" type="hidden" name="id" />
@@ -120,6 +120,26 @@
       <input type="text" class="easyui-textbox" name="cpConfig" maxlength="1024" novalidate />
     </div>
 
+    <div class="u8_form_row">
+      <label >登录认证地址：</label>
+      <input type="text" class="easyui-textbox" name="authUrl" prompt="这里会覆盖渠道商配置中的" maxlength="1024" novalidate />
+    </div>
+
+    <div class="u8_form_row">
+      <label >支付回调地址：</label>
+      <input type="text" class="easyui-textbox" name="payCallbackUrl" prompt="这里会覆盖渠道商配置中的" maxlength="1024" novalidate />
+    </div>
+
+    <div class="u8_form_row">
+      <label >渠道下单地址：</label>
+      <input type="text" class="easyui-textbox" name="orderUrl" prompt="这里会覆盖渠道商配置中的" maxlength="1024" novalidate />
+    </div>
+
+    <div class="u8_form_row">
+      <label >脚本类路径：</label>
+      <input type="text" class="easyui-textbox" name="verifyClass" prompt="这里会覆盖渠道商配置中的" maxlength="1024" novalidate />
+    </div>
+
   </form>
 </div>
 <div id="dlg-buttons">
@@ -133,8 +153,8 @@
   var url;
   function showAddDialog(){
     $("#dialog_add").window({
-      top:($(window).height() - 300) * 0.5,
-      left:($(window).width() - 420) * 0.5
+      top:($(window).height() - 500) * 0.5,
+      left:($(window).width() - 500) * 0.5
     });
 
     $("#dialog_add").dialog('open').dialog('setTitle', '添加渠道');
@@ -148,8 +168,8 @@
   function showEditDialog(){
 
     $("#dialog_add").window({
-      top:($(window).height() - 300) * 0.5,
-      left:($(window).width() - 420) * 0.5
+      top:($(window).height() - 500) * 0.5,
+      left:($(window).width() - 500) * 0.5
     });
 
 

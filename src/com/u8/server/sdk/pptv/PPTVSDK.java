@@ -31,7 +31,7 @@ public class PPTVSDK implements ISDKScript{
             params.put("sessionid", sessionId);
             params.put("username", username);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

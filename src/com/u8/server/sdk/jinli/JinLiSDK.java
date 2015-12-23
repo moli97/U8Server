@@ -72,7 +72,7 @@ public class JinLiSDK implements ISDKScript{
             headers.put("Authorization", auth);
 
 
-            httpClient.post(channel.getMaster().getAuthUrl(), headers, new ByteArrayEntity(token.getBytes(Charset.forName("UTF-8"))), new UHttpFutureCallback() {
+            httpClient.post(channel.getChannelAuthUrl(), headers, new ByteArrayEntity(token.getBytes(Charset.forName("UTF-8"))), new UHttpFutureCallback() {
                 @Override
                 public void completed(String result) {
 
@@ -147,7 +147,7 @@ public class JinLiSDK implements ISDKScript{
             Map<String,String> headers = new HashMap<String, String>();
             headers.put("Content-Type", "application/json");
 
-            UHttpAgent.getInstance().post(order.getChannel().getMaster().getOrderUrl(), headers, new ByteArrayEntity(data.toString().getBytes(Charset.forName("UTF-8"))), new UHttpFutureCallback() {
+            UHttpAgent.getInstance().post(order.getChannel().getChannelOrderUrl(), headers, new ByteArrayEntity(data.toString().getBytes(Charset.forName("UTF-8"))), new UHttpFutureCallback() {
                 @Override
                 public void completed(String content) {
 

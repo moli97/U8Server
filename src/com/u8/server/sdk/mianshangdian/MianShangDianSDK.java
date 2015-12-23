@@ -39,7 +39,7 @@ public class MianShangDianSDK implements ISDKScript{
             params.put("SessionId", sessionId);
             params.put("Sign", sign);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

@@ -24,7 +24,7 @@ public class Qihoo360SDK implements ISDKScript {
             Map<String, String> data = new HashMap<String, String>();
             data.put("access_token", extension);
             data.put("fields", "id,name,avatar,sex,area,nick");
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, data, new UHttpFutureCallback() {
                 @Override

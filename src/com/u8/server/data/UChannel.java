@@ -32,6 +32,12 @@ public class UChannel {
 
     private String cpConfig;            //部分渠道可能有特殊配置信息，设置在该字段中
 
+    //下面这几个参数，可以覆盖uchannelmaster中的。
+    private String authUrl;         //当前SDK登录认证地址
+    private String payCallbackUrl;  //当前SDK支付通知回调地址
+    private String verifyClass;     //当前SDK的验证处理类的全类名
+    private String orderUrl;        //SDK订单号获取地址，没有则为空
+
     public UChannelMaster getMaster(){
 
         return CacheManager.getInstance().getMaster(masterID);
@@ -42,10 +48,42 @@ public class UChannel {
         return CacheManager.getInstance().getGame(appID);
     }
 
+    //获取当前渠道的登录认证地址
+    public String getChannelAuthUrl(){
+        if(this.authUrl == null || this.authUrl.trim().length() == 0){
+            return  getMaster().getAuthUrl();
+        }
+        return this.authUrl;
+    }
+
+    //获取当前渠道的SDK处理类的名称
+    public String getChannelVerifyClass(){
+        if(this.verifyClass == null || this.verifyClass.trim().length() == 0){
+            return getMaster().getVerifyClass();
+        }
+        return this.verifyClass;
+    }
+
+    //获取当前渠道的SDK处理类的下单地址
+    public String getChannelOrderUrl() {
+        if (this.orderUrl == null || this.orderUrl.trim().length() == 0) {
+            return getMaster().getOrderUrl();
+        }
+        return this.orderUrl;
+    }
+
     //获取当前渠道的支付回调地址
     public String getPayCallbackUrl(){
-
         String baseUrl = getMaster().getPayCallbackUrl();
+        if(this.payCallbackUrl != null && this.payCallbackUrl.trim().length() > 0){
+            baseUrl = this.payCallbackUrl;
+        }
+
+        if(baseUrl.contains(""+channelID)){
+
+            return baseUrl;
+        }
+
         if (!baseUrl.endsWith("/")){
             baseUrl += "/";
         }
@@ -73,6 +111,11 @@ public class UChannel {
         json.put("cpPayKey", cpPayKey);
         json.put("cpPayPriKey", cpPayPriKey);
         json.put("cpConfig",cpConfig);
+
+        json.put("authUrl", authUrl);
+        json.put("payCallbackUrl", payCallbackUrl);
+        json.put("verifyClass", verifyClass);
+        json.put("orderUrl", orderUrl);
 
         return json;
     }
@@ -173,5 +216,31 @@ public class UChannel {
         this.cpPayPriKey = cpPayPriKey;
     }
 
+    public String getAuthUrl() {
+        return authUrl;
+    }
 
+    public void setAuthUrl(String authUrl) {
+        this.authUrl = authUrl;
+    }
+
+    public void setPayCallbackUrl(String payCallbackUrl) {
+        this.payCallbackUrl = payCallbackUrl;
+    }
+
+    public String getVerifyClass() {
+        return verifyClass;
+    }
+
+    public void setVerifyClass(String verifyClass) {
+        this.verifyClass = verifyClass;
+    }
+
+    public String getOrderUrl() {
+        return orderUrl;
+    }
+
+    public void setOrderUrl(String orderUrl) {
+        this.orderUrl = orderUrl;
+    }
 }
