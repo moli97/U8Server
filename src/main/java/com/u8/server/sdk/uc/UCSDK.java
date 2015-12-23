@@ -30,7 +30,7 @@ public class UCSDK implements ISDKScript {
 
             Map<String, Object> data = new HashMap<String, Object>();
             data.put("sid", extension);
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
             Map<String, Object> proData = assemblyParameters(channel, ConfigHelper.VERIFYSESSION, data);
 
             String jsonData = JsonUtils.encodeJson(proData);

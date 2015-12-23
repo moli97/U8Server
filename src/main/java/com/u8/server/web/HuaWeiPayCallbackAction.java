@@ -101,19 +101,38 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
     private boolean isValid(UChannel channel){
 
         StringBuilder sb = new StringBuilder();
-        sb.append("accessMode=").append(accessMode).append("&")
-                .append("amount=").append(amount).append("&")
-                .append("bankId=").append(bankId).append("&")
-                .append("extReserved=").append(extReserved).append("&")
-                .append("notifyTime=").append(notifyTime).append("&")
+
+        if(accessMode != null){
+            sb.append("accessMode=").append(accessMode).append("&");
+        }
+
+        sb.append("amount=").append(amount).append("&");
+
+        if(bankId != null){
+            sb.append("bankId=").append(bankId).append("&");
+        }
+
+        if(extReserved != null){
+            sb.append("extReserved=").append(extReserved).append("&");
+        }
+
+        sb.append("notifyTime=").append(notifyTime).append("&")
                 .append("orderId=").append(orderId).append("&")
                 .append("orderTime=").append(orderTime).append("&")
-                .append("payType=").append(payType).append("&")
-                .append("productName=").append(productName).append("&")
-                .append("requestId=").append(requestId).append("&")
-                .append("result=").append(result).append("&")
-                .append("spending=").append(spending).append("&")
-                .append("tradeTime=").append(tradeTime).append("&")
+                .append("payType=").append(payType).append("&");
+
+        if(productName != null){
+            sb.append("productName=").append(productName).append("&");
+        }
+
+        sb.append("requestId=").append(requestId).append("&")
+                .append("result=").append(result).append("&");
+
+        if(spending != null){
+            sb.append("spending=").append(spending).append("&");
+        }
+
+        sb.append("tradeTime=").append(tradeTime).append("&")
                 .append("userName=").append(userName);
 
 

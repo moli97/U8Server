@@ -28,7 +28,7 @@ public class AppChinaSDK implements ISDKScript{
             params.put("app_id", channel.getCpAppID());
             params.put("app_key", channel.getCpAppKey());
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

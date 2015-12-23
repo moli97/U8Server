@@ -41,7 +41,7 @@ public class LeHaiHaiSDK implements ISDKScript{
             String sign = EncryptUtils.md5(sb.toString());
             params.put("sign", sign);
 
-            httpClient.post(channel.getMaster().getAuthUrl(), params, new UHttpFutureCallback() {
+            httpClient.post(channel.getChannelAuthUrl(), params, new UHttpFutureCallback() {
                 @Override
                 public void completed(String result) {
 

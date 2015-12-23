@@ -37,7 +37,7 @@ public class LewanSDK implements ISDKScript{
             Map<String,String> params = new HashMap<String, String>();
             params.put("notifyData", notifyData.toString());
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

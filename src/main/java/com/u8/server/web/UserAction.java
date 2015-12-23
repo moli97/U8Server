@@ -1,5 +1,6 @@
 package com.u8.server.web;
 
+import com.u8.server.cache.SDKCacheManager;
 import com.u8.server.common.UActionSupport;
 import com.u8.server.constants.StateCode;
 import com.u8.server.data.UChannelMaster;
@@ -85,16 +86,22 @@ public class UserAction extends UActionSupport{
                     .append("channelID=").append(this.channelID)
                     .append("extension=").append(this.extension).append(game.getAppkey());
 
-            Log.d("The sign is "+sign);
 
             if(!userManager.isSignOK(sb.toString(), sign)){
+                Log.e("the sign is invalid. sign:"+sign);
                 renderState(StateCode.CODE_SIGN_ERROR, null);
                 return;
             }
 
-            ISDKScript verifier = (ISDKScript)Class.forName(master.getVerifyClass()).newInstance();
+            ISDKScript verifier = SDKCacheManager.getInstance().getSDKScript(channel);
 
-            Log.d("The url is "+channel.getMaster().getAuthUrl());
+            if(verifier == null){
+                Log.e("the ISDKScript is not found . channelID:"+channelID);
+                renderState(StateCode.CODE_VERIFY_FAILED, null);
+                return;
+            }
+
+            Log.d("The auth url is "+channel.getChannelAuthUrl());
             Log.d("channel is "+channel.getChannelID()+";extension is "+extension);
 
             verifier.verify(channel, extension, new ISDKVerifyListener() {
@@ -102,7 +109,7 @@ public class UserAction extends UActionSupport{
                 public void onSuccess(SDKVerifyResult sdkResult) {
 
                     try{
-                        Log.e("The user verify success. result:"+sdkResult.getUserID());
+                        Log.d("user verify success. result:"+sdkResult.getUserID());
                         if(sdkResult.isSuccess() && !StringUtils.isEmpty(sdkResult.getUserID())){
 
                             UUser user = userManager.getUserByCpID(appID, channelID, sdkResult.getUserID());
@@ -125,7 +132,7 @@ public class UserAction extends UActionSupport{
                             data.put("token", user.getToken());
                             data.put("extension", sdkResult.getExtension());
                             data.put("timestamp", user.getLastLoginTime());
-                            renderState(StateCode.CODE_AUTH_SUCCESS, data);
+                            renderState(StateCode.CODE_SUCCESS, data);
 
                         }else{
                             renderState(StateCode.CODE_AUTH_FAILED, null);
@@ -219,7 +226,7 @@ public class UserAction extends UActionSupport{
             data.put("userID", user.getId());
             data.put("username", user.getName());
 
-            renderState(StateCode.CODE_AUTH_SUCCESS, data);
+            renderState(StateCode.CODE_SUCCESS, data);
             return;
 
         }catch (Exception e){

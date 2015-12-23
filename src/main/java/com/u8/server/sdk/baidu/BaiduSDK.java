@@ -25,7 +25,7 @@ public class BaiduSDK implements ISDKScript {
 
             String token = extension;
             ByteArrayEntity params = encodeParams(channel, token);
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().post(url, null, params, new UHttpFutureCallback() {
                 @Override

@@ -50,7 +50,7 @@ public class SendAgent {
 
 
         JSONObject response = new JSONObject();
-        response.put("state", StateCode.CODE_AUTH_SUCCESS);
+        response.put("state", StateCode.CODE_SUCCESS);
         response.put("data", data);
         response.put("sign", RSAUtils.sign(data.toString(),game.getAppRSAPriKey(), "UTF-8"));
         Map<String, String> headers = new HashMap<String, String>();
@@ -96,7 +96,7 @@ public class SendAgent {
         data.put("allMoney", order.getAllMoney());
 
         JSONObject response = new JSONObject();
-        response.put("state", StateCode.CODE_AUTH_SUCCESS);
+        response.put("state", StateCode.CODE_SUCCESS);
         response.put("data", data);
         response.put("sign", RSAUtils.sign(data.toString(),game.getAppRSAPriKey(), "UTF-8"));
 

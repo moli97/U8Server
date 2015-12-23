@@ -29,7 +29,7 @@ public class KuGouSDK implements ISDKScript{
             Map<String,String> params = new HashMap<String, String>();
             params.put("token", token);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

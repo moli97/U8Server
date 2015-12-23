@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 魅族SDK
  * Created by ant on 2015/4/30.
  */
 public class MeizuSDK implements ISDKScript{
@@ -44,7 +45,7 @@ public class MeizuSDK implements ISDKScript{
             params.put("sign_type",sign_type);
             params.put("sign", sign);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().post(url, params, new UHttpFutureCallback() {
                 @Override

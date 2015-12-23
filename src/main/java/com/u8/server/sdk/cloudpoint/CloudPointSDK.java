@@ -35,7 +35,7 @@ public class CloudPointSDK implements ISDKScript{
 
             params.put("sign", sign.toUpperCase());
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

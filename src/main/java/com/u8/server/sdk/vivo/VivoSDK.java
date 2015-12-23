@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * VIVO SDK
  * Created by ant on 2015/4/23.
  */
 public class VivoSDK implements ISDKScript{
@@ -34,7 +35,7 @@ public class VivoSDK implements ISDKScript{
             Map<String, String> params = new HashMap<String, String>();
             params.put("access_token", token);
 
-            UHttpAgent.getInstance().post(channel.getMaster().getAuthUrl(), params, new UHttpFutureCallback() {
+            UHttpAgent.getInstance().post(channel.getChannelAuthUrl(), params, new UHttpFutureCallback() {
                 @Override
                 public void completed(String content) {
 
@@ -81,7 +82,7 @@ public class VivoSDK implements ISDKScript{
                     return;
                 }
 
-                String orderUrl = channel.getMaster().getOrderUrl();
+                String orderUrl = channel.getChannelOrderUrl();
 
                 Log.d("the order url is "+orderUrl);
                 Log.d("CPID:"+order.getChannel().getCpID());

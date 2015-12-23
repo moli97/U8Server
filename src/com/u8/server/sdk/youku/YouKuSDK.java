@@ -34,7 +34,7 @@ public class YouKuSDK implements ISDKScript{
             Log.d("the youku verify->sign is %s", sign);
             params.put("sign", sign);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().post(url, params, new UHttpFutureCallback() {
                 @Override

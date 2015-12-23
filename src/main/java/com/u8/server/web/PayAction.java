@@ -1,5 +1,6 @@
 package com.u8.server.web;
 
+import com.u8.server.cache.SDKCacheManager;
 import com.u8.server.common.UActionSupport;
 import com.u8.server.constants.StateCode;
 import com.u8.server.data.UOrder;
@@ -96,35 +97,39 @@ public class PayAction extends UActionSupport{
             final UOrder order = orderManager.generateOrder(user, money, productName, productDesc, roleID,roleName,serverID,serverName, extension);
 
             if(order != null){
-                String scriptName = user.getChannel().getMaster().getVerifyClass();
-                if(!StringUtils.isEmpty(scriptName)){
-                    ISDKScript script = (ISDKScript)Class.forName(scriptName).newInstance();
-                    script.onGetOrderID(user, order, new ISDKOrderListener() {
-                        @Override
-                        public void onSuccess(String jsonStr) {
+                ISDKScript script = SDKCacheManager.getInstance().getSDKScript(order.getChannel());
 
-                            JSONObject data = new JSONObject();
-                            data.put("orderID", order.getOrderID());
-                            data.put("extension", jsonStr);
-
-                            Log.e("The onGetOrderID extension is "+jsonStr);
-
-                            renderState(StateCode.CODE_AUTH_SUCCESS, data);
-
-                        }
-
-                        @Override
-                        public void onFailed(String err) {
-
-                            Log.e(err);
-
-                            JSONObject data = new JSONObject();
-                            data.put("orderID", order.getOrderID());
-                            data.put("extension", "");
-                            renderState(StateCode.CODE_AUTH_SUCCESS, data);
-                        }
-                    });
+                if(script == null){
+                    Log.e("the ISDKScript is not found. channelID:"+order.getChannelID());
+                    renderState(StateCode.CODE_ORDER_ERROR, null);
+                    return;
                 }
+
+                script.onGetOrderID(user, order, new ISDKOrderListener() {
+                    @Override
+                    public void onSuccess(String jsonStr) {
+
+                        JSONObject data = new JSONObject();
+                        data.put("orderID", order.getOrderID());
+                        data.put("extension", jsonStr);
+
+                        Log.e("The onGetOrderID extension is "+jsonStr);
+
+                        renderState(StateCode.CODE_SUCCESS, data);
+
+                    }
+
+                    @Override
+                    public void onFailed(String err) {
+
+                        Log.e(err);
+
+                        JSONObject data = new JSONObject();
+                        data.put("orderID", order.getOrderID());
+                        data.put("extension", "");
+                        renderState(StateCode.CODE_SUCCESS, data);
+                    }
+                });
 
             }
 

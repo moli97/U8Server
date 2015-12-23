@@ -38,7 +38,7 @@ public class GuoPanSDK implements ISDKScript{
             params.put("sign", sign);
 
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

@@ -52,7 +52,7 @@ public class CoolPadSDK implements ISDKScript{
             params.put("code", code);
             params.put("redirect_uri", channel.getCpAppKey());
 
-            UHttpAgent.getInstance().get(channel.getMaster().getAuthUrl(), params, new UHttpFutureCallback() {
+            UHttpAgent.getInstance().get(channel.getChannelAuthUrl(), params, new UHttpFutureCallback() {
 
                 @Override
                 public void completed(String content) {
@@ -131,7 +131,7 @@ public class CoolPadSDK implements ISDKScript{
         params.put("sign", sign);
         params.put("signtype", signType);
 
-        UHttpAgent.getInstance().post(order.getChannel().getMaster().getOrderUrl(), params, new UHttpFutureCallback() {
+        UHttpAgent.getInstance().post(order.getChannel().getChannelOrderUrl(), params, new UHttpFutureCallback() {
             @Override
             public void completed(String content) {
 

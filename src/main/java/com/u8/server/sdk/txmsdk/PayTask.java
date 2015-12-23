@@ -165,7 +165,7 @@ public class PayTask implements Runnable, Delayed{
 
             UChannel channel = this.payRequest.getUser().getChannel();
             UChannelMaster master = channel.getMaster();
-            String url = master.getOrderUrl();
+            String url = channel.getChannelOrderUrl();
             String scriptName = "/mpay/get_balance_m";
 
             Map<String,String> params = new HashMap<String, String>();
@@ -204,8 +204,7 @@ public class PayTask implements Runnable, Delayed{
         try{
 
             UChannel channel = this.payRequest.getUser().getChannel();
-            UChannelMaster master = channel.getMaster();
-            String url = master.getOrderUrl();
+            String url = channel.getChannelOrderUrl();
             String scriptName = "/mpay/pay_m";
 
             Map<String,String> params = new HashMap<String, String>();

@@ -30,7 +30,7 @@ public class DownjoySDK implements ISDKScript {
 
             Map<String, String> data = assemblyParameters(channel, mid, token);
 
-            UHttpAgent.getInstance().get(channel.getMaster().getAuthUrl(), data, new UHttpFutureCallback() {
+            UHttpAgent.getInstance().get(channel.getChannelAuthUrl(), data, new UHttpFutureCallback() {
                 @Override
                 public void completed(String result) {
                     try {

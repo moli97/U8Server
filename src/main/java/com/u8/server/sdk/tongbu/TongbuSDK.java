@@ -32,7 +32,7 @@ public class TongbuSDK implements ISDKScript{
             StringBuilder sb = new StringBuilder();
             sb.append("appid=").append(channel.getCpAppID()).append("&session=").append(sessionid);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
                 @Override

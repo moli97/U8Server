@@ -35,7 +35,7 @@ public class YouLongSDK implements ISDKScript{
             params.put("token", token);
             params.put("pid", channel.getCpAppID());
 
-            httpClient.post(channel.getMaster().getAuthUrl(), params, new UHttpFutureCallback() {
+            httpClient.post(channel.getChannelAuthUrl(), params, new UHttpFutureCallback() {
                 @Override
                 public void completed(String result) {
 

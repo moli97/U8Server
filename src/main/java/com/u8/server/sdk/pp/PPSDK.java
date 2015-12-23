@@ -40,7 +40,7 @@ public class PPSDK implements ISDKScript{
 
             params.put("sid", sid);
 
-            String url = channel.getMaster().getAuthUrl();
+            String url = channel.getChannelAuthUrl();
 
             Map<String, String> headers = new HashMap<String, String>();
             headers.put("Content-Type", "application/json");
