@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * VIVO SDK
  * Created by ant on 2015/4/23.
  */
 public class VivoSDK implements ISDKScript{

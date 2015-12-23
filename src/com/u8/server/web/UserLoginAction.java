@@ -63,7 +63,7 @@ public class UserLoginAction extends UActionSupport{
                     Log.d("The loginServer check token result is " + content);
                     AuthResult result = (AuthResult) JsonUtils.decodeJson(content, AuthResult.class);
 
-                    if (result.getState() == StateCode.CODE_AUTH_SUCCESS) {
+                    if (result.getState() == StateCode.CODE_SUCCESS) {
                         Log.d("login game server success. return account info ...");
                         JSONObject jsonObject = new JSONObject();
                         jsonObject.put("accountID", 1);

@@ -5,7 +5,7 @@ package com.u8.server.constants;
  */
 public class StateCode {
 
-    public static final int CODE_AUTH_SUCCESS = 1;
+    public static final int CODE_SUCCESS = 1;
     public static final int CODE_GAME_NONE = 2;
     public static final int CODE_CHANNEL_NONE = 3;
     public static final int CODE_MASTER_NONE = 4;
