@@ -8,6 +8,8 @@ import com.u8.server.utils.Base64;
 import com.u8.server.utils.TimeFormater;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.StringEntity;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.codehaus.jackson.map.JsonDeserializer;
@@ -33,13 +35,17 @@ public class AppstoreIAPValidate extends UActionSupport {
     public void validate() {
         JSONObject params = new JSONObject();
 
-        params.put("receipt-data", transactionReceipt);
+        params.put("receipt-data", Base64.encode(transactionReceipt, "UTF-8"));
 
-        String url = "https://buy.itunes.apple.com/verifyReceipt";
+        //String url = "https://buy.itunes.apple.com/verifyReceipt";
+        String url = "https://sandbox.itunes.apple.com/verifyReceipt";
 
-        Log.d("apple iap validate "  + transactionReceipt);
+        Log.d("apple iap validate " + transactionReceipt);
 
-        UHttpAgent.getInstance().post(url, params, new UHttpFutureCallback() {
+        StringEntity entity = new StringEntity(params.toString(), "UTF-8");
+        entity.setContentType("application/json");
+
+        UHttpAgent.getInstance().post(url, null, entity, new UHttpFutureCallback() {
             public void completed(String content) {
                 Log.d("apple iap validate suc:" + content);
                 JSONObject json = JSONObject.fromObject(content);
