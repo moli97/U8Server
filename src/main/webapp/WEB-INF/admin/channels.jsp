@@ -161,7 +161,7 @@
 
     $('#fm').form('clear');
 
-    url = '/admin/channels/addChannel';
+    url = '<%=basePath%>/admin/channels/addChannel';
 
   }
 
@@ -180,7 +180,7 @@
       $('#fm').form('load', row);
       $('#games').combobox('select', row.appID);
       $('#masters').combobox('select', row.masterID);
-      url = '/admin/channels/saveChannel';
+      url = '<%=basePath%>/admin/channels/saveChannel';
 
     }else{
       $.messager.show({
@@ -198,7 +198,7 @@
               '确定要删除该渠道吗？(操作不可恢复)',
               function(r){
                 if(r){
-                  $.post('/admin/channels/removeChannel', {currChannelID:row.channelID}, function(result){
+                  $.post('<%=basePath%>/admin/channels/removeChannel', {currChannelID:row.channelID}, function(result){
                     if (result.state == 1) {
                       $('#dialog_add').dialog('close');
                       $("#channels").datagrid('reload');
@@ -248,7 +248,7 @@
 
   function recommendChannelID(){
 
-    $.post('/admin/channels/recommendChannelID', {}, function(result){
+    $.post('<%=basePath%>/admin/channels/recommendChannelID', {}, function(result){
       if (result.state == 1) {
         $("#channel").textbox('setValue', result.data);
       }else{
@@ -264,7 +264,7 @@
 
   $("#channels").datagrid({
     height:430,
-    url:'/admin/channels/getAllChannels',
+    url:'<%=basePath%>/admin/channels/getAllChannels',
     method:'POST',
     idField:'channelID',
     striped:true,
@@ -294,7 +294,7 @@
   });
 
   $("#games").combobox({
-    url:'/admin/games/getAllGamesSimple',
+    url:'<%=basePath%>/admin/games/getAllGamesSimple',
     valueField:'appID',
     textField:'name',
     onSelect:function(rec){
@@ -304,7 +304,7 @@
 
 
   $("#masters").combobox({
-    url:'/admin/channelMaster/getAllMastersSimple',
+    url:'<%=basePath%>/admin/channelMaster/getAllMastersSimple',
     valueField:'masterID',
     textField:'masterName',
     onSelect:function(rec){

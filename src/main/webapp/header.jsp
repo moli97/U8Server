@@ -15,7 +15,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="/css/u8server.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/u8server.css">
 
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/js/plugins/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="<%=basePath%>/js/plugins/easyui/themes/icon.css">
@@ -47,10 +47,10 @@
 
       function exit(){
 
-          $.post('/admin/exit', {}, function(result){
+          $.post('<%=basePath%>/admin/exit', {}, function(result){
               if (result.state == 1) {
 
-                  location.href="/admin/login"
+                  location.href="<%=basePath%>/admin/login"
 
               }
 

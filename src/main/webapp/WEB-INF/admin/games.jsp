@@ -159,7 +159,7 @@
 
       $('#fm').form('clear');
 
-      url = '/admin/games/saveGame';
+      url = '<%=basePath%>/admin/games/saveGame';
 
     }
 
@@ -176,7 +176,7 @@
 
         $("#dialog_add").dialog('open').dialog('setTitle', '编辑游戏');
         $('#fm').form('load', row);
-        url = '/admin/games/saveGame';
+        url = '<%=basePath%>/admin/games/saveGame';
 
       }else{
         $.messager.show({
@@ -216,7 +216,7 @@
           '确定要删除该渠道商吗？(操作不可恢复)',
           function(r){
             if(r){
-              $.post('/admin/games/removeGame', {currAppID:row.appID}, function(result){
+              $.post('<%=basePath%>/admin/games/removeGame', {currAppID:row.appID}, function(result){
                 if (result.state == 1) {
                   $('#dialog_add').dialog('close');
                   $("#games").datagrid('reload');
@@ -271,7 +271,7 @@
 
     $("#games").datagrid({
       height:430,
-      url:'/admin/games/getAllGames',
+      url:'<%=basePath%>/admin/games/getAllGames',
       method:'POST',
       idField:'appID',
       striped:true,

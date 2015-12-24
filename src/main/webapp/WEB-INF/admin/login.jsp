@@ -59,10 +59,10 @@
     var pwd = $("#pwd").val();
     pwd = $.md5(pwd);
 
-    $.post('/admin/doLogin', {username:username, password:pwd}, function(result){
+    $.post('<%=basePath%>/admin/doLogin', {username:username, password:pwd}, function(result){
       if (result.state == 1) {
 
-        location.href="/admin/index"
+        location.href="<%=basePath%>/admin/index"
 
       }else{
         $.messager.show({

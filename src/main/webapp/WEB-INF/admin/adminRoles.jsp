@@ -94,7 +94,7 @@
 
     $('#fm').form('clear');
 
-    url = '/admin/saveAdmin';
+    url = '<%=basePath%>/admin/saveAdmin';
 
   }
 
@@ -111,7 +111,7 @@
 
       $("#dialog_add").dialog('open').dialog('setTitle', '编辑管理员角色');
       $('#fm').form('load', row);
-      url = '/admin/saveAdmin';
+      url = '<%=basePath%>/admin/saveAdmin';
 
     }else{
       $.messager.show({
@@ -129,7 +129,7 @@
               '确定要删除该管理员角色吗？(操作不可恢复)',
               function(r){
                 if(r){
-                  $.post('/admin/removeAdmin', {id:row.id}, function(result){
+                  $.post('<%=basePath%>/admin/removeAdmin', {id:row.id}, function(result){
                     if (result.state == 1) {
                       $('#dialog_add').dialog('close');
                       $("#admins").datagrid('reload');
@@ -179,7 +179,7 @@
 
   $("#admins").datagrid({
     height:430,
-    url:'/admin/getAllAdmins',
+    url:'<%=basePath%>/admin/getAllAdmins',
     method:'POST',
     idField:'id',
     striped:true,

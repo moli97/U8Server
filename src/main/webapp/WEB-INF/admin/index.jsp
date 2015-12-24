@@ -53,7 +53,7 @@
 </head>
 <body class="easyui-layout">
   <!-- 正上方panel -->
-  <div region="north" style="height:102px" href="/header.jsp">
+  <div region="north" style="height:102px" href="<%=basePath%>/header.jsp">
   </div>
   <!-- 正左边panel -->
   <div region="west" title="菜单栏" split="true" style="width:280px;padding1:1px;overflow:hidden;">
@@ -62,35 +62,35 @@
 
       <div title="权限管理" selected="true">
         <ul>
-          <li><a href="javascript:addTab('tabId_roles','角色管理','/admin/adminRoleManage');">角色管理</a></li>
-          <li><a href="javascript:addTab('tabId_permissions','权限管理','/admin/adminPermissionManage');">权限管理</a></li>
+          <li><a href="javascript:addTab('tabId_roles','角色管理','<%=basePath%>/admin/adminRoleManage');">角色管理</a></li>
+          <li><a href="javascript:addTab('tabId_permissions','权限管理','<%=basePath%>/admin/adminPermissionManage');">权限管理</a></li>
         </ul>
       </div>
 
       <div title="渠道管理">
         <ul>
-          <li><a href="javascript:addTab('tabId_channels','渠道管理','/admin/channels/channelManage');">渠道管理</a></li>
-          <li><a href="javascript:addTab('tabId_channelMasters','渠道商管理','/admin/channelMaster/showChannelMasters');">渠道商管理</a></li>
+          <li><a href="javascript:addTab('tabId_channels','渠道管理','<%=basePath%>/admin/channels/channelManage');">渠道管理</a></li>
+          <li><a href="javascript:addTab('tabId_channelMasters','渠道商管理','<%=basePath%>/admin/channelMaster/showChannelMasters');">渠道商管理</a></li>
         </ul>
       </div>
 
       <div title="游戏管理">
         <ul>
-          <li><a href="javascript:addTab('tabId_games','游戏管理','/admin/games/showGames');">游戏管理</a></li>
+          <li><a href="javascript:addTab('tabId_games','游戏管理','<%=basePath%>/admin/games/showGames');">游戏管理</a></li>
         </ul>
       </div>
 
       <div title="用户管理">
         <ul>
-          <li><a href="javascript:addTab('tabId_users','用户查询','/admin/users/showUsers');">用户查询</a></li>
-          <li><a href="javascript:addTab('tabId_usersAnalytics','用户统计','/admin/users/showUserAnalytics');">用户统计</a></li>
+          <li><a href="javascript:addTab('tabId_users','用户查询','<%=basePath%>/admin/users/showUsers');">用户查询</a></li>
+          <li><a href="javascript:addTab('tabId_usersAnalytics','用户统计','<%=basePath%>/admin/users/showUserAnalytics');">用户统计</a></li>
         </ul>
       </div>
 
       <div title="订单管理">
         <ul>
-          <li><a href="javascript:addTab('tabId_orders','订单查询','/admin/orders/showOrders');">订单查询</a></li>
-          <li><a href="javascript:addTab('tabId_orderAnalytics','订单统计','/admin/orders/showOrderAnalytics');">订单统计</a></li>
+          <li><a href="javascript:addTab('tabId_orders','订单查询','<%=basePath%>/admin/orders/showOrders');">订单查询</a></li>
+          <li><a href="javascript:addTab('tabId_orderAnalytics','订单统计','<%=basePath%>/admin/orders/showOrderAnalytics');">订单统计</a></li>
         </ul>
       </div>
 

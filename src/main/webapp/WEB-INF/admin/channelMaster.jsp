@@ -119,7 +119,7 @@
 
         $('#fm').form('clear');
 
-        url = '/admin/channelMaster/saveMaster';
+        url = '<%=basePath%>/admin/channelMaster/saveMaster';
 
       }
 
@@ -136,7 +136,7 @@
 
           $("#dialog_add").dialog('open').dialog('setTitle', '编辑渠道商');
           $('#fm').form('load', row);
-          url = '/admin/channelMaster/saveMaster';
+          url = '<%=basePath%>/admin/channelMaster/saveMaster';
 
         }else{
           $.messager.show({
@@ -154,7 +154,7 @@
             '确定要删除该渠道商吗？(操作不可恢复)',
             function(r){
               if(r){
-                $.post('/admin/channelMaster/removeMaster', {currMasterID:row.masterID}, function(result){
+                $.post('<%=basePath%>/admin/channelMaster/removeMaster', {currMasterID:row.masterID}, function(result){
                   if (result.state == 1) {
                     $('#dialog_add').dialog('close');
                     $("#masters").datagrid('reload');
@@ -209,7 +209,7 @@
 
       $("#masters").datagrid({
         height:430,
-        url:'/admin/channelMaster/getAllChannelMasters',
+        url:'<%=basePath%>/admin/channelMaster/getAllChannelMasters',
         method:'POST',
         idField:'masterID',
         striped:true,

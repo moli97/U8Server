@@ -6,3 +6,5 @@ PackServer.iml
 *.iml
 target/
 output/
+.gradle
+!gradle-wrapper.jar

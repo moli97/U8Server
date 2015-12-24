@@ -69,7 +69,7 @@
               '确定要删除该用户吗？(操作不可恢复)',
               function(r){
                 if(r){
-                  $.post('/admin/users/removeUser', {currUserID:row.id}, function(result){
+                  $.post('<%=basePath%>/admin/users/removeUser', {currUserID:row.id}, function(result){
                     if (result.state == 1) {
                       $("#users").datagrid('reload');
                     }
@@ -99,7 +99,7 @@
 
   $("#users").datagrid({
     height:430,
-    url:'/admin/users/getAllUsers',
+    url:'<%=basePath%>/admin/users/getAllUsers',
     method:'POST',
     idField:'id',
     striped:true,
