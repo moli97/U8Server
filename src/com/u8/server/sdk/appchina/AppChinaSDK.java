@@ -25,8 +25,8 @@ public class AppChinaSDK implements ISDKScript{
 
             Map<String,String> params = new HashMap<String, String>();
             params.put("ticket", ticket);
-            params.put("app_id", channel.getCpAppID());
-            params.put("app_key", channel.getCpAppKey());
+            params.put("login_id", channel.getCpAppID());
+            params.put("login_key", channel.getCpAppKey());
 
             String url = channel.getChannelAuthUrl();
 
@@ -52,7 +52,7 @@ public class AppChinaSDK implements ISDKScript{
                         e.printStackTrace();
                     }
 
-                    callback.onFailed(channel.getMaster().getSdkName() + " verify failed. the post result is " + result);
+                    callback.onFailed(channel.getMaster().getSdkName() + " verify failed. the result is " + result);
                 }
 
                 @Override
