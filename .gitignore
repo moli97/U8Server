@@ -3,3 +3,9 @@
 **/out/
 **/.idea
 PackServer.iml
+*.iml
+target/
+output/
+.gradle
+!gradle-wrapper.jar
+build
