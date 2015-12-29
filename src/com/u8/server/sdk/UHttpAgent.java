@@ -182,6 +182,7 @@ public class UHttpAgent {
             }
         }
 
+        Log.d("the full url is "+ fullUrl);
         HttpGet getReq = new HttpGet(fullUrl.trim());
         getReq.setHeaders(parseHeaders(headers));
         ResponseHandler<String> responseHandler = new ResponseHandler<String>() {

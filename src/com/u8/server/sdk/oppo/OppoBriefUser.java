@@ -5,33 +5,53 @@ package com.u8.server.sdk.oppo;
  */
 public class OppoBriefUser {
 
-    private String id;
-    private boolean sex;
-    private String name;
+    private int resultCode;
+    private String resultMsg;
+    private String loginToken;
+    private String ssoid;
+    private String appKey;
     private String userName;
+    private String email;
+    private String userStatus;
 
-    public String getId() {
-        return id;
+    public int getResultCode() {
+        return resultCode;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setResultCode(int resultCode) {
+        this.resultCode = resultCode;
     }
 
-    public boolean isSex() {
-        return sex;
+    public String getResultMsg() {
+        return resultMsg;
     }
 
-    public void setSex(boolean sex) {
-        this.sex = sex;
+    public void setResultMsg(String resultMsg) {
+        this.resultMsg = resultMsg;
     }
 
-    public String getName() {
-        return name;
+    public String getLoginToken() {
+        return loginToken;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLoginToken(String loginToken) {
+        this.loginToken = loginToken;
+    }
+
+    public String getSsoid() {
+        return ssoid;
+    }
+
+    public void setSsoid(String ssoid) {
+        this.ssoid = ssoid;
+    }
+
+    public String getAppKey() {
+        return appKey;
+    }
+
+    public void setAppKey(String appKey) {
+        this.appKey = appKey;
     }
 
     public String getUserName() {
@@ -40,5 +60,21 @@ public class OppoBriefUser {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(String userStatus) {
+        this.userStatus = userStatus;
     }
 }
