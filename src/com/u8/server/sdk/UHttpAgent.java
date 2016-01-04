@@ -337,7 +337,8 @@ public class UHttpAgent {
 
 
                 if(e instanceof org.apache.http.NoHttpResponseException
-                        || e instanceof org.apache.http.client.ClientProtocolException){
+                        || e instanceof org.apache.http.client.ClientProtocolException
+                        || e instanceof java.net.SocketException){
 
                     return true;
                 }
