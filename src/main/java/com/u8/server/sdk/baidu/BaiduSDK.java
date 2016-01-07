@@ -12,6 +12,8 @@ import org.apache.http.entity.ByteArrayEntity;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by ant on 2015/2/28.
@@ -27,7 +29,12 @@ public class BaiduSDK implements ISDKScript {
             ByteArrayEntity params = encodeParams(channel, token);
             String url = channel.getChannelAuthUrl();
 
-            UHttpAgent.getInstance().post(url, null, params, new UHttpFutureCallback() {
+            Map<String, String> headers = new HashMap<String,String>();
+            headers.put("accept", "*/*");
+            headers.put("connection", "Keep-Alive");
+            headers.put("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
+
+            UHttpAgent.getInstance().post(url, headers, params, new UHttpFutureCallback() {
                 @Override
                 public void completed(String result) {
 

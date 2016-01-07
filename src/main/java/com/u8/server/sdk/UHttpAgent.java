@@ -56,6 +56,7 @@ public class UHttpAgent {
 
     private int connectTimeout = 5000;  //5s
     private int socketTimeout = 5000;   //5s
+    private int maxTotalConnections = 200;  //最大连接数，可调整
 
     private static UHttpAgent instance;
 
@@ -326,6 +327,7 @@ public class UHttpAgent {
                 .setConnectTimeout(connectTimeout)
                 .setSocketTimeout(socketTimeout)
                 .setExpectContinueEnabled(true)
+                .setAuthenticationEnabled(true)
                 .build();
 
         HttpRequestRetryHandler retryHandler = new HttpRequestRetryHandler() {
@@ -368,6 +370,9 @@ public class UHttpAgent {
                     .build();
 
             PoolingHttpClientConnectionManager connMgr = new PoolingHttpClientConnectionManager( socketFactoryRegistry);
+            connMgr.setMaxTotal(maxTotalConnections);
+            connMgr.setDefaultMaxPerRoute((connMgr.getMaxTotal()));
+
             HttpClientBuilder builder = HttpClients.custom()
                     .setDefaultRequestConfig(requestConfig)
                     .setSslcontext(sslContext)
