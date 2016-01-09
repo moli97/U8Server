@@ -82,6 +82,18 @@ public class UHttpAgent {
         get(url, null, params, "UTF-8", callback);
     }
 
+    public void post(String url, Map<String, String> headers, Map<String, String> params, UHttpFutureCallback callback){
+        List<NameValuePair> pairs = new ArrayList<NameValuePair>();
+        if(params != null){
+
+            for(String key : params.keySet()){
+                pairs.add(new BasicNameValuePair(key, params.get(key)));
+            }
+        }
+
+        post(url, headers, new UrlEncodedFormEntity(pairs, Charset.forName("UTF-8")), callback);
+    }
+
     public void post(String url, Map<String, String> params, UHttpFutureCallback callback){
 
         List<NameValuePair> pairs = new ArrayList<NameValuePair>();
@@ -395,7 +407,7 @@ public class UHttpAgent {
 
     //销毁
     public void destroy(){
-        Log.d("destroy.....");
+
         if(this.httpClient != null){
             try{
                 this.httpClient.close();

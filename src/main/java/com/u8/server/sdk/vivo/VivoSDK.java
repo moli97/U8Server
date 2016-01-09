@@ -27,6 +27,8 @@ public class VivoSDK implements ISDKScript{
 
         try{
 
+            extension = extension.replace("\n", "%0A");//替换回车符，vivo子帐号登录成功返回的token多了回车，导致解析json出错。@小抛同学发现
+
             JSONObject json = JSONObject.fromObject(extension);
             final String openid = json.getString("openid");
             final String name = json.getString("name");
