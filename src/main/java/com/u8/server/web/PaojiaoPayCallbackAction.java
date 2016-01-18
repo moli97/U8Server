@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 /**
+ * 泡椒SDK支付回调处理类
  * Created by ant on 2015/9/15.
  */
 @Controller
@@ -67,7 +68,7 @@ public class PaojiaoPayCallbackAction extends UActionSupport{
 
             if(!isSignOK(channel)){
                 Log.d("The sign verify failed.sign:%s;appKey:%s;orderID:%s", sign, channel.getCpPayKey(), ext);
-                this.renderState(true);
+                this.renderState(false);
                 return;
             }
 
@@ -92,6 +93,7 @@ public class PaojiaoPayCallbackAction extends UActionSupport{
                 orderManager.saveOrder(order);
             }
 
+            renderState(true);
 
         }catch(Exception e){
             try {
