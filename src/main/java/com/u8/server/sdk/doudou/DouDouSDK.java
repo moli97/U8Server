@@ -8,6 +8,8 @@ import com.u8.server.sdk.*;
 import com.u8.server.utils.EncryptUtils;
 import net.sf.json.JSONObject;
 import org.apache.http.util.TextUtils;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.springframework.stereotype.Controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +18,7 @@ import java.util.Map;
  * 逗逗SDK
  * Created by ant on 2015/12/8.
  */
+
 public class DouDouSDK implements ISDKScript{
     @Override
     public void verify(final UChannel channel, String extension, final ISDKVerifyListener callback) {
