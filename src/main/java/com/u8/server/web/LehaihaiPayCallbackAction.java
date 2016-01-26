@@ -127,4 +127,11 @@ public class LehaihaiPayCallbackAction extends UActionSupport{
         renderText(res);
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
 }
