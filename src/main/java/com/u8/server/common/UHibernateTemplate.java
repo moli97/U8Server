@@ -98,12 +98,12 @@ public class UHibernateTemplate<T, PK extends Serializable>
     return getSession().createCriteria(this.entityClass);
   }
 
-  @SuppressWarnings("unchecked")
-  public List<T> find(String sql, Object[] params, OrderParameters orderParams)
+
+  public List find(String sql, Object[] params, OrderParameters orderParams)
   {
     Assert.hasText(sql);
     sql = sql + (orderParams==null?"":orderParams.toString());
-    return new ArrayList(createQuery(sql, params).list());
+    return createQuery(sql, params).list();
   }
 
   @SuppressWarnings("unchecked")

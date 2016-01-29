@@ -31,6 +31,8 @@ public class UserManAction extends UActionSupport implements ModelDriven<UUser>{
 
     private int currUserID;
 
+    private int appID;          //当前游戏ID
+
     @Autowired
     private UUserManager userManager;
 
@@ -46,6 +48,28 @@ public class UserManAction extends UActionSupport implements ModelDriven<UUser>{
     public String showUserAnalytics(){
 
         return "success";
+    }
+
+    @Action(value = "showUserChannels",
+            results = {@Result(name = "success", location = "/WEB-INF/admin/user_channels.jsp")})
+    public String showUserChannels(){
+
+        return "success";
+    }
+
+    @Action("getUserChannelAnalytics")
+    public void getUserChannelAnalytics(){
+        try{
+
+            Log.d("the appID is "+this.appID);
+            String result = userManager.queryUserChannels(1);
+            Log.d("the analytics result:"+result);
+            result = "['Firefox', 45.0], ['IE', 26.8], ['Safari', 8.5], ['Opera', 6.2], ['Others', 0.7]";
+            renderText(result);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Action("getAllUsers")
@@ -143,5 +167,13 @@ public class UserManAction extends UActionSupport implements ModelDriven<UUser>{
 
     public void setCurrUserID(int currUserID) {
         this.currUserID = currUserID;
+    }
+
+    public int getAppID() {
+        return appID;
+    }
+
+    public void setAppID(int appID) {
+        this.appID = appID;
     }
 }

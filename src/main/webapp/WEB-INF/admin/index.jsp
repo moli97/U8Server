@@ -83,6 +83,7 @@
       <div title="用户管理">
         <ul>
           <li><a href="javascript:addTab('tabId_users','用户查询','<%=basePath%>/admin/users/showUsers');">用户查询</a></li>
+          <li><a href="javascript:addTab('tabId_userChannels','渠道分布','<%=basePath%>/admin/users/showUserChannels');">渠道分布</a></li>
           <li><a href="javascript:addTab('tabId_usersAnalytics','用户统计','<%=basePath%>/admin/users/showUserAnalytics');">用户统计</a></li>
         </ul>
       </div>
