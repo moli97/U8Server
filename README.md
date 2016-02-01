@@ -2,6 +2,7 @@
 ###U8Server——U8SDK服务器端（统一渠道SDK接入用户中心和支付中心）
 
 文档：http://wiki.u8sdk.com
+视频教程：[U8Server视频教程地址](http://www.chuanke.com/?mod=school&act=show&do=course&sid=2869716)
 
 U8Server基于　Apache Licence 2.0 开源协议，有需要的开发者或者企业可以对U8Server进行二次开发和定制，也可以商用，但是请保证U8Server的著作权，以及不要使用U8SDK的名义去推广销售自己的产品。
 
