@@ -50,27 +50,6 @@ public class UserManAction extends UActionSupport implements ModelDriven<UUser>{
         return "success";
     }
 
-    @Action(value = "showUserChannels",
-            results = {@Result(name = "success", location = "/WEB-INF/admin/user_channels.jsp")})
-    public String showUserChannels(){
-
-        return "success";
-    }
-
-    @Action("getUserChannelAnalytics")
-    public void getUserChannelAnalytics(){
-        try{
-
-            Log.d("the appID is "+this.appID);
-            String result = userManager.queryUserChannels(1);
-            Log.d("the analytics result:"+result);
-            result = "['Firefox', 45.0], ['IE', 26.8], ['Safari', 8.5], ['Opera', 6.2], ['Others', 0.7]";
-            renderText(result);
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
 
     @Action("getAllUsers")
     public void getAllUsers(){

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+
 /**
  * 运行时获取Spring Bean
  * Created by ant on 2015/10/15.
