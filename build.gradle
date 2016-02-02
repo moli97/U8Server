@@ -70,13 +70,15 @@ dependencies {
 
     compile files('lib/jars/sdk/lenovo_pay_sign-1.0.0.5.jar')
     compile files('lib/jars/sdk/oppo_oauth_1.0.jar')
+    compile files('lib/jars/sdk/fastjson-1.1.8.jar')
+    compile files('lib/jars/sdk/lewanPay.jar')
 
 	// testCompile
-    testCompile 'junit:junit:4.+'
-    testCompile 'org.mockito:mockito-core:1.+'
-    testCompile 'org.easymock:easymock:3.+'
-    testCompile 'org.dbunit:dbunit:2.5.0'
-    testCompile 'org.hibernate:hibernate-tools:3.2.4.GA'
+    //testCompile 'junit:junit:4.+'
+    //testCompile 'org.mockito:mockito-core:1.+'
+    //testCompile 'org.easymock:easymock:3.+'
+    //testCompile 'org.dbunit:dbunit:2.5.0'
+    //testCompile 'org.hibernate:hibernate-tools:3.2.4.GA'
 }
 
 test {
