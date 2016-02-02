@@ -2,10 +2,7 @@ package com.u8.server.sdk;
 
 import com.sun.net.httpserver.Headers;
 import com.u8.server.log.Log;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpRequestRetryHandler;
@@ -16,6 +13,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.ConnectionKeepAliveStrategy;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
@@ -29,7 +27,9 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.message.BasicHeader;
+import org.apache.http.message.BasicHeaderElementIterator;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.apache.http.util.EntityUtils;
@@ -362,6 +362,32 @@ public class UHttpAgent {
             }
         };
 
+        ConnectionKeepAliveStrategy myStrategy = new ConnectionKeepAliveStrategy() {
+            @Override
+            public long getKeepAliveDuration(HttpResponse response, HttpContext context) {
+                try{
+
+                    HeaderElementIterator it = new BasicHeaderElementIterator
+                            (response.headerIterator(HTTP.CONN_KEEP_ALIVE));
+                    while (it.hasNext()) {
+                        HeaderElement he = it.nextElement();
+                        String param = he.getName();
+                        String value = he.getValue();
+                        if (value != null && param.equalsIgnoreCase
+                                ("timeout")) {
+                            return Long.parseLong(value) * 1000;
+                        }
+                    }
+                    return 3 * 1000;
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+
+                return 0;
+            }
+        };
+
 
         try{
 
@@ -386,6 +412,7 @@ public class UHttpAgent {
             connMgr.setDefaultMaxPerRoute((connMgr.getMaxTotal()));
 
             HttpClientBuilder builder = HttpClients.custom()
+                    .setKeepAliveStrategy(myStrategy)
                     .setDefaultRequestConfig(requestConfig)
                     .setSslcontext(sslContext)
                     .setConnectionManager(connMgr)
