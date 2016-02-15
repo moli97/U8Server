@@ -74,7 +74,7 @@ public class XiaoMiPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            if("TRADE_SUCCESS".equals(orderStatus)){
+            if(!"TRADE_SUCCESS".equals(orderStatus)){
                 this.renderState(1525, "返回的订单状态是失败状态");
                 return;
             }
