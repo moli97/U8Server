@@ -31,6 +31,8 @@ public class UserManAction extends UActionSupport implements ModelDriven<UUser>{
 
     private int currUserID;
 
+    private int appID;          //当前游戏ID
+
     @Autowired
     private UUserManager userManager;
 
@@ -47,6 +49,7 @@ public class UserManAction extends UActionSupport implements ModelDriven<UUser>{
 
         return "success";
     }
+
 
     @Action("getAllUsers")
     public void getAllUsers(){
@@ -143,5 +146,13 @@ public class UserManAction extends UActionSupport implements ModelDriven<UUser>{
 
     public void setCurrUserID(int currUserID) {
         this.currUserID = currUserID;
+    }
+
+    public int getAppID() {
+        return appID;
+    }
+
+    public void setAppID(int appID) {
+        this.appID = appID;
     }
 }

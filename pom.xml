@@ -216,6 +216,20 @@
         </dependency>
 
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.16</version>
+        </dependency>
+        <!--dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.8</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jars/sdk/fastjson-1.1.8.jar</systemPath>
+        </dependency-->
+
+        <!-- lib/jars/sdk -->
+        <dependency>
             <groupId>com.lenovo</groupId>
             <artifactId>lenovo_pay_sign</artifactId>
             <version>1.0.0.5</version>
@@ -229,6 +243,14 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/jars/sdk/oppo_oauth_1.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lewan</groupId>
+            <artifactId>lewanPay</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jars/sdk/lewanPay.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -261,8 +283,8 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>

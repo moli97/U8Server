@@ -62,6 +62,26 @@ public class UUserManager {
         return userDao.find(page, hql, null, order);
     }
 
+    //获取用户的渠道分布
+    public String queryUserChannels(int appID){
+
+        String sql = "select user.channelID,count(user.id) from UUser user where user.appID=? group by user.channelID ";
+        List lst = userDao.find(sql, new Object[]{appID}, null);
+
+        StringBuilder sb = new StringBuilder();
+        if(lst != null && lst.size() > 0){
+            for(Object item : lst){
+                Object[] items = (Object[])item;
+                sb.append("['").append(items[0]).append("', ").append(items[1]).append("],");
+            }
+        }
+
+        if(sb.length() > 0){
+            sb.deleteCharAt(sb.length()-1);
+        }
+
+        return sb.toString();
+    }
 
     public UUser getUser(int userID){
 
