@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * iOS PP助手
  * Created by ant on 2015/8/10.
  */
 public class PPSDK implements ISDKScript{
@@ -24,8 +25,7 @@ public class PPSDK implements ISDKScript{
         try{
 
             JSONObject json = JSONObject.fromObject(extension);
-            final String userName = json.getString("username");
-            String sid = json.getString("sid");
+            String sid = json.getString("token");
 
             JSONObject params = new JSONObject();
             params.put("id", System.currentTimeMillis() / 1000);
@@ -55,7 +55,9 @@ public class PPSDK implements ISDKScript{
                                 int state = json.getJSONObject("state").getInt("code");
 
                                 if (state == 1) {
-                                    SDKVerifyResult vResult = new SDKVerifyResult(true, "", userName, "");
+                                    String userID = json.getJSONObject("data").getString("accountId");
+                                    String nickName = json.getJSONObject("data").getString("nickName");
+                                    SDKVerifyResult vResult = new SDKVerifyResult(true, userID, "", nickName);
 
                                     callback.onSuccess(vResult);
 
