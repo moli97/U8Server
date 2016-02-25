@@ -6,6 +6,7 @@ import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.UHttpAgent;
 import com.u8.server.sdk.UHttpFutureCallback;
+import com.u8.server.sdk.appstore.AppstoreIAPManager;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.Base64;
 import com.u8.server.utils.TimeFormater;
@@ -37,86 +38,25 @@ public class AppstoreIAPValidate extends UActionSupport {
     private String productId;
     private String transactionReceipt;
 
-    final String urlSandbox = "https://sandbox.itunes.apple.com/verifyReceipt";
-    final String urlProduct = "https://buy.itunes.apple.com/verifyReceipt";
-
     private UOrder order;
-
     @Autowired
     private UOrderManager orderManager;
 
     @Action("validate")
     public void validate() {
         try {
-            JSONObject params = new JSONObject();
+            if (transactionReceipt.startsWith("{"))
+            {
+                transactionReceipt = Base64.encode(transactionReceipt, "UTF-8");
+            }
 
             order = orderManager.getOrder(Long.parseLong(orderID));
 
-            if (transactionReceipt.startsWith("{"))
-            {
-                params.put("receipt-data", Base64.encode(transactionReceipt, "UTF-8"));
-            }
-            else
-            {
-                params.put("receipt-data", transactionReceipt);
-            }
-
+            // TODO: 保存receipt记录
             Log.d("apple iap validate " + transactionReceipt);
 
-            StringEntity entity = new StringEntity(params.toString(), "UTF-8");
-            entity.setContentType("application/json");
-
-            final StringEntity httpParams = entity;
-
-            // TODO: 保存receipt记录
-
-            //首先尝试生产环境请求验证
-            //如果返回21007状态，转到sandbox环境验证
-            UHttpAgent.getInstance().post(urlProduct, null, httpParams, new UHttpFutureCallback() {
-                public void completed(String content) {
-                    Log.d("apple iap validate suc:" + content);
-                    JSONObject json = JSONObject.fromObject(content);
-
-                    if (json.getInt("status") == 21007)
-                    {
-                        UHttpAgent.getInstance().post(urlSandbox, null, httpParams, new UHttpFutureCallback() {
-                            public void completed(String content) {
-                                Log.d("apple iap validate suc:" + content);
-                                JSONObject json = JSONObject.fromObject(content);
-
-                                if (json.getInt("status") == 0)
-                                {
-                                    //沙盒环境验证成功
-                                    OnValidatedSuccess();
-                                }
-                                else
-                                {
-                                    OnValidateFail();
-                                }
-                            }
-
-                            public void failed(String err) {
-                                Log.d("apple iap validate error: " + err);
-                                //TODO: 更新receipt记录状态
-                            }
-                        });
-                    }
-                    else if (json.getInt("status") == 0)
-                    {
-                        //验证成功
-                        OnValidatedSuccess();
-                    }
-                    else
-                    {
-                        OnValidateFail();
-                    }
-                }
-
-                public void failed(String err) {
-                    Log.d("apple iap validate error: " + err);
-                    //TODO: 更新receipt记录状态
-                }
-            });
+            AppstoreIAPManager mgr = AppstoreIAPManager.getInstance();
+            mgr.addPayRequest(order, transactionReceipt);
 
             this.renderState(true, "Success");
         }
@@ -128,49 +68,6 @@ public class AppstoreIAPValidate extends UActionSupport {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-        }
-    }
-
-    private void OnValidatedSuccess()
-    {
-        //TODO: 更新receipt记录状态
-
-        if(order == null || order.getChannel() == null){
-            Log.d("The order is null or the channel is null.");
-            return;
-        }
-
-        if(order.getState() == PayState.STATE_COMPLETE){
-            Log.d("The state of the order is complete. The state is "+order.getState());
-            return;
-        }
-
-        if (order.getExtension() == productId)
-        {
-            order.setCompleteTime(new Date());
-            order.setState(PayState.STATE_SUC);
-            orderManager.saveOrder(order);
-        }
-    }
-
-    private void OnValidateFail()
-    {
-        //TODO: 更新receipt记录状态
-        if(order == null || order.getChannel() == null){
-            Log.d("The order is null or the channel is null.");
-            return;
-        }
-
-        if(order.getState() == PayState.STATE_COMPLETE){
-            Log.d("The state of the order is complete. The state is " + order.getState());
-            return;
-        }
-
-        if (order.getExtension() == productId)
-        {
-            order.setCompleteTime(new Date());
-            order.setState(PayState.STATE_FAILED);
-            orderManager.saveOrder(order);
         }
     }
 
