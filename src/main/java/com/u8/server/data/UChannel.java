@@ -32,6 +32,9 @@ public class UChannel {
 
     private String cpConfig;            //部分渠道可能有特殊配置信息，设置在该字段中
 
+    private Integer openPayFlag;            //充值功能状态，0：开放；1：关闭。关闭之后，该渠道获取订单号会返回一个错误
+
+
     //下面这几个参数，可以覆盖uchannelmaster中的。
     private String authUrl;         //当前SDK登录认证地址
     private String payCallbackUrl;  //当前SDK支付通知回调地址
@@ -90,6 +93,12 @@ public class UChannel {
         return baseUrl + channelID;
     }
 
+    //当前渠道是否开放充值
+    public boolean isPayOpen(){
+
+        return this.openPayFlag == 0;
+    }
+
     public JSONObject toJSON(){
         JSONObject json = new JSONObject();
         json.put("id", id);
@@ -111,7 +120,7 @@ public class UChannel {
         json.put("cpPayKey", cpPayKey);
         json.put("cpPayPriKey", cpPayPriKey);
         json.put("cpConfig",cpConfig);
-
+        json.put("openPayFlag", openPayFlag);
         json.put("authUrl", authUrl);
         json.put("payCallbackUrl", payCallbackUrl);
         json.put("verifyClass", verifyClass);
@@ -242,5 +251,13 @@ public class UChannel {
 
     public void setOrderUrl(String orderUrl) {
         this.orderUrl = orderUrl;
+    }
+
+    public Integer getOpenPayFlag() {
+        return openPayFlag;
+    }
+
+    public void setOpenPayFlag(Integer openPayFlag) {
+        this.openPayFlag = openPayFlag;
     }
 }

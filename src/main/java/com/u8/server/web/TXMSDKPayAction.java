@@ -93,6 +93,12 @@ public class TXMSDKPayAction extends UActionSupport{
                 return;
             }
 
+            if(!channel.isPayOpen()){
+                Log.e("the channel %s of game %s had closed pay. you need to open the pay first.", this.channelID, channel.getGame().getName());
+                this.renderState(false);
+                return;
+            }
+
             PayRequest req = new PayRequest();
             req.setUser(user);
             req.setAccountType(accountType);

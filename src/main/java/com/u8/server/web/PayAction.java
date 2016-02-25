@@ -94,6 +94,11 @@ public class PayAction extends UActionSupport{
                 return;
             }
 
+            if(!user.getChannel().isPayOpen()){
+                renderState(StateCode.CODE_PAY_CLOSED, null);
+                return;
+            }
+
             final UOrder order = orderManager.generateOrder(user, money, productName, productDesc, roleID,roleName,serverID,serverName, extension);
 
             if(order != null){
