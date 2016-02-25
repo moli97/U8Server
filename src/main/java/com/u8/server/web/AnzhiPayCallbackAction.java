@@ -82,7 +82,7 @@ public class AnzhiPayCallbackAction extends UActionSupport{
             }
 
             order.setChannelOrderID(data.getOrderId());
-            order.setRealMoney(Integer.valueOf(data.getOrderAccount()));
+            order.setRealMoney(Integer.valueOf(data.getOrderAmount()));
             order.setSdkOrderTime(data.getOrderTime());
             order.setCompleteTime(new Date());
             order.setState(PayState.STATE_SUC);
