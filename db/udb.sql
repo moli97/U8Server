@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50511
 File Encoding         : 65001
 
-Date: 2016-02-25 11:09:30
+Date: 2016-02-25 19:23:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -184,6 +184,29 @@ CREATE TABLE `ugame` (
 -- Records of ugame
 -- ----------------------------
 INSERT INTO `ugame` VALUES ('1', 'f32fdc02123a82524eb4ea95e1383d0b', '7513a2c235647e3213538c6eb329eec9', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDtJvawWjhQhI+J3EnD3gvuh+t1zB4bOMW9PJUdk27YQDyiGVd42QdHLofdTN1yXKXYZR1Bmy4W1pZhucSoDdS7fGfkKHm3zRMsijNOiPWHg0spMEchI4YTlIC43iFVdzSPE/2sIZfrW/9MspXfuWqFySsTsf6c6qJc6A0bNKJhMwIDAQAB', 'MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAO0m9rBaOFCEj4ncScPeC+6H63XMHhs4xb08lR2TbthAPKIZV3jZB0cuh91M3XJcpdhlHUGbLhbWlmG5xKgN1Lt8Z+QoebfNEyyKM06I9YeDSykwRyEjhhOUgLjeIVV3NI8T/awhl+tb/0yyld+5aoXJKxOx/pzqolzoDRs0omEzAgMBAAECgYBGzwt5PHb0E6CIGS4tPW9ymULEuV2D4z+ncR9U5WCDUSrJe6eSfbqellYazYiRTPh31DkYDa2FRC1CoKUHSJnrjeNR2TMw0WUBFvNcqYe2qOJZg3iOhyUDhIChhQiWWC9VrzAvqSU6tuyKGMy5rAWbfTneEnL7NHsTgRRDC+0JAQJBAPlRGW6T4TnRBtbOpRcMU+jdCyJAK3zwuRO13alhexDLq105D1osg2uP1d3+XvTQudwCGo1qRfBSp/W72fynz5kCQQDzgmLyxGzO1rugtJNMLQTqsRGg8ZUoUPmsEVGbmnHwRzd2OGHWbT1JuIEEb+ivrZV3PfeEObv7fDAT6qIhyiarAkAcd4ka2iG+U0KfpkqtXgf6r7qEt6T/iBDp0js0CuBdY5P2efxpxGlhD7RQu6ml9Gs0Vr0nZnoD3bw1z7QtKBAJAkBiqBjesqZCxs0NtxtWaYbsbwDta/M6elQtWnbtzA0NhEz8IKvC7E9AZvgejBiB1JoRzZFSiPGYWiBAcXduqTAxAkEAqG24ePhjesKoF1Us2ViqgJC7zDd96v+LI5eausw3TfKjO4jj5oMoQiyc+hZFxHYlkyZRfA6XEraF1Rdgngf65w==', '0', '测试游戏', '', '', null);
+
+-- ----------------------------
+-- Table structure for umsdkorder
+-- ----------------------------
+DROP TABLE IF EXISTS `umsdkorder`;
+CREATE TABLE `umsdkorder` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `allMoney` int(11) NOT NULL,
+  `appID` int(11) NOT NULL,
+  `channelID` int(11) NOT NULL,
+  `channelOrderID` varchar(255) DEFAULT NULL,
+  `coinNum` int(11) NOT NULL,
+  `createdTime` datetime DEFAULT NULL,
+  `firstPay` int(11) NOT NULL,
+  `state` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of umsdkorder
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for uorder
