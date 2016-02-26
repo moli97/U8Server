@@ -107,9 +107,11 @@ public class UCPayCallbackAction extends UActionSupport{
             renderState(true);
 
         }catch (Exception e){
+            e.printStackTrace();
             try{
                 this.renderState(false);
             }catch (Exception e2){
+                e2.printStackTrace();
                 Log.e(e2.getMessage());
             }
 

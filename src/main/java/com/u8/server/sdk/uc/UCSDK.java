@@ -162,8 +162,11 @@ public class UCSDK implements ISDKScript {
      */
     public boolean verifyPay(UChannel channel, PayCallbackResponse rsp){
 
-        String signSource= "accountId="+rsp.getData().getAccountId()+"amount="+rsp.getData().getAmount()+"callbackInfo="+rsp.getData().getCallbackInfo()
-                +"cpOrderId="+rsp.getData().getCpOrderId()+"creator="+rsp.getData().getCreator()+"failedDesc="+rsp.getData().getFailedDesc()+"gameId="+rsp.getData().getGameId()
+        String signSource= "accountId="+rsp.getData().getAccountId()+"amount="+rsp.getData().getAmount()+"callbackInfo="+rsp.getData().getCallbackInfo();
+        if(rsp.getData().getCpOrderId() != null && rsp.getData().getCpOrderId().length() > 0){
+            signSource += "cpOrderId="+rsp.getData().getCpOrderId();
+        }
+        signSource = signSource+"cpOrderId="+rsp.getData().getCpOrderId()+"creator="+rsp.getData().getCreator()+"failedDesc="+rsp.getData().getFailedDesc()+"gameId="+rsp.getData().getGameId()
                 +"orderId="+rsp.getData().getOrderId()+"orderStatus="+rsp.getData().getOrderStatus()
                 +"payWay="+rsp.getData().getPayWay()
                 +channel.getCpAppKey();

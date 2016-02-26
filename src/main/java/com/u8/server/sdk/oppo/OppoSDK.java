@@ -105,7 +105,7 @@ public class OppoSDK implements ISDKScript{
     @Override
     public void onGetOrderID(UUser user, UOrder order, ISDKOrderListener callback) {
         if(callback != null){
-            callback.onSuccess("");
+            callback.onSuccess(user.getChannel().getPayCallbackUrl());
         }
     }
 
