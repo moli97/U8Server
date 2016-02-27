@@ -106,7 +106,10 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
             sb.append("accessMode=").append(accessMode).append("&");
         }
 
-        sb.append("amount=").append(amount).append("&");
+        if(amount != null){
+            sb.append("amount=").append(amount).append("&");
+        }
+
 
         if(bankId != null){
             sb.append("bankId=").append(bankId).append("&");
@@ -116,25 +119,47 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
             sb.append("extReserved=").append(extReserved).append("&");
         }
 
-        sb.append("notifyTime=").append(notifyTime).append("&")
-                .append("orderId=").append(orderId).append("&")
-                .append("orderTime=").append(orderTime).append("&")
-                .append("payType=").append(payType).append("&");
+        if(notifyTime != null){
+            sb.append("notifyTime=").append(notifyTime).append("&");
+        }
+
+        if(orderId != null){
+            sb.append("orderId=").append(orderId).append("&");
+        }
+
+        if(orderTime != null){
+            sb.append("orderTime=").append(orderTime).append("&");
+        }
+
+        if(payType != null){
+            sb.append("payType=").append(payType).append("&");
+        }
+
 
         if(productName != null){
             sb.append("productName=").append(productName).append("&");
         }
 
-        sb.append("requestId=").append(requestId).append("&")
-                .append("result=").append(result).append("&");
+        if(requestId != null){
+            sb.append("requestId=").append(requestId).append("&");
+        }
+
+        if(result != null){
+            sb.append("result=").append(result).append("&");
+        }
+
 
         if(spending != null){
             sb.append("spending=").append(spending).append("&");
         }
 
-        sb.append("tradeTime=").append(tradeTime).append("&")
-                .append("userName=").append(userName);
+        if(tradeTime != null){
+            sb.append("tradeTime=").append(tradeTime).append("&");
+        }
 
+        if(userName != null){
+            sb.append("userName=").append(userName);
+        }
 
         return RSAUtils.verify(sb.toString(), this.sign, channel.getCpPayKey(), "UTF-8", RSAUtils.SIGNATURE_ALGORITHM_SHA);
 
