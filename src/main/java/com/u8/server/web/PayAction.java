@@ -39,6 +39,7 @@ public class PayAction extends UActionSupport{
     private String serverID;    //玩家所在的服务器ID
     private String serverName;  //玩家所在的服务器名称
     private String extension;
+    private String notifyUrl;   //支付回调通知的游戏服地址
 
     private String sign;        //RSA签名
 
@@ -60,8 +61,11 @@ public class PayAction extends UActionSupport{
                 .append("roleName=").append(this.roleName).append("&")
                 .append("serverID=").append(this.serverID).append("&")
                 .append("serverName=").append(this.serverName).append("&")
-                .append("extension=").append(this.extension)
-                .append(user.getGame().getAppkey());
+                .append("extension=").append(this.extension);
+        if(!StringUtils.isEmpty(notifyUrl)){
+            sb.append("&notifyUrl=").append(this.notifyUrl);
+        }
+        sb.append(user.getGame().getAppkey());
 
         String encoded = URLEncoder.encode(sb.toString(), "UTF-8");
 
@@ -99,7 +103,7 @@ public class PayAction extends UActionSupport{
                 return;
             }
 
-            final UOrder order = orderManager.generateOrder(user, money, productName, productDesc, roleID,roleName,serverID,serverName, extension);
+            final UOrder order = orderManager.generateOrder(user, money, productName, productDesc, roleID,roleName,serverID,serverName, extension, notifyUrl);
 
             if(order != null){
                 ISDKScript script = SDKCacheManager.getInstance().getSDKScript(order.getChannel());
@@ -242,5 +246,13 @@ public class PayAction extends UActionSupport{
 
     public void setSign(String sign) {
         this.sign = sign;
+    }
+
+    public String getNotifyUrl() {
+        return notifyUrl;
+    }
+
+    public void setNotifyUrl(String notifyUrl) {
+        this.notifyUrl = notifyUrl;
     }
 }
