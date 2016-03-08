@@ -131,7 +131,7 @@ public class MeiZuPayCallbackAction extends UActionSupport{
                 .append("total_price=").append(total_price).append("&")
                 .append("trade_status=").append(trade_status).append("&")
                 .append("uid=").append(uid).append("&")
-                .append("user_info=").append(channel.getCpAppSecret());
+                .append("user_info=").append(user_info).append(":").append(channel.getCpAppSecret());
 
         String md5 = EncryptUtils.md5(sb.toString()).toLowerCase();
 

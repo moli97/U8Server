@@ -8,6 +8,7 @@ import com.u8.server.log.Log;
 import com.u8.server.sdk.appchina.RSAUtil;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.RSAUtils;
+import net.sf.json.JSONObject;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -167,9 +168,9 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
 
     private void renderState(int code, String msg) throws IOException {
 
-        PrintWriter out = this.response.getWriter();
-        out.write(code);
-        out.flush();
+        JSONObject json = new JSONObject();
+        json.put("result", code);
+        this.renderJson(json.toString());
 
     }
 
