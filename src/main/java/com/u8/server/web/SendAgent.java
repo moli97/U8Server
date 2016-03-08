@@ -56,7 +56,12 @@ public class SendAgent {
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "text/html");
 
-        String serverRes = UHttpAgent.getInstance().post(game.getPayCallback(), headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
+        String callbackUrl = order.getNotifyUrl();
+        if(StringUtils.isEmpty(callbackUrl)){
+            callbackUrl = game.getPayCallback();
+        }
+
+        String serverRes = UHttpAgent.getInstance().post(callbackUrl, headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
 
         if(serverRes.equals("SUCCESS")){
             order.setState(PayState.STATE_COMPLETE);
