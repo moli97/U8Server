@@ -8,6 +8,9 @@ import com.u8.server.data.UUser;
  */
 public class PayRequest {
 
+    public static int SDK_TYPE_MSDK = 0;
+    public static int SDK_TYPE_YSDK = 1;
+
     private UUser user;
     private int accountType;    //0:QQ;1:微信
     private String openID;      //从手Q登录态或微信登录态中获取的openid的值
@@ -16,6 +19,8 @@ public class PayRequest {
     private String pf;          //平台来源
     private String pfkey;       //跟平台来源和openkey根据规则生成的一个密钥串
     private String zoneid;      //账户分区ID
+
+    private int sdkType;        //0:MSDK；1：是新版YSDK
 
     public UUser getUser() {
         return user;
@@ -79,5 +84,13 @@ public class PayRequest {
 
     public void setZoneid(String zoneid) {
         this.zoneid = zoneid;
+    }
+
+    public int getSdkType() {
+        return sdkType;
+    }
+
+    public void setSdkType(int sdkType) {
+        this.sdkType = sdkType;
     }
 }

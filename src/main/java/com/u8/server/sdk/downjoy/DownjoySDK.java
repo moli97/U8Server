@@ -35,12 +35,14 @@ public class DownjoySDK implements ISDKScript {
                 public void completed(String result) {
                     try {
 
+                        Log.d("the sdk verify result:"+result);
+
                         DownjoyResponse res = (DownjoyResponse) JsonUtils.decodeJson(result, DownjoyResponse.class);
 
                         if (res != null) {
-                            int code = res.getError_code();
-                            if (code == 0) {
-                                SDKVerifyResult vResult = new SDKVerifyResult(true, res.getMemberId() + "", res.getUsername(), res.getNickname());
+                            int code = res.getValid();
+                            if (code == 1) {
+                                SDKVerifyResult vResult = new SDKVerifyResult(true, mid + "", "", "");
                                 callback.onSuccess(vResult);
                                 return;
                             }

@@ -6,6 +6,7 @@ import com.u8.server.data.UUser;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.*;
 import com.u8.server.utils.JsonUtils;
+import net.sf.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,8 @@ public class AppChinaSDK implements ISDKScript{
 
         try{
 
-            String ticket = extension;
+            JSONObject json = JSONObject.fromObject(extension);
+            String ticket = json.getString("ticket");
 
             Map<String,String> params = new HashMap<String, String>();
             params.put("ticket", ticket);

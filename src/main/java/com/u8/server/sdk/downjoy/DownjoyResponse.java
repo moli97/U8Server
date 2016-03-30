@@ -6,95 +6,58 @@ package com.u8.server.sdk.downjoy;
  */
 public class DownjoyResponse {
 
-    private long memberId;
-    private String username;
-    private String nickname;
-    private String gender;
-    private int level;
-    private String avatar_url;
-    private String created_date;
-    private String token;
-    private int error_code;
-    private String error_msg;
+    private long msg_code;
+    private String msg_desc;
+    private int valid;
+    private int interval;
+    private int times;
+    private boolean roll;
 
-    public long getMemberId() {
-        return memberId;
+    public long getMsg_code() {
+        return msg_code;
     }
 
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
+    public void setMsg_code(long msg_code) {
+        this.msg_code = msg_code;
     }
 
-    public String getUsername() {
-        return username;
+    public String getMsg_desc() {
+        return msg_desc;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setMsg_desc(String msg_desc) {
+        this.msg_desc = msg_desc;
     }
 
-    public String getNickname() {
-        return nickname;
+    public int getValid() {
+        return valid;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setValid(int valid) {
+        this.valid = valid;
     }
 
-    public String getGender() {
-        return gender;
+    public int getInterval() {
+        return interval;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setInterval(int interval) {
+        this.interval = interval;
     }
 
-
-    public String getAvatar_url() {
-        return avatar_url;
+    public int getTimes() {
+        return times;
     }
 
-    public void setAvatar_url(String avatar_url) {
-        this.avatar_url = avatar_url;
+    public void setTimes(int times) {
+        this.times = times;
     }
 
-    public String getCreated_date() {
-        return created_date;
+    public boolean isRoll() {
+        return roll;
     }
 
-    public void setCreated_date(String created_date) {
-        this.created_date = created_date;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public int getError_code() {
-        return error_code;
-    }
-
-    public void setError_code(int error_code) {
-        this.error_code = error_code;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public String getError_msg() {
-        return error_msg;
-    }
-
-    public void setError_msg(String error_msg) {
-        this.error_msg = error_msg;
+    public void setRoll(boolean roll) {
+        this.roll = roll;
     }
 }

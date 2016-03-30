@@ -7,6 +7,8 @@ import com.u8.server.data.UMsdkOrder;
 import com.u8.server.log.Log;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.cache.UApplicationContext;
+import com.u8.server.utils.IDGenerator;
+import com.u8.server.utils.UGenerator;
 import com.u8.server.web.SendAgent;
 import net.sf.json.JSONObject;
 
@@ -95,7 +97,7 @@ public class PayTask implements Runnable, Delayed{
     @Override
     public int compareTo(Delayed o) {
         PayTask task = (PayTask)o;
-        long result = task.getTime() - this.getTime();
+        long result = this.getTime() - task.getTime();
 
         return result > 0 ? 1 : (result < 0 ? -1 : 0);
     }
@@ -129,8 +131,15 @@ public class PayTask implements Runnable, Delayed{
 
                         UOrderManager orderManager = (UOrderManager) UApplicationContext.getBean("orderManager");
                         if(orderManager != null){
-                            boolean firstPay = queryResult.getInt("first_save") == 1;
-                            int allMoney = queryResult.getInt("save_amt");
+
+                            boolean firstPay = false;
+                            int allMoney = 0;
+
+                            if(payRequest.getSdkType() == PayRequest.SDK_TYPE_MSDK){
+                                firstPay = queryResult.getInt("first_save") == 1;
+                                allMoney = queryResult.getInt("save_amt");
+                            }
+
                             String transID = payResult.getString("billno");
                             UMsdkOrder order = orderManager.generateMsdkOrder(payRequest.getUser(), transID, coinNum, firstPay, allMoney);
                             order.setState(PayState.STATE_SUC);
@@ -172,7 +181,12 @@ public class PayTask implements Runnable, Delayed{
 
             params.put("openid", this.payRequest.getOpenID());
             params.put("openkey", this.payRequest.getOpenKey());
-            params.put("pay_token", this.payRequest.getPay_token());
+
+            if(payRequest.getSdkType() == PayRequest.SDK_TYPE_MSDK){
+                //YSDK没有这个参数了
+                params.put("pay_token", this.payRequest.getPay_token());
+            }
+
             params.put("ts", Long.toString(System.currentTimeMillis() / 1000));
             params.put("pf", this.payRequest.getPf());
             params.put("pfkey", this.payRequest.getPfkey());
@@ -211,12 +225,21 @@ public class PayTask implements Runnable, Delayed{
 
             params.put("openid", this.payRequest.getOpenID());
             params.put("openkey", this.payRequest.getOpenKey());
-            params.put("pay_token", this.payRequest.getPay_token());
+            if(payRequest.getSdkType() == PayRequest.SDK_TYPE_MSDK){
+                //YSDK没有这个参数了
+                params.put("pay_token", this.payRequest.getPay_token());
+            }
+
             params.put("ts", Long.toString(System.currentTimeMillis() / 1000));
             params.put("pf", this.payRequest.getPf());
             params.put("pfkey", this.payRequest.getPfkey());
             params.put("zoneid", this.payRequest.getZoneid());
             params.put("amt", num+"");
+
+            if(payRequest.getSdkType() == PayRequest.SDK_TYPE_MSDK){
+                //YSDK没有这个参数了
+                params.put("billno", IDGenerator.getInstance().nextOrderID()+"");
+            }
 
             String resp = OpenApiV3.api_pay(url, scriptName, channel.getCpAppID(), channel.getCpAppKey(), this.payRequest.getAccountType(), params);
 
