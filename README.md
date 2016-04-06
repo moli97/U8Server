@@ -6,7 +6,10 @@
 
 U8Server基于　Apache Licence 2.0 开源协议，有需要的开发者或者企业可以对U8Server进行二次开发和定制，也可以商用，但是请保证U8Server的著作权，以及不要使用U8SDK的名义去推广销售自己的产品。
 
-目前U8Server已经接好的的渠道列表(登录认证已经接完，支付回调还有一部分正在接入)：
+目前U8Server已经接好的的渠道列表(以下40家渠道的登录认证和支付回调已经支持)：
+
+
+Android：
 
 序号 | 名称 | 开放平台 | 地址
 -----|------|----------|------
@@ -50,3 +53,15 @@ U8Server基于　Apache Licence 2.0 开源协议，有需要的开发者或者�
 38|楚游|武汉楚游（07073）|http://www.07073.com/
 39|PPS|PPS|http://g.pps.tv/
 40|PPTV|PPTV|http://g.pptv.com/
+
+
+iOS（部分渠道还在跟进中...）：
+
+1|AppStore| 苹果开发者中心 |https://developer.apple.com/
+2|iTools|iTools开发者平台|http://open.itools.cn/
+3|PP助手|PP助手移动开放平台|http://dev.pp.cn/
+4|同步推| 同步开发者中心|http://dev.tongbu.com/
+5|i4（爱思助手）|爱思助手开发者平台|https://dev.i4.cn/
+
+未完待续...
+

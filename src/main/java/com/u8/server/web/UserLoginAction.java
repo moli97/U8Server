@@ -42,7 +42,6 @@ public class UserLoginAction extends UActionSupport{
     private String sign;            //签名
 
 
-
     @Action("loginServer")
     public void login(){
 

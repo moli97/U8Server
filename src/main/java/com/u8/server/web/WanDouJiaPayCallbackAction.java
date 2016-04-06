@@ -94,7 +94,7 @@ public class WanDouJiaPayCallbackAction extends UActionSupport{
     }
 
     private boolean isValid(UChannel channel){
-
+        
         return RSAUtils.verify(this.content, this.sign,  channel.getCpPayKey(), "UTF-8");
 
     }
