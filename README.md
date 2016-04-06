@@ -57,6 +57,8 @@ Android：
 
 iOS（部分渠道还在跟进中...）：
 
+序号 | 名称 | 开放平台 | 地址
+-----|------|----------|------
 1|AppStore| 苹果开发者中心 |https://developer.apple.com/
 2|iTools|iTools开发者平台|http://open.itools.cn/
 3|PP助手|PP助手移动开放平台|http://dev.pp.cn/
