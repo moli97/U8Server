@@ -10,6 +10,7 @@ import com.u8.server.sdk.ISDKOrderListener;
 import com.u8.server.sdk.ISDKScript;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.service.UUserManager;
+import com.u8.server.utils.EncryptUtils;
 import com.u8.server.utils.RSAUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
@@ -41,6 +42,8 @@ public class PayAction extends UActionSupport{
     private String extension;
     private String notifyUrl;   //支付回调通知的游戏服地址
 
+
+    private String signType;    //签名算法， RSA|MD5
     private String sign;        //RSA签名
 
     @Autowired
@@ -65,12 +68,22 @@ public class PayAction extends UActionSupport{
         if(!StringUtils.isEmpty(notifyUrl)){
             sb.append("&notifyUrl=").append(this.notifyUrl);
         }
+
         sb.append(user.getGame().getAppkey());
 
         String encoded = URLEncoder.encode(sb.toString(), "UTF-8");
 
         Log.d("The encoded getOrderID sign is "+encoded);
         Log.d("The getOrderID sign is "+sign);
+
+
+        if("md5".equalsIgnoreCase(this.signType)){
+
+            String newSign = EncryptUtils.md5(encoded);
+
+            Log.d("the sign now is md5; newSign:"+newSign);
+            return newSign.toLowerCase().equals(this.sign);
+        }
 
         return RSAUtils.verify(encoded, sign,  user.getGame().getAppRSAPubKey(), "UTF-8");
 
@@ -254,5 +267,13 @@ public class PayAction extends UActionSupport{
 
     public void setNotifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
+    }
+
+    public String getSignType() {
+        return signType;
+    }
+
+    public void setSignType(String signType) {
+        this.signType = signType;
     }
 }
