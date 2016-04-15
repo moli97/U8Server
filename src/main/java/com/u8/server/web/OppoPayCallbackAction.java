@@ -7,6 +7,7 @@ import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.RSAUtils;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Date;
 
 /**
@@ -87,7 +91,25 @@ public class OppoPayCallbackAction extends UActionSupport{
 
         String content = getBaseString();
 
-        return RSAUtils.verify(content, sign, channel.getCpPayKey(), "UTF-8");
+        try{
+
+            KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+            byte[] encodedKey = Base64.decodeBase64(channel.getCpPayKey());
+            PublicKey pubKey = keyFactory.generatePublic(new X509EncodedKeySpec(encodedKey));
+
+            java.security.Signature signature = java.security.Signature.getInstance("SHA1WithRSA");
+
+            signature.initVerify(pubKey);
+            signature.update(content.getBytes("UTF-8"));
+            boolean bverify = signature.verify(Base64.decodeBase64(sign));
+
+            return bverify;
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return false;
 
     }
 
