@@ -166,7 +166,7 @@ public class UCSDK implements ISDKScript {
         if(rsp.getData().getCpOrderId() != null && rsp.getData().getCpOrderId().length() > 0){
             signSource += "cpOrderId="+rsp.getData().getCpOrderId();
         }
-        signSource = signSource+"cpOrderId="+rsp.getData().getCpOrderId()+"creator="+rsp.getData().getCreator()+"failedDesc="+rsp.getData().getFailedDesc()+"gameId="+rsp.getData().getGameId()
+        signSource = signSource+"creator="+rsp.getData().getCreator()+"failedDesc="+rsp.getData().getFailedDesc()+"gameId="+rsp.getData().getGameId()
                 +"orderId="+rsp.getData().getOrderId()+"orderStatus="+rsp.getData().getOrderStatus()
                 +"payWay="+rsp.getData().getPayWay()
                 +channel.getCpAppKey();
