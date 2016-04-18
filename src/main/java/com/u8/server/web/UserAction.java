@@ -75,6 +75,11 @@ public class UserAction extends UActionSupport{
                 return;
             }
 
+            if(channel.getAppID() != this.appID){
+                renderState(StateCode.CODE_CHANNEL_NOT_MATCH, null);
+                return;
+            }
+
             UChannelMaster master = channel.getMaster();
             if(master == null){
                 renderState(StateCode.CODE_CHANNEL_NONE, null);
@@ -112,7 +117,7 @@ public class UserAction extends UActionSupport{
                         Log.d("user verify success. result:"+sdkResult.getUserID());
                         if(sdkResult.isSuccess() && !StringUtils.isEmpty(sdkResult.getUserID())){
 
-                            UUser user = userManager.getUserByCpID(appID, channelID, sdkResult.getUserID());
+                            UUser user = userManager.getUserByCpID(channel.getAppID(), channel.getChannelID(), sdkResult.getUserID());
 
                             if(user == null){
                                 user = userManager.generateUser(channel, sdkResult);
