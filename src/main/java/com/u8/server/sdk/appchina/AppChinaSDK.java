@@ -71,8 +71,6 @@ public class AppChinaSDK implements ISDKScript{
             callback.onFailed(channel.getMaster().getSdkName() + " verify execute failed. the exception is "+e.getMessage());
         }
 
-
-
     }
 
     @Override
@@ -80,7 +78,7 @@ public class AppChinaSDK implements ISDKScript{
 
 
         if(callback != null){
-            callback.onSuccess("");
+            callback.onSuccess(user.getChannel().getPayCallbackUrl());
         }
 
 

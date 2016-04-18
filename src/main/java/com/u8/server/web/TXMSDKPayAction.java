@@ -137,8 +137,6 @@ public class TXMSDKPayAction extends UActionSupport{
             }
 
 
-
-
         }catch (Exception e){
             try {
                 renderState(false);

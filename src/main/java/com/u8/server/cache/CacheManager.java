@@ -13,7 +13,7 @@ import java.util.Map;
 /***
  * 将常用的数据进行缓存。包含game,master,channel等对象
  */
-public class CacheManager{
+public class CacheManager {
 
     private static CacheManager instance;
 
@@ -83,54 +83,68 @@ public class CacheManager{
     }
 
     public void addGame(UGame game){
+
         if(games.containsKey(game.getAppID())){
             Log.e("The appID is already is exists. add game failed."+game.getAppID());
             return;
         }
 
         games.put(game.getAppID(), game);
+
     }
 
     public void saveGame(UGame game){
+
         if(games.containsKey(game.getAppID())){
             games.remove(game.getAppID());
         }
         games.put(game.getAppID(), game);
+
     }
 
     public void addMaster(UChannelMaster master){
+
         if(masters.containsKey(master.getMasterID())){
             Log.e("The channel master ID is already is exists. add channel master faild."+master.getMasterID());
             return;
         }
 
         masters.put(master.getMasterID(), master);
+
     }
 
     public void saveMaster(UChannelMaster master){
+
         if(masters.containsKey(master.getMasterID())){
             masters.remove(master.getMasterID());
         }
         masters.put(master.getMasterID(), master);
+
     }
 
     public void removeMaster(int masterID){
+
         if(masters.containsKey(masterID)){
             masters.remove(masterID);
         }
+
     }
 
     public void addChannel(UChannel channel){
+
         if(channels.containsKey(channel.getChannelID())){
             Log.e("The channelID is already is exists. add channel faild."+channel.getChannelID());
             return;
         }
 
         channels.put(channel.getChannelID(), channel);
+
+
     }
 
     //添加或者修改渠道
     public void saveChannel(UChannel channel){
+
         if(channels.containsKey(channel.getChannelID())){
             channels.remove(channel.getChannelID());
         }
@@ -142,18 +156,25 @@ public class CacheManager{
         }
 
         channels.put(channel.getChannelID(), channel);
+
+
     }
 
     public void removeChannel(int channelID){
+
         if(channels.containsKey(channelID)){
             channels.remove(channelID);
         }
+
     }
 
     public void removeGame(int appID){
+
         if(games.containsKey(appID)){
             games.remove(appID);
         }
+
+
     }
 
     public void loadGameData(List<UGame> gameLst){

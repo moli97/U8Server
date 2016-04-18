@@ -17,4 +17,5 @@ public class StateCode {
     public static final int CODE_ORDER_ERROR = 11;
     public static final int CODE_SIGN_ERROR = 12;
     public static final int CODE_PAY_CLOSED = 13;           //充值未开放
+    public static final int CODE_CHANNEL_NOT_MATCH = 14;    //渠道和游戏没有对上
 }
