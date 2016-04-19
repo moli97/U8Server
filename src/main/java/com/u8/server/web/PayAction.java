@@ -116,7 +116,7 @@ public class PayAction extends UActionSupport{
                 return;
             }
 
-            final UOrder order = orderManager.generateOrder(user, money, productName, productDesc, roleID,roleName,serverID,serverName, extension, notifyUrl);
+            final UOrder order = orderManager.generateOrder(user, money, productID, productName, productDesc, roleID,roleName,serverID,serverName, extension, notifyUrl);
 
             if(order != null){
                 ISDKScript script = SDKCacheManager.getInstance().getSDKScript(order.getChannel());

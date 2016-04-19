@@ -21,6 +21,7 @@ public class UOrder {
     private Integer channelID;      //当前所属渠道ID
     private Integer userID;         //U8Server这边对应的用户ID
     private String username;    //U8Server这边生成的用户名
+    private String productID;   //游戏中商品ID
     private String productName; //游戏中商品名称
     private String productDesc; //游戏中商品描述
     private Integer money;  //单位 分, 下单时收到的金额，实际充值的金额以这个为准
@@ -52,6 +53,7 @@ public class UOrder {
         json.put("channelName", channel == null ? "":channel.getMaster().getMasterName());
         json.put("userID", userID);
         json.put("username", username);
+        json.put("productID", productID);
         json.put("productName", productName);
         json.put("productDesc", productDesc);
         json.put("money", money);
@@ -248,5 +250,13 @@ public class UOrder {
 
     public void setNotifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
 }

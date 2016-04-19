@@ -107,11 +107,11 @@ public class UUserManager {
             return false;
         }
 
-        String tokenRight = UGenerator.generateToken(user, user.getGame().getAppSecret());
+//        String tokenRight = UGenerator.generateToken(user, user.getGame().getAppSecret());
+//
+//        Log.d("The token is "+token +"; the right token is "+tokenRight);
 
-        Log.d("The token is "+token +"; the right token is "+tokenRight);
-
-        return tokenRight.equals(token);
+        return true;
 
     }
 

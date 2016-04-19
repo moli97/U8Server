@@ -39,13 +39,14 @@ public class UOrderManager {
         orderDao.delete(order);
     }
 
-    public UOrder generateOrder(UUser user, int money, String productName, String productDesc, String roleID, String roleName, String serverID, String serverName,String extension,String notifyUrl){
+    public UOrder generateOrder(UUser user, int money, String productID, String productName, String productDesc, String roleID, String roleName, String serverID, String serverName,String extension,String notifyUrl){
 
         UOrder order = new UOrder();
         order.setOrderID(IDGenerator.getInstance().nextOrderID());
         order.setAppID(user.getAppID());
         order.setChannelID(user.getChannelID());
         order.setMoney(money);
+        order.setProductID(productID);
         order.setProductName(productName);
         order.setProductDesc(productDesc);
         order.setCurrency("RMB");

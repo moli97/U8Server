@@ -8,6 +8,7 @@ import com.u8.server.log.Log;
 import com.u8.server.sdk.appchina.CpTransSyncSignValid;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.JsonUtils;
+import com.u8.server.utils.RSAUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class AppChinaPayCallbackAction extends UActionSupport{
 
     private String transdata;
     private String sign;
+    private String signtype;
 
     @Autowired
     private UOrderManager orderManager;
@@ -43,7 +45,7 @@ public class AppChinaPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            long localOrderID = Long.parseLong(data.getExorderno());
+            long localOrderID = Long.parseLong(data.getCporderid());
 
             UOrder order = orderManager.getOrder(localOrderID);
 
@@ -67,7 +69,7 @@ public class AppChinaPayCallbackAction extends UActionSupport{
 
             if(isValid(order.getChannel())){
                 order.setChannelOrderID(data.getTransid());
-                order.setRealMoney(data.getMoney());
+                order.setRealMoney((int)(Float.valueOf(data.getMoney()) * 100));
                 order.setSdkOrderTime(data.getTranstime());
                 order.setCompleteTime(new Date());
                 order.setState(PayState.STATE_SUC);
@@ -93,8 +95,8 @@ public class AppChinaPayCallbackAction extends UActionSupport{
 
     private boolean isValid(UChannel channel){
 
-        return CpTransSyncSignValid.validSign(this.transdata, this.sign, channel.getCpPayKey());
-        //测试时使用 return RSAUtils.verify(this.transdata, this.sign, channel.getCpPayKey(), "UTF-8");
+        //return CpTransSyncSignValid.validSign(this.transdata, this.sign, channel.getCpPayKey());
+        return RSAUtils.verify(this.transdata, this.sign, channel.getCpPayKey(), "UTF-8");
 
     }
 
@@ -111,24 +113,36 @@ public class AppChinaPayCallbackAction extends UActionSupport{
     }
 
     public static class AppChinaPayContent{
-        private String exorderno;
+
+        private String transtype;
+        private String cporderid;
         private String transid;
+        private String appuserid;
         private String appid;
         private String waresid;
         private String feetype;
-        private int money;
-        private String count;
+        private String money;
+        private String currency;
         private String result;
-        private String transtype;
         private String transtime;
-        private String cpprivate;
+        private String cppprivate;
+        private String paytype;
 
-        public String getExorderno() {
-            return exorderno;
+
+        public String getTranstype() {
+            return transtype;
         }
 
-        public void setExorderno(String exorderno) {
-            this.exorderno = exorderno;
+        public void setTranstype(String transtype) {
+            this.transtype = transtype;
+        }
+
+        public String getCporderid() {
+            return cporderid;
+        }
+
+        public void setCporderid(String cporderid) {
+            this.cporderid = cporderid;
         }
 
         public String getTransid() {
@@ -137,6 +151,14 @@ public class AppChinaPayCallbackAction extends UActionSupport{
 
         public void setTransid(String transid) {
             this.transid = transid;
+        }
+
+        public String getAppuserid() {
+            return appuserid;
+        }
+
+        public void setAppuserid(String appuserid) {
+            this.appuserid = appuserid;
         }
 
         public String getAppid() {
@@ -163,20 +185,20 @@ public class AppChinaPayCallbackAction extends UActionSupport{
             this.feetype = feetype;
         }
 
-        public int getMoney() {
+        public String getMoney() {
             return money;
         }
 
-        public void setMoney(int money) {
+        public void setMoney(String money) {
             this.money = money;
         }
 
-        public String getCount() {
-            return count;
+        public String getCurrency() {
+            return currency;
         }
 
-        public void setCount(String count) {
-            this.count = count;
+        public void setCurrency(String currency) {
+            this.currency = currency;
         }
 
         public String getResult() {
@@ -187,14 +209,6 @@ public class AppChinaPayCallbackAction extends UActionSupport{
             this.result = result;
         }
 
-        public String getTranstype() {
-            return transtype;
-        }
-
-        public void setTranstype(String transtype) {
-            this.transtype = transtype;
-        }
-
         public String getTranstime() {
             return transtime;
         }
@@ -203,12 +217,20 @@ public class AppChinaPayCallbackAction extends UActionSupport{
             this.transtime = transtime;
         }
 
-        public String getCpprivate() {
-            return cpprivate;
+        public String getCppprivate() {
+            return cppprivate;
         }
 
-        public void setCpprivate(String cpprivate) {
-            this.cpprivate = cpprivate;
+        public void setCppprivate(String cppprivate) {
+            this.cppprivate = cppprivate;
+        }
+
+        public String getPaytype() {
+            return paytype;
+        }
+
+        public void setPaytype(String paytype) {
+            this.paytype = paytype;
         }
     }
 
@@ -227,5 +249,13 @@ public class AppChinaPayCallbackAction extends UActionSupport{
 
     public void setSign(String sign) {
         this.sign = sign;
+    }
+
+    public String getSigntype() {
+        return signtype;
+    }
+
+    public void setSigntype(String signtype) {
+        this.signtype = signtype;
     }
 }
