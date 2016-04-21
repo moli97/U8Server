@@ -1,5 +1,6 @@
 package com.u8.server.sdk.jinli;
 
+import com.u8.server.cache.UApplicationContext;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.data.UUser;
@@ -7,6 +8,7 @@ import com.u8.server.log.Log;
 import com.u8.server.sdk.*;
 import com.u8.server.sdk.jinli.jinli.JinLiBase64;
 import com.u8.server.sdk.jinli.jinli.RSASignature;
+import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.TimeFormater;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.CharEncoding;
@@ -159,6 +161,11 @@ public class JinLiSDK implements ISDKScript{
                         if("200010000".equals(status)){
                             String out_order_no = json.getString("out_order_no");
                             String submit_time = json.getString("submit_time");
+
+                            UOrderManager orderManager = (UOrderManager) UApplicationContext.getBean("orderManager");
+                            order.setChannelOrderID(out_order_no);
+                            orderManager.saveOrder(order);
+
                             JSONObject json2 = new JSONObject();
                             json2.put("out_order_no", out_order_no);
                             json2.put("submit_time", submit_time);
