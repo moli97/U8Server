@@ -153,6 +153,7 @@ public class CacheManager {
         UChannel c = getChannelByID(channel.getId());
         if(c != null){
             channels.remove(c.getChannelID());
+
         }
 
         channels.put(channel.getChannelID(), channel);

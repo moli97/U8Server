@@ -50,7 +50,7 @@ public class MuMaYiPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            long orderID = Long.parseLong(result.getOrderID());
+            long orderID = Long.parseLong(result.getProductDesc());
 
             UOrder order = orderManager.getOrder(orderID);
 

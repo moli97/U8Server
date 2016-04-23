@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50511
 File Encoding         : 65001
 
-Date: 2016-04-13 14:34:30
+Date: 2016-04-23 16:04:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,7 +56,7 @@ CREATE TABLE `uchannel` (
   `openPayFlag` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uni_channelID` (`channelID`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uchannel
@@ -80,7 +80,7 @@ INSERT INTO `uchannel` VALUES ('16', '28', '1', '', '42bc87ca29a772d0mBj6Pxj1GtU
 INSERT INTO `uchannel` VALUES ('17', '29', '1', '101185', '04USV8I2TKI1YCQB', '87W02FS46OE04DQBWJCPTD47GYFEIA5SXID4B0SH1FQV6SGUVTJISRYMAHNIXRZH', '', '', '', '', '17', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('18', '30', '1', '1161', 'jzLdOuDM68K4u50n717MlQxg25OXWm2t', '', '', '', '', '', '18', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('19', '31', '1', '2487115', 'ca6326a22f214721948bc8f0da33962d', 'xuaut7WRmKttyMnkx4G1Tn6ulFwPKjue', '', '', '', '', '19', null, null, null, null, null, '0');
-INSERT INTO `uchannel` VALUES ('20', '32', '1', '5000001004', '11d97eb60960473e9de0839cbd7ae921', '', '', '', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDATVHffpz5SpCN7RAMtIb8VX54ikEWyU3wDoOwSFLeeIDAp1Mgw78RjYr1rPRclShMb/7rsmo4AMsQbbEmdmeVz3iCsgBJM65SelkTi/vmFERXxA6h3LYXUop31OzNz0XCVRk9sDlMAPQ9e1W5Sd8dV/0hRxGjkTvxF9XiKVq0AwIDAQAB', 'MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAI36daGEKh8opX2chHkn0xj7zU+piIzU\r\nx9+QKqvc6+jBXwqBnWFdZLIS/ZiQ+T6ILeCyS5MSGMu6b6HK2qXi/5ISD7OJE48awAbu5NgRa3GGoZDO\r\nmXfC4P18VBY3DHUnstOqDOwgyEkVScxg7tXwys2Ca66KYmBvyCeFppy8ahSXAgMBAAECgYAQPT2HI97N\r\ngZCsNWLRmMSEbwiku/dqZEwYPh0jWzmAfd2pDfo6ULxbweBPuwVHKbxVnw8V21QKuWBbWSB5KOWiWpcf\r\nToZ1aNbultTrjBP4u46P/hym7tAvj6z2hA0oTMzy0c6FJ0taUQDfz5E+iZ2EDTddGq4mJGfW+CXaXjdS\r\nwQJBAPMHck9L3L/ehD9wJJelDgFL9jg+3MlNUcT87YW/QB0p42Uy1Q9ZrN2ElAr3cQ0hJuQ1C+hRSyOS\r\n/6DGoMSiihMCQQCVjlZX6OTsWtYXbhAPgwOjr16YG5gf207UJX7+ONdDLxCM7ym4nunvQpjDwwCFz/ry\r\nhPfON04J4s28AGkdJtvtAkALS59OfDIoYMk4wZeRzMQX31X0S0eru4I/a5oGi1sJf/bnrzMj4YEdUpom\r\n4FVKzO2n0adaBt09LAnhiRnTydItAkAUIAJIdCOSFqsmnf31SGkN9sRg7Z2r88QI0j7jkNyOwt+UR36y\r\nxFewhaKu/Set2g3n4rLCAjkzJV0QBnIepSMFAkEA4V4L9i/nLEDKFSrCNtE1n3ff742X/XpiQF4qwVhZ\r\nW8WpbYyuneHqk7sctUjyHQyFvWfKpXB5cv2MTTocq5rn+Q==', '20', '1', null, null, null, null, '0');
+INSERT INTO `uchannel` VALUES ('20', '32', '1', '5000003221', 'c83110e596e94d6e938c73184dee2b5b', '', '', '', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQChAzowRKhk76EuuOmRfDDc13l94vxmbIMgsPJreDm+yLLdwUuvBNQ1rpcXpsUGl/KEzZAwGn98ZqAm4z8SRgk+EgyN9iZc5gjiIcqEYnIREeWDzQYRXGPpnCK+MDJks6mg8O0LIb6Hv7SeAd7BUqPJBw3woONYZNDwg77NIuFghQIDAQAB', 'MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAIzU75WtPt2MtrLb/A+6nBHV9RRgZWrG Ya71fH6kKOTNxX60Of6Z44brf8X+mYcsO7i7v+ygaYlDpFtNVKlTHNKu8/Sd8hghvR5i4Nlf6oDk0UpG CFMS5q/H39cuBDuOJomCrpKtu2CEOypY5UOdJXxY67RZtPFYiJIHbwYFZo4dAgMBAAECgYBbVHgvRBPh z7Bn27viY211L6DpXv5GOXL96Juc8U7H2x455h06HIhuZekN+OeNvsTYL4HurbTjXKeIwmSmDo1AqbLN G8RfAtFdvnDvEe+Y1njzYBjARjTSfD+9rpzJyZokbK/YNuClrIALHtFdqimgSPsGAQ2YqPSdfnDmrn/r rQJBAMgMJdCdRuNCpsokpJTfd4TZoifghSQgkzI6WEQnXlWHK6Azay4UqqEm9OpmbRhP3EBukUQiKDi6 0zXxi0GQUoMCQQC0OM++jAqGfFfUl24sNuNkFrPBM6mInFE14RdxD5Wt1ov9HWgpUBQtHsB+kabxZ39A o4xcTvU/jSLFI8vtfzrfAkBPOqBvcxr0Px2XydN1Mtw/PYK/kGiq2kvyBLGYrI7sCND6beLxKTY7BRbT DyX+DwMIccIO3ghYD4Y/Qx8IJITJAkBBNumd1wkb/zS9Hgrk/vurxTdIq0wmvgH5EDmuVOhh3mgLsK93 e53BcgZQBp61bjEzD7uDz6KZW5YAZmKtz0NbAkAKQxsTKiRjBdhYwtXw1iCuu/2q+uWpfd3YrYYmu3jX NEQPry9JPc+yD+RjPDbY5Eh5RbA5l0luH6G5iy+XZNzY', '20', '1', '', '', '', '', '0');
 INSERT INTO `uchannel` VALUES ('21', '33', '1', 'b32a1d1fd1826545', '34fe34225d1ed6b0', 'c3657cdd837eb9dd', '', '', '', '', '21', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('22', '34', '1', 'b32a1d1fd1826545', '23F28F98461143E7A75F96327B695734', 'BCD61AE8337C4270A3D7E597102DFD66', '', '', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCSGer0HsTaWI12og+uRGP+XfGVaMVqK5c6/90eLT3DHSdiF6SpqbR5BmxfpEyOlwwMdVSHMw+BqqE1PiKH4fx1ZTV0/JFc33Y55PJ9jVZ5TKHKQqvr/hn12DNgD8ntmPCLkJwv0mD3X4Pu3V2Qo7lDbJDX/XXd91/wJDCq3GToAwIDAQAB', 'MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMHhEdFSgO0MDcWP0itaGMwXMJOYei5LMDkpoWdm3zreCd/y49op+73Sv6lTIb2HX2D/AvDxOjNq93L9su6c8q8y+tUs88BGCS3FHRjwHqKtInuE2AkLLPKMp8LNKSAyqOzFOBC3CHF6wMRzbzXYTQWwKkBCWb2B1wzqbEjPKqcvAgMBAAECgYAN/WikuxhUgo8n11XqDOlHKNE3hUQjvQcwyME9zd2DyOvbfhJU9ryUmPV9iWMg4vjN7fjPXAjAFxLd+FKGB0s3mvwpHSOur+SX54apbQN2eYu1Ps3aUU39s/XaDp0XKInmjp9feAKt2p/oju1CKUh2m81osFqftOw0IhdpO8w+wQJBAOoa9v4RXtSO0rCjIohkvvbWXap6lSz//OqJmcJmYWoJwQYpvAb2gvZusw+AuWzkkY122EH9isSf0zAoApTbg88CQQDUAv7dJyPqc9EIGmsiw+6Xs6Hbtoz6QSaubitmE7AiKARBFvzA1/YiIl2sluRvmL9CXkfpqTpJzob2AFGHzZ6hAkEAnHOE2WqWa4s/dtivPWPG04OTeVkO1NIHHl7zKR3uwETggNPnWufnwfVdKWEnioR+WYIxKHjfAmSlaKt0fjLttQJAcSZ8IUm/aGSRfjKjVTWexAYR73I5QWK+I0AXF26QhVo4EwkSslVQPp16wx7xIgIyqVgqJzGzMyrvaqF24fTCoQJAeRuF4M8c6TQrE7ELenwPbYpYOEq+ovMJrSS2d06JYL4u0+SA6Xvfa1+q3brt5XlM2MTxdiWHXdOjYbKaTvDdew==', '22', '', null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('24', '36', '1', '', '643501227', '', '643501227', '', '', '', '24', '', null, null, null, null, '0');
@@ -165,6 +165,7 @@ INSERT INTO `uchannelmaster` VALUES ('39', 'http://passport.xyzs.com/checkLogin.
 INSERT INTO `uchannelmaster` VALUES ('40', 'http://passport_i.25pp.com:8080/account?tunnel-command=2852126760', 'PP助手', 'pp', '.pp', 'http://localhost:8080/pay/pp/payCallback', 'com.u8.server.sdk.pp.PPSDK', '');
 INSERT INTO `uchannelmaster` VALUES ('41', 'none', '应用宝YSDK', 'ysdk', '.ysdk', 'none', 'com.u8.server.sdk.txmsdk.TXMSDK', 'http://ysdktest.qq.com');
 INSERT INTO `uchannelmaster` VALUES ('42', 'none', 'Demo测试渠道', 'demo', '.demo', 'none', 'com.u8.server.sdk.demo.DemoSDK', 'none');
+INSERT INTO `uchannelmaster` VALUES ('43', 'http://api.haimawan.com/index.php?m=api&a=validate_token', '海马玩(iOS)', 'haima', '.haima', 'http://localhost:8080/pay/haima/payCallback', 'com.u8.server.sdk.haima.HaimaSDK', '');
 
 -- ----------------------------
 -- Table structure for ugame
@@ -235,6 +236,7 @@ CREATE TABLE `uorder` (
   `createdTime` datetime DEFAULT NULL,
   `sdkOrderTime` varchar(255) DEFAULT NULL,
   `completeTime` datetime DEFAULT NULL,
+  `productID` varchar(255) DEFAULT NULL,
   `productName` varchar(255) DEFAULT NULL,
   `productDesc` varchar(255) DEFAULT NULL,
   `notifyUrl` varchar(2048) DEFAULT NULL,
@@ -244,160 +246,174 @@ CREATE TABLE `uorder` (
 -- ----------------------------
 -- Records of uorder
 -- ----------------------------
-INSERT INTO `uorder` VALUES ('654898395705507841', '1', '39', '65489839570', 'RMB', null, '100', '100', '2', '', '3', '1', '?????', '1', '??', null, '23453435', '2016-01-18 17:21:05', null, null, null);
-INSERT INTO `uorder` VALUES ('654898640518643714', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null);
-INSERT INTO `uorder` VALUES ('654901505261830147', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null);
-INSERT INTO `uorder` VALUES ('654901677060521988', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null);
-INSERT INTO `uorder` VALUES ('654906289855397889', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null);
-INSERT INTO `uorder` VALUES ('654907385072058370', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null);
-INSERT INTO `uorder` VALUES ('654907569755652099', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null);
-INSERT INTO `uorder` VALUES ('654914501832867844', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '测试角色名', '1', '测试', null, null, null, null, null, null);
-INSERT INTO `uorder` VALUES ('656016779419582465', '1', '503', '', 'RMB', '1428891376228', '100', null, '1', '', '3', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('656068817243340801', '1', '503', '', 'RMB', '1428902015786', '100', null, '1', '', '3', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('656069040581640194', '1', '503', '656069040581640194', 'RMB', '1428902064311', '10000', null, '2', '', '3', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('658356789271592961', '1', '11', '', 'RMB', '1429255035989', '100', null, '1', '', '4', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('658896421847564289', '1', '503', '', 'RMB', '1429336831312', '100', null, '1', '', '5', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('659988610556100609', '1', '11', '11342423', 'RMB', '1429502514494', '10000', null, '2', '', '4', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('660073230001766401', '1', '16', '', 'RMB', '1429520025537', '100', null, '1', '', '7', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('660076983803183106', '1', '16', '', 'RMB', '1429520601543', '100', null, '1', '', '2', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('660081308835250177', '1', '16', '', 'RMB', '1429521547973', '100', null, '1', '', '2', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('660588278184935425', '1', '12', '235234554', 'RMB', '1429596446912', '100', null, '4', '', '9', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('660707025440735233', '1', '17', '8908009089', 'RMB', '1429620926766', '10000', null, '2', '', '10', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('661185128315224065', '1', '18', '34543545', 'RMB', '1429689773941', '100', null, '2', '', '11', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('661636280269930497', '1', '19', '43253454354', 'RMB', '1429753452230', '10000', null, '2', '', '12', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('661646034140659713', '1', '19', '', 'RMB', '1429755340542', '100', null, '1', '', '12', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662260334723072001', '1', '20', '', 'RMB', '1429852229817', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', null, null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662260944608428033', '1', '20', '', 'RMB', '1429852363141', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:11:18', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662262684070182913', '1', '20', '', 'RMB', '1429852744334', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:17:39', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662263066322272258', '1', '20', '', 'RMB', '1429852826621', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:19:00', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662263439984427011', '1', '20', '', 'RMB', '1429852909172', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:20:23', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662265226690822148', '1', '20', '', 'RMB', '1429853300922', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:26:55', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662265982605066241', '1', '20', '', 'RMB', '1429853464556', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:29:39', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662266193058463746', '1', '20', '', 'RMB', '1429853509977', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:30:24', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662267039167021059', '1', '20', '', 'RMB', '1429853694257', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:33:29', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662267941110153220', '1', '20', '', 'RMB', '1429853893283', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:36:47', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662269891025305605', '1', '20', '', 'RMB', '1429854318860', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:43:53', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662270006989422598', '1', '20', '', 'RMB', '1429854341767', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:44:16', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662286259145670663', '1', '20', '34544345435', 'RMB', '1429857650169', '10000', null, '2', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 14:39:24', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662286332160114696', '1', '20', '', 'RMB', '1429857667094', '10000', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 14:39:41', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662294917799739393', '1', '20', '', 'RMB', '1429859302535', '10000', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 15:06:56', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662294986519216130', '1', '20', '', 'RMB', '1429859314687', '10000', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 15:07:08', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662295033763856387', '1', '20', '', 'RMB', '1429859325232', '10000', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 15:07:19', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662295072418562052', '1', '20', '34544345435', 'RMB', '1429859334392', '10000', null, '2', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 15:07:28', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662773862487818241', '1', '20', '', 'RMB', '1429928565714', '10000', null, '1', '', '15', '1', '测试角色名', '1', '测试', '2015-04-25 10:21:17', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662775855352643586', '1', '20', '', 'RMB', '1429929001823', '10000', null, '1', '', '15', '1', '测试角色名', '1', '测试', '2015-04-25 10:28:33', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662795139755802625', '1', '21', '23453454354', 'RMB', '1429932972301', '10000', null, '2', '', '16', '1', '测试角色名', '1', '测试', '2015-04-25 11:34:43', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('662849492566933505', '1', '22', '345435435', 'RMB', '1429944114939', '10000', null, '2', '', '17', '1', '测试角色名', '1', '测试', '2015-04-25 14:40:26', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('663986842856587265', '1', '23', '2354325345', 'RMB', '1430119175223', '10000', null, '2', '', '18', '1', '测试角色名', '1', '测试', '2015-04-27 15:18:04', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664070427215134721', '1', '24', '', 'RMB', '1430136220108', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:02:09', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664071522431795201', '1', '24', '', 'RMB', '1430136458764', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:06:08', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664071668460683266', '1', '24', '', 'RMB', '1430136493363', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:06:42', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664074159541714947', '1', '24', '', 'RMB', '1430137035192', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:15:46', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664074636283084804', '1', '24', '', 'RMB', '1430137138234', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:17:29', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664078991379922949', '1', '24', '', 'RMB', '1430138088360', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:33:19', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664444544636420097', '1', '24', '', 'RMB', '1430184044385', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-28 09:19:11', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664445433694650370', '1', '24', '', 'RMB', '1430184239937', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-28 09:22:26', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664446984177844227', '1', '24', '', 'RMB', '1430184576560', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-28 09:28:03', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664451287735074817', '1', '24', '', 'RMB', '1430185518777', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-28 09:43:45', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664551566631501825', '1', '25', '', 'RMB', '1430205967061', '10000', null, '1', '', '20', '1', '测试角色名', '1', '测试', '2015-04-28 15:24:33', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664646085976784897', '1', '26', '345435345', 'RMB', '1430225395635', '10000', null, '2', '', '21', '1', '测试角色名', '1', '测试', '2015-04-28 20:48:24', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664650990829436930', '1', '16', '', 'RMB', '1430226225721', '10000', null, '1', '', '2', '1', '测试角色名', '1', '测试', '2015-04-28 21:02:14', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('664654864889937923', '1', '10', '', 'RMB', '1430227072591', '10000', null, '1', '', '22', '1', '测试角色名', '1', '测试', '2015-04-28 21:16:20', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('665655343161802753', '1', '27', '', 'RMB', '1430374179468', '10000', null, '1', '', '23', '1', '测试角色名', '1', '测试', '2015-04-30 14:08:02', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('665674460061237249', '1', '28', '', 'RMB', '1430378112507', '10000', null, '1', '', '24', '1', '测试角色名', '1', '测试', '2015-04-30 15:13:37', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('665702862679965697', '1', '30', '', 'RMB', '1430384074782', '10000', null, '1', '', '25', '1', '测试角色名', '1', '测试', '2015-04-30 16:52:58', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('668974012851814401', '1', '30', '', 'RMB', '1430707860967', '10000', null, '1', '', '25', '1', '测试角色名', '1', '测试', '2015-05-04 10:49:18', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('668992266462822401', '1', '29', '', 'RMB', '1430711607352', '10000', null, '1', '', '26', '1', '测试角色名', '1', '测试', '2015-05-04 11:51:44', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('669055462611615745', '1', '31', '', 'RMB', '1430724441428', '10000', null, '1', '', '27', '1', '测试角色名', '1', '测试', '2015-05-04 15:25:38', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('669154328463802369', '1', '33', '', 'RMB', '1430744577958', '10000', null, '1', '', '28', '1', '测试角色名', '1', '测试', '2015-05-04 21:01:17', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('669509243086307329', '1', '33', '', 'RMB', '1430788450844', '10000', null, '1', '', '28', '1', '测试角色名', '1', '测试', '2015-05-05 09:12:28', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('669509320395718658', '1', '33', '', 'RMB', '1430788467997', '10000', null, '1', '', '28', '1', '测试角色名', '1', '测试', '2015-05-05 09:12:46', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('669509749892448259', '1', '33', '', 'RMB', '1430788560801', '10000', null, '1', '', '28', '1', '测试角色名', '1', '测试', '2015-05-05 09:14:18', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670082350637383681', '1', '34', '', 'RMB', '1430877071806', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 09:49:25', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670082397882023938', '1', '34', '', 'RMB', '1430877083005', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 09:49:36', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670086774453698561', '1', '34', '', 'RMB', '1430877797785', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 10:01:31', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670097932778733569', '1', '34', '', 'RMB', '1430880232098', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 10:42:05', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670100526938980353', '1', '34', '', 'RMB', '1430880799686', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 10:51:33', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670101510486491137', '1', '34', '', 'RMB', '1430881013318', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 10:55:06', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670106737461690370', '1', '32', '', 'RMB', '1430881914216', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 11:10:07', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670114107625570305', '1', '32', '', 'RMB', '1430883525743', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 11:36:59', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670115159892557825', '1', '32', '', 'RMB', '1430883754639', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 11:40:48', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670117324556075009', '1', '32', '', 'RMB', '1430884227289', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 11:48:40', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670144438684614657', '1', '32', '', 'RMB', '1430889663280', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:19:17', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670145864613756930', '1', '32', '', 'RMB', '1430889975160', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:24:29', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670146182441336835', '1', '32', '', 'RMB', '1430890044859', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:25:39', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670148896860667908', '1', '32', '', 'RMB', '1430890637438', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:35:31', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670150112336412673', '1', '32', '', 'RMB', '1430890903744', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:39:58', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670152216870387713', '1', '32', '', 'RMB', '1430891361948', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:47:36', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670154768080961537', '1', '32', '', 'RMB', '1430891920585', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:56:54', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('670155420915990529', '1', '32', '', 'RMB', '1430892060400', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:59:14', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672890219866882049', '1', '32', '', 'RMB', '1431307580742', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:24:23', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672893509811830785', '1', '32', '', 'RMB', '1431308298532', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:36:21', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672895425367244801', '1', '32', '', 'RMB', '1431308716741', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:43:19', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672897212073639937', '1', '32', '', 'RMB', '1431309109066', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:49:51', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672898341650038785', '1', '32', '', 'RMB', '1431309355940', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:53:58', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672906691066462209', '1', '32', '', 'RMB', '1431310936517', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:20:18', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672910311723892737', '1', '32', '', 'RMB', '1431311727630', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:33:29', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672915027597983745', '1', '32', '', 'RMB', '1431312758564', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:50:39', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672916273138499585', '1', '32', '', 'RMB', '1431313028463', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:55:09', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672916956038299649', '1', '32', '', 'RMB', '1431313179550', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:57:40', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672918987557830657', '1', '32', '', 'RMB', '1431313380135', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:01:01', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672919979695276033', '1', '32', '', 'RMB', '1431313600119', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:04:40', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672920976127688705', '1', '32', '', 'RMB', '1431313815855', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:08:16', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672921521588535297', '1', '32', '', 'RMB', '1431313934537', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:10:15', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('672924356266950658', '1', '32', '', 'RMB', '1431314555043', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:20:35', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('673003748737417219', '1', '32', '', 'RMB', '1431330920185', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 15:53:24', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('673004341442904068', '1', '32', '', 'RMB', '1431331049136', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 15:55:34', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('673007463884128257', '1', '32', '', 'RMB', '1431331493631', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 16:02:57', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('673008649295101954', '1', '32', '', 'RMB', '1431331749444', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 16:07:13', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694418605999128577', '1', '16', '', 'RMB', '1434532104099', '10000', null, '1', '', '2', '1', '测试角色名', '1', '测试', '2015-06-17 17:08:11', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694423205909102594', '1', '12', '', 'RMB', '1434533112024', '10000', null, '1', '', '32', '1', '测试角色名', '1', '测试', '2015-06-17 17:24:58', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694423343348056067', '1', '12', '', 'RMB', '1434533139501', '10000', null, '1', '', '32', '1', '测试角色名', '1', '测试', '2015-06-17 17:25:26', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694423467902107652', '1', '12', '', 'RMB', '1434533169429', '10000', null, '1', '', '33', '1', '测试角色名', '1', '测试', '2015-06-17 17:25:55', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694429987662462981', '1', '17', '', 'RMB', '1434534590449', '10000', null, '1', '', '10', '1', '测试角色名', '1', '测试', '2015-06-17 17:49:37', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694876041490989057', '1', '24', '', 'RMB', '1434596914978', '10000', null, '1', '', '34', '1', '测试角色名', '1', '测试', '2015-06-18 11:08:20', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694876170340007938', '1', '24', '', 'RMB', '1434596945965', '10000', null, '1', '', '34', '1', '测试角色名', '1', '测试', '2015-06-18 11:08:50', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694876389383340035', '1', '24', '', 'RMB', '1434596993520', '10000', null, '1', '', '34', '1', '测试角色名', '1', '测试', '2015-06-18 11:09:37', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('694880757365080068', '1', '24', '', 'RMB', '1434597945905', '10000', null, '1', '', '34', '1', '测试角色名', '1', '测试', '2015-06-18 11:25:30', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('701798296116527105', '1', '10', '', 'RMB', '1435668001774', '10000', null, '1', '', '22', '1', '测试角色名', '1', '测试', '2015-06-30 20:39:21', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('706207367808679937', '1', '12', '', 'RMB', '1436166980543', '10000', null, '1', '', '33', '1', '测试角色名', '1', '测试', '2015-07-06 15:15:28', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('793941923189489665', '1', '12', '', 'RMB', '1449023088424', '10000', null, '1', '1434533153312.baidu', '33', '1', '测试角色名', '10', '测试', '2015-12-02 10:23:57', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('793942554549682178', '1', '17', '', 'RMB', '1449023224258', '10000', null, '1', '1429620637444.xiaomi', '10', '1', '测试角色名', '10', '测试', '2015-12-02 10:26:12', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('793958445928677379', '1', '30', '', 'RMB', '1449026451590', '10000', null, '1', '1449026379630.paojiao', '35', '1', '测试角色名', '10', '测试', '2015-12-02 11:20:00', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('793967087402876932', '1', '23', '', 'RMB', '1449028340470', '10000', null, '1', '1430115992021.lenovo', '18', '1', '测试角色名', '10', '测试', '2015-12-02 11:51:28', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('794010831644786693', '1', '20', '', 'RMB', '1449037168976', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:18:37', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('794012940473729025', '1', '20', '', 'RMB', '1449037627597', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:26:16', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('794013524589281282', '1', '20', '', 'RMB', '1449037756335', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:28:24', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('794014357812936705', '1', '20', '', 'RMB', '1449037938043', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:31:26', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('794015895411228674', '1', '20', '', 'RMB', '1449038271927', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:37:00', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('794015942655868931', '1', '20', '', 'RMB', '1449038283594', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:37:11', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('794019301320294401', '1', '20', '', 'RMB', '1449039016968', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:49:25', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('794019945565388801', '1', '20', '', 'RMB', '1449039159606', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:51:47', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('797316491878858753', '1', '20', '', 'RMB', '1449540823193', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:12:32', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('797316556303368194', '1', '20', '', 'RMB', '1449540837083', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:12:47', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('797317011569901571', '1', '20', '', 'RMB', '1449540937055', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:14:25', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('805800383728320513', '1', '20', '', 'RMB', '1450844925440', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-23 12:28:46', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('805901178020823041', '1', '20', '', 'RMB', '1450865484927', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-23 18:11:26', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('886427760371695617', '1', '35', '', 'RMB', '1452080296655', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:37:26', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('886428249997967362', '1', '35', '', 'RMB', '1452080402957', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:39:12', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('886429306559922179', '1', '35', '', 'RMB', '1452080632930', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:43:02', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('886429542783123460', '1', '35', '', 'RMB', '1452080687933', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:43:57', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('886429766121422853', '1', '35', '', 'RMB', '1452080736157', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:44:45', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('886429959394951174', '1', '35', '', 'RMB', '1452080776224', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:45:26', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('886431973734612999', '1', '35', '', 'RMB', '1452081217310', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:52:47', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('886432141238337544', '1', '35', '', 'RMB', '1452081253239', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:53:22', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('887523110176161793', '1', '12', '', 'RMB', '1452246910713', '10000', '0', '1', '1434533153312.baidu', '33', '1', '测试角色名', '10', '测试', '2016-01-08 17:54:17', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('898676899725705217', '1', '38', '', 'RMB', '1453953371161', '10000', null, '1', '1449563378170.youku', '39', '1', '测试角色名', '10', '测试', '2016-01-28 11:55:33', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('898780782099693570', '1', '50', '', 'RMB', '1453974651541', '10000', null, '1', '1450841036321.pptv', '46', '1', '测试角色名', '10', '测试', '2016-01-28 17:49:28', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('912166803591921665', '1', '29', '', 'RMB', '1455936308327', '100', null, '1', '1455936204042.guopan', '50', '1', '测试角色名', '10', '测试', '2016-02-20 10:43:32', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('912174891015340034', '1', '16', '', 'RMB', '1455937835377', '100', null, '1', '1455937732110.qihoo', '51', '1', '测试角色名', '10', '测试', '2016-02-20 11:08:59', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('920629830490259457', '1', '18', '', 'RMB', '1456976947389', '100', null, '1', '1456976849166.m4399', '53', '1', '测试角色名', '10', '测试', '2016-03-03 11:47:52', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('923397180998287361', '1', '34', '', 'RMB', '1457399092431', '100', null, '1', '1430876912124.am', '29', '1', '测试角色名', '10', '测试', '2016-03-08 09:03:24', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('923545378844835841', '1', '20', '', 'RMB', '1457429525073', '100', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2016-03-08 17:30:33', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('937516001220624385', '1', '32', '', 'RMB', '1459482008019', '100', null, '1', '1430881797104.coolpad', '30', '1', '测试角色名', '10', '测试', '2016-04-01 11:39:22', null, null, '元宝', '购买100元宝', null);
-INSERT INTO `uorder` VALUES ('941485186657288193', '1', '1701', '', 'RMB', 'none', '10000', null, '1', '1460085825988.demo', '57', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-08 13:15:10', null, null, '元宝', '100元宝，送20', null);
-INSERT INTO `uorder` VALUES ('941485766477873154', '1', '1701', '', 'RMB', 'none', '10000', null, '1', '1460085825988.demo', '57', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-08 13:17:17', null, null, '元宝', '100元宝，送20', null);
-INSERT INTO `uorder` VALUES ('941495103736774659', '1', '1701', '', 'RMB', 'none', '10000', null, '1', '1460085825988.demo', '57', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-08 13:51:15', null, null, '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('654898395705507841', '1', '39', '65489839570', 'RMB', null, '100', '100', '2', '', '3', '1', '?????', '1', '??', null, '23453435', '2016-01-18 17:21:05', null, null, null, null);
+INSERT INTO `uorder` VALUES ('654898640518643714', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null, null);
+INSERT INTO `uorder` VALUES ('654901505261830147', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null, null);
+INSERT INTO `uorder` VALUES ('654901677060521988', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null, null);
+INSERT INTO `uorder` VALUES ('654906289855397889', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null, null);
+INSERT INTO `uorder` VALUES ('654907385072058370', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null, null);
+INSERT INTO `uorder` VALUES ('654907569755652099', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '?????', '1', '??', null, null, null, null, null, null, null);
+INSERT INTO `uorder` VALUES ('654914501832867844', '1', '503', '', 'RMB', null, '100', null, '1', '', '3', '1', '测试角色名', '1', '测试', null, null, null, null, null, null, null);
+INSERT INTO `uorder` VALUES ('656016779419582465', '1', '503', '', 'RMB', '1428891376228', '100', null, '1', '', '3', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('656068817243340801', '1', '503', '', 'RMB', '1428902015786', '100', null, '1', '', '3', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('656069040581640194', '1', '503', '656069040581640194', 'RMB', '1428902064311', '10000', null, '2', '', '3', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('658356789271592961', '1', '11', '', 'RMB', '1429255035989', '100', null, '1', '', '4', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('658896421847564289', '1', '503', '', 'RMB', '1429336831312', '100', null, '1', '', '5', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('659988610556100609', '1', '11', '11342423', 'RMB', '1429502514494', '10000', null, '2', '', '4', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('660073230001766401', '1', '16', '', 'RMB', '1429520025537', '100', null, '1', '', '7', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('660076983803183106', '1', '16', '', 'RMB', '1429520601543', '100', null, '1', '', '2', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('660081308835250177', '1', '16', '', 'RMB', '1429521547973', '100', null, '1', '', '2', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('660588278184935425', '1', '12', '235234554', 'RMB', '1429596446912', '100', null, '4', '', '9', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('660707025440735233', '1', '17', '8908009089', 'RMB', '1429620926766', '10000', null, '2', '', '10', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('661185128315224065', '1', '18', '34543545', 'RMB', '1429689773941', '100', null, '2', '', '11', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('661636280269930497', '1', '19', '43253454354', 'RMB', '1429753452230', '10000', null, '2', '', '12', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('661646034140659713', '1', '19', '', 'RMB', '1429755340542', '100', null, '1', '', '12', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662260334723072001', '1', '20', '', 'RMB', '1429852229817', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', null, null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662260944608428033', '1', '20', '', 'RMB', '1429852363141', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:11:18', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662262684070182913', '1', '20', '', 'RMB', '1429852744334', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:17:39', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662263066322272258', '1', '20', '', 'RMB', '1429852826621', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:19:00', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662263439984427011', '1', '20', '', 'RMB', '1429852909172', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:20:23', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662265226690822148', '1', '20', '', 'RMB', '1429853300922', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:26:55', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662265982605066241', '1', '20', '', 'RMB', '1429853464556', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:29:39', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662266193058463746', '1', '20', '', 'RMB', '1429853509977', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:30:24', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662267039167021059', '1', '20', '', 'RMB', '1429853694257', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:33:29', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662267941110153220', '1', '20', '', 'RMB', '1429853893283', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:36:47', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662269891025305605', '1', '20', '', 'RMB', '1429854318860', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:43:53', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662270006989422598', '1', '20', '', 'RMB', '1429854341767', '100', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 13:44:16', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662286259145670663', '1', '20', '34544345435', 'RMB', '1429857650169', '10000', null, '2', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 14:39:24', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662286332160114696', '1', '20', '', 'RMB', '1429857667094', '10000', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 14:39:41', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662294917799739393', '1', '20', '', 'RMB', '1429859302535', '10000', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 15:06:56', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662294986519216130', '1', '20', '', 'RMB', '1429859314687', '10000', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 15:07:08', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662295033763856387', '1', '20', '', 'RMB', '1429859325232', '10000', null, '1', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 15:07:19', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662295072418562052', '1', '20', '34544345435', 'RMB', '1429859334392', '10000', null, '2', '', '14', '1', '测试角色名', '1', '测试', '2015-04-24 15:07:28', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662773862487818241', '1', '20', '', 'RMB', '1429928565714', '10000', null, '1', '', '15', '1', '测试角色名', '1', '测试', '2015-04-25 10:21:17', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662775855352643586', '1', '20', '', 'RMB', '1429929001823', '10000', null, '1', '', '15', '1', '测试角色名', '1', '测试', '2015-04-25 10:28:33', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662795139755802625', '1', '21', '23453454354', 'RMB', '1429932972301', '10000', null, '2', '', '16', '1', '测试角色名', '1', '测试', '2015-04-25 11:34:43', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('662849492566933505', '1', '22', '345435435', 'RMB', '1429944114939', '10000', null, '2', '', '17', '1', '测试角色名', '1', '测试', '2015-04-25 14:40:26', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('663986842856587265', '1', '23', '2354325345', 'RMB', '1430119175223', '10000', null, '2', '', '18', '1', '测试角色名', '1', '测试', '2015-04-27 15:18:04', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664070427215134721', '1', '24', '', 'RMB', '1430136220108', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:02:09', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664071522431795201', '1', '24', '', 'RMB', '1430136458764', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:06:08', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664071668460683266', '1', '24', '', 'RMB', '1430136493363', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:06:42', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664074159541714947', '1', '24', '', 'RMB', '1430137035192', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:15:46', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664074636283084804', '1', '24', '', 'RMB', '1430137138234', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:17:29', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664078991379922949', '1', '24', '', 'RMB', '1430138088360', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-27 20:33:19', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664444544636420097', '1', '24', '', 'RMB', '1430184044385', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-28 09:19:11', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664445433694650370', '1', '24', '', 'RMB', '1430184239937', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-28 09:22:26', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664446984177844227', '1', '24', '', 'RMB', '1430184576560', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-28 09:28:03', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664451287735074817', '1', '24', '', 'RMB', '1430185518777', '10000', null, '1', '', '19', '1', '测试角色名', '1', '测试', '2015-04-28 09:43:45', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664551566631501825', '1', '25', '', 'RMB', '1430205967061', '10000', null, '1', '', '20', '1', '测试角色名', '1', '测试', '2015-04-28 15:24:33', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664646085976784897', '1', '26', '345435345', 'RMB', '1430225395635', '10000', null, '2', '', '21', '1', '测试角色名', '1', '测试', '2015-04-28 20:48:24', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664650990829436930', '1', '16', '', 'RMB', '1430226225721', '10000', null, '1', '', '2', '1', '测试角色名', '1', '测试', '2015-04-28 21:02:14', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('664654864889937923', '1', '10', '', 'RMB', '1430227072591', '10000', null, '1', '', '22', '1', '测试角色名', '1', '测试', '2015-04-28 21:16:20', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('665655343161802753', '1', '27', '', 'RMB', '1430374179468', '10000', null, '1', '', '23', '1', '测试角色名', '1', '测试', '2015-04-30 14:08:02', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('665674460061237249', '1', '28', '', 'RMB', '1430378112507', '10000', null, '1', '', '24', '1', '测试角色名', '1', '测试', '2015-04-30 15:13:37', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('665702862679965697', '1', '30', '', 'RMB', '1430384074782', '10000', null, '1', '', '25', '1', '测试角色名', '1', '测试', '2015-04-30 16:52:58', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('668974012851814401', '1', '30', '', 'RMB', '1430707860967', '10000', null, '1', '', '25', '1', '测试角色名', '1', '测试', '2015-05-04 10:49:18', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('668992266462822401', '1', '29', '', 'RMB', '1430711607352', '10000', null, '1', '', '26', '1', '测试角色名', '1', '测试', '2015-05-04 11:51:44', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('669055462611615745', '1', '31', '', 'RMB', '1430724441428', '10000', null, '1', '', '27', '1', '测试角色名', '1', '测试', '2015-05-04 15:25:38', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('669154328463802369', '1', '33', '', 'RMB', '1430744577958', '10000', null, '1', '', '28', '1', '测试角色名', '1', '测试', '2015-05-04 21:01:17', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('669509243086307329', '1', '33', '', 'RMB', '1430788450844', '10000', null, '1', '', '28', '1', '测试角色名', '1', '测试', '2015-05-05 09:12:28', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('669509320395718658', '1', '33', '', 'RMB', '1430788467997', '10000', null, '1', '', '28', '1', '测试角色名', '1', '测试', '2015-05-05 09:12:46', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('669509749892448259', '1', '33', '', 'RMB', '1430788560801', '10000', null, '1', '', '28', '1', '测试角色名', '1', '测试', '2015-05-05 09:14:18', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670082350637383681', '1', '34', '', 'RMB', '1430877071806', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 09:49:25', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670082397882023938', '1', '34', '', 'RMB', '1430877083005', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 09:49:36', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670086774453698561', '1', '34', '', 'RMB', '1430877797785', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 10:01:31', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670097932778733569', '1', '34', '', 'RMB', '1430880232098', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 10:42:05', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670100526938980353', '1', '34', '', 'RMB', '1430880799686', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 10:51:33', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670101510486491137', '1', '34', '', 'RMB', '1430881013318', '10000', null, '1', '', '29', '1', '测试角色名', '1', '测试', '2015-05-06 10:55:06', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670106737461690370', '1', '32', '', 'RMB', '1430881914216', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 11:10:07', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670114107625570305', '1', '32', '', 'RMB', '1430883525743', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 11:36:59', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670115159892557825', '1', '32', '', 'RMB', '1430883754639', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 11:40:48', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670117324556075009', '1', '32', '', 'RMB', '1430884227289', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 11:48:40', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670144438684614657', '1', '32', '', 'RMB', '1430889663280', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:19:17', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670145864613756930', '1', '32', '', 'RMB', '1430889975160', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:24:29', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670146182441336835', '1', '32', '', 'RMB', '1430890044859', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:25:39', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670148896860667908', '1', '32', '', 'RMB', '1430890637438', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:35:31', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670150112336412673', '1', '32', '', 'RMB', '1430890903744', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:39:58', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670152216870387713', '1', '32', '', 'RMB', '1430891361948', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:47:36', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670154768080961537', '1', '32', '', 'RMB', '1430891920585', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:56:54', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('670155420915990529', '1', '32', '', 'RMB', '1430892060400', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-06 13:59:14', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672890219866882049', '1', '32', '', 'RMB', '1431307580742', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:24:23', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672893509811830785', '1', '32', '', 'RMB', '1431308298532', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:36:21', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672895425367244801', '1', '32', '', 'RMB', '1431308716741', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:43:19', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672897212073639937', '1', '32', '', 'RMB', '1431309109066', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:49:51', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672898341650038785', '1', '32', '', 'RMB', '1431309355940', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 09:53:58', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672906691066462209', '1', '32', '', 'RMB', '1431310936517', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:20:18', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672910311723892737', '1', '32', '', 'RMB', '1431311727630', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:33:29', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672915027597983745', '1', '32', '', 'RMB', '1431312758564', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:50:39', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672916273138499585', '1', '32', '', 'RMB', '1431313028463', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:55:09', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672916956038299649', '1', '32', '', 'RMB', '1431313179550', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 10:57:40', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672918987557830657', '1', '32', '', 'RMB', '1431313380135', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:01:01', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672919979695276033', '1', '32', '', 'RMB', '1431313600119', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:04:40', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672920976127688705', '1', '32', '', 'RMB', '1431313815855', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:08:16', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672921521588535297', '1', '32', '', 'RMB', '1431313934537', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:10:15', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('672924356266950658', '1', '32', '', 'RMB', '1431314555043', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 11:20:35', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('673003748737417219', '1', '32', '', 'RMB', '1431330920185', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 15:53:24', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('673004341442904068', '1', '32', '', 'RMB', '1431331049136', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 15:55:34', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('673007463884128257', '1', '32', '', 'RMB', '1431331493631', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 16:02:57', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('673008649295101954', '1', '32', '', 'RMB', '1431331749444', '10000', null, '1', '', '30', '1', '测试角色名', '1', '测试', '2015-05-11 16:07:13', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694418605999128577', '1', '16', '', 'RMB', '1434532104099', '10000', null, '1', '', '2', '1', '测试角色名', '1', '测试', '2015-06-17 17:08:11', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694423205909102594', '1', '12', '', 'RMB', '1434533112024', '10000', null, '1', '', '32', '1', '测试角色名', '1', '测试', '2015-06-17 17:24:58', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694423343348056067', '1', '12', '', 'RMB', '1434533139501', '10000', null, '1', '', '32', '1', '测试角色名', '1', '测试', '2015-06-17 17:25:26', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694423467902107652', '1', '12', '', 'RMB', '1434533169429', '10000', null, '1', '', '33', '1', '测试角色名', '1', '测试', '2015-06-17 17:25:55', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694429987662462981', '1', '17', '', 'RMB', '1434534590449', '10000', null, '1', '', '10', '1', '测试角色名', '1', '测试', '2015-06-17 17:49:37', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694876041490989057', '1', '24', '', 'RMB', '1434596914978', '10000', null, '1', '', '34', '1', '测试角色名', '1', '测试', '2015-06-18 11:08:20', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694876170340007938', '1', '24', '', 'RMB', '1434596945965', '10000', null, '1', '', '34', '1', '测试角色名', '1', '测试', '2015-06-18 11:08:50', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694876389383340035', '1', '24', '', 'RMB', '1434596993520', '10000', null, '1', '', '34', '1', '测试角色名', '1', '测试', '2015-06-18 11:09:37', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('694880757365080068', '1', '24', '', 'RMB', '1434597945905', '10000', null, '1', '', '34', '1', '测试角色名', '1', '测试', '2015-06-18 11:25:30', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('701798296116527105', '1', '10', '', 'RMB', '1435668001774', '10000', null, '1', '', '22', '1', '测试角色名', '1', '测试', '2015-06-30 20:39:21', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('706207367808679937', '1', '12', '', 'RMB', '1436166980543', '10000', null, '1', '', '33', '1', '测试角色名', '1', '测试', '2015-07-06 15:15:28', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('793941923189489665', '1', '12', '', 'RMB', '1449023088424', '10000', null, '1', '1434533153312.baidu', '33', '1', '测试角色名', '10', '测试', '2015-12-02 10:23:57', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('793942554549682178', '1', '17', '', 'RMB', '1449023224258', '10000', null, '1', '1429620637444.xiaomi', '10', '1', '测试角色名', '10', '测试', '2015-12-02 10:26:12', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('793958445928677379', '1', '30', '', 'RMB', '1449026451590', '10000', null, '1', '1449026379630.paojiao', '35', '1', '测试角色名', '10', '测试', '2015-12-02 11:20:00', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('793967087402876932', '1', '23', '', 'RMB', '1449028340470', '10000', null, '1', '1430115992021.lenovo', '18', '1', '测试角色名', '10', '测试', '2015-12-02 11:51:28', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('794010831644786693', '1', '20', '', 'RMB', '1449037168976', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:18:37', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('794012940473729025', '1', '20', '', 'RMB', '1449037627597', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:26:16', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('794013524589281282', '1', '20', '', 'RMB', '1449037756335', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:28:24', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('794014357812936705', '1', '20', '', 'RMB', '1449037938043', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:31:26', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('794015895411228674', '1', '20', '', 'RMB', '1449038271927', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:37:00', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('794015942655868931', '1', '20', '', 'RMB', '1449038283594', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:37:11', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('794019301320294401', '1', '20', '', 'RMB', '1449039016968', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:49:25', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('794019945565388801', '1', '20', '', 'RMB', '1449039159606', '10000', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2015-12-02 14:51:47', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('797316491878858753', '1', '20', '', 'RMB', '1449540823193', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:12:32', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('797316556303368194', '1', '20', '', 'RMB', '1449540837083', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:12:47', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('797317011569901571', '1', '20', '', 'RMB', '1449540937055', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-08 10:14:25', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('805800383728320513', '1', '20', '', 'RMB', '1450844925440', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-23 12:28:46', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('805901178020823041', '1', '20', '', 'RMB', '1450865484927', '10000', '0', '1', '1449217321152.vivo', '38', '1', '测试角色名', '10', '测试', '2015-12-23 18:11:26', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('886427760371695617', '1', '35', '', 'RMB', '1452080296655', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:37:26', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('886428249997967362', '1', '35', '', 'RMB', '1452080402957', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:39:12', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('886429306559922179', '1', '35', '', 'RMB', '1452080632930', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:43:02', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('886429542783123460', '1', '35', '', 'RMB', '1452080687933', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:43:57', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('886429766121422853', '1', '35', '', 'RMB', '1452080736157', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:44:45', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('886429959394951174', '1', '35', '', 'RMB', '1452080776224', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:45:26', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('886431973734612999', '1', '35', '', 'RMB', '1452081217310', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:52:47', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('886432141238337544', '1', '35', '', 'RMB', '1452081253239', '10000', '0', '1', '1452080230704.txmsdk', '48', '1', '测试角色名', '10', '测试', '2016-01-06 19:53:22', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('887523110176161793', '1', '12', '', 'RMB', '1452246910713', '10000', '0', '1', '1434533153312.baidu', '33', '1', '测试角色名', '10', '测试', '2016-01-08 17:54:17', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('898676899725705217', '1', '38', '', 'RMB', '1453953371161', '10000', null, '1', '1449563378170.youku', '39', '1', '测试角色名', '10', '测试', '2016-01-28 11:55:33', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('898780782099693570', '1', '50', '', 'RMB', '1453974651541', '10000', null, '1', '1450841036321.pptv', '46', '1', '测试角色名', '10', '测试', '2016-01-28 17:49:28', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('912166803591921665', '1', '29', '', 'RMB', '1455936308327', '100', null, '1', '1455936204042.guopan', '50', '1', '测试角色名', '10', '测试', '2016-02-20 10:43:32', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('912174891015340034', '1', '16', '', 'RMB', '1455937835377', '100', null, '1', '1455937732110.qihoo', '51', '1', '测试角色名', '10', '测试', '2016-02-20 11:08:59', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('920629830490259457', '1', '18', '', 'RMB', '1456976947389', '100', null, '1', '1456976849166.m4399', '53', '1', '测试角色名', '10', '测试', '2016-03-03 11:47:52', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('923397180998287361', '1', '34', '', 'RMB', '1457399092431', '100', null, '1', '1430876912124.am', '29', '1', '测试角色名', '10', '测试', '2016-03-08 09:03:24', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('923545378844835841', '1', '20', '', 'RMB', '1457429525073', '100', null, '1', '1429852091204.vivo', '14', '1', '测试角色名', '10', '测试', '2016-03-08 17:30:33', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('937516001220624385', '1', '32', '', 'RMB', '1459482008019', '100', null, '1', '1430881797104.coolpad', '30', '1', '测试角色名', '10', '测试', '2016-04-01 11:39:22', null, null, null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('941485186657288193', '1', '1701', '', 'RMB', 'none', '10000', null, '1', '1460085825988.demo', '57', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-08 13:15:10', null, null, null, '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('941485766477873154', '1', '1701', '', 'RMB', 'none', '10000', null, '1', '1460085825988.demo', '57', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-08 13:17:17', null, null, null, '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('941495103736774659', '1', '1701', '', 'RMB', 'none', '10000', null, '1', '1460085825988.demo', '57', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-08 13:51:15', null, null, null, '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('947807773653991425', '1', '28', '', 'RMB', 'none', '100', null, '1', '1461069622345.mumayi', '58', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-19 20:40:38', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('947809465871106050', '1', '28', '', 'RMB', 'none', '100', null, '1', '1461070000406.mumayi', '59', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-19 20:46:48', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('948269684501774337', '1', '49', '', 'RMB', 'none', '100', null, '1', '1461135412792.pps', '60', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-20 14:57:01', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('948367425072529410', '1', '32', '', 'RMB', 'none', '100', null, '1', '1430881797104.coolpad', '30', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-20 20:28:38', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('948370727902380035', '1', '32', '', 'RMB', 'none', '100', null, '1', '1430881797104.coolpad', '30', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-20 20:40:39', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('948744488841379841', '1', '17', '', 'RMB', 'none', '100', null, '1', '1456306757555.xiaomi', '52', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-21 09:56:22', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('948932380775677953', '1', '36', '', 'RMB', 'none', '100', null, '1', '1461242149314.gfan', '61', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-21 20:35:57', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('948935017885597698', '1', '36', '', 'RMB', 'none', '100', null, '1', '1461242149314.gfan', '61', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-21 20:45:31', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('948941267063013379', '1', '36', '', 'RMB', 'none', '100', null, '1', '1461242149314.gfan', '61', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-21 21:04:14', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('949288394909810689', '1', '36', '', 'RMB', 'none', '100', null, '1', '1461242149314.gfan', '61', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-22 08:51:04', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('949290748551888898', '1', '36', '', 'RMB', 'none', '100', null, '1', '1461242149314.gfan', '61', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-22 08:59:40', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('949300983458955267', '1', '36', '', 'RMB', 'none', '100', null, '1', '1461242149314.gfan', '61', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-22 09:32:55', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('949870427402928129', '1', '16', '', 'RMB', 'none', '100', null, '1', '1425101806170.qihoo', '2', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-23 09:56:31', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('949870526187175938', '1', '16', '', 'RMB', 'none', '100', null, '1', '1425101806170.qihoo', '2', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-23 09:56:54', null, null, '1', '元宝', '100元宝，送20', null);
 
 -- ----------------------------
 -- Table structure for uuser
@@ -415,13 +431,13 @@ CREATE TABLE `uuser` (
   `name` varchar(255) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uuser
 -- ----------------------------
 INSERT INTO `uuser` VALUES ('1', '1', '16', null, null, null, '2015-02-28 11:23:50', '1425093830573', '1425093830573.qihoo', '1262599d7f5e71544d4956e7b1406e24');
-INSERT INTO `uuser` VALUES ('2', '1', '16', '746123316', 'chenjie115521', '哈哈哈哇身上', '2015-02-28 13:36:46', '1425093830573', '1425101806170.qihoo', '6c98ab40327812bf8effc075901f670b');
+INSERT INTO `uuser` VALUES ('2', '1', '16', '746123316', 'chenjie115521', '哈哈哈哇身上', '2015-02-28 13:36:46', '1461376564964', '1425101806170.qihoo', '5cbfc8a572494a701b9bdeb947283509');
 INSERT INTO `uuser` VALUES ('3', '1', '503', '1347463825', '1347463825', '九游玩家743863934', '2015-04-10 11:07:02', '1425093830573', '1428635222022.uc', '973c5f13242e0fde7fbaefa4dc8d899b');
 INSERT INTO `uuser` VALUES ('4', '1', '11', '0', null, null, '2015-04-17 15:15:48', '1459238545245', '1429254948678.dl', '4b243adcef7961fb96784bf718c19136');
 INSERT INTO `uuser` VALUES ('5', '1', '503', '1999722123', '1999722123', '九游玩家602532480', '2015-04-17 17:32:29', '1425093830573', '1429263149059.uc', '674c88acb1de07c33ae9b4100bb69334');
@@ -449,7 +465,7 @@ INSERT INTO `uuser` VALUES ('26', '1', '29', '0S5I3N2KCJLQD8CI', 'sdfdsf', '', '
 INSERT INTO `uuser` VALUES ('27', '1', '31', '16409735', '', '', '2015-05-04 15:25:18', '1425093830573', '1430724318289.meizu', 'e60a3c305791b1e2e3e94c7da6df650c');
 INSERT INTO `uuser` VALUES ('28', '1', '33', '291628d0790721ca', '', '', '2015-05-04 21:01:11', '1425093830573', '1430744471243.ouwan', 'a768d2b637b7afa2d8ddae30d240623a');
 INSERT INTO `uuser` VALUES ('29', '1', '34', 'E59EDE98622248A3B8B6BBE187656B5C', 'Amigo_44104', '', '2015-05-06 09:48:32', '1457399050591', '1430876912124.am', 'c75f44f3285bc04068c0d5dd27d080bf');
-INSERT INTO `uuser` VALUES ('30', '1', '32', '29682286', 'CCNK1428383254363', 'CCNK1428383254363', '2015-05-06 11:09:57', '1459938683576', '1430881797104.coolpad', '31941c133095c0b77d1e27f46561c1c0');
+INSERT INTO `uuser` VALUES ('30', '1', '32', '29682286', 'CCNK1428383254363', 'CCNK1428383254363', '2015-05-06 11:09:57', '1461155307264', '1430881797104.coolpad', '6ade3af1d15180db02a843aee3f47669');
 INSERT INTO `uuser` VALUES ('31', '1', '10', '1324439506', '1324439506', '九游玩家_ib0i44ofb2', '2015-06-17 17:18:42', '1425093830573', '1434532722195.uc', '03a60052c404ff5ac65d77fb1cb6dd6b');
 INSERT INTO `uuser` VALUES ('32', '1', '12', '2003198165', '', '', '2015-06-17 17:24:55', '1425093830573', '1434533095191.baidu', 'd50087b987e7c52f44ba7a33ebbd0012');
 INSERT INTO `uuser` VALUES ('33', '1', '12', '1292623589', '', '', '2015-06-17 17:25:53', '1460020770278', '1434533153312.baidu', '6171b5e8ebaf7d0bf27594dc020229f2');
@@ -471,9 +487,13 @@ INSERT INTO `uuser` VALUES ('48', '1', '35', 'F7B0CCE4D37010FD7D7D78CC21C61A54',
 INSERT INTO `uuser` VALUES ('49', '1', '22', '125900067', '', '', '2016-01-06 20:10:10', '1452082210043', '1452082210043.wdj', '3bde1f1f09bd962ffd088142bdfd0387');
 INSERT INTO `uuser` VALUES ('50', '1', '29', '855QMME9F7FWI43T', '18202116067', '', '2016-02-20 10:43:24', '1455936204042', '1455936204042.guopan', 'f318d54299d81d6f5b69c8a4f78371d2');
 INSERT INTO `uuser` VALUES ('51', '1', '16', '2639783407', 'GQ160220111021', '', '2016-02-20 11:08:52', '1455937732110', '1455937732110.qihoo', 'be11ae54c5578dd72591da7063fd1709');
-INSERT INTO `uuser` VALUES ('52', '1', '17', '118770409', '', '', '2016-02-24 17:39:17', '1456307001767', '1456306757555.xiaomi', 'b58c2f6547a142fa928a704e2e0ea0a5');
+INSERT INTO `uuser` VALUES ('52', '1', '17', '118770409', '', '', '2016-02-24 17:39:17', '1461203774189', '1456306757555.xiaomi', '9352797c7f18f743df05a09bc002bd4f');
 INSERT INTO `uuser` VALUES ('53', '1', '18', '1940709767', '1193356121', '', '2016-03-03 11:47:29', '1456976849166', '1456976849166.m4399', 'dfe40cf6020b0d50b7dff655ceae4531');
 INSERT INTO `uuser` VALUES ('54', '1', '11', '181422924', '', '', '2016-03-29 16:35:27', '1459240527423', '1459240527423.dl', '10101dedb13ecee95aa54e422525d5ee');
 INSERT INTO `uuser` VALUES ('55', '1', '25', '2673447', 'w5447150', 'liner115521', '2016-03-29 20:12:35', '1459253555669', '1459253555669.appchina', '4909a915c351ded4274349032d4cb635');
 INSERT INTO `uuser` VALUES ('56', '1', '28', '9694527', 'hahha00o', '', '2016-04-06 12:40:05', '1459917622377', '1459917605685.mumayi', 'd219c49deecd22f7e46ea9d1aa8a00ee');
 INSERT INTO `uuser` VALUES ('57', '1', '1701', 'demo0000001', 'test', 'demo_user', '2016-04-08 11:23:45', '1460094683723', '1460085825988.demo', '1b0fbbf3f01fc6900c53a8d9eab40e04');
+INSERT INTO `uuser` VALUES ('58', '1', '28', '9730228', '小蚂蚁mm134509', '', '2016-04-19 20:40:22', '1461069622346', '1461069622345.mumayi', 'a69358d43ad91e0172856e6d134e6a66');
+INSERT INTO `uuser` VALUES ('59', '1', '28', '9730300', '小蚂蚁mm134541', '', '2016-04-19 20:46:40', '1461070000406', '1461070000406.mumayi', 'd655b7082aca1ca5bb5d7fcb5cbc1f2e');
+INSERT INTO `uuser` VALUES ('60', '1', '49', '1220898226', '', '', '2016-04-20 14:56:52', '1461135412792', '1461135412792.pps', 'a2bd8a457674036d08fcc77355988733');
+INSERT INTO `uuser` VALUES ('61', '1', '36', '30633010', '2584c38a6056c39c5ac36186b7179f88', '', '2016-04-21 20:35:49', '1461288773257', '1461242149314.gfan', 'fd14fcbbd0a05af178a7a14ad6e2274a');
