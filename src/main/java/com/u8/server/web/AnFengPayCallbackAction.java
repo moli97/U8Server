@@ -9,7 +9,9 @@ import com.u8.server.sdk.anfeng.AnFengSDK;
 import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UOrderManager;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,6 +23,8 @@ import java.util.Map;
  * 安峰(56Game)渠道支付回调处理类
  * Created by ant on 2015/12/3.
  */
+@Controller
+@Namespace("/pay/anfeng")
 public class AnFengPayCallbackAction extends UActionSupport{
 
     private String uid;
