@@ -56,15 +56,15 @@ public class YSDKPayAction extends UActionSupport{
 
         try{
 
-            Log.e("opType=", opType);
-            Log.e("channelID=", channelID);
-            Log.e("userID=", userID);
-            Log.e("accountType=", accountType);
-            Log.e("openID=", openID);
-            Log.e("openKey=", openKey);
-            Log.e("pf=", pf);
-            Log.e("pfkey=", pfkey);
-            Log.e("zoneid=", zoneid);
+            Log.e("opType=" + opType);
+            Log.e("channelID=" + channelID);
+            Log.e("userID=" + userID);
+            Log.e("accountType=" + accountType);
+            Log.e("openID=" + openID);
+            Log.e("openKey=" + openKey);
+            Log.e("pf=" +  pf);
+            Log.e("pfkey=" + pfkey);
+            Log.e("zoneid=" + zoneid);
 
             UChannel channel = channelManager.queryChannel(this.channelID);
             if(channel == null){

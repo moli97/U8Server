@@ -135,10 +135,8 @@ public class PayTask implements Runnable, Delayed{
                             boolean firstPay = false;
                             int allMoney = 0;
 
-                            if(payRequest.getSdkType() == PayRequest.SDK_TYPE_MSDK){
-                                firstPay = queryResult.getInt("first_save") == 1;
-                                allMoney = queryResult.getInt("save_amt");
-                            }
+                            firstPay = queryResult.getInt("first_save") == 1;
+                            allMoney = queryResult.getInt("save_amt");
 
                             String transID = payResult.getString("billno");
                             UMsdkOrder order = orderManager.generateMsdkOrder(payRequest.getUser(), transID, coinNum, firstPay, allMoney);
@@ -192,8 +190,11 @@ public class PayTask implements Runnable, Delayed{
             params.put("pfkey", this.payRequest.getPfkey());
             params.put("zoneid", this.payRequest.getZoneid());
 
-
-            String resp = OpenApiV3.api_pay(url, scriptName, channel.getCpAppID(), channel.getCpAppKey(), this.payRequest.getAccountType(), params);
+            String urlPath = scriptName;
+            if(payRequest.getSdkType() == PayRequest.SDK_TYPE_YSDK){
+                urlPath = "/v3/r"+scriptName;
+            }
+            String resp = OpenApiV3.api_pay(url, urlPath, channel.getCpAppID(), channel.getCpAppKey(), this.payRequest.getAccountType(), params);
 
             JSONObject json = JSONObject.fromObject(resp);
             int ret = json.getInt("ret");
@@ -241,7 +242,12 @@ public class PayTask implements Runnable, Delayed{
                 params.put("billno", IDGenerator.getInstance().nextOrderID()+"");
             }
 
-            String resp = OpenApiV3.api_pay(url, scriptName, channel.getCpAppID(), channel.getCpAppKey(), this.payRequest.getAccountType(), params);
+            String urlPath = scriptName;
+            if(payRequest.getSdkType() == PayRequest.SDK_TYPE_YSDK){
+                urlPath = "/v3/r"+scriptName;
+            }
+
+            String resp = OpenApiV3.api_pay(url, urlPath, channel.getCpAppID(), channel.getCpAppKey(), this.payRequest.getAccountType(), params);
 
             JSONObject json = JSONObject.fromObject(resp);
             int ret = json.getInt("ret");
