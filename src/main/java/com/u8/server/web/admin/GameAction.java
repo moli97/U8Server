@@ -113,13 +113,14 @@ public class GameAction extends UActionSupport implements ModelDriven<UGame>{
                     m.setName(this.game.getName());
                     m.setPayCallback(this.game.getPayCallback());
                     m.setPayCallbackDebug(this.game.getPayCallbackDebug());
+                    m.setMsdkPayCallback(this.game.getMsdkPayCallback());
                     gameManager.saveGame(m);
                     renderState(true);
                     return;
                 }
             }
 
-            this.gameManager.generateGame(this.game.getName(), this.game.getPayCallback(), this.game.getPayCallbackDebug());
+            this.gameManager.generateGame(this.game.getName(), this.game.getPayCallback(), this.game.getPayCallbackDebug(), this.game.getMsdkPayCallback());
             renderState(true);
             return;
 

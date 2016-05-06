@@ -1,15 +1,11 @@
-package com.u8.server.sdk.txmsdk;
+package com.u8.server.sdk.ysdk;
 
-import com.u8.server.data.UChannel;
 import com.u8.server.data.UUser;
 
 /**
  * Created by ant on 2015/10/14.
  */
 public class PayRequest {
-
-    public static int SDK_TYPE_MSDK = 0;
-    public static int SDK_TYPE_YSDK = 1;
 
     private UUser user;
     private int accountType;    //0:QQ;1:微信
@@ -19,6 +15,7 @@ public class PayRequest {
     private String pf;          //平台来源
     private String pfkey;       //跟平台来源和openkey根据规则生成的一个密钥串
     private String zoneid;      //账户分区ID
+    private Long orderID;     //订单号
 
     private int sdkType;        //0:MSDK；1：是新版YSDK
 
@@ -94,4 +91,11 @@ public class PayRequest {
         this.sdkType = sdkType;
     }
 
+    public Long getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(Long orderID) {
+        this.orderID = orderID;
+    }
 }

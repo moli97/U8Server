@@ -82,6 +82,11 @@
       </div>
 
       <div class="u8_form_row">
+        <label >支付回调地址(应用宝)：</label>
+        <input type="text" class="easyui-textbox" name="msdkPayCallback" maxlength="1024" novalidate />
+      </div>
+
+      <div class="u8_form_row">
         <label>支付回调(调试)：</label>
         <input type="text" class="easyui-textbox" name="payCallbackDebug" maxlength="1024" novalidate />
       </div>
@@ -132,6 +137,11 @@
       <div class="u8_form_row">
         <label >支付回调地址：</label>
         <input type="text" class="easyui-textbox" name="payCallback" readonly="readonly" novalidate/>
+      </div>
+
+      <div class="u8_form_row">
+        <label >支付回调地址(应用宝)：</label>
+        <input type="text" class="easyui-textbox" name="msdkPayCallback" readonly="readonly" novalidate/>
       </div>
 
       <div class="u8_form_row">
@@ -292,6 +302,7 @@
         {field:'appRSAPubKey', title:'PayPublicKey', width:100, sortable:true},
         {field:'appRSAPriKey', title:'PayPrivateKey', width:100, sortable:true},
         {field:'payCallback', title:'支付回调地址', width:80, sortable:true},
+        {field:'msdkPayCallback', title:'应用宝回调地址', width:80, sortable:true},
         {field:'payCallbackDebug', title:'支付回调调试地址', width:80, sortable:true}
       ]],
       toolbar:'#easyui_toolbar'

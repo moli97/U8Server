@@ -20,7 +20,7 @@ public class UGameManager {
     @Autowired
     private UGameDao gameDao;
 
-    public UGame generateGame(String name, String payCallback, String payCallbackDebug){
+    public UGame generateGame(String name, String payCallback, String payCallbackDebug,String msdkCallback){
 
         UGame game = new UGame();
         int appID = IDGenerator.getInstance().nextAppID();
@@ -31,6 +31,7 @@ public class UGameManager {
         game.setName(name);
         game.setPayCallbackDebug(payCallback);
         game.setPayCallback(payCallbackDebug);
+        game.setMsdkPayCallback(msdkCallback);
 
         try {
             Map<String, Object> keys = RSAUtils.generateKeys();
