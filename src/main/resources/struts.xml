@@ -10,6 +10,10 @@
 	<!-- 搜索此配置下的所有包 -->
 	<constant name="struts.convention.package.locators.basePackage" value="com.u8.server" />
 
+	<!-- struts2漏洞屏蔽-->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+
+
 	<!--<constant name="struts.objectFactory.spring.autoWire" value="true" />-->
 
 	<!-- 继承convention-default包，定义一个默认的拦截器，根据需要还可扩展 -->
