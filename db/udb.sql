@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50511
 File Encoding         : 65001
 
-Date: 2016-04-23 16:04:06
+Date: 2016-05-09 14:09:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -163,7 +163,7 @@ INSERT INTO `uchannelmaster` VALUES ('37', 'none', '应用宝', 'txmsdk', '.txms
 INSERT INTO `uchannelmaster` VALUES ('38', 'https://pay.i4.cn/member_third.action', '爱思', 'i4', '.i4', 'http://localhost:8080/pay/i4/payCallback', 'com.u8.server.sdk.i4.I4SDK', '');
 INSERT INTO `uchannelmaster` VALUES ('39', 'http://passport.xyzs.com/checkLogin.php', 'XY苹果助手', 'xy', '.xy', 'http://localhost:8080/pay/xy/payCallback', 'com.u8.server.sdk.xy.XYSDK', '');
 INSERT INTO `uchannelmaster` VALUES ('40', 'http://passport_i.25pp.com:8080/account?tunnel-command=2852126760', 'PP助手', 'pp', '.pp', 'http://localhost:8080/pay/pp/payCallback', 'com.u8.server.sdk.pp.PPSDK', '');
-INSERT INTO `uchannelmaster` VALUES ('41', 'none', '应用宝YSDK', 'ysdk', '.ysdk', 'none', 'com.u8.server.sdk.txmsdk.TXMSDK', 'http://ysdktest.qq.com');
+INSERT INTO `uchannelmaster` VALUES ('41', 'none', '应用宝YSDK', 'ysdk', '.ysdk', 'none', 'com.u8.server.sdk.ysdk.YSDK', 'https://ysdktest.qq.com');
 INSERT INTO `uchannelmaster` VALUES ('42', 'none', 'Demo测试渠道', 'demo', '.demo', 'none', 'com.u8.server.sdk.demo.DemoSDK', 'none');
 INSERT INTO `uchannelmaster` VALUES ('43', 'http://api.haimawan.com/index.php?m=api&a=validate_token', '海马玩(iOS)', 'haima', '.haima', 'http://localhost:8080/pay/haima/payCallback', 'com.u8.server.sdk.haima.HaimaSDK', '');
 
@@ -414,6 +414,11 @@ INSERT INTO `uorder` VALUES ('949290748551888898', '1', '36', '', 'RMB', 'none',
 INSERT INTO `uorder` VALUES ('949300983458955267', '1', '36', '', 'RMB', 'none', '100', null, '1', '1461242149314.gfan', '61', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-22 09:32:55', null, null, '1', '元宝', '100元宝，送20', null);
 INSERT INTO `uorder` VALUES ('949870427402928129', '1', '16', '', 'RMB', 'none', '100', null, '1', '1425101806170.qihoo', '2', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-23 09:56:31', null, null, '1', '元宝', '100元宝，送20', null);
 INSERT INTO `uorder` VALUES ('949870526187175938', '1', '16', '', 'RMB', 'none', '100', null, '1', '1425101806170.qihoo', '2', 'dev-1111', '我擦', '1', '桃园结义', '2016-04-23 09:56:54', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960007447869652993', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 10:06:48', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960009084252192769', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 10:12:45', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960017545337765889', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 10:43:31', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960018241122467842', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 10:46:01', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960019082936057859', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 10:49:05', null, null, '1', '元宝', '100元宝，送20', null);
 
 -- ----------------------------
 -- Table structure for uuser
@@ -431,7 +436,7 @@ CREATE TABLE `uuser` (
   `name` varchar(255) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uuser
@@ -497,3 +502,5 @@ INSERT INTO `uuser` VALUES ('58', '1', '28', '9730228', '小蚂蚁mm134509', '',
 INSERT INTO `uuser` VALUES ('59', '1', '28', '9730300', '小蚂蚁mm134541', '', '2016-04-19 20:46:40', '1461070000406', '1461070000406.mumayi', 'd655b7082aca1ca5bb5d7fcb5cbc1f2e');
 INSERT INTO `uuser` VALUES ('60', '1', '49', '1220898226', '', '', '2016-04-20 14:56:52', '1461135412792', '1461135412792.pps', 'a2bd8a457674036d08fcc77355988733');
 INSERT INTO `uuser` VALUES ('61', '1', '36', '30633010', '2584c38a6056c39c5ac36186b7179f88', '', '2016-04-21 20:35:49', '1461288773257', '1461242149314.gfan', 'fd14fcbbd0a05af178a7a14ad6e2274a');
+INSERT INTO `uuser` VALUES ('62', '1', '51', 'E4D2A4C5BF53B7F8356E395F7638D34A', 'qq-E4D2A4C5BF53B7F8356E395F7638D34A', '', '2016-05-09 10:06:42', '1462762137650', '1462759602008.ysdk', '515858aff48bd2b0c83c678341cbafe5');
+INSERT INTO `uuser` VALUES ('63', '1', '20', '5ff0ab3b2da955a5', '13564120165', '', '2016-05-09 11:07:59', '1462766128283', '1462763279387.vivo', '2d6676eda5e2cbf30140cf0181371df0');
