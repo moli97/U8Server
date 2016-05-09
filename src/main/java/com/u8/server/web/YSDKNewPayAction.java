@@ -120,6 +120,7 @@ public class YSDKNewPayAction extends UActionSupport {
             JSONObject result = YSDKApi.queryMoney(channel, req);
             if(result == null){
                 this.renderState(false);
+                return;
             }
 
             Log.d("the query money result:");
@@ -229,7 +230,7 @@ public class YSDKNewPayAction extends UActionSupport {
             order.setCompleteTime(new Date());
             order.setState(PayState.STATE_SUC);
             orderManager.saveOrder(order);
-            //SendAgent.sendCallbackToServer(this.orderManager, order);
+            SendAgent.sendCallbackToServer(this.orderManager, order);
 
             this.renderState(true);
 
