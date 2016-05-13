@@ -96,7 +96,7 @@ public class UChannel {
     //当前渠道是否开放充值
     public boolean isPayOpen(){
 
-        return this.openPayFlag == 1;
+        return this.openPayFlag == 0;
     }
 
     public JSONObject toJSON(){

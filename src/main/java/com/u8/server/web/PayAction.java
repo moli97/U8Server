@@ -97,21 +97,26 @@ public class PayAction extends UActionSupport{
             UUser user = userManager.getUser(this.userID);
 
             if(user == null){
+                Log.e("the user is not found. userID:"+this.userID);
                 renderState(StateCode.CODE_USER_NONE, null);
                 return;
             }
 
             if(money < 0 ){
+                Log.e("the money is not valid. money:"+ money);
                 renderState(StateCode.CODE_MONEY_ERROR, null);
                 return;
             }
 
             if(!isSignOK(user)){
+
+                Log.e("the sign is not vali. sign:"+this.sign);
                 renderState(StateCode.CODE_SIGN_ERROR, null);
                 return;
             }
 
             if(!user.getChannel().isPayOpen()){
+                Log.e("the pay not opened in u8server manage system.. ");
                 renderState(StateCode.CODE_PAY_CLOSED, null);
                 return;
             }
