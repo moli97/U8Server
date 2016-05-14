@@ -6,6 +6,7 @@ import com.u8.server.dao.UGameDao;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.UHttpAgent;
 import com.u8.server.sdk.txmsdk.TXMSDKManager;
+import com.u8.server.sdk.ysdk.YSDKManager;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -63,6 +64,7 @@ public class UApplicationContext implements ApplicationContextAware{
     public void onDestory(){
         Log.d("Now to clean ...");
         TXMSDKManager.getInstance().destory();
+        YSDKManager.getInstance().destory();
         UHttpAgent.getInstance().destroy();
     }
 

@@ -17,11 +17,16 @@ import java.util.Map;
 public class YSDKApi {
 
     //查询余额
-    public static JSONObject queryMoney(UChannel channel, PayRequest payRequest){
+    public static JSONObject queryMoney(PayRequest payRequest){
 
         try{
 
-            UChannelMaster master = channel.getMaster();
+            UChannel channel = payRequest.getUser().getChannel();
+            if(channel == null){
+                Log.e("the channel is not exists of user:"+payRequest.getUser().getChannelID());
+                return null;
+            }
+
             String url = channel.getChannelOrderUrl();
             String scriptName = "/mpay/get_balance_m";
 
@@ -57,8 +62,14 @@ public class YSDKApi {
     }
 
     //扣费,返回交易流水号
-    public static JSONObject charge(int num, UChannel channel, PayRequest payRequest){
+    public static JSONObject charge(PayRequest payRequest){
         try{
+
+            UChannel channel = payRequest.getUser().getChannel();
+            if(channel == null){
+                Log.e("the channel is not exists of user:"+payRequest.getUser().getChannelID());
+                return null;
+            }
 
             String url = channel.getChannelOrderUrl();
             String scriptName = "/mpay/pay_m";
@@ -73,8 +84,8 @@ public class YSDKApi {
             params.put("pf", payRequest.getPf());
             params.put("pfkey", payRequest.getPfkey());
             params.put("zoneid", payRequest.getZoneid());
-            params.put("amt", num+"");
-            params.put("billno", payRequest.getOrderID()+"");
+            params.put("amt", payRequest.getCoinNum()+"");
+            params.put("billno", payRequest.getOrder().getOrderID()+"");
 
             String urlPath = "/v3/r"+scriptName;
 
@@ -85,6 +96,8 @@ public class YSDKApi {
             if(ret == 0){
 
                 return json;
+            }else{
+                Log.e("charge from ysdk failed:"+resp);
             }
 
         }catch (Exception e){

@@ -1,5 +1,6 @@
 package com.u8.server.sdk.ysdk;
 
+import com.u8.server.data.UOrder;
 import com.u8.server.data.UUser;
 
 /**
@@ -8,6 +9,7 @@ import com.u8.server.data.UUser;
 public class PayRequest {
 
     private UUser user;
+    private UOrder order;
     private int accountType;    //0:QQ;1:微信
     private String openID;      //从手Q登录态或微信登录态中获取的openid的值
     private String openKey;     //从手Q登录态或微信登录态中获取的access_token 的值
@@ -15,9 +17,17 @@ public class PayRequest {
     private String pf;          //平台来源
     private String pfkey;       //跟平台来源和openkey根据规则生成的一个密钥串
     private String zoneid;      //账户分区ID
-    private Long orderID;     //订单号
+    private int coinNum;        //支付的游戏币数量(已经按照兑换比例处理之后的值)
 
-    private int sdkType;        //0:MSDK；1：是新版YSDK
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public UUser getUser() {
         return user;
@@ -83,19 +93,19 @@ public class PayRequest {
         this.zoneid = zoneid;
     }
 
-    public int getSdkType() {
-        return sdkType;
+    public UOrder getOrder() {
+        return order;
     }
 
-    public void setSdkType(int sdkType) {
-        this.sdkType = sdkType;
+    public void setOrder(UOrder order) {
+        this.order = order;
     }
 
-    public Long getOrderID() {
-        return orderID;
+    public int getCoinNum() {
+        return coinNum;
     }
 
-    public void setOrderID(Long orderID) {
-        this.orderID = orderID;
+    public void setCoinNum(int coinNum) {
+        this.coinNum = coinNum;
     }
 }

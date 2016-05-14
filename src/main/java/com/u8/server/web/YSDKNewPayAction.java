@@ -9,6 +9,7 @@ import com.u8.server.data.UUser;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.ysdk.PayRequest;
 import com.u8.server.sdk.ysdk.YSDKApi;
+import com.u8.server.sdk.ysdk.YSDKManager;
 import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.service.UUserManager;
@@ -43,7 +44,7 @@ import java.util.Date;
 @Namespace("/pay/ysdknew")
 public class YSDKNewPayAction extends UActionSupport {
 
-    private Long orderID;     //下单时候的订单号
+    private Long orderID;      //下单时候的订单号
     private int channelID;      //当前渠道ID
     private int userID;         //当前用户ID
     private int accountType;    //0:QQ;1:微信
@@ -63,6 +64,9 @@ public class YSDKNewPayAction extends UActionSupport {
     @Autowired
     private UOrderManager orderManager;
 
+    @Autowired
+    private YSDKManager ysdkManager;
+
 
     /***
      * 客户端正式充值之前先调用该api查询余额
@@ -72,15 +76,15 @@ public class YSDKNewPayAction extends UActionSupport {
 
         try{
 
-            Log.e("orderID=" + orderID);
-            Log.e("channelID=" + channelID);
-            Log.e("userID=" + userID);
-            Log.e("accountType=" + accountType);
-            Log.e("openID=" + openID);
-            Log.e("openKey=" + openKey);
-            Log.e("pf=" +  pf);
-            Log.e("pfkey=" + pfkey);
-            Log.e("zoneid=" + zoneid);
+            Log.d("orderID=" + orderID);
+            Log.d("channelID=" + channelID);
+            Log.d("userID=" + userID);
+            Log.d("accountType=" + accountType);
+            Log.d("openID=" + openID);
+            Log.d("openKey=" + openKey);
+            Log.d("pf=" + pf);
+            Log.d("pfkey=" + pfkey);
+            Log.d("zoneid=" + zoneid);
 
             UChannel channel = channelManager.queryChannel(this.channelID);
             if(channel == null){
@@ -98,6 +102,13 @@ public class YSDKNewPayAction extends UActionSupport {
 
             if(!user.getChannelUserID().equals(this.openID)){
                 Log.e("the userID %s is not matched the channel userID %s. ", this.userID, this.openID);
+                this.renderState(false);
+                return;
+            }
+
+            UOrder order = orderManager.getOrder(this.orderID);
+            if(order == null){
+                Log.e("the order is not exists. orderID:%s", this.orderID);
                 this.renderState(false);
                 return;
             }
@@ -122,9 +133,10 @@ public class YSDKNewPayAction extends UActionSupport {
             req.setPf(pf);
             req.setPfkey(pfkey);
             req.setZoneid(zoneid);
-            req.setOrderID(orderID);
+            req.setOrder(order);
 
-            JSONObject result = YSDKApi.queryMoney(channel, req);
+
+            JSONObject result = YSDKApi.queryMoney(req);
             if(result == null){
                 this.renderState(false);
                 return;
@@ -135,7 +147,16 @@ public class YSDKNewPayAction extends UActionSupport {
 
             int money = result.getInt("balance");
 
-            this.renderQueryResult(money);
+            //查询出来的余额，需要和当前PayTask队列中正在等待执行的任务余额作为一个差值
+            int payingMoney = this.ysdkManager.getTotalCoinNum();
+            int leftMoney = money - payingMoney;
+            if(leftMoney < 0){
+                leftMoney = 0;
+            }
+
+            Log.d("the money queried:"+money+"; the money in pay task queue:"+payingMoney);
+
+            this.renderQueryResult(leftMoney);
 
         }catch(Exception e){
             try {
@@ -152,15 +173,15 @@ public class YSDKNewPayAction extends UActionSupport {
 
         try{
 
-            Log.e("orderID=" + orderID);
-            Log.e("channelID=" + channelID);
-            Log.e("userID=" + userID);
-            Log.e("accountType=" + accountType);
-            Log.e("openID=" + openID);
-            Log.e("openKey=" + openKey);
-            Log.e("pf=" +  pf);
-            Log.e("pfkey=" + pfkey);
-            Log.e("zoneid=" + zoneid);
+            Log.d("orderID=" + orderID);
+            Log.d("channelID=" + channelID);
+            Log.d("userID=" + userID);
+            Log.d("accountType=" + accountType);
+            Log.d("openID=" + openID);
+            Log.d("openKey=" + openKey);
+            Log.d("pf=" + pf);
+            Log.d("pfkey=" + pfkey);
+            Log.d("zoneid=" + zoneid);
 
             UChannel channel = channelManager.queryChannel(this.channelID);
             if(channel == null){
@@ -215,31 +236,36 @@ public class YSDKNewPayAction extends UActionSupport {
             req.setPf(pf);
             req.setPfkey(pfkey);
             req.setZoneid(zoneid);
-            req.setOrderID(orderID);
+            req.setOrder(order);
 
             //coin 是游戏币， 下单的时候order中money是分， 转为元之后， 再乘以应用宝后台的游戏币兑换比例，得到游戏币的数量
             int coin = (int)(order.getMoney() / 100f * Integer.valueOf(channel.getCpConfig()));
+            req.setCoinNum(coin);
 
-
-            JSONObject result = YSDKApi.charge(coin, channel, req);
-            if(result == null){
-                Log.e("charge to ysdk failed.result is null");
-                this.renderState(false);
-                return;
-            }
-
-            Log.d("the charge result is :");
-            Log.d(result.toString());
-
-            order.setChannelOrderID("");
-            order.setRealMoney(order.getMoney());
-            order.setSdkOrderTime(TimeFormater.format_yyyyMMddHHmmss(new Date()));
-            order.setCompleteTime(new Date());
-            order.setState(PayState.STATE_SUC);
-            orderManager.saveOrder(order);
-            SendAgent.sendCallbackToServer(this.orderManager, order);
+            this.ysdkManager.addPayRequest(req);
 
             this.renderState(true);
+
+//
+//            JSONObject result = YSDKApi.charge(req);
+//            if(result == null){
+//                Log.e("charge to ysdk failed.result is null");
+//                this.renderState(false);
+//                return;
+//            }
+//
+//            Log.d("the charge result is :");
+//            Log.d(result.toString());
+//
+//            order.setChannelOrderID("");
+//            order.setRealMoney(order.getMoney());
+//            order.setSdkOrderTime(TimeFormater.format_yyyyMMddHHmmss(new Date()));
+//            order.setCompleteTime(new Date());
+//            order.setState(PayState.STATE_SUC);
+//            orderManager.saveOrder(order);
+//            SendAgent.sendCallbackToServer(this.orderManager, order);
+//
+//            this.renderState(true);
 
 
         }catch(Exception e){
