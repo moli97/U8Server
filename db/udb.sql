@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50511
 File Encoding         : 65001
 
-Date: 2016-05-09 14:38:34
+Date: 2016-05-17 13:49:19
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -101,8 +101,9 @@ INSERT INTO `uchannel` VALUES ('46', '35', '1', '1104556695', 'DDebGjkcpZzO4GEM'
 INSERT INTO `uchannel` VALUES ('47', '1686', '1', '759', '1648dcdff97d4b358d611f850b3d8668', '', '', '', '', '', '38', '', '', '', '', '', '0');
 INSERT INTO `uchannel` VALUES ('48', '1700', '1', '100005730', 't2XZKzpbmECn3fkrWsw1nxAvMt47pPts', '', '', 'AoSwmlTp0wUsNRVEqBSFMbjq4MLls79P', '', '', '39', '', '', '', '', '', '0');
 INSERT INTO `uchannel` VALUES ('49', '1003', '1', '5521', '3e5bfafa43962dd739d1dc1c4939593a', '', '', '', '', '', '40', '', '', '', '', '', '0');
-INSERT INTO `uchannel` VALUES ('50', '51', '1', '1105375188', 'ux18VlweePT59dnennzHqFKbINko7yYE', '', '', '', '', '', '41', '10', '', '', '', '', '0');
+INSERT INTO `uchannel` VALUES ('50', '51', '1', '1105386824', 'hdHxpEnwAZwKgPbhTGwFcML4tlPvrGsq', '', '', '', '', '', '41', '10', '', '', '', '', '0');
 INSERT INTO `uchannel` VALUES ('51', '1701', '1', '', '', '', '', '', '', '', '42', '', '', '', '', '', '0');
+INSERT INTO `uchannel` VALUES ('52', '52', '1', '964', 'e6091c7d360371f0465c11bbada4ccaf4868e4716e32fd3901315e04c2e14224', 'd11dc709deac038a0a8681058f353582634de90955686e03cbf50633ff91c7a7', '', '{D251941B-8D3A-4394-B6CC-3BF8E87CE453}', '', '', '44', '', '', '', '', '', '0');
 
 -- ----------------------------
 -- Table structure for uchannelmaster
@@ -166,6 +167,7 @@ INSERT INTO `uchannelmaster` VALUES ('40', 'http://passport_i.25pp.com:8080/acco
 INSERT INTO `uchannelmaster` VALUES ('41', 'none', '应用宝YSDK', 'ysdk', '.ysdk', 'none', 'com.u8.server.sdk.ysdk.YSDK', 'https://ysdktest.qq.com');
 INSERT INTO `uchannelmaster` VALUES ('42', 'none', 'Demo测试渠道', 'demo', '.demo', 'none', 'com.u8.server.sdk.demo.DemoSDK', 'none');
 INSERT INTO `uchannelmaster` VALUES ('43', 'http://api.haimawan.com/index.php?m=api&a=validate_token', '海马玩(iOS)', 'haima', '.haima', 'http://localhost:8080/pay/haima/payCallback', 'com.u8.server.sdk.haima.HaimaSDK', '');
+INSERT INTO `uchannelmaster` VALUES ('44', 'http://api.app.wan.sogou.com/api/v1/login/verify', '搜狗', 'sougou', '.sougou', 'http://localhost:8080/pay/sougou/payCallback', 'com.u8.server.sdk.sougou.SouGouSDK', '');
 
 -- ----------------------------
 -- Table structure for ugame
@@ -425,6 +427,21 @@ INSERT INTO `uorder` VALUES ('960081948372369410', '1', '51', '', 'RMB', 'none',
 INSERT INTO `uorder` VALUES ('960083722193862657', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 14:28:15', null, null, '1', '元宝', '100元宝，送20', null);
 INSERT INTO `uorder` VALUES ('960084207525167106', '1', '51', '', 'RMB', 'none', '100', '100', '2', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 14:30:00', '20160509143011', '2016-05-09 14:30:11', '1', '元宝', '100元宝，送20', null);
 INSERT INTO `uorder` VALUES ('960084314899349507', '1', '51', '', 'RMB', 'none', '100', '100', '2', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 14:30:25', '20160509143114', '2016-05-09 14:31:14', '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960109685271166977', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 15:58:44', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960114018893168642', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 16:10:29', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960117012485373955', '1', '51', '', 'RMB', 'none', '100', null, '1', '1462759602008.ysdk', '62', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-09 16:21:22', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960564560962519041', '1', '20', '', 'RMB', 'none', '100', null, '1', '1462763279387.vivo', '63', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-10 09:49:33', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960564805775654914', '1', '20', '', 'RMB', 'none', '100', null, '1', '1462763279387.vivo', '63', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-10 09:50:26', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('960657791817613313', '1', '52', '', 'RMB', 'none', '100', null, '1', '1462863680503.sougou', '64', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-10 15:04:44', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('961883429455003649', '1', '30', '', 'RMB', 'none', '100', null, '1', '1463056867091.paojiao', '65', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-12 20:47:34', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('962358319693955073', '1', '51', '', 'RMB', 'none', '100', null, '1', '1463125621042.ysdk', '66', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-13 15:47:11', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('962358628931600386', '1', '51', '', 'RMB', 'none', '100', '100', '2', '1463125621042.ysdk', '66', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-13 15:48:19', '20160513154833', '2016-05-13 15:48:33', '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('962358787845390339', '1', '51', '', 'RMB', 'none', '100', '100', '2', '1463125621042.ysdk', '66', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-13 15:48:56', '20160513154918', '2016-05-13 15:49:18', '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('962358985413885956', '1', '51', '', 'RMB', 'none', '100', '100', '2', '1463125621042.ysdk', '66', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-13 15:49:38', '20160513154948', '2016-05-13 15:49:48', '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('962359036953493509', '1', '51', '', 'RMB', 'none', '100', '100', '2', '1463125621042.ysdk', '66', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-13 15:49:50', '20160513154957', '2016-05-13 15:49:57', '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('962917339752300545', '1', '51', '', 'RMB', 'none', '100', null, '1', '1463211168144.ysdk', '67', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-14 15:32:56', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('962918336184713218', '1', '51', '', 'RMB', 'none', '100', null, '1', '1463211168144.ysdk', '67', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-14 15:36:32', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('962918409199157251', '1', '51', '', 'RMB', 'none', '100', null, '1', '1463211168144.ysdk', '67', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-14 15:36:49', null, null, '1', '元宝', '100元宝，送20', null);
 
 -- ----------------------------
 -- Table structure for uuser
@@ -442,7 +459,7 @@ CREATE TABLE `uuser` (
   `name` varchar(255) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uuser
@@ -508,5 +525,12 @@ INSERT INTO `uuser` VALUES ('58', '1', '28', '9730228', '小蚂蚁mm134509', '',
 INSERT INTO `uuser` VALUES ('59', '1', '28', '9730300', '小蚂蚁mm134541', '', '2016-04-19 20:46:40', '1461070000406', '1461070000406.mumayi', 'd655b7082aca1ca5bb5d7fcb5cbc1f2e');
 INSERT INTO `uuser` VALUES ('60', '1', '49', '1220898226', '', '', '2016-04-20 14:56:52', '1461135412792', '1461135412792.pps', 'a2bd8a457674036d08fcc77355988733');
 INSERT INTO `uuser` VALUES ('61', '1', '36', '30633010', '2584c38a6056c39c5ac36186b7179f88', '', '2016-04-21 20:35:49', '1461288773257', '1461242149314.gfan', 'fd14fcbbd0a05af178a7a14ad6e2274a');
-INSERT INTO `uuser` VALUES ('62', '1', '51', 'E4D2A4C5BF53B7F8356E395F7638D34A', 'qq-E4D2A4C5BF53B7F8356E395F7638D34A', '', '2016-05-09 10:06:42', '1462775345775', '1462759602008.ysdk', 'd1e19b3844ead8cc0f0384b8e3640ca1');
-INSERT INTO `uuser` VALUES ('63', '1', '20', '5ff0ab3b2da955a5', '13564120165', '', '2016-05-09 11:07:59', '1462766128283', '1462763279387.vivo', '2d6676eda5e2cbf30140cf0181371df0');
+INSERT INTO `uuser` VALUES ('62', '1', '51', 'E4D2A4C5BF53B7F8356E395F7638D34A', 'qq-E4D2A4C5BF53B7F8356E395F7638D34A', '', '2016-05-09 10:06:42', '1462782074938', '1462759602008.ysdk', '086c2f4c4c4520b600934918f8cc035f');
+INSERT INTO `uuser` VALUES ('63', '1', '20', '5ff0ab3b2da955a5', '13564120165', '', '2016-05-09 11:07:59', '1462845024422', '1462763279387.vivo', 'c22191865326de96926bd1ad1aa3be37');
+INSERT INTO `uuser` VALUES ('64', '1', '52', '65569013', '', '', '2016-05-10 15:01:20', '1462863680503', '1462863680503.sougou', '10e15e68f65e5c5658ba2ccfdc494b9f');
+INSERT INTO `uuser` VALUES ('65', '1', '30', '8153352', 'fghhhhhjjjjj', 'fghhhhhjjjjj', '2016-05-12 20:41:07', '1463057252043', '1463056867091.paojiao', '30b68c54b9da6b0359ee71009b89609e');
+INSERT INTO `uuser` VALUES ('66', '1', '51', '038F83DFA4FC9822AB67BD407B546F67', 'qq-038F83DFA4FC9822AB67BD407B546F67', '', '2016-05-13 15:47:01', '1463125694664', '1463125621042.ysdk', 'e3e61ed23bc60b3e3b5d391160df3efb');
+INSERT INTO `uuser` VALUES ('67', '1', '51', '1FEA044F75E91CE8D8F45F509FC1B2A9', 'qq-1FEA044F75E91CE8D8F45F509FC1B2A9', '', '2016-05-14 15:32:48', '1463211275535', '1463211168144.ysdk', '0e080e4a6e81fb2ac943080e66b9df5e');
+INSERT INTO `uuser` VALUES ('68', '1', '51', 'oR1t3s1KWGh4n7frRLTrfO3Fl3yo', 'wx-oR1t3s1KWGh4n7frRLTrfO3Fl3yo', '', '2016-05-16 16:15:12', '1463390938903', '1463386512309.ysdk', '6672ce03df18070f17e667127fc652ea');
+INSERT INTO `uuser` VALUES ('69', '1', '51', '059CF9784852F5B55039533F416B4E38', 'qq-059CF9784852F5B55039533F416B4E38', '', '2016-05-16 20:31:21', '1463401881525', '1463401881525.ysdk', 'ebd4d57740c2edefaca226d60606129a');
+INSERT INTO `uuser` VALUES ('70', '1', '51', 'oRzrIvvcMrP8atSgvzXkkbAeLXv8', 'wx-oRzrIvvcMrP8atSgvzXkkbAeLXv8', '', '2016-05-17 13:37:53', '1463463473366', '1463463473366.ysdk', '732ed229380d24dccf6bd36a459d8bd8');

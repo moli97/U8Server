@@ -41,6 +41,7 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
     private String accessMode  		;		//string  接入方式：仅在sdk 中指定了urlver为2时有效。
     private String spending  		;		//string  渠道开销，保留两位小数，单位元。仅在sdk中指定了urlver为2时有效。
     private String extReserved  	;		//string  商户侧保留信息，原样返回商户调用支付sdk
+    private String sysReserved      ;       //string 系统保留信息
     private String sign  			;		//string  RSA签名。
 
     @Autowired
@@ -152,6 +153,10 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
 
         if(spending != null){
             sb.append("spending=").append(spending).append("&");
+        }
+
+        if(sysReserved != null){
+            sb.append("sysReserved=").append(sysReserved).append("&");
         }
 
         if(tradeTime != null){
@@ -292,5 +297,13 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
 
     public void setSign(String sign) {
         this.sign = sign;
+    }
+
+    public String getSysReserved() {
+        return sysReserved;
+    }
+
+    public void setSysReserved(String sysReserved) {
+        this.sysReserved = sysReserved;
     }
 }
