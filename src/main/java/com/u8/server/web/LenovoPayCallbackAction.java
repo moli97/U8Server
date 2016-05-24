@@ -75,9 +75,9 @@ public class LenovoPayCallbackAction extends UActionSupport{
             int orderMoney = Integer.valueOf(data.getMoney());      //转换为分
 
 
-//            if(order.getMoney() > orderMoney){
-//                Log.e("订单金额不一致! local orderID:"+localOrderID+"; money returned:"+data.getMoney()+"; order money:"+order.getMoney());
-//            }
+            if(order.getMoney() > orderMoney){
+                Log.e("订单金额不一致! local orderID:"+localOrderID+"; money returned:"+data.getMoney()+"; order money:"+order.getMoney());
+            }
 
             if(!"0".equals(data.getResult())){
                 Log.e("联想平台支付失败 local orderID:"+localOrderID+";lenovo order id:" + data.getTransid());
