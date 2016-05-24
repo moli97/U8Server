@@ -70,8 +70,6 @@ public class Qihoo360SDK implements ISDKScript {
             e.printStackTrace();
         }
 
-
-
     }
 
     @Override

@@ -41,6 +41,25 @@ public class UserLoginAction extends UActionSupport{
 
     private String sign;            //签名
 
+    public static void main(String[] args){
+        String url = "http://localhost:8080/pay/lenovo/payCallback";
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("transdata", "{\"transtype\":0,\"result\":0,\"transtime\":\"2016-05-24 11:52:13\",\"count\":1,\"paytype\":5,\"money\":600,\"waresid\":73978,\"appid\":\"1605170981014.app.ln\",\"exorderno\":\"968481474179235842\",\"feetype\":0,\"transid\":\"2160524115213122227904357\",\"cpprivate\":null}");
+        params.put("sign", "WUzOZ4sLSD4ksSaXDHk7c3vYpphpPNbGjJDagj2zSxfubt/6Ft+Uk8FoLkKJjCOK75H6fYKwcgGN4TMRVYXk/BxOtkOYTOTczRsBcPXtSn8kMdYPnM6XYKr+LtJqyZplM3ARgPdcbRm2HXN4QjZ1dhXSFvxjVcdzyD2Mj61PMKA=");
+        UHttpAgent.newInstance().post(url, params, new UHttpFutureCallback() {
+            @Override
+            public void completed(String content) {
+
+                Log.d("test result: "+content);
+
+            }
+
+            @Override
+            public void failed(String err) {
+                Log.d("test faild:"+err);
+            }
+        });
+    }
 
     @Action("loginServer")
     public void login(){

@@ -1,11 +1,14 @@
 package com.u8.server.web;
 
+import com.lenovo.pay.sign.Base64;
 import com.lenovo.pay.sign.CpTransSyncSignValid;
+import com.lenovo.pay.sign.Tools;
 import com.u8.server.common.UActionSupport;
 import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
+import com.u8.server.sdk.appchina.RSAUtil;
 import com.u8.server.sdk.lenovo.LenovoAuthInfo;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.JsonUtils;
@@ -17,6 +20,14 @@ import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.security.KeyFactory;
+import java.security.PrivateKey;
+import java.security.Signature;
+import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Date;
 
 /**
@@ -64,9 +75,9 @@ public class LenovoPayCallbackAction extends UActionSupport{
             int orderMoney = Integer.valueOf(data.getMoney());      //转换为分
 
 
-            if(order.getMoney() != orderMoney){
-                Log.e("订单金额不一致! local orderID:"+localOrderID+"; money returned:"+data.getMoney()+"; order money:"+order.getMoney());
-            }
+//            if(order.getMoney() > orderMoney){
+//                Log.e("订单金额不一致! local orderID:"+localOrderID+"; money returned:"+data.getMoney()+"; order money:"+order.getMoney());
+//            }
 
             if(!"0".equals(data.getResult())){
                 Log.e("联想平台支付失败 local orderID:"+localOrderID+";lenovo order id:" + data.getTransid());
@@ -75,6 +86,7 @@ public class LenovoPayCallbackAction extends UActionSupport{
             }
 
             if(isValid(order.getChannel())){
+                Log.d("联想平台sign验证成功...");
                 order.setChannelOrderID(data.getTransid());
                 order.setRealMoney(orderMoney);
                 order.setSdkOrderTime(data.getTranstime());
@@ -84,6 +96,7 @@ public class LenovoPayCallbackAction extends UActionSupport{
                 SendAgent.sendCallbackToServer(this.orderManager, order);
                 this.renderState(true, "");
             }else{
+                Log.e("联想平台sign验证失败:sign:"+this.sign+";key:"+order.getChannel().getCpPayKey());
                 order.setChannelOrderID(data.getTransid());
                 order.setState(PayState.STATE_FAILED);
                 orderManager.saveOrder(order);
@@ -91,6 +104,7 @@ public class LenovoPayCallbackAction extends UActionSupport{
             }
 
         }catch (Exception e){
+            Log.e(e.getMessage());
             e.printStackTrace();
             try {
                 this.renderState(false, "未知错误");
@@ -102,10 +116,30 @@ public class LenovoPayCallbackAction extends UActionSupport{
 
     private boolean isValid(UChannel channel){
 
-        return CpTransSyncSignValid.validSign(this.transdata, this.sign, channel.getCpPayKey());
-        //测试时使用 return RSAUtils.verify(this.transdata, this.sign, channel.getCpPayKey(), "UTF-8");
+        Log.d(this.transdata);
+        Log.d(this.sign);
+
+        String sign = RSAUtils.sign(this.transdata, channel.getCpPayKey(), "utf-8", RSAUtils.SIGNATURE_ALGORITHM_SHA);
+        Log.d("sign generate:"+sign);
+        if(sign.equals(this.sign)){
+            return true;
+        }
+
+        try {
+            if(sign.equals(URLDecoder.decode(this.sign, "utf-8"))){
+                return  true;
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+
+        //部分同学用这个部署到服务器上，导致执行中断
+        //return CpTransSyncSignValid.validSign(this.transdata, this.sign, channel.getCpPayKey());
 
     }
+
 
     private void renderState(boolean suc, String msg) throws IOException {
 
