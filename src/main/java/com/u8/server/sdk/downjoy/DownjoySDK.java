@@ -24,9 +24,13 @@ public class DownjoySDK implements ISDKScript {
 
         try {
 
+            Log.d("the extension is "+extension);
+
             JSONObject json = JSONObject.fromObject(extension);
             final String mid = json.getString("mid");
             final String token = json.getString("token");
+            final String username = json.getString("username");
+            final String nickname = json.getString("nickname");
 
             Map<String, String> data = assemblyParameters(channel, mid, token);
 
@@ -42,7 +46,7 @@ public class DownjoySDK implements ISDKScript {
                         if (res != null) {
                             int code = res.getValid();
                             if (code == 1) {
-                                SDKVerifyResult vResult = new SDKVerifyResult(true, mid + "", "", "");
+                                SDKVerifyResult vResult = new SDKVerifyResult(true, mid + "", username, nickname);
                                 callback.onSuccess(vResult);
                                 return;
                             }
