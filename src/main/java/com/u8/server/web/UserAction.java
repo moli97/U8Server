@@ -122,6 +122,8 @@ public class UserAction extends UActionSupport{
                             if(user == null){
                                 user = userManager.generateUser(channel, sdkResult);
                             }else{
+                                user.setChannelUserName(sdkResult.getUserName() == null ? "" : sdkResult.getUserName());
+                                user.setChannelUserNick(sdkResult.getNickName() == null ? "" : sdkResult.getNickName());
                                 user.setLastLoginTime(new Date().getTime() + "");
                             }
 

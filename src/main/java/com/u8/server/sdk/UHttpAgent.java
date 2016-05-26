@@ -263,7 +263,8 @@ public class UHttpAgent {
             @Override
             public String handleResponse(HttpResponse httpResponse) throws IOException {
                 HttpEntity entity = httpResponse.getEntity();
-                return entity != null ? EntityUtils.toString(entity) : null;
+
+                return entity != null ? EntityUtils.toString(entity, Charset.forName("UTF-8")) : null;
             }
         };
 

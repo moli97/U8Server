@@ -118,7 +118,8 @@ public class UHibernateTemplate<T, PK extends Serializable>
     {
       String str = "select count(*) " + sql;
       localQuery = createQuery(str, params);
-      localPage.setTotalCount(localQuery.list().size());
+      List lst = localQuery.list();
+      localPage.setTotalCount((Long)lst.get(0));
     }
     if (localPage.getTotalCount() > 0)
     {

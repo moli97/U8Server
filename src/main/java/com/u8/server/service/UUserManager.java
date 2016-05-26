@@ -122,8 +122,8 @@ public class UUserManager {
         user.setChannelID(channel.getChannelID());
         user.setName(System.currentTimeMillis() + channel.getMaster().getNameSuffix());
         user.setChannelUserID(cpUserInfo.getUserID());
-        user.setChannelUserName(cpUserInfo.getUserName());
-        user.setChannelUserNick(cpUserInfo.getNickName());
+        user.setChannelUserName(cpUserInfo.getUserName() == null ? "" : cpUserInfo.getUserName());
+        user.setChannelUserNick(cpUserInfo.getNickName() == null ? "" : cpUserInfo.getNickName());
         Date now = new Date();
         user.setCreateTime(now);
         user.setLastLoginTime(now.getTime() + "");

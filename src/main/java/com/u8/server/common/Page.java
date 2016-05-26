@@ -10,7 +10,7 @@ public class Page<T>
 {
   private PageParameter pageParameter;
   private List<T> resultList = null;
-  private int totalCount = -1;
+  private long totalCount = -1;
 
   public Page()
   {
@@ -22,11 +22,11 @@ public class Page<T>
     this.pageParameter = params;
   }
 
-  public int getTotalPages()
+  public long getTotalPages()
   {
     if (this.totalCount == -1)
       return -1;
-    int i = this.totalCount / this.pageParameter.getPageSize();
+    long i = this.totalCount / this.pageParameter.getPageSize();
     if (this.totalCount % this.pageParameter.getPageSize() > 0)
       i++;
     return i;
@@ -42,12 +42,12 @@ public class Page<T>
     this.resultList = paramList;
   }
 
-  public int getTotalCount()
+  public long getTotalCount()
   {
     return this.totalCount;
   }
 
-  public void setTotalCount(int paramInt)
+  public void setTotalCount(long paramInt)
   {
     this.totalCount = paramInt;
   }

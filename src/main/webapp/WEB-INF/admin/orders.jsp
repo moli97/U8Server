@@ -61,7 +61,6 @@
 <script type="text/javascript">
 
 
-
   function deleteOrder(){
     var row = $('#orders').datagrid('getSelected');
     if(row){

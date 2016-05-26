@@ -52,6 +52,7 @@ public class PayAction extends UActionSupport{
     @Autowired
     private UOrderManager orderManager;
 
+
     private boolean isSignOK(UUser user) throws UnsupportedEncodingException {
 
         StringBuilder sb = new StringBuilder();
