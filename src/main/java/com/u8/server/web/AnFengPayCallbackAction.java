@@ -60,7 +60,7 @@ public class AnFengPayCallbackAction extends UActionSupport{
 
             UChannel channel = channelManager.queryChannel(order.getChannelID());
             if(channel == null){
-
+                Log.d("The channel is not exists of channelID:"+order.getChannelID());
                 this.renderState(false);
                 return;
             }
@@ -112,7 +112,6 @@ public class AnFengPayCallbackAction extends UActionSupport{
         params.put("sn", sn);
         params.put("vorderid", vorderid);
         params.put("createTime", createTime);
-        params.put("sign", sign);
 
         String signLocal = AnFengSDK.generateSign(params, channel.getCpAppKey());
 

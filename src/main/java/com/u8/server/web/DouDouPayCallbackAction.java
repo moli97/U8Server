@@ -67,7 +67,7 @@ public class DouDouPayCallbackAction extends UActionSupport {
             }
 
             if(!isSignOK(channel)){
-                Log.d("The sign verify failed.sign:%s;appKey:%s;orderID:%s", sign, channel.getCpPayKey(), gameOrderNo);
+                Log.d("The sign verify failed.sign:%s;appKey:%s;orderID:%s", sign, channel.getCpAppSecret(), gameOrderNo);
                 this.renderState(false);
                 return;
             }
@@ -118,7 +118,7 @@ public class DouDouPayCallbackAction extends UActionSupport {
                 .append("&product=").append(product)
                 .append("&time=").append(time)
                 .append("&userId=").append(userId)
-                .append(channel.getCpAppKey());
+                .append(channel.getCpAppSecret());
 
 
         Log.d("sign txt:"+sb.toString());

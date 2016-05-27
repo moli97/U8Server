@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 友游
  * Created by ant on 2015/4/28.
  */
 public class CloudPointSDK implements ISDKScript{
