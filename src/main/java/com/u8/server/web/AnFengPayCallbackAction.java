@@ -114,6 +114,7 @@ public class AnFengPayCallbackAction extends UActionSupport{
         params.put("createTime", createTime);
 
         String signLocal = AnFengSDK.generateSign(params, channel.getCpAppKey());
+        Log.d("the sign local is :"+signLocal);
 
         return signLocal.equals(this.sign);
     }

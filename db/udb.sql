@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50511
 File Encoding         : 65001
 
-Date: 2016-05-24 16:52:57
+Date: 2016-05-30 10:10:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,13 +56,13 @@ CREATE TABLE `uchannel` (
   `openPayFlag` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uni_channelID` (`channelID`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uchannel
 -- ----------------------------
 INSERT INTO `uchannel` VALUES ('1', '10', '1', '544156', '7f768353ed0854f58a8d7f3972949aac', '', '55398', '', '', '', '1', '', '', '', '', '', '0');
-INSERT INTO `uchannel` VALUES ('2', '11', '1', '2576', 'Jy3ERn6c', 'MIICXQIBAAKBgQCca8WkBCLx4GTbSCULNC2Hwgzj9IEu3R9rBx30aPT6i3h7OuCc21+jOzmHRKde4xKMs+wr9uUEUatU38PDRS4CtKyZ5LJpJQfAlKhOhYYUlTzfsUBBtxneSvgPAfz9mOXKYqfltRPLE4t5H/bap459Mg+nDl1BjsCe5bDHTNsJRQIDAQABAoGAQ3sXA6ApNzH4MMWZ/ZBgCA5GI12LEZ2hfTnPyW4yKZhbvMX0upbFVpUpR1rt3biWew7v1zOnL0rQYEg8mxRQOXgSKKGqZhjCUMvM7auVJn/dfTPxBc+lXGqjgNfkTpDnz6zKkAMGxMeBmIaSJ0/KZc/Ypq/B2q5oXudcPRnOFu0CQQD3ONXm+P58b1viYk5IjL6Kq0Z2n8kPCgP30y52xqs3UG4NLz72qorCAbo+GhmiRCJSkfediwYynozhhYBffZSjAkEAofmV+jOn0h/4teExLGyAIHZ6v1Zz0LclBBbbNQLjPk/9Asq0p8SDmb6yTdBZrBixuOe8mjRsvb2t8pMg/Pbg9wJBAM8djY6gwcuMG+WQSFddmnBgR3swKGhyEpr4ELAvhtejiV+AWnaar/8TJW3LvfgEruCQK2uQQlP8Irj5eHAHrJMCQHbxjz8Cu9REAiGd0rxqmNQ97PmhBL9aHmaYWjTdf/58QrHQJUWlu3YlYU5fF9qW77t3ATrEEK5tIdWmUW0x5hUCQQCck1MtcBJ4toDbGwVKuqVE6DD6cIQwRa3C7+KdlqeNBLqrc9jc+m4Abid8i4Op8nIYAyAQg3DRYpRV2nqW7aMW', '27', null, 'mDf3mu88jjGz', null, '2', null, null, null, null, null, '0');
+INSERT INTO `uchannel` VALUES ('2', '11', '1', '2576', 'Jy3ERn6c', '', '27', null, 'mDf3mu88jjGz', null, '2', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('3', '12', '1', '5434671', 'E0OLS0UItr7XqI1BHQi1X6pm', 'mMNF67wSCTxB0tMtIsBzxOQ6VittNg3G', '', null, '', null, '4', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('4', '16', '1', '202307546', '765b6459a63959a58fa7ef6a9396ad97', '54c85c3235cfbbbb8973bfccece34767', '', null, '', null, '3', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('5', '17', '1', '2882303761517311003', '5991731177003', 'Q6YX7b+/t41Z8KB7Fv7Vsw==', '', null, '', null, '5', null, null, null, null, null, '0');
@@ -77,14 +77,14 @@ INSERT INTO `uchannel` VALUES ('13', '25', '1', '10679', 'bU5Ef4F1Ns792gDv', '',
 INSERT INTO `uchannel` VALUES ('14', '26', '1', 'CPG54F58B76B11B2', '741b65253193b6592c55c5f9269f7338', '', '', '', '', '', '14', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('15', '27', '1', '', '1378375366Az26xatNyDOD5EM6D2ys', 'ug2KMdLi2JSr4naOE48XmL3h', '', '', '', '', '15', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('16', '28', '1', '', '42bc87ca29a772d0mBj6Pxj1GtUIDqPfZg3ubUjpWeefTB8RPjVThxu4cKa5sB0', '', '', '', '', '', '16', null, null, null, null, null, '0');
-INSERT INTO `uchannel` VALUES ('17', '29', '1', '101185', '04USV8I2TKI1YCQB', '87W02FS46OE04DQBWJCPTD47GYFEIA5SXID4B0SH1FQV6SGUVTJISRYMAHNIXRZH', '', '', '', '', '17', null, null, null, null, null, '0');
+INSERT INTO `uchannel` VALUES ('17', '29', '1', '101185', '', '87W02FS46OE04DQBWJCPTD47GYFEIA5SXID4B0SH1FQV6SGUVTJISRYMAHNIXRZH', '', '', '', '', '17', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('18', '30', '1', '1161', 'jzLdOuDM68K4u50n717MlQxg25OXWm2t', '', '', '', '', '', '18', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('19', '31', '1', '2487115', 'ca6326a22f214721948bc8f0da33962d', 'xuaut7WRmKttyMnkx4G1Tn6ulFwPKjue', '', '', '', '', '19', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('20', '32', '1', '5000003221', 'c83110e596e94d6e938c73184dee2b5b', '', '', '', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQChAzowRKhk76EuuOmRfDDc13l94vxmbIMgsPJreDm+yLLdwUuvBNQ1rpcXpsUGl/KEzZAwGn98ZqAm4z8SRgk+EgyN9iZc5gjiIcqEYnIREeWDzQYRXGPpnCK+MDJks6mg8O0LIb6Hv7SeAd7BUqPJBw3woONYZNDwg77NIuFghQIDAQAB', 'MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAIzU75WtPt2MtrLb/A+6nBHV9RRgZWrG Ya71fH6kKOTNxX60Of6Z44brf8X+mYcsO7i7v+ygaYlDpFtNVKlTHNKu8/Sd8hghvR5i4Nlf6oDk0UpG CFMS5q/H39cuBDuOJomCrpKtu2CEOypY5UOdJXxY67RZtPFYiJIHbwYFZo4dAgMBAAECgYBbVHgvRBPh z7Bn27viY211L6DpXv5GOXL96Juc8U7H2x455h06HIhuZekN+OeNvsTYL4HurbTjXKeIwmSmDo1AqbLN G8RfAtFdvnDvEe+Y1njzYBjARjTSfD+9rpzJyZokbK/YNuClrIALHtFdqimgSPsGAQ2YqPSdfnDmrn/r rQJBAMgMJdCdRuNCpsokpJTfd4TZoifghSQgkzI6WEQnXlWHK6Azay4UqqEm9OpmbRhP3EBukUQiKDi6 0zXxi0GQUoMCQQC0OM++jAqGfFfUl24sNuNkFrPBM6mInFE14RdxD5Wt1ov9HWgpUBQtHsB+kabxZ39A o4xcTvU/jSLFI8vtfzrfAkBPOqBvcxr0Px2XydN1Mtw/PYK/kGiq2kvyBLGYrI7sCND6beLxKTY7BRbT DyX+DwMIccIO3ghYD4Y/Qx8IJITJAkBBNumd1wkb/zS9Hgrk/vurxTdIq0wmvgH5EDmuVOhh3mgLsK93 e53BcgZQBp61bjEzD7uDz6KZW5YAZmKtz0NbAkAKQxsTKiRjBdhYwtXw1iCuu/2q+uWpfd3YrYYmu3jX NEQPry9JPc+yD+RjPDbY5Eh5RbA5l0luH6G5iy+XZNzY', '20', '1', '', '', '', '', '0');
 INSERT INTO `uchannel` VALUES ('21', '33', '1', 'b32a1d1fd1826545', '34fe34225d1ed6b0', 'c3657cdd837eb9dd', '', '', '', '', '21', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('22', '34', '1', 'b32a1d1fd1826545', '23F28F98461143E7A75F96327B695734', 'BCD61AE8337C4270A3D7E597102DFD66', '', '', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCSGer0HsTaWI12og+uRGP+XfGVaMVqK5c6/90eLT3DHSdiF6SpqbR5BmxfpEyOlwwMdVSHMw+BqqE1PiKH4fx1ZTV0/JFc33Y55PJ9jVZ5TKHKQqvr/hn12DNgD8ntmPCLkJwv0mD3X4Pu3V2Qo7lDbJDX/XXd91/wJDCq3GToAwIDAQAB', 'MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAMHhEdFSgO0MDcWP0itaGMwXMJOYei5LMDkpoWdm3zreCd/y49op+73Sv6lTIb2HX2D/AvDxOjNq93L9su6c8q8y+tUs88BGCS3FHRjwHqKtInuE2AkLLPKMp8LNKSAyqOzFOBC3CHF6wMRzbzXYTQWwKkBCWb2B1wzqbEjPKqcvAgMBAAECgYAN/WikuxhUgo8n11XqDOlHKNE3hUQjvQcwyME9zd2DyOvbfhJU9ryUmPV9iWMg4vjN7fjPXAjAFxLd+FKGB0s3mvwpHSOur+SX54apbQN2eYu1Ps3aUU39s/XaDp0XKInmjp9feAKt2p/oju1CKUh2m81osFqftOw0IhdpO8w+wQJBAOoa9v4RXtSO0rCjIohkvvbWXap6lSz//OqJmcJmYWoJwQYpvAb2gvZusw+AuWzkkY122EH9isSf0zAoApTbg88CQQDUAv7dJyPqc9EIGmsiw+6Xs6Hbtoz6QSaubitmE7AiKARBFvzA1/YiIl2sluRvmL9CXkfpqTpJzob2AFGHzZ6hAkEAnHOE2WqWa4s/dtivPWPG04OTeVkO1NIHHl7zKR3uwETggNPnWufnwfVdKWEnioR+WYIxKHjfAmSlaKt0fjLttQJAcSZ8IUm/aGSRfjKjVTWexAYR73I5QWK+I0AXF26QhVo4EwkSslVQPp16wx7xIgIyqVgqJzGzMyrvaqF24fTCoQJAeRuF4M8c6TQrE7ELenwPbYpYOEq+ovMJrSS2d06JYL4u0+SA6Xvfa1+q3brt5XlM2MTxdiWHXdOjYbKaTvDdew==', '22', '', null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('24', '36', '1', '', '643501227', '', '643501227', '', '', '', '24', '', null, null, null, null, '0');
-INSERT INTO `uchannel` VALUES ('25', '37', '1', '415', '75db13707d7a2a05904959d0b8f7efbb', '', '', '', '', '', '25', '', null, null, null, null, '0');
+INSERT INTO `uchannel` VALUES ('25', '37', '1', '415', '75db13707d7a2a05904959d0b8f7efbb', '', '', '', '', '', '25', '', '', '', '', '', '0');
 INSERT INTO `uchannel` VALUES ('26', '1000', '1', '1', '58C6A68DDDEE471AA43266E427F38D92', '', '', '', 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2kcrRvxURhFijDoPpqZ/IgPlAgppkKrek6wSrua1zBiGTwHI2f+YCa5vC1JEiIi9uw4srS0OSCB6kY3bP2DGJagBoEgj/rYAGjtYJxJrEiTxVs5/GfPuQBYmU0XAtPXFzciZy446VPJLHMPnmTALmIOR5Dddd1Zklod9IQBMjjwIDAQAB', '', '23', null, null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('29', '38', '1', '1941', '201befdbdd428f50', 'c5b6e9d97ca4e5cfd7bf66f34cf9c2c2', '', 'cfb56ead9fd3b1fc30c0c18bad4a1a84', '', '', '26', '', null, null, null, null, '0');
 INSERT INTO `uchannel` VALUES ('30', '39', '1', '1138', 'KU5DJ8fDjeHGRYui0G2khkIUrcJJ2Ii2', 'CFxI2KQeiL32S79HCcATlru5Ls6M4HLI', '10396', '', '', '', '27', '', '', '', '', '', '0');
@@ -104,6 +104,7 @@ INSERT INTO `uchannel` VALUES ('49', '1003', '1', '5521', '3e5bfafa43962dd739d1d
 INSERT INTO `uchannel` VALUES ('50', '51', '1', '1105386824', 'hdHxpEnwAZwKgPbhTGwFcML4tlPvrGsq', '', '', '', '', '', '41', '10', '', '', '', '', '0');
 INSERT INTO `uchannel` VALUES ('51', '1701', '1', '', '', '', '', '', '', '', '42', '', '', '', '', '', '0');
 INSERT INTO `uchannel` VALUES ('52', '52', '1', '964', 'e6091c7d360371f0465c11bbada4ccaf4868e4716e32fd3901315e04c2e14224', 'd11dc709deac038a0a8681058f353582634de90955686e03cbf50633ff91c7a7', '', '{D251941B-8D3A-4394-B6CC-3BF8E87CE453}', '', '', '44', '', '', '', '', '', '0');
+INSERT INTO `uchannel` VALUES ('53', '53', '1', 'GAME1602240954607017', 'ttj8ZcnI3idAiore8mjXew==', 'R6OPo0d2WtSXdivp4rX/tA==', 'DEV1602232022111921', '', '', '', '45', '', '', '', '', '', '0');
 
 -- ----------------------------
 -- Table structure for uchannelmaster
@@ -127,7 +128,7 @@ CREATE TABLE `uchannelmaster` (
 INSERT INTO `uchannelmaster` VALUES ('1', 'http://sdk.g.uc.cn/ss/account.verifySession', 'UC', 'uc', '.uc', 'http://localhost:8080/uc/payCallback', 'com.u8.server.sdk.uc.UCSDK', '');
 INSERT INTO `uchannelmaster` VALUES ('2', 'http://ngsdk.d.cn/api/cp/checkToken', '当乐', 'downjoy', '.dl', 'http://localhost:8080/downjoy/payCallback', 'com.u8.server.sdk.downjoy.DownjoySDK', null);
 INSERT INTO `uchannelmaster` VALUES ('3', 'https://openapi.360.cn/user/me', '360', 'qihoo360', '.qihoo', 'http://192.168.3.32:8080/qihoo360/payCallback', 'com.u8.server.sdk.qihoo360.Qihoo360SDK', null);
-INSERT INTO `uchannelmaster` VALUES ('4', 'http://querysdkapi.91.com/CpLoginStateQuery.ashx', '百度', 'baidu', '.baidu', 'http://localhost:8080/baidu/payCallback', 'com.u8.server.sdk.baidu.BaiduSDK', '');
+INSERT INTO `uchannelmaster` VALUES ('4', 'http://querysdkapi.baidu.com/query/cploginstatequery', '百度', 'baidu', '.baidu', 'http://localhost:8080/baidu/payCallback', 'com.u8.server.sdk.baidu.BaiduSDK', '');
 INSERT INTO `uchannelmaster` VALUES ('5', 'http://mis.migc.xiaomi.com/api/biz/service/verifySession.do', '小米', 'xiaomi', '.xiaomi', 'http://localhost:8080/xiaomi/payCallback', 'com.u8.server.sdk.xiaomi.XiaoMiSDK', '');
 INSERT INTO `uchannelmaster` VALUES ('6', 'http://m.4399api.com/openapi/oauth-check.html', '4399', 'm4399', '.m4399', 'http://localhost:8080/m4399/payCallback', 'com.u8.server.sdk.m4399.M4399SDK', '');
 INSERT INTO `uchannelmaster` VALUES ('7', 'http://i.open.game.oppomobile.com/gameopen/user/fileIdInfo', 'oppo', 'oppo', '.oppo', 'http://localhost:8080/oppo/payCallback', 'com.u8.server.sdk.oppo.OppoSDK', '');
@@ -168,6 +169,7 @@ INSERT INTO `uchannelmaster` VALUES ('41', 'none', '应用宝YSDK', 'ysdk', '.ys
 INSERT INTO `uchannelmaster` VALUES ('42', 'none', 'Demo测试渠道', 'demo', '.demo', 'none', 'com.u8.server.sdk.demo.DemoSDK', 'none');
 INSERT INTO `uchannelmaster` VALUES ('43', 'http://api.haimawan.com/index.php?m=api&a=validate_token', '海马玩(iOS)', 'haima', '.haima', 'http://localhost:8080/pay/haima/payCallback', 'com.u8.server.sdk.haima.HaimaSDK', '');
 INSERT INTO `uchannelmaster` VALUES ('44', 'http://api.app.wan.sogou.com/api/v1/login/verify', '搜狗', 'sougou', '.sougou', 'http://localhost:8080/pay/sougou/payCallback', 'com.u8.server.sdk.sougou.SouGouSDK', '');
+INSERT INTO `uchannelmaster` VALUES ('45', 'http://web.quanmin.la/sdk/game.htm', '全民助手', 'quanmingzhushou', '.qm', 'http://localhost:8080/pay/quanmingzhushou/payCallback', 'com.u8.server.sdk.quanmingzhushou.QMSDK', '');
 
 -- ----------------------------
 -- Table structure for ugame
@@ -442,6 +444,8 @@ INSERT INTO `uorder` VALUES ('962917339752300545', '1', '51', '', 'RMB', 'none',
 INSERT INTO `uorder` VALUES ('962918336184713218', '1', '51', '', 'RMB', 'none', '100', null, '1', '1463211168144.ysdk', '67', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-14 15:36:32', null, null, '1', '元宝', '100元宝，送20', null);
 INSERT INTO `uorder` VALUES ('962918409199157251', '1', '51', '', 'RMB', 'none', '100', null, '1', '1463211168144.ysdk', '67', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-14 15:36:49', null, null, '1', '元宝', '100元宝，送20', null);
 INSERT INTO `uorder` VALUES ('968481474179235842', '1', '23', '2160524115213122227904357', 'RMB', '1430119175223', '10000', '600', '2', '', '18', '1', '测试角色名', '1', '测试', '2015-04-27 15:18:04', '2016-05-24 11:52:13', '2016-05-24 16:49:41', null, '元宝', '购买100元宝', null);
+INSERT INTO `uorder` VALUES ('969108745562882049', '1', '11', '', 'RMB', 'none', '100', null, '1', '1464161338877.dl', '72', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-25 15:29:05', null, null, '1', '元宝', '100元宝，送20', null);
+INSERT INTO `uorder` VALUES ('971829010344443905', '1', '12', '', 'RMB', 'none', '100', null, '1', '1434533153312.baidu', '33', 'dev-1111', '我擦', '1', '桃园结义', '2016-05-30 10:05:22', null, null, '1', '元宝', '100元宝，送20', null);
 
 -- ----------------------------
 -- Table structure for uuser
@@ -459,7 +463,7 @@ CREATE TABLE `uuser` (
   `name` varchar(255) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of uuser
@@ -496,7 +500,7 @@ INSERT INTO `uuser` VALUES ('29', '1', '34', 'E59EDE98622248A3B8B6BBE187656B5C',
 INSERT INTO `uuser` VALUES ('30', '1', '32', '29682286', 'CCNK1428383254363', 'CCNK1428383254363', '2015-05-06 11:09:57', '1461155307264', '1430881797104.coolpad', '6ade3af1d15180db02a843aee3f47669');
 INSERT INTO `uuser` VALUES ('31', '1', '10', '1324439506', '1324439506', '九游玩家_ib0i44ofb2', '2015-06-17 17:18:42', '1425093830573', '1434532722195.uc', '03a60052c404ff5ac65d77fb1cb6dd6b');
 INSERT INTO `uuser` VALUES ('32', '1', '12', '2003198165', '', '', '2015-06-17 17:24:55', '1425093830573', '1434533095191.baidu', 'd50087b987e7c52f44ba7a33ebbd0012');
-INSERT INTO `uuser` VALUES ('33', '1', '12', '1292623589', '', '', '2015-06-17 17:25:53', '1460020770278', '1434533153312.baidu', '6171b5e8ebaf7d0bf27594dc020229f2');
+INSERT INTO `uuser` VALUES ('33', '1', '12', '1292623589', '', '', '2015-06-17 17:25:53', '1464573875806', '1434533153312.baidu', '0c30b17cf2c1f15868ad162cd12c798a');
 INSERT INTO `uuser` VALUES ('34', '1', '24', '900086000023101422', '182****6067', '', '2015-06-18 11:08:20', '1450940021504', '1434596900138.huawei', '7d65b1a118ce4fc4dfc314683489f105');
 INSERT INTO `uuser` VALUES ('35', '1', '30', '3168457', 'jieziqqqq', 'jieziqqqq', '2015-12-02 11:19:39', '1425093830573', '1449026379630.paojiao', '6b5a7d86dd24ee04a84c0162e5e192ee');
 INSERT INTO `uuser` VALUES ('36', '1', '36', '28847428', 'jL6gffgQfbgUY_', '', '2015-12-03 19:04:52', '1425093830573', '1449140692768.gfan', '9f18b682f87a889d085c2b444ec084f1');
@@ -534,3 +538,7 @@ INSERT INTO `uuser` VALUES ('67', '1', '51', '1FEA044F75E91CE8D8F45F509FC1B2A9',
 INSERT INTO `uuser` VALUES ('68', '1', '51', 'oR1t3s1KWGh4n7frRLTrfO3Fl3yo', 'wx-oR1t3s1KWGh4n7frRLTrfO3Fl3yo', '', '2016-05-16 16:15:12', '1463390938903', '1463386512309.ysdk', '6672ce03df18070f17e667127fc652ea');
 INSERT INTO `uuser` VALUES ('69', '1', '51', '059CF9784852F5B55039533F416B4E38', 'qq-059CF9784852F5B55039533F416B4E38', '', '2016-05-16 20:31:21', '1463401881525', '1463401881525.ysdk', 'ebd4d57740c2edefaca226d60606129a');
 INSERT INTO `uuser` VALUES ('70', '1', '51', 'oRzrIvvcMrP8atSgvzXkkbAeLXv8', 'wx-oRzrIvvcMrP8atSgvzXkkbAeLXv8', '', '2016-05-17 13:37:53', '1463463473366', '1463463473366.ysdk', '732ed229380d24dccf6bd36a459d8bd8');
+INSERT INTO `uuser` VALUES ('71', '1', '37', '1191337', 'afM2RmOGFhNmJj', '', '2016-05-24 19:37:51', '1464089871998', '1464089871998.anfeng', '253f638aa468a5484cf7c024f3e22eec');
+INSERT INTO `uuser` VALUES ('72', '1', '11', '201428142', '', '', '2016-05-25 15:28:58', '1464167297208', '1464161338877.dl', '5dfea8b5ae2575c5a335293636a4a37a');
+INSERT INTO `uuser` VALUES ('73', '1', '11', '207424849', 'docsaibxd1', 'docsaibxd1', '2016-05-25 17:14:58', '1464167698155', '1464167698155.dl', '42b106be67e56571e0476a9792a6a1b3');
+INSERT INTO `uuser` VALUES ('74', '1', '53', 'QM_GAME1602240954607017_0000339838', 'QM_GAME1602240954607017_0000339838', '娓稿', '2016-05-25 17:47:16', '1464170716071', '1464169636727.qm', 'e6fbfb7cef4716852c94424cd69f514b');

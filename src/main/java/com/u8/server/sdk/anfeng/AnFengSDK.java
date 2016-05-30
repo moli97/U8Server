@@ -95,6 +95,8 @@ public class AnFengSDK implements ISDKScript{
         postdatasb.append("&signKey="+signKey);
         String sign= md5(postdatasb.toString().getBytes());
 
+        Log.d("the sign data is "+postdatasb.toString());
+
         return sign;
     }
 
