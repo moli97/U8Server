@@ -6,6 +6,7 @@ import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.service.UOrderManager;
+import com.u8.server.utils.Base64;
 import com.u8.server.utils.JsonUtils;
 import com.u8.server.utils.RSAUtils;
 import org.apache.struts2.convention.annotation.Action;
@@ -15,6 +16,9 @@ import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
 import java.util.Date;
 
 /**
@@ -95,9 +99,10 @@ public class WanDouJiaPayCallbackAction extends UActionSupport{
 
     private boolean isValid(UChannel channel){
         
-        return RSAUtils.verify(this.content, this.sign,  channel.getCpPayKey(), "UTF-8");
+        return RSAUtils.verify(this.content, this.sign,  channel.getCpPayKey(), "UTF-8", "SHA1WithRSA");
 
     }
+
 
     private void renderState(boolean suc, String msg) throws IOException {
 
