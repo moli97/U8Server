@@ -93,7 +93,11 @@ public class M4399PayCallbackAction extends UActionSupport{
         if(!TextUtils.isEmpty(serverid)){
             sb.append(serverid);
         }
-        sb.append(channel.getCpAppSecret()).append(mark);
+        sb.append(channel.getCpAppSecret());
+
+        if(!TextUtils.isEmpty(mark)){
+            sb.append(mark);
+        }
 
         if(!TextUtils.isEmpty(roleid)){
             sb.append(roleid);

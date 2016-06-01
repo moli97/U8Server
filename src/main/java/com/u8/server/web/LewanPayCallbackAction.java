@@ -54,7 +54,6 @@ public class LewanPayCallbackAction extends UActionSupport{
 
             boolean signOK = EncryUtil.checkDecryptAndSign(data, encryptkey, channel.getCpPayKey(), channel.getCpPayPriKey());
 
-
             if(!signOK){
                 Log.d("The sign verify failed.sign:%s;payKey:%s;priKey:%s", encryptkey, channel.getCpPayKey(), channel.getCpPayPriKey());
                 this.renderState(false);

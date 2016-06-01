@@ -119,7 +119,7 @@ public class LenovoPayCallbackAction extends UActionSupport{
         Log.d(this.transdata);
         Log.d(this.sign);
 
-        String sign = RSAUtils.sign(this.transdata, channel.getCpPayKey(), "utf-8", RSAUtils.SIGNATURE_ALGORITHM_SHA);
+        String sign = RSAUtils.sign(this.transdata, channel.getCpPayPriKey(), "utf-8", RSAUtils.SIGNATURE_ALGORITHM_SHA);
         Log.d("sign generate:"+sign);
         if(sign.equals(this.sign)){
             return true;

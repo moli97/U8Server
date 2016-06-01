@@ -63,7 +63,7 @@ public class WanDouJiaPayCallbackAction extends UActionSupport{
             int orderMoney = Integer.valueOf(data.getMoney());      //转换为分
 
 
-            if(order.getMoney() != orderMoney){
+            if(order.getMoney() > orderMoney){
                 Log.e("订单金额不一致! local orderID:"+localOrderID+"; money returned:"+data.getMoney()+"; order money:"+order.getMoney());
             }
 

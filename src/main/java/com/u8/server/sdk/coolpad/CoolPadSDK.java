@@ -139,6 +139,8 @@ public class CoolPadSDK implements ISDKScript{
                 try {
                     content = URLDecoder.decode(content, "UTF-8");
 
+                    Log.d("the content returned:"+content);
+
                     String[] data = content.split("&");
                     for(String dataItem : data){
                         if(dataItem.startsWith("transdata=")){

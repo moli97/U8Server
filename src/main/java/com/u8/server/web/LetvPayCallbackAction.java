@@ -119,7 +119,7 @@ public class LetvPayCallbackAction extends UActionSupport{
                 .append("&sign_type=").append(sign_type)
                 .append("&trade_result=").append(trade_result)
                 .append("&version=").append(version)
-                .append("&key=").append(channel.getCpAppKey());
+                .append("&key=").append(channel.getCpAppSecret());
 
         Log.d("sign txt:"+sb.toString());
 

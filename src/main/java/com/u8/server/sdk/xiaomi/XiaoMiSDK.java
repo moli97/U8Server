@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 小米SDK
  * Created by ant on 2015/4/21.
  */
 public class XiaoMiSDK implements ISDKScript{
@@ -36,7 +37,6 @@ public class XiaoMiSDK implements ISDKScript{
                     .append("uid=").append(sid);
 
             String signature = HmacSHA1Encryption.HmacSHA1Encrypt(sb.toString(), channel.getCpAppSecret());
-
 
             params.put("signature", signature);
             UHttpAgent.getInstance().get(channel.getChannelAuthUrl(), params, new UHttpFutureCallback() {
