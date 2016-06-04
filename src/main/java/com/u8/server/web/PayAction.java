@@ -70,7 +70,7 @@ public class PayAction extends UActionSupport{
             sb.append("&notifyUrl=").append(this.notifyUrl);
         }
 
-        sb.append(user.getGame().getAppkey());
+        sb.append(user.getGame().getAppSecret());
 
         String encoded = URLEncoder.encode(sb.toString(), "UTF-8");
 
@@ -89,6 +89,7 @@ public class PayAction extends UActionSupport{
         return RSAUtils.verify(encoded, sign,  user.getGame().getAppRSAPubKey(), "UTF-8");
 
     }
+    
 
     @Action("getOrderID")
     public void getOrderID(){
