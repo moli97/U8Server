@@ -44,13 +44,13 @@ public class YSDKManager {
 
 
     /***
-     * 获取当前队列中所有支付任务中游戏币的总和
+     * 获取当前指定用户的队列中所有支付任务中游戏币的总和
      */
-    public int getTotalCoinNum(){
+    public int getTotalCoinNum(int userID){
 
         int coinNum = 0;
         for(PayTask task : this.tasks){
-            if(task.getState() == PayTask.STATE_INIT || task.getState() == PayTask.STATE_RETRY){
+            if(task.getPayRequest().getUser().getId() == userID && (task.getState() == PayTask.STATE_INIT || task.getState() == PayTask.STATE_RETRY) ){
                 coinNum += task.getPayRequest().getCoinNum();
             }
         }

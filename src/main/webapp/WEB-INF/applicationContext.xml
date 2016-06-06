@@ -37,11 +37,14 @@
 
 		<!-- Connection Pooling Info -->
 		<property name="initialSize" value="5" />
-		<property name="maxActive" value="100" />
-		<property name="maxIdle" value="30" />
+		<property name="maxActive" value="500" />
+		<property name="maxIdle" value="10000" />
 		<property name="maxWait" value="500" />
 		<property name="defaultAutoCommit" value="true" />
-	</bean>
+		<property name="removeAbandoned" value="true"/>
+		<property name="removeAbandonedTimeout" value="180" />
+		<property name="logAbandoned" value="true"/>
+ 	</bean>
 
 	<!-- Hibernate配置 -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

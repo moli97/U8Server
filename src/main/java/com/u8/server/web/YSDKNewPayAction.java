@@ -148,7 +148,7 @@ public class YSDKNewPayAction extends UActionSupport {
             int money = result.getInt("balance");
 
             //查询出来的余额，需要和当前PayTask队列中正在等待执行的任务余额作为一个差值
-            int payingMoney = this.ysdkManager.getTotalCoinNum();
+            int payingMoney = this.ysdkManager.getTotalCoinNum(user.getId());
             int leftMoney = money - payingMoney;
             if(leftMoney < 0){
                 leftMoney = 0;
