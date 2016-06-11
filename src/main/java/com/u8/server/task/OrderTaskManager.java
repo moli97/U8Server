@@ -1,8 +1,8 @@
-package com.u8.server.sdk.txmsdk;
+package com.u8.server.task;
 
+import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+
 
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.ExecutorService;
@@ -12,37 +12,38 @@ import java.util.concurrent.Executors;
  * 应用宝SDK相关支付逻辑
  * Created by ant on 2015/10/14.
  */
-@Component("txmsdkManager")
-@Scope("singleton")
-public class TXMSDKManager {
+//@Component("orderTaskManager")
+//@Scope("singleton")
+public class OrderTaskManager {
 
-    private static final long DELAY_MILLIS = 20000;      //每次延迟执行间隔,ms
+    private static final long DELAY_MILLIS = 600000;      //每次延迟执行间隔,ms. 这里是10分钟
     private static final int MAX_RETRY_NUM = 6;         //最多重试6次
 
-    private static TXMSDKManager instance;
+    private static OrderTaskManager instance;
 
-    private DelayQueue<PayTask> tasks;
+    private DelayQueue<OrderTask> tasks;
 
     private ExecutorService executor;
 
-    private boolean isRunning = false;
+    private volatile boolean isRunning = false;
 
-    private TXMSDKManager(){
-        this.tasks = new DelayQueue<PayTask>();
+    public OrderTaskManager(){
+        this.tasks = new DelayQueue<OrderTask>();
         executor = Executors.newFixedThreadPool(3);
     }
 
-    public static TXMSDKManager getInstance(){
+    public static OrderTaskManager getInstance(){
         if(instance == null){
-            instance = new TXMSDKManager();
+            instance = new OrderTaskManager();
         }
         return instance;
     }
 
-    //添加一个新支付请求到队列中
-    public void addPayRequest(PayRequest req){
 
-        PayTask task = new PayTask(req, 100, MAX_RETRY_NUM);
+    //添加一个新支付请求到队列中
+    public void addOrder(UOrder order){
+
+        OrderTask task = new OrderTask(order, 1000, MAX_RETRY_NUM);
         this.tasks.add(task);
 
         if(!isRunning){
@@ -58,13 +59,13 @@ public class TXMSDKManager {
                 try{
 
                     while(isRunning){
-                        PayTask task = tasks.take();
+                        OrderTask task = tasks.take();
                         task.run();
-                        if(task.getState() == PayTask.STATE_RETRY){
-                            task.setDelay(DELAY_MILLIS);
+                        if(task.getState() == OrderTask.STATE_RETRY){
+                            task.setDelay(DELAY_MILLIS * task.getRetryCount());
                             tasks.add(task);
-                        }else if(task.getState() == PayTask.STATE_FAILED){
-                            Log.e("the user[%s](channel userID:%s) charge failed.", task.getPayRequest().getUser().getId(), task.getPayRequest().getUser().getChannelUserID());
+                        }else if(task.getState() == OrderTask.STATE_FAILED){
+                            Log.e("the order %s send to game server failed.", task.getOrder().getOrderID());
                         }
                     }
 
@@ -79,9 +80,12 @@ public class TXMSDKManager {
     public void destory(){
         this.isRunning = false;
         if(executor != null){
-            executor.shutdown();
+            executor.shutdownNow();
             executor = null;
         }
     }
+
+
+
 
 }

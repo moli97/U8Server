@@ -15,8 +15,8 @@ import java.util.concurrent.Executors;
  * 应用宝SDK相关支付逻辑
  * Created by ant on 2015/10/14.
  */
-@Component("ysdkManager")
-@Scope("singleton")
+//@Component("ysdkManager")
+//@Scope("singleton")
 public class YSDKManager {
 
     private static final long DELAY_MILLIS = 20000;      //每次延迟执行间隔,ms
