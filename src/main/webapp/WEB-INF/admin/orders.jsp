@@ -33,11 +33,11 @@
 
 <div id="easyui_toolbar" region="north" border="false"
      style="border-bottom: 1px solid #ddd; height: 32px; padding: 2px 5px; background: #fafafa;">
-  <%--<div style="float: left;">--%>
-  <%--<a class="easyui-linkbutton" plain="true" icon="icon-filter" onclick="javascript:showAddDialog();">详细信息</a>--%>
-  <%--</div>--%>
+  <div style="float: left;">
+    <a class="easyui-linkbutton" plain="true" icon="icon-filter" onclick="javascript:resend();">补单</a>
+  </div>
 
-  <%--<div class="datagrid-btn-separator"></div>--%>
+  <div class="datagrid-btn-separator"></div>
 
   <div style="float: left;">
     <a class="easyui-linkbutton" plain="true"
@@ -60,6 +60,38 @@
 
 <script type="text/javascript">
 
+  function resend(){
+    var row = $('#orders').datagrid('getSelected')
+    if(row){
+
+      $.messager.confirm(
+              '操作确认',
+              '确定要补单吗？',
+              function(r){
+                if(r){
+
+                  $.post('<%=basePath%>/admin/orders/resendOrder', {currOrderID:row.orderID}, function(result){
+                    if(result.state == 1){
+                      $("#orders").datagrid('reload');
+
+                    }
+
+                    $.messager.show({
+                      title:'操作提示',
+                      msg:result.msg
+                    })
+                  }, 'json');
+                }
+              }
+      );
+
+    }else{
+      $.messager.show({
+        title:'操作提示',
+        msg:'请选择一条纪录'
+      })
+    }
+  }
 
   function deleteOrder(){
     var row = $('#orders').datagrid('getSelected');

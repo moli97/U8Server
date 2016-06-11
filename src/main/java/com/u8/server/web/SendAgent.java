@@ -37,8 +37,14 @@ public class SendAgent {
             return false;
         }
 
-        if(StringUtils.isEmpty(game.getPayCallback())){
+        String callbackUrl = order.getNotifyUrl();
+        if(StringUtils.isEmpty(callbackUrl)){
+            callbackUrl = game.getPayCallback();
+        }
 
+        if(StringUtils.isEmpty(callbackUrl)){
+
+            Log.d("the order paycallback url is not configed. no in order. no in game.");
             return false;
         }
 
@@ -66,11 +72,7 @@ public class SendAgent {
 
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "text/html");
-
-        String callbackUrl = order.getNotifyUrl();
-        if(StringUtils.isEmpty(callbackUrl)){
-            callbackUrl = game.getPayCallback();
-        }
+        
 
         String serverRes = UHttpAgent.getInstance().post(callbackUrl, headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
 

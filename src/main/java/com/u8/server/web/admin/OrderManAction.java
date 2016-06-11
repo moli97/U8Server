@@ -3,9 +3,11 @@ package com.u8.server.web.admin;
 import com.opensymphony.xwork2.ModelDriven;
 import com.u8.server.common.Page;
 import com.u8.server.common.UActionSupport;
+import com.u8.server.constants.PayState;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.service.UOrderManager;
+import com.u8.server.web.SendAgent;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.convention.annotation.Action;
@@ -68,6 +70,37 @@ public class OrderManAction extends UActionSupport implements ModelDriven<UOrder
         }
     }
 
+    /***
+     * 补单，只有状态为支付
+     */
+    @Action("resendOrder")
+    public void resendOrder(){
+        try{
+
+            Log.d("resendOrder: Curr orderID is " + this.currOrderID);
+            UOrder order = orderManager.getOrder(this.currOrderID);
+            if(order == null){
+                Log.e("the order is not exists. orderID:"+this.currOrderID);
+                renderState(false);
+                return;
+            }
+
+            if(order.getState() != PayState.STATE_SUC){
+                Log.e("cannot resend order. the state is not STATE_SUC. state is "+order.getState());
+                renderState(false);
+                return;
+            }
+
+            SendAgent.sendCallbackToServer(this.orderManager, order);
+
+            renderState(true);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            renderState(false);
+        }
+    }
+
     @Action("removeOrder")
     public void removeOrder(){
         try{
@@ -99,7 +132,7 @@ public class OrderManAction extends UActionSupport implements ModelDriven<UOrder
         JSONObject json = new JSONObject();
         json.put("state", suc? 1 : 0);
         json.put("msg", suc? "操作成功" : "操作失败");
-        renderText(json.toString());
+        renderJson(json.toString());
     }
 
 
