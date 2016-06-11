@@ -72,7 +72,7 @@ public class SendAgent {
 
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Content-Type", "text/html");
-        
+
 
         String serverRes = UHttpAgent.getInstance().post(callbackUrl, headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
 
