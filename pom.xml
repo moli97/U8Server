@@ -230,6 +230,14 @@
 
         <!-- lib/jars/sdk -->
         <dependency>
+            <groupId>com.163</groupId>
+            <artifactId>javapns</artifactId>
+            <version>1.6.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jars/sdk/javapns-jdk16-163.jar</systemPath>
+        </dependency>
+
+        <dependency>
             <groupId>com.lenovo</groupId>
             <artifactId>lenovo_pay_sign</artifactId>
             <version>1.0.0.5</version>
@@ -252,6 +260,15 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/jars/sdk/lewanPay.jar</systemPath>
         </dependency>
+
+        <dependency>
+            <groupId>com.xy</groupId>
+            <artifactId>xysignature</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jars/sdk/signature.jar</systemPath>
+        </dependency>
+
 
         <dependency>
             <groupId>javassist</groupId>
