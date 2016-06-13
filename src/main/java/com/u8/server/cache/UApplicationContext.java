@@ -5,8 +5,8 @@ import com.u8.server.dao.UChannelMasterDao;
 import com.u8.server.dao.UGameDao;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.UHttpAgent;
-import com.u8.server.sdk.txmsdk.TXMSDKManager;
 import com.u8.server.sdk.ysdk.YSDKManager;
+import com.u8.server.task.OrderTaskManager;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +14,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 
@@ -34,6 +33,7 @@ public class UApplicationContext implements ApplicationContextAware{
     private UChannelDao channelDao;
     @Autowired
     private UChannelMasterDao channelMasterDao;
+
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -63,8 +63,8 @@ public class UApplicationContext implements ApplicationContextAware{
     @PreDestroy
     public void onDestory(){
         Log.d("Now to clean ...");
-        TXMSDKManager.getInstance().destory();
         YSDKManager.getInstance().destory();
+        OrderTaskManager.getInstance().destory();
         UHttpAgent.getInstance().destroy();
     }
 

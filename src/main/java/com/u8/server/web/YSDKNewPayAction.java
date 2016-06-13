@@ -64,8 +64,6 @@ public class YSDKNewPayAction extends UActionSupport {
     @Autowired
     private UOrderManager orderManager;
 
-    @Autowired
-    private YSDKManager ysdkManager;
 
 
     /***
@@ -148,7 +146,7 @@ public class YSDKNewPayAction extends UActionSupport {
             int money = result.getInt("balance");
 
             //查询出来的余额，需要和当前PayTask队列中正在等待执行的任务余额作为一个差值
-            int payingMoney = this.ysdkManager.getTotalCoinNum(user.getId());
+            int payingMoney = YSDKManager.getInstance().getTotalCoinNum(user.getId());
             int leftMoney = money - payingMoney;
             if(leftMoney < 0){
                 leftMoney = 0;
@@ -242,7 +240,7 @@ public class YSDKNewPayAction extends UActionSupport {
             int coin = (int)(order.getMoney() / 100f * Integer.valueOf(channel.getCpConfig()));
             req.setCoinNum(coin);
 
-            this.ysdkManager.addPayRequest(req);
+            YSDKManager.getInstance().addPayRequest(req);
 
             this.renderState(true);
 
