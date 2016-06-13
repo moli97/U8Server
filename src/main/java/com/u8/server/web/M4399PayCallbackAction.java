@@ -55,7 +55,7 @@ public class M4399PayCallbackAction extends UActionSupport{
 
             if(order.getState() == PayState.STATE_COMPLETE){
                 Log.d("The state of the order is complete. The state is "+order.getState());
-                this.renderState(3, null, "该订单已经被处理,或者CP订单号重复");
+                this.renderState(3, "", "该订单已经被处理,或者CP订单号重复");
                 return;
             }
 
@@ -67,7 +67,7 @@ public class M4399PayCallbackAction extends UActionSupport{
                 order.setState(PayState.STATE_SUC);
                 orderManager.saveOrder(order);
                 SendAgent.sendCallbackToServer(this.orderManager, order);
-                this.renderState(2, null, money, gamemoney, "充值成功");
+                this.renderState(2, "", money, gamemoney, "充值成功");
             }else{
                 order.setChannelOrderID(orderid);
                 order.setState(PayState.STATE_FAILED);

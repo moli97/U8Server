@@ -5,6 +5,7 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 
+import com.u8.server.log.Log;
 import org.apache.log4j.Logger;
 
 import com.u8.server.sdk.jinli.jinli.RSASignature;
@@ -39,9 +40,9 @@ public class JinLiPayCallbackAction extends UActionSupport{
     private String api_key;             //必须 	商户APIKey
     private String close_time;          //必须 	支付订单关闭时间
     private String create_time; 	    //必须 	支付订单创建时间
-    private float  deal_price; 	        //必须 	商品总金额
+    private String  deal_price; 	        //必须 	商品总金额
     private String out_order_no; 	    //必须 	商户订单号
-    private int    pay_channel; 	    //必须 	用户支付方式(A币支付：100)
+    private String pay_channel; 	    //必须 	用户支付方式(A币支付：100)
     private String submit_time; 	    //必须 	商户提交订单时间
     private String user_id; 	        //必须 	文档说返回null？？？
     private String sign; 	            //必须 	签名
@@ -54,6 +55,15 @@ public class JinLiPayCallbackAction extends UActionSupport{
 
         try{
 
+			Log.d("api_key:"+api_key);
+			Log.d("close_time:"+close_time);
+			Log.d("create_time:"+create_time);
+			Log.d("deal_price:"+deal_price);
+			Log.d("out_order_no:"+out_order_no);
+			Log.d("pay_channel:"+pay_channel);
+			Log.d("submit_time:"+submit_time);
+			Log.d("user_id:"+user_id);
+			Log.d("sign:"+sign);
 
             long orderID = Long.parseLong(out_order_no);
 
@@ -79,6 +89,8 @@ public class JinLiPayCallbackAction extends UActionSupport{
 
             if(isValid(order.getChannel())){
                 order.setState(PayState.STATE_SUC);
+				order.setRealMoney((int)(Float.valueOf(deal_price) * 100));
+				order.setSdkOrderTime(submit_time);
                 orderManager.saveOrder(order);
                 SendAgent.sendCallbackToServer(this.orderManager, order);
                 this.renderState("success");
@@ -104,16 +116,16 @@ public class JinLiPayCallbackAction extends UActionSupport{
         StringBuilder sb = new StringBuilder();
         
         DecimalFormat df = new DecimalFormat(".00");
-        String dealPrice = df.format((this.deal_price / 1.00f));
+        String dealPrice = df.format((Float.valueOf(this.deal_price) / 1.00f));
 
-        sb.append("api_key=").append(channel.getCpAppKey()).append("&")
+        sb.append("api_key=").append(this.api_key).append("&")
         	.append("close_time=").append(this.close_time).append("&")
 	        .append("create_time=").append(this.create_time).append("&")
 	        .append("deal_price=").append(dealPrice).append("&")
 	        .append("out_order_no=").append(this.out_order_no).append("&")
 	        .append("pay_channel=").append(this.pay_channel).append("&")
 	        .append("submit_time=").append(this.submit_time).append("&")
-	        .append("user_id=").append(this.user_id);
+	        .append("user_id=").append(this.user_id==null?"null":this.user_id);
 
 
         return RSASignature.doCheck(sb.toString(), this.sign, channel.getCpPayKey(), CharEncoding.UTF_8);
@@ -163,12 +175,20 @@ public class JinLiPayCallbackAction extends UActionSupport{
 		this.create_time = create_time;
 	}
 
-	public float getDeal_price() {
+	public String getDeal_price() {
 		return deal_price;
 	}
 
-	public void setDeal_price(float deal_price) {
+	public void setDeal_price(String deal_price) {
 		this.deal_price = deal_price;
+	}
+
+	public String getPay_channel() {
+		return pay_channel;
+	}
+
+	public void setPay_channel(String pay_channel) {
+		this.pay_channel = pay_channel;
 	}
 
 	public String getOut_order_no() {
@@ -179,13 +199,6 @@ public class JinLiPayCallbackAction extends UActionSupport{
 		this.out_order_no = out_order_no;
 	}
 
-	public int getPay_channel() {
-		return pay_channel;
-	}
-
-	public void setPay_channel(int pay_channel) {
-		this.pay_channel = pay_channel;
-	}
 
 	public String getSubmit_time() {
 		return submit_time;

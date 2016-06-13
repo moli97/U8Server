@@ -70,7 +70,7 @@ public class PayAction extends UActionSupport{
             sb.append("&notifyUrl=").append(this.notifyUrl);
         }
 
-        sb.append(user.getGame().getAppSecret());
+        sb.append(user.getGame().getAppkey());
 
         String encoded = URLEncoder.encode(sb.toString(), "UTF-8");
 
