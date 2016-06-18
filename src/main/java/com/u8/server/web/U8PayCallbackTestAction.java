@@ -95,7 +95,7 @@ public class U8PayCallbackTestAction extends UActionSupport{
             return EncryptUtils.md5(sb.toString()).toLowerCase().equals(order.getSign());
         }else{
             String publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDtJvawWjhQhI+J3EnD3gvuh+t1zB4bOMW9PJUdk27YQDyiGVd42QdHLofdTN1yXKXYZR1Bmy4W1pZhucSoDdS7fGfkKHm3zRMsijNOiPWHg0spMEchI4YTlIC43iFVdzSPE/2sIZfrW/9MspXfuWqFySsTsf6c6qJc6A0bNKJhMwIDAQAB";
-            return RSAUtils.verify(sb.toString(), order.getSign(), publicKey, "UTF-8");
+            return RSAUtils.verify(sb.toString(), order.getSign(), publicKey, "UTF-8", "SHA1withRSA");
         }
     }
 

@@ -194,7 +194,7 @@ public class SendAgent {
         if("md5".equalsIgnoreCase(signType)){
             return EncryptUtils.md5(sb.toString()).toLowerCase();
         }else{
-            return RSAUtils.sign(sb.toString(), order.getGame().getAppRSAPriKey(), "UTF-8");
+            return RSAUtils.sign(sb.toString(), order.getGame().getAppRSAPriKey(), "UTF-8", "SHA1withRSA");
         }
 
     }

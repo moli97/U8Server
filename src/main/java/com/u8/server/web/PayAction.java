@@ -52,7 +52,6 @@ public class PayAction extends UActionSupport{
     @Autowired
     private UOrderManager orderManager;
 
-
     private boolean isSignOK(UUser user) throws UnsupportedEncodingException {
 
         StringBuilder sb = new StringBuilder();
@@ -70,7 +69,7 @@ public class PayAction extends UActionSupport{
             sb.append("&notifyUrl=").append(this.notifyUrl);
         }
 
-        sb.append(user.getGame().getAppkey());
+        sb.append(user.getGame().getAppSecret());
 
         String encoded = URLEncoder.encode(sb.toString(), "UTF-8");
 
@@ -86,7 +85,7 @@ public class PayAction extends UActionSupport{
             return newSign.toLowerCase().equals(this.sign);
         }
 
-        return RSAUtils.verify(encoded, sign,  user.getGame().getAppRSAPubKey(), "UTF-8");
+        return RSAUtils.verify(encoded, sign,  user.getGame().getAppRSAPubKey(), "UTF-8", "SHA1withRSA");
 
     }
     
@@ -112,7 +111,7 @@ public class PayAction extends UActionSupport{
 
             if(!isSignOK(user)){
 
-                Log.e("the sign is not vali. sign:"+this.sign);
+                Log.e("the sign is not valid. sign:"+this.sign);
                 renderState(StateCode.CODE_SIGN_ERROR, null);
                 return;
             }
