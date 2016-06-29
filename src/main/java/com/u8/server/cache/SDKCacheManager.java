@@ -18,9 +18,12 @@ public class SDKCacheManager {
     private static SDKCacheManager instance;
 
     private Map<Integer, ISDKScript> sdkCaches;
+    private Map<Integer, String> cachedClassNames;
 
     private SDKCacheManager(){
+
         sdkCaches = new HashMap<Integer, ISDKScript>();
+        cachedClassNames = new HashMap<Integer, String>();
     }
 
     public static SDKCacheManager getInstance(){
@@ -44,12 +47,20 @@ public class SDKCacheManager {
         }
 
         if(sdkCaches.containsKey(channel.getChannelID())){
-            return sdkCaches.get(channel.getChannelID());
+
+            String className = cachedClassNames.get(channel.getChannelID());
+            if(className.equals(channel.getChannelVerifyClass())){
+                return sdkCaches.get(channel.getChannelID());
+            }
+
+            sdkCaches.remove(channel.getChannelID());
+            cachedClassNames.remove(channel.getChannelID());
         }
 
         try {
             ISDKScript script = (ISDKScript)Class.forName(channel.getChannelVerifyClass()).newInstance();
             sdkCaches.put(channel.getChannelID(), script);
+            cachedClassNames.put(channel.getChannelID(), channel.getChannelVerifyClass());
             return script;
         } catch (InstantiationException e) {
             e.printStackTrace();
