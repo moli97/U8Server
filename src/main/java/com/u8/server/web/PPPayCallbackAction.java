@@ -54,7 +54,7 @@ public class PPPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            if(order.getState() == PayState.STATE_COMPLETE){
+            if(order.getState() > PayState.STATE_PAYING){
                 Log.d("The state of the order is complete. The state is " + order.getState());
                 this.renderState("success");
                 return;

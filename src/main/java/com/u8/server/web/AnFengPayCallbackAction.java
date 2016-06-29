@@ -65,7 +65,7 @@ public class AnFengPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            if(order.getState() == PayState.STATE_COMPLETE) {
+            if(order.getState() > PayState.STATE_PAYING) {
                 Log.d("The state of the order is complete. orderID:%s;state:%s" , orderID, order.getState());
                 this.renderState(true);
                 return;
