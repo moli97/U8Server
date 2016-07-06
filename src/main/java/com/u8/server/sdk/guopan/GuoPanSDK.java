@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 叉叉助手 还没有验证通过
+ * 叉叉助手
  * Created by ant on 2015/4/30.
  */
 public class GuoPanSDK implements ISDKScript{

@@ -23,7 +23,7 @@ public class ItoolsSDK implements ISDKScript{
         try{
 
             JSONObject json = JSONObject.fromObject(extension);
-            final String uid = json.getString("uid");
+            final String uid = json.getString("userid");
             String sessionid = json.getString("sessionid");
             final String userName = json.getString("username");
 
