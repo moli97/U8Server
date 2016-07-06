@@ -27,11 +27,8 @@ public class TongbuSDK implements ISDKScript{
 
             Map<String,String> params = new HashMap<String, String>();
             params.put("appid", channel.getCpAppID());
-            params.put("sessionid", sessionid);
-
-            StringBuilder sb = new StringBuilder();
-            sb.append("appid=").append(channel.getCpAppID()).append("&session=").append(sessionid);
-
+            params.put("session", sessionid);
+            
             String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
