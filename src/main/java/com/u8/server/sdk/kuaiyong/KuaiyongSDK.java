@@ -47,7 +47,7 @@ public class KuaiyongSDK implements ISDKScript{
                         int state = json.getInt("code");
                         JSONObject json_data = json.getJSONObject("data");
 
-                        if (state == 1) {
+                        if (state == 0) {
                             SDKVerifyResult vResult = new SDKVerifyResult(true, json_data.getString("guid"), json_data.getString("username"), "");
 
                             callback.onSuccess(vResult);
