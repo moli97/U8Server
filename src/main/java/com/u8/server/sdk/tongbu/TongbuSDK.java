@@ -24,11 +24,12 @@ public class TongbuSDK implements ISDKScript{
             JSONObject json = JSONObject.fromObject(extension);
             String sessionid = json.getString("sessionid");
             final String userName = json.getString("username");
+            final String userid = json.getString("userid");
 
             Map<String,String> params = new HashMap<String, String>();
             params.put("appid", channel.getCpAppID());
             params.put("session", sessionid);
-            
+
             String url = channel.getChannelAuthUrl();
 
             UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
@@ -40,7 +41,7 @@ public class TongbuSDK implements ISDKScript{
                         int returnCode = Integer.parseInt(result);
 
                         if(returnCode > 0){
-                            SDKVerifyResult vResult = new SDKVerifyResult(true, "", userName, "");
+                            SDKVerifyResult vResult = new SDKVerifyResult(true, userid, userName, "");
 
                             callback.onSuccess(vResult);
 
