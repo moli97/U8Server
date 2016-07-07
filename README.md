@@ -35,7 +35,7 @@ Android：
 20|酷派|酷派移动计费平台|http://pay.coolpadtone.com/
 21|金立|金立游戏开发者中心|http://dev.game.4wei.cn/
 22|偶玩|偶玩安全支付|http://www.ouwan.com/
-23|应用宝(MSDK)|腾讯应用宝|http://open.qq.com/
+23|应用宝(YSDK)|腾讯应用宝|http://open.qq.com/
 24|爱游戏(网游和单机)|电信爱游戏|http://open.play.cn/dev/
 25|联通UniPay|联通沃支付|http://dev.wostore.cn/
 26|移动MM|移动MM|http://dev.10086.cn/
@@ -64,6 +64,12 @@ iOS（部分渠道还在跟进中...）：
 3|PP助手|PP助手移动开放平台|http://dev.pp.cn/
 4|同步推| 同步开发者中心|http://dev.tongbu.com/
 5|i4（爱思助手）|爱思助手开发者平台|https://dev.i4.cn/
+6|XX助手(和Android同样的处理类)|叉叉助手开发者平台|http://dev.xxzhushou.cn/
+7|XY助手|XY苹果助手|http://dev.xyzs.com/dev/Help/detail/17308.html
+8|快用(7659)|7659开放平台|http://open.7659.com/
+9|海马玩|海马玩游戏中心|http://pay.haima.me/index.php
+10|乐8|乐8游戏中心|http://www.le890.com/
+
 
 未完待续...
 
