@@ -97,8 +97,9 @@ public class UChannelManager {
             channel.setChannelID(getValidChannelID());
         }
 
-        CacheManager.getInstance().saveChannel(channel);
+
         channelDao.save(channel);
+        CacheManager.getInstance().saveChannel(channel);
     }
 
     public UChannel queryChannel(int id){
@@ -111,8 +112,9 @@ public class UChannelManager {
             return;
         }
 
-        CacheManager.getInstance().removeChannel(channel.getChannelID());
+
         channelDao.delete(channel);
+        CacheManager.getInstance().removeChannel(channel.getChannelID());
     }
 
 
