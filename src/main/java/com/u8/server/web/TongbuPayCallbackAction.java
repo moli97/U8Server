@@ -110,7 +110,7 @@ public class TongbuPayCallbackAction extends UActionSupport{
                 .append("paydes=").append(paydes).append("&")
                 .append("debug=").append(debug).append("&")
                 .append("tborder=").append(tborder)
-                .append("&").append(channel.getCpAppKey());
+                .append("&key=").append(channel.getCpAppKey());
 
         Log.d("the data str to verify is "+sb.toString());
 

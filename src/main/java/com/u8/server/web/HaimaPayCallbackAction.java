@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Date;
 
@@ -113,7 +115,8 @@ public class HaimaPayCallbackAction extends UActionSupport {
                     .append("&total_fee=").append(URLEncoder.encode(total_fee, "UTF-8").toUpperCase())
                     .append("&subject=").append(URLEncoder.encode(subject, "UTF-8").toUpperCase())
                     .append("&body=").append(URLEncoder.encode(body, "UTF-8").toUpperCase())
-                    .append("&trade_status=").append(URLEncoder.encode(trade_status, "UTF-8").toUpperCase()).append(channel.getCpAppKey());
+                    .append("&trade_status=").append(URLEncoder.encode(trade_status, "UTF-8").toUpperCase())
+                    .append(channel.getCpAppKey());
 
 
             Log.d("sign txt:"+sb.toString());
@@ -141,6 +144,7 @@ public class HaimaPayCallbackAction extends UActionSupport {
 
         renderText(res);
     }
+
 
     public String getNotify_time() {
         return notify_time;

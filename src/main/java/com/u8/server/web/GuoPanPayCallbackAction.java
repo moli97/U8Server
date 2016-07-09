@@ -93,6 +93,8 @@ public class GuoPanPayCallbackAction extends UActionSupport{
                 orderManager.saveOrder(order);
             }
 
+            renderState(true);
+
 
         }catch(Exception e){
             try {
