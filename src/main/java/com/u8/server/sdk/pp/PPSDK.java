@@ -36,7 +36,7 @@ public class PPSDK implements ISDKScript{
 
             params.put("game", game);
             params.put("encrypt", "MD5");
-            params.put("sign", EncryptUtils.md5("sid=" + channel.getCpAppID() + channel.getCpAppKey()));
+            params.put("sign", EncryptUtils.md5("sid=" + sid + channel.getCpAppKey()));
 
             params.put("sid", sid);
 

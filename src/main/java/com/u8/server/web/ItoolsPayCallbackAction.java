@@ -83,7 +83,7 @@ public class ItoolsPayCallbackAction extends UActionSupport{
             }
 
             order.setChannelOrderID(data.getOrder_id());
-            order.setRealMoney((int) (Float.valueOf(data.getAccount()) * 100));
+            order.setRealMoney((int) (Float.valueOf(data.getAmount()) * 100));
             order.setSdkOrderTime("");
             order.setCompleteTime(new Date());
             order.setState(PayState.STATE_SUC);
