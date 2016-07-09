@@ -21,12 +21,12 @@ public class PayService{
      * @param para 异步通知消息
      * @return 验证结果
      */
-    public static boolean verifySignature(Map<String, String> para) {
+    public static boolean verifySignature(Map<String, String> para, String publicKey) {
         try {
 			String respSignature = para.get(SIGNATURE);
 			// 除去数组中的空值和签名参数
 			Map<String, String> filteredReq = PayCore.paraFilter(para);
-			Map<String, String> signature = PayCore.parseSignature(respSignature);
+			Map<String, String> signature = PayCore.parseSignature(respSignature, publicKey);
 			for (String key : filteredReq.keySet()) {
 			    String value = filteredReq.get(key);
 			    String signValue = signature.get(key);
