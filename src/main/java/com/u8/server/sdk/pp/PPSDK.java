@@ -35,10 +35,12 @@ public class PPSDK implements ISDKScript{
             game.put("gameId", channel.getCpAppID());
 
             params.put("game", game);
-            params.put("encrypt", "MD5");
-            params.put("sign", EncryptUtils.md5("sid=" + channel.getCpAppID() + channel.getCpAppKey()));
+            params.put("encrypt", "md5");
+            params.put("sign", EncryptUtils.md5("sid=" + sid + channel.getCpAppKey()));
 
-            params.put("sid", sid);
+            JSONObject data = new JSONObject();
+            data.put("sid", sid);
+            params.put("data", data);
 
             String url = channel.getChannelAuthUrl();
 

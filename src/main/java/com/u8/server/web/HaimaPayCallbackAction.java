@@ -107,13 +107,13 @@ public class HaimaPayCallbackAction extends UActionSupport {
 
             StringBuilder sb = new StringBuilder();
 
-            sb.append("notify_time=").append(URLEncoder.encode(notify_time, "UTF-8").toUpperCase())
-                    .append("&appid=").append(URLEncoder.encode(appid, "UTF-8").toUpperCase())
-                    .append("&out_trade_no=").append(URLEncoder.encode(out_trade_no, "UTF-8").toUpperCase())
-                    .append("&total_fee=").append(URLEncoder.encode(total_fee, "UTF-8").toUpperCase())
-                    .append("&subject=").append(URLEncoder.encode(subject, "UTF-8").toUpperCase())
-                    .append("&body=").append(URLEncoder.encode(body, "UTF-8").toUpperCase())
-                    .append("&trade_status=").append(URLEncoder.encode(trade_status, "UTF-8").toUpperCase()).append(channel.getCpAppKey());
+            sb.append("notify_time=").append(URLEncoder.encode(notify_time, "UTF-8"))
+                    .append("&appid=").append(URLEncoder.encode(appid, "UTF-8"))
+                    .append("&out_trade_no=").append(URLEncoder.encode(out_trade_no, "UTF-8"))
+                    .append("&total_fee=").append(URLEncoder.encode(total_fee, "UTF-8"))
+                    .append("&subject=").append(URLEncoder.encode(subject, "UTF-8"))
+                    .append("&body=").append(URLEncoder.encode(body, "UTF-8"))
+                    .append("&trade_status=").append(URLEncoder.encode(trade_status, "UTF-8")).append(channel.getCpAppKey());
 
 
             Log.d("sign txt:"+sb.toString());

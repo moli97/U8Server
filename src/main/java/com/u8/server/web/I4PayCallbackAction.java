@@ -76,7 +76,7 @@ public class I4PayCallbackAction extends UActionSupport{
             if(isValid(order.getChannel())){
                 order.setState(PayState.STATE_SUC);
                 order.setCompleteTime(new Date());
-                order.setRealMoney(Integer.valueOf(amount));
+                order.setRealMoney((int)(Float.valueOf(amount) * 100));
                 order.setChannelOrderID(order_id);
                 orderManager.saveOrder(order);
                 SendAgent.sendCallbackToServer(this.orderManager, order);
