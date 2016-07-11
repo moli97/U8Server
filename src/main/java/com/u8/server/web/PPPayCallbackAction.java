@@ -6,11 +6,15 @@ import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.i4.PayService;
+import com.u8.server.sdk.pp.RSAEncrypt;
 import com.u8.server.service.UOrderManager;
+import net.sf.json.JSONObject;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 import java.io.IOException;
 import java.util.Date;
@@ -94,19 +98,53 @@ public class PPPayCallbackAction extends UActionSupport{
 
     private boolean isValid(UChannel channel) throws Exception {
 
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("order_id", order_id);
-        params.put("billno", billno);
-        params.put("account", account);
-        params.put("amount", amount);
-        params.put("status", status);
-        params.put("app_id", app_id);
-        params.put("uuid", uuid);
-        params.put("roleid", roleid);
-        params.put("zone", zone);
-        params.put("sign", sign);
+        RSAEncrypt rsaEncrypt= new RSAEncrypt();
+        //rsaEncrypt.genKeyPair();
 
-        return PayService.verifySignature(params, channel.getCpPayKey());
+        //加载公钥
+        try {
+            rsaEncrypt.loadPublicKey(channel.getCpPayKey());
+            Log.d("加载公钥成功");
+        } catch (Exception e) {
+            Log.e(e.getMessage());
+            Log.e("加载公钥失败");
+        }
+
+
+        try {
+
+            BASE64Decoder base64Decoder = new BASE64Decoder();
+
+            byte[] dcDataStr = base64Decoder.decodeBuffer(this.sign);
+            byte[] plainData = rsaEncrypt.decrypt(rsaEncrypt.getPublicKey(), dcDataStr);
+            Log.d("文档测试数据明文长度:" + plainData.length);
+            Log.d(RSAEncrypt.byteArrayToString(plainData));
+            Log.d(new String(plainData));
+
+            JSONObject json = JSONObject.fromObject(new String(plainData));
+            String cBillno = "";
+            String cAmount = "";
+            String cStatus = "";
+            if(json.containsKey("billno")){
+                cBillno = json.getString("billno");
+
+            }
+
+            if(json.containsKey("amount")){
+                cAmount = json.getString("amount");
+            }
+
+            if(json.containsKey("status")){
+                cStatus = json.getString("status");
+            }
+
+            return cBillno.equals(this.billno) && cAmount.equals(this.amount) && cStatus.equals(this.status);
+
+        } catch (Exception e) {
+            Log.e(e.getMessage());
+        }
+
+        return  false;
     }
 
     private void renderState(String resultMsg) throws IOException {
