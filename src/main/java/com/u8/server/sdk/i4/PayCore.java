@@ -82,10 +82,10 @@ public class PayCore {
      * @return 解析签名的结果map
 	 * @throws Exception 
      */
-    public static Map<String, String> parseSignature(String sign) throws Exception {
+    public static Map<String, String> parseSignature(String sign, String publicKey) throws Exception {
 		BASE64Decoder base64Decoder = new BASE64Decoder();
         byte[] dcDataStr = base64Decoder.decodeBuffer(sign);
-        byte[] plainData = RSADecrypt.decryptByPublicKey(dcDataStr, RSADecrypt.DEFAULT_PUBLIC_KEY);
+        byte[] plainData = RSADecrypt.decryptByPublicKey(dcDataStr, publicKey);
         String parseString = new String(plainData);
         System.out.println("parseString=" + parseString);
 		return parseQString(parseString);

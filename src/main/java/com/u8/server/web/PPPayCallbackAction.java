@@ -106,7 +106,7 @@ public class PPPayCallbackAction extends UActionSupport{
         params.put("zone", zone);
         params.put("sign", sign);
 
-        return PayService.verifySignature(params);
+        return PayService.verifySignature(params, channel.getCpPayKey());
     }
 
     private void renderState(String resultMsg) throws IOException {
