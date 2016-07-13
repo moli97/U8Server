@@ -81,6 +81,7 @@ public class AppstoreIAPValidate extends UActionSupport {
                     {
                         UHttpAgent.getInstance().post(urlSandbox, null, httpParams, new UHttpFutureCallback() {
                             public void completed(String content) {
+
                                 Log.d("apple iap validate suc:" + content);
                                 JSONObject json = JSONObject.fromObject(content);
 
@@ -140,8 +141,8 @@ public class AppstoreIAPValidate extends UActionSupport {
             return;
         }
 
-        if(order.getState() == PayState.STATE_COMPLETE){
-            Log.d("The state of the order is complete. The state is "+order.getState());
+        if(order.getState() > PayState.STATE_PAYING){
+            Log.d("The state of the order is not paying. The state is "+order.getState());
             return;
         }
 
@@ -161,7 +162,7 @@ public class AppstoreIAPValidate extends UActionSupport {
             return;
         }
 
-        if(order.getState() == PayState.STATE_COMPLETE){
+        if(order.getState() > PayState.STATE_PAYING){
             Log.d("The state of the order is complete. The state is " + order.getState());
             return;
         }

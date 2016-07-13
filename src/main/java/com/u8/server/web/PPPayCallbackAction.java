@@ -5,7 +5,10 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
+import com.u8.server.sdk.UHttpAgent;
+import com.u8.server.sdk.i4.PayCore;
 import com.u8.server.sdk.i4.PayService;
+import com.u8.server.sdk.i4.RSADecrypt;
 import com.u8.server.sdk.pp.RSAEncrypt;
 import com.u8.server.service.UOrderManager;
 import net.sf.json.JSONObject;
@@ -93,6 +96,17 @@ public class PPPayCallbackAction extends UActionSupport{
                 e1.printStackTrace();
             }
         }
+
+    }
+
+    public static void main(String[] args) throws Exception {
+
+
+        String data = "ZMSizwCdeSeeeOhUT4tI1qnVseni6MV+jiUwC7uWctD40GIKXK0r3JPphHdmLRzmo1/VSoce+d9OPhleqTY7hTgGwIvWG9C5MABziSzwxOn8GGsYsXLpCRLuQsw2XwR6n6Jt0k3kQzx3PM0VG6V0BV3FB34qxxpUcBopircLKZuKaHbyO+PpZWdio6FEpq6DszD8XEBJ0/daTFC0jNCcF1wPZROhMDOAbCqQebOXjNUowl6wMWpZZi/624aYvFU21pnRyEteZupmBIrqnj6Jsn5qdG3ucf7ahD2pi6bCMW146l7hJWiEfMq3K5Oqks0LUh5LdS1BLAhGTZA8khVZrg==";
+        Map<String, String > params = new HashMap<String, String>();
+        params.put("sign", data);
+        params.put("billno", "654898395705507841");
+        UHttpAgent.newInstance().post("http://localhost:8080/pay/pp/payCallback", params);
 
     }
 
