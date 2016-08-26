@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
+import java.nio.channels.Channel;
 import java.util.Date;
 
 
@@ -131,6 +132,8 @@ public class UserAction extends UActionSupport{
 
                             userManager.saveUser(user);
 
+                            UChannel channel = user.getChannel();
+
                             JSONObject data = new JSONObject();
                             data.put("userID", user.getId());
                             data.put("sdkUserID", user.getChannelUserID());
@@ -139,6 +142,7 @@ public class UserAction extends UActionSupport{
                             data.put("token", user.getToken());
                             data.put("extension", sdkResult.getExtension());
                             data.put("timestamp", user.getLastLoginTime());
+                            data.put("platID", channel== null ? 0 : channel.getPlatID());
                             renderState(StateCode.CODE_SUCCESS, data);
 
                         }else{

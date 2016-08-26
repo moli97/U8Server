@@ -68,6 +68,7 @@ public class SendAgent {
             data.put("money", order.getMoney());
             data.put("currency", order.getCurrency());
             data.put("extension", order.getExtension());
+            data.put("platID", order.getPlatID());
 
             //如果需要将签名方式改为MD5，把下面两行SIGN_RSA改为SIGN_MD5
             String sign = generateSign(order, SIGN_RSA);
@@ -142,6 +143,7 @@ public class SendAgent {
             data.put("money", order.getMoney());
             data.put("currency", order.getCurrency());
             data.put("extension", order.getExtension());
+            data.put("platID", order.getPlatID());
 
             //如果需要将签名方式改为MD5，把下面两行SIGN_RSA改为SIGN_MD5
             String sign = generateSign(order, SIGN_RSA);
