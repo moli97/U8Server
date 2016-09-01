@@ -26,6 +26,7 @@ public class UChannelManager {
     }
 
     public UChannel generateChannel(int appID, int masterID, String cpID, String cpAppID, String cpAppKey, String cpAppSecret, String cpPayKey, String cpPayPriKey, String cpPayID){
+
         UChannel channel = new UChannel();
         channel.setAppID(appID);
         channel.setMasterID(masterID);
