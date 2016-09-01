@@ -82,6 +82,10 @@
       <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="recommendChannelID()" style="width:70px">推荐</a>
     </div>
     <div class="u8_form_row">
+      <label >平台号：</label>
+      <input id="platID" type="text" value="111" class="easyui-textbox" name="platID" maxlength="255" required="true" />
+    </div>
+    <div class="u8_form_row">
       <label >充值状态(0:开放/1:关闭)：</label>
       <input type="text" class="easyui-textbox" name="openPayFlag" prompt="关闭后，下单会返回错误" maxlength="255" novalidate />
     </div>
@@ -284,6 +288,7 @@
     columns:[[
       {field:'id', title:'ID', width:40, sortable:true},
       {field:'channelID', title:'渠道号', width:40, sortable:true},
+      {field:'platID', title:'平台ID', width:40, sortable:true},
       {field:'openPayFlag',title:'充值状态',width:20,sortable:true},
       {field:'masterName', title:'渠道名称', width:40, sortable:true},
       {field:'cpID', title:'CPID', width:40, sortable:true},

@@ -51,6 +51,7 @@
       <div data-options="name:'user_id'">渠道userID</div>
       <div data-options="name:'game'">所属游戏</div>
       <div data-options="name:'channel'">所属渠道</div>
+      <div data-options="name:'platID'">平台ID</div>
     </div>
   </div>
 
@@ -116,6 +117,7 @@
       {field:'name', title:'名称', width:80, sortable:true},
       {field:'appName', title:'游戏', width:40, sortable:true},
       {field:'channelName', title:'所属渠道', width:40, sortable:true},
+      {field:'platID', title:'平台ID', width:40, sortable:true},
       {field:'channelUserID', title:'渠道userID', width:60, sortable:true},
       {field:'channelUserName', title:'渠道用户名', width:50, sortable:true},
       {field:'channelUserNick', title:'用户昵称', width:50, sortable:true},
