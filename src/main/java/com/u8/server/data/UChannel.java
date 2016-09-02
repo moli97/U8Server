@@ -34,7 +34,7 @@ public class UChannel {
 
     private Integer openPayFlag;            //充值功能状态，0：开放；1：关闭。关闭之后，该渠道获取订单号会返回一个错误
 
-    private int platID;                 //平台ID
+    private Integer platID;                 //平台ID
 
     //下面这几个参数，可以覆盖uchannelmaster中的。
     private String authUrl;         //当前SDK登录认证地址
@@ -263,7 +263,11 @@ public class UChannel {
         this.openPayFlag = openPayFlag;
     }
 
-    public int getPlatID() { return  platID; }
+    public Integer getPlatID() {
+        return platID;
+    }
 
-    public void setPlatID(int platID) { this.platID = platID; }
+    public void setPlatID(Integer platID) {
+        this.platID = platID;
+    }
 }
