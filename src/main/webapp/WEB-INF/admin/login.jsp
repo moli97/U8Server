@@ -79,6 +79,13 @@
 
   }
 
+  $(document).ready(function(){
+    $(":password").keypress(function(event){
+      if(13 === event.which){
+        login();
+      }
+    });
+  });
 
 </script>
 
