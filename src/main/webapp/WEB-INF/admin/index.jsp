@@ -45,6 +45,9 @@
           //注：使用iframe即可防止同一个页面出现js和css冲突的问题
           content : '<iframe name="'+name+'"id="'+tabId+'"src="'+url+'" width="100%" height="100%" frameborder="0" scrolling="auto">'+'</iframe>'
         });
+      }else{
+        //如果当前tab存在则激活原来的tab
+        $("#centerTab").tabs('select',title);
       }
     }
 
