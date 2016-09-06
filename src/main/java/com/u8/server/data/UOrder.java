@@ -71,7 +71,7 @@ public class UOrder {
         json.put("sdkOrderTime", sdkOrderTime);
         json.put("completeTime", completeTime);
         json.put("notifyUrl", notifyUrl);
-        json.put("platID", channel == null ? 0 : channel.getPlatID());
+        json.put("platID", (channel == null || channel.getPlatID() == null) ? 0 : channel.getPlatID());
 
         return json;
     }
