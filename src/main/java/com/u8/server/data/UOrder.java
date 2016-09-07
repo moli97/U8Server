@@ -38,7 +38,6 @@ public class UOrder {
     private String sdkOrderTime;          //渠道SDK那边订单交易时间
     private Date completeTime;          //订单完成时间
     private String notifyUrl;       //游戏下单的时候，可以携带notifyUrl过来，作为渠道支付回调时，通知到游戏服务器的地址，没有设置的话，默认走后台游戏管理中配置的固定通知回调地址
-    private Integer platID;     //平台ID
 
     public JSONObject toJSON(){
         JSONObject json = new JSONObject();

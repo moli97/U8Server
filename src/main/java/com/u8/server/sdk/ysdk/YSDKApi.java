@@ -43,7 +43,7 @@ public class YSDKApi {
 
             String urlPath = "/v3/r"+scriptName;
 
-            String resp = OpenApiV3.api_pay(url, urlPath, channel.getCpAppID(), channel.getCpAppKey(), payRequest.getAccountType(), params);
+            String resp = OpenApiV3.api_pay(url, urlPath, channel.getCpAppID(), channel.getCpPayID(), payRequest.getAccountType(), params);
 
             JSONObject json = JSONObject.fromObject(resp);
             int ret = json.getInt("ret");
@@ -89,7 +89,7 @@ public class YSDKApi {
 
             String urlPath = "/v3/r"+scriptName;
 
-            String resp = OpenApiV3.api_pay(url, urlPath, channel.getCpAppID(), channel.getCpAppKey(), payRequest.getAccountType(), params);
+            String resp = OpenApiV3.api_pay(url, urlPath, channel.getCpAppID(), channel.getCpPayID(), payRequest.getAccountType(), params);
 
             JSONObject json = JSONObject.fromObject(resp);
             int ret = json.getInt("ret");
