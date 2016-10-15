@@ -37,7 +37,7 @@ public class UUser {
         json.put("channelID", channelID);
         UChannel channel = getChannel();
         json.put("channelName", channel == null ? "":channel.getMaster().getMasterName());
-        json.put("platID", channel == null ? 0 : channel.getPlatID());
+        json.put("platID", (channel == null || channel.getPlatID() == null) ? 0 : channel.getPlatID());
         json.put("name", name);
         json.put("channelUserID", channelUserID);
         json.put("channelUserName", channelUserName);

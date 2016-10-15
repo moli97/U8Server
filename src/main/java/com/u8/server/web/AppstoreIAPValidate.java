@@ -151,6 +151,7 @@ public class AppstoreIAPValidate extends UActionSupport {
             order.setCompleteTime(new Date());
             order.setState(PayState.STATE_SUC);
             orderManager.saveOrder(order);
+            SendAgent.sendCallbackToServer(orderManager, order);
         }
     }
 

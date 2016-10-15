@@ -142,7 +142,7 @@ public class UserAction extends UActionSupport{
                             data.put("token", user.getToken());
                             data.put("extension", sdkResult.getExtension());
                             data.put("timestamp", user.getLastLoginTime());
-                            data.put("platID", channel== null ? 0 : channel.getPlatID());
+                            data.put("platID", (channel== null || channel.getPlatID()==null) ? 0 : channel.getPlatID());
                             renderState(StateCode.CODE_SUCCESS, data);
 
                         }else{

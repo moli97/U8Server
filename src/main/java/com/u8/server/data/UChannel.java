@@ -264,7 +264,7 @@ public class UChannel {
     }
 
     public Integer getPlatID() {
-        return platID;
+        return platID == null ? 0 : platID;
     }
 
     public void setPlatID(Integer platID) {
