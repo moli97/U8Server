@@ -21,7 +21,7 @@ import java.util.Date;
  * Created by ant on 2016/1/21.
  */
 @Controller
-@Namespace("/pay/letv")
+@Namespace("/pay/mianshangdian")
 public class MSDPayCallbackAction extends UActionSupport{
 
     private String AppId  				;		//应用 ID
