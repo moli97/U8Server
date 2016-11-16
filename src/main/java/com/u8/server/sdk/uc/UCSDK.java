@@ -64,8 +64,6 @@ public class UCSDK implements ISDKScript {
             });
 
 
-
-
         }catch (Exception e){
             callback.onFailed(channel.getMaster().getSdkName() + " verify execute failed. the exception is "+e.getMessage());
             Log.e(e.getMessage());

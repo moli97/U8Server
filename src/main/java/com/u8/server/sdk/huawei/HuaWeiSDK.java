@@ -31,18 +31,23 @@ public class HuaWeiSDK implements ISDKScript{
             final String accessToken = json.getString("accessToken");
             final String nickname = json.getString("nickName");
 
-            StringBuilder sb = new StringBuilder();
-            sb.append(channel.getCpAppID()).append(ts).append(playerId);
+            SDKVerifyResult vResult = new SDKVerifyResult(true, playerId, "", "");
 
-            boolean ok = RSAUtil.verify(sb.toString().getBytes("UTF-8"), LOGIN_RSA_PUBLIC, accessToken);
-            if(ok){
+            callback.onSuccess(vResult);
 
-                SDKVerifyResult vResult = new SDKVerifyResult(true, playerId, "", nickname);
+            ///2016-10-27 华为这版本流程这里，分为两步，这里不便服务器端做验证，注释下面这些
+//            StringBuilder sb = new StringBuilder();
+//            sb.append(channel.getCpAppID()).append(ts).append(playerId);
 
-                callback.onSuccess(vResult);
-            }else{
-                callback.onFailed(channel.getMaster().getSdkName() + " verify failed.");
-            }
+//            boolean ok = RSAUtil.verify(sb.toString().getBytes("UTF-8"), LOGIN_RSA_PUBLIC, accessToken);
+//            if(ok){
+//
+//                SDKVerifyResult vResult = new SDKVerifyResult(true, playerId, "", nickname);
+//
+//                callback.onSuccess(vResult);
+//            }else{
+//                callback.onFailed(channel.getMaster().getSdkName() + " verify failed.");
+//            }
 
 
         }catch (Exception e){
