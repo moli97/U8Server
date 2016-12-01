@@ -5,7 +5,7 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.service.UOrderManager;
-import com.u8.server.utils.TimeFormater;
+import com.u8.server.utils.TimeUtils;
 import com.u8.server.web.SendAgent;
 import net.sf.json.JSONObject;
 
@@ -127,7 +127,7 @@ public class PayTask implements Runnable, Delayed{
                         UOrder order = this.payRequest.getOrder();
                         order.setRealMoney(order.getMoney());
                         order.setChannelOrderID("");
-                        order.setSdkOrderTime(TimeFormater.format_yyyyMMddHHmmss(new Date()));
+                        order.setSdkOrderTime(TimeUtils.format_yyyyMMddHHmmss(new Date()));
                         order.setCompleteTime(new Date());
                         order.setState(PayState.STATE_SUC);
                         orderManager.saveOrder(order);

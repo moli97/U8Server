@@ -1,7 +1,6 @@
 package com.u8.server.web;
 
 import com.u8.server.common.UActionSupport;
-import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UGame;
 import com.u8.server.data.UOrder;
@@ -14,7 +13,6 @@ import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.service.UUserManager;
 import com.u8.server.utils.EncryptUtils;
-import com.u8.server.utils.TimeFormater;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.convention.annotation.Action;
@@ -23,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
-import java.util.Date;
 
 /**
  * YSDK新的支付流程

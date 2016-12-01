@@ -50,7 +50,6 @@ public class YSDK implements ISDKScript{
             }
             params.put("sig", EncryptUtils.md5(key+time));
 
-
             UHttpAgent.getInstance().post(fullUrl, params, new UHttpFutureCallback() {
                 @Override
                 public void completed(String result) {

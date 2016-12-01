@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 * @author open.qq.com
 * @copyright © 2012, Tencent Corporation. All rights reserved.
 * @History:
-*               3.0.1 | 2012-08-28 17:34:12 | support cpay callback sig verifictaion.
+*               3.0.1 | 2012-08-28 17:34:12 | support cpay sdk sig verifictaion.
 *               3.0.0 | nemozhang | 2012-03-21 12:01:05 | initialization
 *
 */
