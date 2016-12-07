@@ -38,7 +38,7 @@ public class StringUtils {
      * @param splitChar
      * @return
      */
-    public static String generateUrlSortedParamString(Map<String,Object> params, String splitChar, boolean nullExcluded) {
+    public static String generateUrlSortedParamString(Map<String,String> params, String splitChar, boolean nullExcluded) {
 
         StringBuffer content = new StringBuffer();
         // 按照key做排序
@@ -68,7 +68,7 @@ public class StringUtils {
      * @param splitChar
      * @return
      */
-    public static String generateUrlParamString(Map<String,Object> params, String splitChar, boolean nullExcluded) {
+    public static String generateUrlParamString(Map<String,String> params, String splitChar, boolean nullExcluded) {
 
         StringBuffer content = new StringBuffer();
         // 按照key做排序

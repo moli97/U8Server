@@ -6,13 +6,10 @@ import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.coolpad.CoolPadPayResult;
-import com.u8.server.sdk.coolpad.CoolPadSDK;
-import com.u8.server.sdk.coolpad.SignHelper;
+import com.u8.server.sdk.coolpad.api.CpTransSyncSignValid;
 import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UOrderManager;
-import com.u8.server.utils.EncryptUtils;
 import com.u8.server.utils.JsonUtils;
-import net.sf.json.JSONObject;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +65,7 @@ public class CoolPadPayCallbackAction extends UActionSupport{
             }
 
 
-            long orderID = Long.parseLong(result.getCporderid());
+            long orderID = Long.parseLong(result.getExorderno());
 
             UOrder order = orderManager.getOrder(orderID);
 
@@ -86,8 +83,8 @@ public class CoolPadPayCallbackAction extends UActionSupport{
 
             if("0".equals(result.getResult())){
 
-                float money = Float.parseFloat(result.getMoney());
-                int moneyInt = (int)(money * 100);  //以分为单位
+
+                int moneyInt = Integer.valueOf(result.getMoney());
 
                 order.setRealMoney(moneyInt);
                 order.setSdkOrderTime(result.getTranstime());
@@ -118,7 +115,7 @@ public class CoolPadPayCallbackAction extends UActionSupport{
 
     private boolean isSignOK(UChannel channel){
 
-        return SignHelper.verify(transdata, this.sign, channel.getCpPayKey());
+        return CpTransSyncSignValid.validSign(transdata, this.sign, channel.getCpPayKey());
     }
 
     private void renderState(boolean suc) throws IOException {

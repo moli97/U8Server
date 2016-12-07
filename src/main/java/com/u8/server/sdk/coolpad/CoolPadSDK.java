@@ -72,6 +72,8 @@ public class CoolPadSDK implements ISDKScript{
                             JSONObject json = new JSONObject();
                             json.put("access_token", token.getAccess_token());
                             json.put("openid", token.getOpenid());
+                            json.put("expiredIn", token.getExpires_in());
+                            json.put("refreshToken", token.getRefresh_token());
                             String ext = json.toString();
 
                             SDKVerifyResult verifyResult = new SDKVerifyResult(true, token.getOpenid(), user.getNickname(), user.getNickname(), ext);
@@ -106,64 +108,68 @@ public class CoolPadSDK implements ISDKScript{
     @Override
     public void onGetOrderID(UUser user, final UOrder order, final ISDKOrderListener callback) {
 
-        JSONObject data = new JSONObject();
-        data.put("appid", user.getChannel().getCpAppID());
-        data.put("waresid", Integer.valueOf(user.getChannel().getCpConfig()));
-        data.put("waresname", order.getProductName());
-        data.put("cporderid", ""+order.getOrderID());
-        float price = order.getMoney() / 100f;
-        DecimalFormat decimalFormat=new DecimalFormat(".00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
-        String p=decimalFormat.format(price);//format 返回的是字符串
+        if(callback != null){
+            callback.onSuccess("");
+        }
 
-        data.put("price", Float.valueOf(p));
-        data.put("currency", "RMB");
-        data.put("appuserid", order.getRoleID()+"#"+order.getServerID());
-        //data.put("cpprivateinfo", ""+order.getOrderID());
-        //data.put("notifyurl", order.getChannel().getMaster().getPayCallbackUrl());
-        final String transdata = data.toString();
-
-        String sign = SignHelper.sign(transdata, order.getChannel().getCpPayPriKey());
-
-        String signType = "RSA";
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("transdata", transdata);
-        params.put("sign", sign);
-        params.put("signtype", signType);
-
-        UHttpAgent.getInstance().post(order.getChannel().getChannelOrderUrl(), params, new UHttpFutureCallback() {
-            @Override
-            public void completed(String content) {
-
-                String transid = "";
-                try {
-                    content = URLDecoder.decode(content, "UTF-8");
-
-                    Log.d("the content returned:"+content);
-
-                    String[] data = content.split("&");
-                    for(String dataItem : data){
-                        if(dataItem.startsWith("transdata=")){
-                            String[] transdata = dataItem.split("=");
-                            JSONObject json = JSONObject.fromObject(transdata[1]);
-                            transid = json.getString("transid");
-                        }
-                    }
-
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-
-                Log.d(order.getChannel().getChannelID() + " get channel order completed. content is "+content);
-                callback.onSuccess(transid);
-            }
-
-            @Override
-            public void failed(String e) {
-                callback.onFailed(order.getChannel().getChannelID() + " get channel order failed. " + e);
-            }
-
-        });
+//        JSONObject data = new JSONObject();
+//        data.put("appid", user.getChannel().getCpAppID());
+//        data.put("waresid", Integer.valueOf(user.getChannel().getCpConfig()));
+//        data.put("waresname", order.getProductName());
+//        data.put("cporderid", ""+order.getOrderID());
+//        float price = order.getMoney() / 100f;
+//        DecimalFormat decimalFormat=new DecimalFormat(".00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
+//        String p=decimalFormat.format(price);//format 返回的是字符串
+//
+//        data.put("price", Float.valueOf(p));
+//        data.put("currency", "RMB");
+//        data.put("appuserid", order.getRoleID()+"#"+order.getServerID());
+//        //data.put("cpprivateinfo", ""+order.getOrderID());
+//        //data.put("notifyurl", order.getChannel().getMaster().getPayCallbackUrl());
+//        final String transdata = data.toString();
+//
+//        String sign = SignHelper.sign(transdata, order.getChannel().getCpPayPriKey());
+//
+//        String signType = "RSA";
+//
+//        Map<String, String> params = new HashMap<String, String>();
+//        params.put("transdata", transdata);
+//        params.put("sign", sign);
+//        params.put("signtype", signType);
+//
+//        UHttpAgent.getInstance().post(order.getChannel().getChannelOrderUrl(), params, new UHttpFutureCallback() {
+//            @Override
+//            public void completed(String content) {
+//
+//                String transid = "";
+//                try {
+//                    content = URLDecoder.decode(content, "UTF-8");
+//
+//                    Log.d("the content returned:"+content);
+//
+//                    String[] data = content.split("&");
+//                    for(String dataItem : data){
+//                        if(dataItem.startsWith("transdata=")){
+//                            String[] transdata = dataItem.split("=");
+//                            JSONObject json = JSONObject.fromObject(transdata[1]);
+//                            transid = json.getString("transid");
+//                        }
+//                    }
+//
+//                } catch (UnsupportedEncodingException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Log.d(order.getChannel().getChannelID() + " get channel order completed. content is "+content);
+//                callback.onSuccess(transid);
+//            }
+//
+//            @Override
+//            public void failed(String e) {
+//                callback.onFailed(order.getChannel().getChannelID() + " get channel order failed. " + e);
+//            }
+//
+//        });
 
     }
 }

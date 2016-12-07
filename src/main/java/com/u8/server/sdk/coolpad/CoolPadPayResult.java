@@ -6,16 +6,15 @@ package com.u8.server.sdk.coolpad;
  */
 public class CoolPadPayResult {
 
-    private String transtype	;			//交易类型	integer	必填	交易类型：0–支付交易；1–支付冲正（暂未启用）；
-    private String cporderid	;			//商户订单号	String(64)	可选	商户订单号
+    private String exorderno	;			//商户订单号	String(64)	可选	商户订单号
     private String transid		;			//交易流水号	String(32)	必填	计费支付平台的交易流水号
-    private String appuserid	;			//用户在商户应用的唯一标识	String(32)	必填	用户在商户应用的唯一标识
     private String appid		;			//游戏id	String(20)	必填	平台为商户应用分配的唯一代码
     private String waresid		;			//商品编码	integer	必填	平台为应用内需计费商品分配的编码
     private String feetype		;			//计费方式	integer	必填	计费方式，具体定义见附录
-    private String money		;			//交易金额	Float(6,2)	必填	本次交易的金额
-    private String currency	    ;			//货币类型	String(32)	必填	货币类型以及单位：
+    private String money		;			//交易金额	int(10)	是	本次交易的金额，单位：分
+    private String count	    ;			//购买数量	int(10)	是	本次购买的商品数量
     private String result		;			//交易结果	integer	必填	交易结果：0–交易成功1–交易失败
+    private String transtype	;           //交易类型	int(2)	是	交易类型：0 – 交易；1 – 冲正
     private String transtime	;			//交易完成时间	String(20)	必填
     private String cpprivate	;			//商户私有信息	String(64)	可选	商户私有信息
     private String paytype		;			//支付方式	integer	可选	支付方式，具体定义见附录
@@ -28,13 +27,7 @@ public class CoolPadPayResult {
         this.transtype = transtype;
     }
 
-    public String getCporderid() {
-        return cporderid;
-    }
 
-    public void setCporderid(String cporderid) {
-        this.cporderid = cporderid;
-    }
 
     public String getTransid() {
         return transid;
@@ -44,13 +37,6 @@ public class CoolPadPayResult {
         this.transid = transid;
     }
 
-    public String getAppuserid() {
-        return appuserid;
-    }
-
-    public void setAppuserid(String appuserid) {
-        this.appuserid = appuserid;
-    }
 
     public String getAppid() {
         return appid;
@@ -84,13 +70,6 @@ public class CoolPadPayResult {
         this.money = money;
     }
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
 
     public String getResult() {
         return result;
@@ -122,5 +101,21 @@ public class CoolPadPayResult {
 
     public void setPaytype(String paytype) {
         this.paytype = paytype;
+    }
+
+    public String getExorderno() {
+        return exorderno;
+    }
+
+    public void setExorderno(String exorderno) {
+        this.exorderno = exorderno;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
     }
 }
