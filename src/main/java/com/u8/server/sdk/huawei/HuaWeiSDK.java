@@ -5,49 +5,69 @@ import com.u8.server.data.UOrder;
 import com.u8.server.data.UUser;
 import com.u8.server.log.Log;
 import com.u8.server.sdk.*;
-import com.u8.server.sdk.huawei.huawei.RSAUtil;
 import com.u8.server.utils.JsonUtils;
 import com.u8.server.utils.RSAUtils;
-import net.sf.json.JSONObject;
 
 import java.util.*;
 
 /**
+ * 华为SDK
  * Created by ant on 2015/4/27.
  */
 public class HuaWeiSDK implements ISDKScript{
-
-    //华为登录验签统一公钥
-    private static final String LOGIN_RSA_PUBLIC = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmKLBMs2vXosqSR2rojMzioTRVt8oc1ox2uKjyZt6bHUK0u+OpantyFYwF3w1d0U3mCF6rGUnEADzXiX/2/RgLQDEXRD22er31ep3yevtL/r0qcO8GMDzy3RJexdLB6z20voNM551yhKhB18qyFesiPhcPKBQM5dnAOdZLSaLYHzQkQKANy9fYFJlLDo11I3AxefCBuoG+g7ilti5qgpbkm6rK2lLGWOeJMrF+Hu+cxd9H2y3cXWXxkwWM1OZZTgTq3Frlsv1fgkrByJotDpRe8SwkiVuRycR0AHsFfIsuZCFwZML16EGnHqm2jLJXMKIBgkZTzL8Z+201RmOheV4AQIDAQAB";
-
     @Override
     public void verify(final UChannel channel,String extension, final ISDKVerifyListener callback) {
 
         try{
 
-            JSONObject json = JSONObject.fromObject(extension);
-            final String ts = json.getString("ts");
-            final String playerId = json.getString("playerId");
-            final String accessToken = json.getString("accessToken");
-            final String nickname = json.getString("nickName");
+            final String token = extension;
 
-            SDKVerifyResult vResult = new SDKVerifyResult(true, playerId, "", "");
+            Map<String,String> params = new HashMap<String, String>();
+            params.put("nsp_svc", "OpenUP.User.getInfo");
+            params.put("nsp_ts", ""+(System.currentTimeMillis() / 1000));
+            params.put("access_token", token);
 
-            callback.onSuccess(vResult);
+            String url = channel.getChannelAuthUrl();
 
-            ///2016-10-27 华为这版本流程这里，分为两步，这里不便服务器端做验证，注释下面这些
-//            StringBuilder sb = new StringBuilder();
-//            sb.append(channel.getCpAppID()).append(ts).append(playerId);
+            UHttpAgent.getInstance().get(url, params, new UHttpFutureCallback() {
+                @Override
+                public void completed(String result) {
 
-//            boolean ok = RSAUtil.verify(sb.toString().getBytes("UTF-8"), LOGIN_RSA_PUBLIC, accessToken);
-//            if(ok){
-//
-//                SDKVerifyResult vResult = new SDKVerifyResult(true, playerId, "", nickname);
-//
-//                callback.onSuccess(vResult);
-//            }else{
-//                callback.onFailed(channel.getMaster().getSdkName() + " verify failed.");
-//            }
+                    try {
+
+                        Log.e("The auth result is " + result);
+
+                        if (result != null && !result.contains("error")) {
+                            HuaWeiAuthInfo res = (HuaWeiAuthInfo) JsonUtils.decodeJson(result, HuaWeiAuthInfo.class);
+
+                            if (res != null) {
+
+                                SDKVerifyResult vResult = new SDKVerifyResult(true, res.getUserID(), res.getUserName(), "");
+
+                                callback.onSuccess(vResult);
+
+                                return;
+                            }
+
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    callback.onFailed(channel.getMaster().getSdkName() + " verify failed. the post result is " + result);
+                }
+
+                @Override
+                public void failed(String e) {
+
+                    callback.onFailed(channel.getMaster().getSdkName() + " verify failed. " + e);
+                }
+
+            });
+
+
+
 
 
         }catch (Exception e){
