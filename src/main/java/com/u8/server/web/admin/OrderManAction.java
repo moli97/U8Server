@@ -7,7 +7,7 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.service.UOrderManager;
-import com.u8.server.web.SendAgent;
+import com.u8.server.web.pay.SendAgent;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts2.convention.annotation.Action;

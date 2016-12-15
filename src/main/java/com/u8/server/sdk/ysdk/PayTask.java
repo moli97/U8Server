@@ -6,7 +6,7 @@ import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.TimeUtils;
-import com.u8.server.web.SendAgent;
+import com.u8.server.web.pay.SendAgent;
 import net.sf.json.JSONObject;
 
 import java.util.Date;

@@ -28,25 +28,42 @@
 	<context:annotation-config />
 
 	<!-- 数据源配置,使用应用内的DBCP数据库连接池 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<!-- Connection Info -->
-		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
+	<!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">-->
+		<!--&lt;!&ndash; Connection Info &ndash;&gt;-->
+		<!--<property name="driverClassName" value="${jdbc.driver}" />-->
+		<!--<property name="url" value="${jdbc.url}" />-->
+		<!--<property name="username" value="${jdbc.username}" />-->
+		<!--<property name="password" value="${jdbc.password}" />-->
+
+		<!--&lt;!&ndash; Connection Pooling Info &ndash;&gt;-->
+		<!--<property name="initialSize" value="5" />-->
+		<!--<property name="maxActive" value="500" />-->
+		<!--<property name="maxIdle" value="10000" />-->
+		<!--<property name="maxWait" value="10000" />-->
+		<!--<property name="defaultAutoCommit" value="true" />-->
+		<!--<property name="removeAbandoned" value="false"/>-->
+		<!--<property name="removeAbandonedTimeout" value="180" />-->
+		<!--<property name="logAbandoned" value="true"/>-->
+		<!--<property name="validationQuery" value="SELECT 1" />-->
+		<!--<property name="testOnBorrow" value="true"/>-->
+ 	<!--</bean>-->
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 
-		<!-- Connection Pooling Info -->
-		<property name="initialSize" value="5" />
-		<property name="maxActive" value="500" />
-		<property name="maxIdle" value="10000" />
-		<property name="maxWait" value="500" />
-		<property name="defaultAutoCommit" value="true" />
-		<property name="removeAbandoned" value="true"/>
-		<property name="removeAbandonedTimeout" value="180" />
-		<property name="logAbandoned" value="true"/>
-		<property name="testOnBorrow" value="true"/>
-		<property name="testWhileIdle" value="true"/>
-		<property name="validationQuery" value="select 1"/>
+		<property name="initialPoolSize" value="10" />
+		<!--连接空闲时间(秒) -->
+		<property name="maxIdleTime" value="300" />
+		<property name="maxPoolSize" value="50" />
+		<property name="minPoolSize" value="10" />
+		<!--获取新连接的等待时间(毫秒)0一直等待 -->
+		<property name="checkoutTimeout" value="30000" />
+		<!--检测空闲连接的时间间隔(秒) -->
+		<property name="idleConnectionTestPeriod" value="150" />
+		<!--<property name="testConnectionOnCheckout" value="true" />-->
 	</bean>
 
 	<!-- Hibernate配置 -->
