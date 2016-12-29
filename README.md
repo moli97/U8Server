@@ -11,9 +11,7 @@ U8SDK文档（包含U8Server）：http://wiki.u8sdk.com
 
 U8Server视频教程：[U8Server视频教程地址](http://www.chuanke.com/?mod=school&act=show&do=course&sid=2869716)
 
-开源版本后台管理系统演示地址：[演示地址](http://121.42.144.254:8080/u8server_u/admin/index) （用户名和密码：u8sdk/u8sdk）
-
-企业版后台管理系统演示地址：[演示地址](http://121.42.144.254:8080/u8server/admin/index) （用户名和密码：admin/u8sdk）
+企业版后台管理系统演示地址：[演示地址](http://121.42.144.254/admin/index) （用户名和密码：admin/u8sdk）
 
 
 2016.09.25 我们推出了U8Server企业版， 完善了后台权限管理，数据查询，增加了数据统计分析等功能，对于有需求的用户，可以考虑选购。

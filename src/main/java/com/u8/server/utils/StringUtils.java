@@ -55,7 +55,7 @@ public class StringUtils {
                 content.append(splitChar);
             }
         }
-        if(content.length() > 0){
+        if(content.length() > 0 && !StringUtils.isEmpty(splitChar)){
             content.deleteCharAt(content.length() - 1);
         }
 
@@ -87,7 +87,7 @@ public class StringUtils {
             }
         }
 
-        if(content.length() > 0){
+        if(content.length() > 0 && !StringUtils.isEmpty(splitChar)){
             content.deleteCharAt(content.length() - 1);
         }
 
