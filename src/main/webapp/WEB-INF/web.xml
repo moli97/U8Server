@@ -32,7 +32,7 @@
     <!-- Hibernate Open Session In View filter-->
     <filter>
         <filter-name>hibernateOpenSessionInViewFilter</filter-name>
-        <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+        <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
     </filter>
 
     <filter>
