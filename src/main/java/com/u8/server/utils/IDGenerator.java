@@ -6,7 +6,9 @@ import com.u8.server.data.UChannelMaster;
 import com.u8.server.data.UGame;
 import com.u8.server.service.UChannelManager;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /***
@@ -22,6 +24,7 @@ public class IDGenerator {
     private AtomicInteger currChannelID;
 
     private AtomicInteger currOrderSequence = new AtomicInteger(1);
+    //private int currOrderSequence = 1;
 
     private IDGenerator(){
 
@@ -29,7 +32,7 @@ public class IDGenerator {
 
     }
 
-    public static IDGenerator getInstance(){
+    public synchronized static IDGenerator getInstance(){
         if(instance == null){
             instance = new IDGenerator();
         }
@@ -90,6 +93,8 @@ public class IDGenerator {
 
     public long nextOrderID(){
 
+        int seq = this.currOrderSequence.getAndIncrement();
+
         Calendar can = Calendar.getInstance();
         int year = can.get(Calendar.YEAR) - 2013;
         int month = can.get(Calendar.MONTH) + 1;
@@ -104,8 +109,36 @@ public class IDGenerator {
         orderId = orderId << 5 | hour;
         orderId = orderId << 6 | min;
         orderId = orderId << 6 | sec;
-        orderId = orderId << 32| this.currOrderSequence.getAndIncrement();
+        orderId = orderId << 32| seq;
 
         return orderId;
     }
+
+//    public static void main(String[] ags){
+//
+//        final List<Long> lst = new ArrayList<Long>();
+//
+//        Runnable r = new Runnable() {
+//            @Override
+//            public void run() {
+//                for(int i=0; i<500; i++){
+//                    long id = IDGenerator.getInstance().nextOrderID();
+//                    if(lst.contains(id)){
+//                        System.out.println("duplicated id:"+id+"; bcode:"+Long.toBinaryString(id));
+//
+//                    }else{
+//                        lst.add(id);
+//                    }
+//                }
+//
+//            }
+//        };
+//
+//        for(int i=0; i<10; i++){
+//            Thread t = new Thread(r);
+//            t.start();
+//        }
+//
+//
+//    }
 }
