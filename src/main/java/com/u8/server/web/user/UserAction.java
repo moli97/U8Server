@@ -219,7 +219,7 @@ public class UserAction extends UActionSupport{
             StringBuilder sb = new StringBuilder();
             sb.append("userID=").append(this.userID)
                     .append("token=").append(this.token)
-                    .append(user.getGame().getAppkey());
+                    .append(user.getGame().getAppSecret());
 
 
             if(!userManager.isSignOK(sb.toString(), sign)){

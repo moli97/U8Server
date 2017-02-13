@@ -6,6 +6,7 @@ import com.u8.server.sdk.ISDKScript;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 每个渠道SDK都有一个实现了ISDKScript接口的SDK逻辑处理类，登录认证和获取订单号接口中，通过反射的方式来
@@ -22,11 +23,11 @@ public class SDKCacheManager {
 
     private SDKCacheManager(){
 
-        sdkCaches = new HashMap<Integer, ISDKScript>();
-        cachedClassNames = new HashMap<Integer, String>();
+        sdkCaches = new ConcurrentHashMap<Integer, ISDKScript>();
+        cachedClassNames = new ConcurrentHashMap<Integer, String>();
     }
 
-    public static SDKCacheManager getInstance(){
+    public synchronized static SDKCacheManager getInstance(){
         if(instance == null){
             instance = new SDKCacheManager();
 
@@ -40,7 +41,7 @@ public class SDKCacheManager {
      * @param channel
      * @return
      */
-    public ISDKScript getSDKScript(UChannel channel){
+    public synchronized ISDKScript getSDKScript(UChannel channel){
 
         if(channel == null){
             return  null;

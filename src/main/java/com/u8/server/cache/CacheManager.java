@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /***
  * 将常用的数据进行缓存。包含game,master,channel等对象
@@ -25,50 +26,50 @@ public class CacheManager {
 
     }
 
-    public static CacheManager getInstance(){
+    public synchronized static CacheManager getInstance(){
         if(instance == null){
             instance = new CacheManager();
         }
         return instance;
     }
 
-    public List<UGame> getGameList(){
+    public synchronized List<UGame> getGameList(){
 
         return new ArrayList<UGame>(games.values());
     }
 
-    public List<UChannel> getChannelList(){
+    public synchronized List<UChannel> getChannelList(){
 
         return new ArrayList<UChannel>(channels.values());
     }
 
-    public List<UChannelMaster> getMasterList(){
+    public synchronized List<UChannelMaster> getMasterList(){
 
         return new ArrayList<UChannelMaster>(masters.values());
     }
 
-    public UGame getGame(int appID){
+    public synchronized UGame getGame(int appID){
         if(this.games.containsKey(appID)){
             return this.games.get(appID);
         }
         return null;
     }
 
-    public UChannelMaster getMaster(int masterID){
+    public synchronized UChannelMaster getMaster(int masterID){
         if(this.masters.containsKey(masterID)){
             return this.masters.get(masterID);
         }
         return null;
     }
 
-    public UChannel getChannel(int channelID){
+    public synchronized UChannel getChannel(int channelID){
         if(this.channels.containsKey(channelID)){
             return this.channels.get(channelID);
         }
         return null;
     }
 
-    public UChannel getChannelByID(Integer id){
+    public synchronized UChannel getChannelByID(Integer id){
 
         if(id == null){
             return null;
@@ -82,7 +83,7 @@ public class CacheManager {
         return null;
     }
 
-    public void addGame(UGame game){
+    public synchronized void addGame(UGame game){
 
         if(games.containsKey(game.getAppID())){
             Log.e("The appID is already is exists. add game failed."+game.getAppID());
@@ -93,7 +94,7 @@ public class CacheManager {
 
     }
 
-    public void saveGame(UGame game){
+    public synchronized void saveGame(UGame game){
 
         if(games.containsKey(game.getAppID())){
             games.remove(game.getAppID());
@@ -102,7 +103,7 @@ public class CacheManager {
 
     }
 
-    public void addMaster(UChannelMaster master){
+    public synchronized void addMaster(UChannelMaster master){
 
         if(masters.containsKey(master.getMasterID())){
             Log.e("The channel master ID is already is exists. add channel master faild."+master.getMasterID());
@@ -113,7 +114,7 @@ public class CacheManager {
 
     }
 
-    public void saveMaster(UChannelMaster master){
+    public synchronized void saveMaster(UChannelMaster master){
 
         if(masters.containsKey(master.getMasterID())){
             masters.remove(master.getMasterID());
@@ -122,7 +123,7 @@ public class CacheManager {
 
     }
 
-    public void removeMaster(int masterID){
+    public synchronized void removeMaster(int masterID){
 
         if(masters.containsKey(masterID)){
             masters.remove(masterID);
@@ -130,7 +131,7 @@ public class CacheManager {
 
     }
 
-    public void addChannel(UChannel channel){
+    public synchronized void addChannel(UChannel channel){
 
         if(channels.containsKey(channel.getChannelID())){
             Log.e("The channelID is already is exists. add channel faild."+channel.getChannelID());
@@ -143,7 +144,7 @@ public class CacheManager {
     }
 
     //添加或者修改渠道
-    public void saveChannel(UChannel channel){
+    public synchronized void saveChannel(UChannel channel){
 
         if(channels.containsKey(channel.getChannelID())){
             channels.remove(channel.getChannelID());
@@ -161,7 +162,7 @@ public class CacheManager {
 
     }
 
-    public void removeChannel(int channelID){
+    public synchronized void removeChannel(int channelID){
 
         if(channels.containsKey(channelID)){
             channels.remove(channelID);
@@ -169,7 +170,7 @@ public class CacheManager {
 
     }
 
-    public void removeGame(int appID){
+    public synchronized void removeGame(int appID){
 
         if(games.containsKey(appID)){
             games.remove(appID);
@@ -179,7 +180,7 @@ public class CacheManager {
     }
 
     public void loadGameData(List<UGame> gameLst){
-        games = new HashMap<Integer, UGame>();
+        games = new ConcurrentHashMap<Integer, UGame>();
         for(UGame game : gameLst){
             games.put(game.getAppID(), game);
         }
@@ -187,7 +188,7 @@ public class CacheManager {
     }
 
     public void loadMasterData(List<UChannelMaster> masterLst){
-        masters = new HashMap<Integer, UChannelMaster>();
+        masters = new ConcurrentHashMap<Integer, UChannelMaster>();
 
         for(UChannelMaster master : masterLst){
             masters.put(master.getMasterID(), master);
@@ -196,7 +197,7 @@ public class CacheManager {
     }
 
     public void loadChannelData(List<UChannel> channelLst){
-        channels = new HashMap<Integer, UChannel>();
+        channels = new ConcurrentHashMap<Integer, UChannel>();
         for(UChannel channel : channelLst){
             channels.put(channel.getChannelID(), channel);
         }
