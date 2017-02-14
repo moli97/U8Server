@@ -39,6 +39,7 @@ public class PayAction extends UActionSupport{
     private int money;          //单位 分
     private String roleID;      //玩家在游戏服中的角色ID
     private String roleName;    //玩家在游戏服中的角色名称
+    private String roleLevel;   //玩家等级
     private String serverID;    //玩家所在的服务器ID
     private String serverName;  //玩家所在的服务器名称
     private String extension;
@@ -64,6 +65,7 @@ public class PayAction extends UActionSupport{
                 .append("money=").append(this.money).append("&")
                 .append("roleID=").append(this.roleID == null ? "" : this.roleID).append("&")
                 .append("roleName=").append(this.roleName == null ? "" : this.roleName).append("&")
+                .append("roleLevel=").append(this.roleLevel == null ? "" : this.roleLevel).append("&")
                 .append("serverID=").append(this.serverID == null ? "" : this.serverID).append("&")
                 .append("serverName=").append(this.serverName == null ? "" : this.serverName).append("&")
                 .append("extension=").append(this.extension == null ? "" : this.extension);
