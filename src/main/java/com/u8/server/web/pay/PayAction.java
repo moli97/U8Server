@@ -292,5 +292,11 @@ public class PayAction extends UActionSupport{
         this.signType = signType;
     }
 
+    public String getRoleLevel() {
+        return roleLevel;
+    }
 
+    public void setRoleLevel(String roleLevel) {
+        this.roleLevel = roleLevel;
+    }
 }
