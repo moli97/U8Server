@@ -60,6 +60,13 @@ public class M4399PayCallbackAction extends UActionSupport{
                 return;
             }
 
+            int moneyInt = 100 * Float.valueOf(money).intValue();
+            if(moneyInt < order.getMoney()){
+                Log.d("order:%s money not matched. local price:%s; remote price:%s", orderID, order.getMoney(), moneyInt);
+                this.renderState(1, "money_error", "金额不匹配");
+                return;
+            }
+
             if(isValid(order.getChannel())){
                 order.setRealMoney(Float.valueOf(money).intValue());
                 order.setSdkOrderTime(time);
