@@ -114,13 +114,13 @@ public class AppstoreIAPValidate extends UActionSupport {
                 }
             });
 
-            this.renderState(true, "Success");
+            this.renderResponse(null);
         }
         catch (Exception e)
         {
             e.printStackTrace();
             try {
-                this.renderState(false, "未知错误");
+                this.renderError("未知错误");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -171,16 +171,34 @@ public class AppstoreIAPValidate extends UActionSupport {
         }
     }
 
-    private void renderState(boolean suc, String msg) throws IOException {
+    private void renderResponse(JSONObject data) throws IOException {
+        try{
 
-        PrintWriter out = this.response.getWriter();
+            JSONObject json = new JSONObject();
+            json.put("state", 1);
+            json.put("data", data);
 
-        if(suc){
-            out.write("SUCCESS");
-        }else{
-            out.write("FAILURE");
+            super.renderJson(json.toString());
+
+        }catch(Exception e){
+            e.printStackTrace();
+            Log.e(e.getMessage());
         }
-        out.flush();
+    }
+
+    private void renderError(String msg) throws IOException {
+        try{
+
+            JSONObject json = new JSONObject();
+            json.put("state", -1);
+            json.put("message", msg);
+
+            super.renderJson(json.toString());
+
+        }catch(Exception e){
+            e.printStackTrace();
+            Log.e(e.getMessage());
+        }
     }
 
     public void setTransactionReceipt(String transactionReceipt)
