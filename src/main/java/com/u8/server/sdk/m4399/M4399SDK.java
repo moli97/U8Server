@@ -77,10 +77,6 @@ public class M4399SDK implements ISDKScript{
 
             });
 
-
-
-
-
         }catch (Exception e){
             e.printStackTrace();
             callback.onFailed(channel.getMaster().getSdkName() + " verify execute failed. the exception is "+e.getMessage());

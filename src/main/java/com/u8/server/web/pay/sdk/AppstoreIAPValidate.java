@@ -41,7 +41,7 @@ public class AppstoreIAPValidate extends UActionSupport {
     private UOrderManager orderManager;
 
     @Action("validate")
-    public void validate() {
+    public void validateOrder() {
         try {
             JSONObject params = new JSONObject();
 
@@ -94,6 +94,7 @@ public class AppstoreIAPValidate extends UActionSupport {
                             public void failed(String err) {
                                 Log.d("apple iap validate error: " + err);
                                 //TODO: 更新receipt记录状态
+                                renderState(false);
                             }
                         });
                     }
@@ -111,19 +112,15 @@ public class AppstoreIAPValidate extends UActionSupport {
                 public void failed(String err) {
                     Log.d("apple iap validate error: " + err);
                     //TODO: 更新receipt记录状态
+                    renderState(false);
                 }
             });
 
-            this.renderState(true, "Success");
         }
         catch (Exception e)
         {
             e.printStackTrace();
-            try {
-                this.renderState(false, "未知错误");
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            this.renderState(false);
         }
     }
 
@@ -133,21 +130,27 @@ public class AppstoreIAPValidate extends UActionSupport {
 
         if(order == null || order.getChannel() == null){
             Log.d("The order is null or the channel is null.");
+            renderState(false);
             return;
         }
 
         if(order.getState() > PayState.STATE_PAYING){
             Log.d("The state of the order is not paying. The state is "+order.getState());
+            renderState(false);
             return;
         }
 
-        if (order.getExtension() == productId)
-        {
-            order.setCompleteTime(new Date());
-            order.setState(PayState.STATE_SUC);
-            orderManager.saveOrder(order);
-            SendAgent.sendCallbackToServer(orderManager, order);
+        if(order.getProductID() == null || !order.getProductID().equals(productId)){
+            Log.e("productId not matched. the productId in order:%s;productId of appstore:%s", order.getProductID(), productId);
+            renderState(false);
+            return;
         }
+        order.setCompleteTime(new Date());
+        order.setChannelOrderID(transactionIdentifier);
+        order.setState(PayState.STATE_SUC);
+        orderManager.saveOrder(order);
+        SendAgent.sendCallbackToServer(orderManager, order);
+        renderState(true);
     }
 
     private void OnValidateFail()
@@ -155,32 +158,40 @@ public class AppstoreIAPValidate extends UActionSupport {
         //TODO: 更新receipt记录状态
         if(order == null || order.getChannel() == null){
             Log.d("The order is null or the channel is null.");
+            renderState(false);
             return;
         }
 
         if(order.getState() > PayState.STATE_PAYING){
             Log.d("The state of the order is complete. The state is " + order.getState());
+            renderState(false);
             return;
         }
 
-        if (order.getExtension() == productId)
-        {
-            order.setCompleteTime(new Date());
-            order.setState(PayState.STATE_FAILED);
-            orderManager.saveOrder(order);
+        if(order.getProductID() == null || !order.getProductID().equals(productId)){
+            Log.e("productId not matched. the productId in order:%s;productId of appstore:%s", order.getProductID(), productId);
+            renderState(false);
+            return;
         }
+
+        order.setCompleteTime(new Date());
+        order.setChannelOrderID(transactionIdentifier);
+        order.setState(PayState.STATE_FAILED);
+        orderManager.saveOrder(order);
+        renderState(false);
     }
 
-    private void renderState(boolean suc, String msg) throws IOException {
+    private void renderState(boolean suc) {
 
-        PrintWriter out = this.response.getWriter();
-
+        JSONObject json = new JSONObject();
+        json.put("state", suc ? 1 : 0);
         if(suc){
-            out.write("SUCCESS");
+            json.put("message", "验证成功");
         }else{
-            out.write("FAILURE");
+            json.put("message", "验证失败");
         }
-        out.flush();
+
+        super.renderJson(json.toString());
     }
 
     public void setTransactionReceipt(String transactionReceipt)

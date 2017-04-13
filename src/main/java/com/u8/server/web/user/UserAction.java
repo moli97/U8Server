@@ -55,7 +55,6 @@ public class UserAction extends UActionSupport{
     private UUserManager userManager;
 
 
-
     @Action("getToken")
     public void getLoginToken(){
 
@@ -90,7 +89,7 @@ public class UserAction extends UActionSupport{
             StringBuilder sb = new StringBuilder();
             sb.append("appID=").append(this.appID)
                     .append("channelID=").append(this.channelID)
-                    .append("extension=").append(this.extension).append(game.getAppkey());
+                    .append("extension=").append(this.extension == null ? "":this.extension).append(game.getAppkey());
 
 
             if(!userManager.isSignOK(sb.toString(), sign)){
