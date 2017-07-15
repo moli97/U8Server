@@ -108,6 +108,11 @@ public class UChannelManager {
         return CacheManager.getInstance().getChannel(id);
     }
 
+    public UChannel getChannel(int id){
+
+        return CacheManager.getInstance().getChannel(id);
+    }
+
     public void deleteChannel(UChannel channel){
         if(channel == null){
             return;

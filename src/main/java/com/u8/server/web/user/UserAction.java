@@ -221,6 +221,8 @@ public class UserAction extends UActionSupport{
                     .append(user.getGame().getAppSecret());
 
 
+            Log.d("sign str :%s", sb.toString());
+
             if(!userManager.isSignOK(sb.toString(), sign)){
                 renderState(StateCode.CODE_SIGN_ERROR, null);
                 return;

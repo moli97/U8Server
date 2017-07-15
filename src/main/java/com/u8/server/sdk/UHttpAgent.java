@@ -339,7 +339,7 @@ public class UHttpAgent {
         RequestConfig requestConfig = RequestConfig.custom()
                 .setConnectTimeout(connectTimeout)
                 .setSocketTimeout(socketTimeout)
-                .setExpectContinueEnabled(true)
+                .setExpectContinueEnabled(false)
                 .setAuthenticationEnabled(true)
                 .build();
 

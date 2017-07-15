@@ -159,6 +159,9 @@ public class SendAgent {
             Map<String, String> headers = new HashMap<String, String>();
             headers.put("Content-Type", "text/html");
 
+            Log.d("send data to game server. url:%s;params:%s", callbackUrl, response.toString());
+
+
 
             String serverRes = UHttpAgent.getInstance().post(callbackUrl, headers, new ByteArrayEntity(response.toString().getBytes(Charset.forName("UTF-8"))));
 
