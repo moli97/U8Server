@@ -5,6 +5,7 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
+import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.RSAUtils;
 import com.u8.server.web.pay.SendAgent;
@@ -46,6 +47,9 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
     @Autowired
     private UOrderManager orderManager;
 
+    @Autowired
+    private UChannelManager channelManager;
+
     @Action("payCallback")
     public void payCallback(){
         try{
@@ -55,8 +59,8 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
 
             UOrder order = orderManager.getOrder(localOrderID);
 
-            if(order == null || order.getChannel() == null){
-                Log.d("The order is null or the channel is null.");
+            if(order == null){
+                Log.d("The order is null %s.", localOrderID);
                 this.renderState(3, "notifyId 错误");
                 return;
             }
@@ -73,7 +77,14 @@ public class HuaWeiPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            if(isValid(order.getChannel())){
+            UChannel channel = channelManager.getChannel(order.getChannelID());
+            if(channel == null){
+                Log.e("the channel %s of order %s is not exists.", order.getChannelID(), localOrderID);
+                this.renderState(3, "渠道不存在");
+                return;
+            }
+
+            if(isValid(channel)){
                 order.setChannelOrderID(orderId);
                 order.setRealMoney((int) (Float.valueOf(amount) * 100));
                 order.setSdkOrderTime(orderTime);
