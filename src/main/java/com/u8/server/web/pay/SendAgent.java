@@ -38,8 +38,8 @@ public class SendAgent {
     public static final String CONTENT_TYPE_WWW = "application/x-www-form-urlencoded";
     public static final String CONTENT_TYPE_JSON = "application/json";
 
-    private static String contentType = CONTENT_TYPE_WWW;
-    private static String signType = SIGN_MD5;
+    private static String contentType = CONTENT_TYPE_JSON;
+    private static String signType = SIGN_RSA;
 
 
     /**
