@@ -1,4 +1,4 @@
-package com.u8.server.sdk.coolpad;
+package com.u8.server.sdk.kupai;
 
 /**
  * 酷派支付结果

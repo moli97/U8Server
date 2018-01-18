@@ -5,6 +5,7 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
+import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.JsonUtils;
 import com.u8.server.utils.RSAUtils;
@@ -35,6 +36,10 @@ public class LenovoPayCallbackAction extends UActionSupport{
     @Autowired
     private UOrderManager orderManager;
 
+    @Autowired
+    private UChannelManager channelManager;
+
+
     @Action("payCallback")
     public void payCallback(){
         try{
@@ -43,6 +48,7 @@ public class LenovoPayCallbackAction extends UActionSupport{
 
             if(data == null){
                 Log.e("The content parse error...");
+                this.renderState(false, "data error");
                 return;
             }
 
@@ -50,11 +56,19 @@ public class LenovoPayCallbackAction extends UActionSupport{
 
             UOrder order = orderManager.getOrder(localOrderID);
 
-            if(order == null || order.getChannel() == null){
-                Log.d("The order is null or the channel is null.");
+            if(order == null){
+                Log.d("The order is null %s.", localOrderID);
                 this.renderState(false, "notifyId 错误");
                 return;
             }
+
+            UChannel channel = channelManager.getChannel(order.getChannelID());
+            if(channel == null){
+                Log.d("The channel is not exists of channelID:"+order.getChannelID());
+                this.renderState(false, "渠道不存在");
+                return;
+            }
+
 
             if(order.getState() > PayState.STATE_PAYING){
                 Log.d("The state of the order is complete. The state is "+order.getState());
@@ -67,6 +81,8 @@ public class LenovoPayCallbackAction extends UActionSupport{
 
             if(order.getMoney() > orderMoney){
                 Log.e("订单金额不一致! local orderID:"+localOrderID+"; money returned:"+data.getMoney()+"; order money:"+order.getMoney());
+                this.renderState(false, "金额不匹配");
+                return;
             }
 
             if(!"0".equals(data.getResult())){
@@ -75,7 +91,7 @@ public class LenovoPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            if(isValid(order.getChannel())){
+            if(isValid(channel)){
                 Log.d("联想平台sign验证成功...");
                 order.setChannelOrderID(data.getTransid());
                 order.setRealMoney(orderMoney);
@@ -86,7 +102,7 @@ public class LenovoPayCallbackAction extends UActionSupport{
                 SendAgent.sendCallbackToServer(this.orderManager, order);
                 this.renderState(true, "");
             }else{
-                Log.e("联想平台sign验证失败:sign:"+this.sign+";key:"+order.getChannel().getCpPayKey());
+                Log.e("联想平台sign验证失败:sign:"+this.sign+";key:"+channel.getCpPayKey());
                 order.setChannelOrderID(data.getTransid());
                 order.setState(PayState.STATE_FAILED);
                 orderManager.saveOrder(order);
@@ -102,6 +118,14 @@ public class LenovoPayCallbackAction extends UActionSupport{
                 e1.printStackTrace();
             }
         }
+    }
+
+    public static void main(String[] args){
+
+        String transdata = "{\"transtype\":0,\"result\":0,\"transtime\":\"2017-07-13 17:49:11\",\"count\":1,\"paytype\":5,\"money\":100,\"waresid\":153544,\"appid\":\"1706300327780.app.ln\",\"exorderno\":\"1286653141097381888\",\"feetype\":0,\"transid\":\"2170713174911868243740645\",\"cpprivate\":null}";
+        String key = "";
+        String sign ="rvZesu/YaX1r/KitncEPqz+ErKFmzSY7Xy1YrNynKK5alJy8HxJTJmDbvq+PsRd9ico7AyDoFQRmsBdMm7tDKzYdrwxIas0dJfYTnWEBq0KAIcWwnml/U5SIeWS0iXbRC5ScVFh1MxGRb6+jOzkG3YvofZYYEUpk36RZuXEHqMg=";
+
     }
 
     private boolean isValid(UChannel channel){

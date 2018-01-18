@@ -1,4 +1,4 @@
-package com.u8.server.sdk.coolpad.api;
+package com.u8.server.sdk.kupai.api;
 
 import java.io.UnsupportedEncodingException;
 

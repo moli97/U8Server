@@ -1,4 +1,4 @@
-package com.u8.server.sdk.coolpad;
+package com.u8.server.sdk.kupai;
 
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
@@ -7,15 +7,8 @@ import com.u8.server.log.Log;
 import com.u8.server.sdk.*;
 import com.u8.server.utils.JsonUtils;
 import net.sf.json.JSONObject;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

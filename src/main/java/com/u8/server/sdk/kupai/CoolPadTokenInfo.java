@@ -1,4 +1,4 @@
-package com.u8.server.sdk.coolpad;
+package com.u8.server.sdk.kupai;
 
 /**
  * Created by ant on 2015/4/8.

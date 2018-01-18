@@ -1,4 +1,4 @@
-package com.u8.server.sdk.coolpad.api;
+package com.u8.server.sdk.kupai.api;
 
 /**
  * hmac的签名算法

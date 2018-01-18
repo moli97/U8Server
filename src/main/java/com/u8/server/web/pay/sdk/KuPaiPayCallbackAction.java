@@ -5,8 +5,8 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
-import com.u8.server.sdk.coolpad.CoolPadPayResult;
-import com.u8.server.sdk.coolpad.api.CpTransSyncSignValid;
+import com.u8.server.sdk.kupai.CoolPadPayResult;
+import com.u8.server.sdk.kupai.api.CpTransSyncSignValid;
 import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.JsonUtils;
@@ -25,8 +25,8 @@ import java.util.Date;
  * Created by ant on 2015/9/15.
  */
 @Controller
-@Namespace("/pay/coolpad")
-public class CoolPadPayCallbackAction extends UActionSupport{
+@Namespace("/pay/kupai")
+public class KuPaiPayCallbackAction extends UActionSupport{
 
 
     private String transdata;
@@ -45,7 +45,7 @@ public class CoolPadPayCallbackAction extends UActionSupport{
     public void payCallback(){
         try{
 
-            UChannel channel = channelManager.queryChannel(this.u8ChannelID);
+            UChannel channel = channelManager.getChannel(this.u8ChannelID);
             if(channel == null){
                 Log.e("The channel is not exists. channelID:"+this.u8ChannelID+";data:"+this.transdata);
                 return;
@@ -86,6 +86,12 @@ public class CoolPadPayCallbackAction extends UActionSupport{
 
 
                 int moneyInt = Integer.valueOf(result.getMoney());
+
+                if(moneyInt < order.getMoney()){
+                    Log.d("order:%s money not matched. local price:%s; remote price:%s", orderID, order.getMoney(), moneyInt);
+                    this.renderState(false);
+                    return;
+                }
 
                 order.setRealMoney(moneyInt);
                 order.setSdkOrderTime(result.getTranstime());

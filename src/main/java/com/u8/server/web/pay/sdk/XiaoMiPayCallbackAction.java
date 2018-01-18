@@ -5,6 +5,7 @@ import com.u8.server.constants.PayState;
 import com.u8.server.data.UChannel;
 import com.u8.server.data.UOrder;
 import com.u8.server.log.Log;
+import com.u8.server.service.UChannelManager;
 import com.u8.server.service.UOrderManager;
 import com.u8.server.utils.HmacSHA1Encryption;
 import com.u8.server.web.pay.SendAgent;
@@ -46,6 +47,10 @@ public class XiaoMiPayCallbackAction extends UActionSupport{
     @Autowired
     private UOrderManager orderManager;
 
+    @Autowired
+    private UChannelManager channelManager;
+
+
     @Action("payCallback")
     public void payCallback(){
 
@@ -57,8 +62,8 @@ public class XiaoMiPayCallbackAction extends UActionSupport{
 
             UOrder order = orderManager.getOrder(orderID);
 
-            if(order == null || order.getChannel() == null){
-                Log.d("The order is null or the channel is null.");
+            if(order == null ){
+                Log.d("The order is null %s.", orderID);
                 this.renderState(1506, "cpOrderId 错误");
                 return;
             }
@@ -69,8 +74,16 @@ public class XiaoMiPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            if(!order.getChannel().getCpAppID().equals(this.appId)){
-                Log.d("The appId of the order is invalid. The appId is "+this.appId+"; the valid appId is "+order.getChannel().getCpAppID());
+            UChannel channel = channelManager.getChannel(order.getChannelID());
+            if(channel == null){
+                Log.d("The channel is not exists of channelID:"+order.getChannelID());
+                this.renderState(1506, "渠道不存在");
+                return;
+            }
+
+
+            if(!channel.getCpAppID().equals(this.appId)){
+                Log.d("The appId of the order is invalid. The appId is "+this.appId+"; the valid appId is "+channel.getCpAppID());
                 this.renderState(1515, "AppId错误");
                 return;
             }
@@ -80,8 +93,16 @@ public class XiaoMiPayCallbackAction extends UActionSupport{
                 return;
             }
 
-            if(isValid(order.getChannel())){
-                order.setRealMoney(Float.valueOf(payFee).intValue());
+            int moneyInt = Float.valueOf(payFee).intValue();
+            if(order.getMoney() > moneyInt){
+                Log.e("订单金额不一致! local orderID:"+orderID+"; money returned:"+moneyInt+"; order money:"+order.getMoney());
+                this.renderState(1525, "金额不匹配");
+                return;
+            }
+
+
+            if(isValid(channel)){
+                order.setRealMoney(moneyInt);
                 order.setSdkOrderTime(payTime);
                 order.setCompleteTime(new Date());
                 order.setChannelOrderID(this.orderId);
