@@ -39,7 +39,7 @@ public class UOrderManager {
         orderDao.delete(order);
     }
 
-    public UOrder generateOrder(UUser user, int money, String productID, String productName, String productDesc, String roleID, String roleName, String serverID, String serverName,String extension,String notifyUrl){
+    public UOrder generateOrder(UUser user, int money, String productID, String productName, String productDesc, String roleID, String roleName, String roleLevel, String serverID, String serverName,String extension,String notifyUrl){
 
         UOrder order = new UOrder();
         order.setOrderID(IDGenerator.getInstance().nextOrderID());
@@ -57,6 +57,7 @@ public class UOrderManager {
         order.setChannelOrderID("");
         order.setRoleID(roleID);
         order.setRoleName(roleName);
+        order.setRoleLevel(roleLevel);
         order.setServerID(serverID);
         order.setServerName(serverName);
         order.setCreatedTime(new Date());

@@ -29,6 +29,7 @@ public class UOrder {
     private String currency; //币种
     private String roleID;      //游戏中角色ID
     private String roleName;    //游戏中角色名称
+    private String roleLevel;   //角色等级
     private String serverID;    //服务器ID
     private String serverName;  //服务器名称
     private Integer state;          //订单状态
@@ -61,6 +62,7 @@ public class UOrder {
         json.put("currency", currency);
         json.put("roleID", roleID);
         json.put("roleName", roleName);
+        json.put("roleLevel", roleLevel);
         json.put("serverID", serverID);
         json.put("serverName", serverName);
         json.put("state", state);
@@ -264,5 +266,13 @@ public class UOrder {
     public Integer getPlatID(){
         UChannel channel = this.getChannel();
         return channel == null ? 0 : channel.getPlatID();
+    }
+
+    public String getRoleLevel() {
+        return roleLevel;
+    }
+
+    public void setRoleLevel(String roleLevel) {
+        this.roleLevel = roleLevel;
     }
 }
