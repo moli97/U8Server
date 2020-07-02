@@ -1,20 +1,20 @@
 # U8Server
 ###U8Server——U8SDK服务器端（统一渠道SDK接入用户中心和支付中心）
 
-U8SDK/U8Server技术交流群：207609068
+*该工程已于2017年停止维护， 请谨慎使用。 目前开发如果使用java的话， 建议直接采用Springboot来开发。*
 
-小黑联系QQ：2848004717
+U8SDK官网：http://www.u8sdk.com 或 http://www.6xsdk.com
 
-U8SDK技术博客：http://www.uustory.com
+U8SDK技术博客： http://www.uustory.com
 
-U8SDK文档（包含U8Server）：http://wiki.u8sdk.com
+U8SDK视频教程：https://space.bilibili.com/15265144
 
-U8Server视频教程：[U8Server视频教程地址](http://www.chuanke.com/?mod=school&act=show&do=course&sid=2869716)
+U8SDK技术交流群：207609068
 
-企业版后台管理系统演示地址：[演示地址](http://121.42.144.254/admin/index) （用户名和密码：admin/admin）
+U8SDK小黑QQ：2848004717
 
 
-2016.09.25 我们推出了U8Server企业版， 完善了后台权限管理，数据查询，增加了数据统计分析等功能，对于有需求的用户，可以考虑选购。
+企业版后台管理系统演示地址：[演示地址](http://www.6xsdk.com:8099/login) （用户名和密码：任意长度6位以上的字符）
 
 
 U8Server开源版本基于　Apache Licence 2.0 开源协议，有需要的开发者或者企业可以对U8Server进行二次开发和定制，也可以商用，但是请保证U8Server的著作权，以及不要使用U8SDK的名义去推广销售自己的产品。
